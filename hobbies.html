@@ -130,7 +130,23 @@
         fill: am5.color(0xe0e0e0)
       });
       // Highlighted countries
-      var visited = ["BR", "ZA", "BW", "NA", "ZW", "ZM", "QA", "CN", "IS", "CA"];
+      var visited = [
+        "BR", // Brazil
+        "ZA", // South Africa
+        "BW", // Botswana
+        "NA", // Namibia
+        "ZW", // Zimbabwe
+        "ZM", // Zambia
+        "QA", // Qatar
+        "CN", // China
+        "IN", // India
+        "IS", // Iceland
+        "CA", // Canada
+        "US", // United States
+        "BS", // Bahamas
+        "MF", // Saint Martin (French)
+        "SX"  // Sint Maarten (Dutch)
+      ];
       polygonSeries.mapPolygons.template.adapters.add("fill", function(fill, target) {
         var id = target.dataItem.get("id");
         if (visited.indexOf(id) !== -1) {
