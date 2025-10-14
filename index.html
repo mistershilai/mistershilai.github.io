@@ -1,43 +1,139 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <title>Elliot S. Lee | Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Elliot Lee</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
+        body {
+            font-family: Georgia, serif;
+            background-color: #f8f9fa;
         }
-        nav {
-            background-color: #333;
-            padding: 10px;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #343a40;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            padding: 10px;
-            font-size: 18px;
+        .card {
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
-        nav a:hover {
-            background-color: #555;
+        h1, h2 {
+            font-family: Georgia, serif;
+            font-weight: 700;
         }
-        section {
-            padding: 20px;
+        #typed-text {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        #cursor {
+            font-size: 2rem;
+            color: #343a40;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .lead {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+        }
+        .nav-link, .navbar-brand {
+            font-family: Georgia, serif;
         }
     </style>
-  </head>
-  <body>
-    <h1>Elliot S. Lee</h1>
-    <h2>health economics and statistical biology</h2>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">elliot s. lee</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">about me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <p>I am a student at Princeton University. Welcome to my site, and thanks for exploring!</p>
-  </body>
+
+    <section>
+        <div class="card p-4">
+            <div class="text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Penguin_-_Adelie_Penguin.jpg" alt="Penguin Profile" class="profile-img">
+                <h1>
+                    <span id="typed-text"></span>
+                    <span id="cursor">|</span>
+                </h1>
+            </div>
+            <div class="card-body">
+                <p class="lead text-center">
+                    Welcome! I'm Elliot, an ORFE student at Princeton with interests in health systems, biostatistics, and building things that matter. 
+                </p>
+                <div class="section-title">Quick Links</div>
+                <ul>
+                    <li><a href="about.html">Learn more about me</a></li>
+                    <li><a href="projects.html">See my projects</a></li>
+                    <li><a href="contact.html">Get in touch</a></li>
+                </ul>
+                <div class="section-title">Currently</div>
+                <ul>
+                    <li>Designing antimicrobial supply chains for Botswana’s Ministry of Health</li>
+                    <li>Modeling genetic mutation effects in population genomics</li>
+                    <li>Serving as an EMT and supporting disaster response</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+const phrases = [
+    "Elliot S. Lee",
+    "ORFE Student",
+    "Researcher",
+    "Builder",
+    "EMT",
+    "Problem Solver"
+];
+const typedText = document.getElementById("typed-text");
+const cursor = document.getElementById("cursor");
+let phraseIndex = 0;
+let letterIndex = 0;
+
+function type() {
+    if (letterIndex < phrases[phraseIndex].length) {
+        typedText.textContent += phrases[phraseIndex][letterIndex];
+        letterIndex++;
+        setTimeout(type, 100);
+    } else {
+        setTimeout(erase, 1200);
+    }
+}
+
+function erase() {
+    if (letterIndex > 0) {
+        typedText.textContent = phrases[phraseIndex].slice(0, letterIndex - 1);
+        letterIndex--;
+        setTimeout(erase, 50);
+    } else {
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(type, 400);
+    }
+}
+
+type();
+</script>
+</body>
 </html>
