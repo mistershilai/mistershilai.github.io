@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>About Elliot S. Lee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>About Me</title>
     <style>
         body {
             font-family: Georgia, serif;
@@ -17,44 +17,45 @@
             border: 4px solid #343a40;
         }
         .card {
-            max-width: 600px;
+            max-width: 700px;
             margin: 40px auto;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
-        h1 {
+        h1, h2 {
             font-family: Georgia, serif;
             font-weight: 700;
-            margin-bottom: 20px;
         }
         #typed-text {
-            display: inline;
-            font-family: Georgia, serif;
             font-size: 2rem;
             font-weight: 700;
         }
         #cursor {
-            display: inline;
-            width: 10px;
-            height: 20px;
-            background-color: #343a40;
-            margin-left: 2px;
-            animation: blink 1s step-end infinite;
             font-size: 2rem;
             color: #343a40;
-            transition: opacity 0.2s;
-            font-family: Georgia, serif;
-        }
-        .lead, .card-body, .navbar, .nav-link, .navbar-brand {
-            font-family: Georgia, serif;
+            animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+        .section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .highlight-list {
+            padding-left: 1.2rem;
+        }
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">elliot s. lee</a>
             <div class="collapse navbar-collapse">
@@ -74,29 +75,79 @@
                 <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
                 <h1>
                     <span id="typed-text"></span>
-                    <span id="cursor" style="font-weight: bold;">|</span>
+                    <span id="cursor">|</span>
                 </h1>
+                <div class="contact-info">
+                    <span>tel: +1.571.352.4231</span>
+                </div>
             </div>
             <div class="card-body">
-                <p class="lead">Hi, I'm Elliot! I'm currently studying at Princeton and working on various research projects. I enjoy exploring new ideas, collaborating with others, and building things that make a difference.</p>
-                <p>Feel free to check out my <a href="projects.html">projects</a> or <a href="contact.html">get in touch</a>!</p>
+                <div>
+                    <div class="section-title">Education</div>
+                    <ul class="highlight-list">
+                        <li>
+                            <strong>Princeton University</strong> — B.E. Operations Research &amp; Financial Engineering<br>
+                            Minors: Applied &amp; Computational Mathematics, Quantitative Economics, Global Health &amp; Health Policy, Bioengineering
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="section-title">Experience Highlights</div>
+                    <ul class="highlight-list">
+                        <li>
+                            <strong>Researcher, African Comprehensive HIV/AIDS Partnership</strong> (Botswana)<br>
+                            Developed supply chain models for Botswana’s Ministry of Health and presented findings to government officials.
+                        </li>
+                        <li>
+                            <strong>Biostatistics Researcher, Lewis-Sigler Center for Integrative Genomics</strong> (Princeton)<br>
+                            Modeling genetic mutation effects and chromosomal inversions in populations.
+                        </li>
+                        <li>
+                            <strong>Teaching Assistant, Princeton Physics Department</strong><br>
+                            Hosted weekly study sessions for General Physics I.
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="section-title">Extracurricular Highlights</div>
+                    <ul class="highlight-list">
+                        <li><strong>EMT, Hopewell Station 152:</strong> Provided emergency care on 911 calls.</li>
+                        <li><strong>Team Rubicon:</strong> Supported disaster response operations in Florida.</li>
+                        <li><strong>American Whig-Cliosophic Society:</strong> Led programming and launched a “Health x Public Policy” speaker series.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="section-title">Awards</div>
+                    <ul class="highlight-list">
+                        <li>Health Scholar, Center for Health and Wellbeing, Princeton University</li>
+                        <li>Federal Reserve Challenge, 1st Place (Labor specialization)</li>
+                        <li>National Merit Scholar</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="section-title">Skills</div>
+                    <ul class="highlight-list">
+                        <li>R, Python, LaTeX, STATA, HTML, CSS, MATLAB, Java</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
 const phrases = [
-    "elliot s. lee",
-    "a student",
-    "a researcher",
-    "a builder",
-    "an explorer"
+    "Elliot S. Lee",
+    "Operations Research",
+    "Population Health",
+    "Health and Development Economics",
+    "Biostatistics",
+    "EMT",
+    "Undergraduate Researcher"
 ];
 const typedText = document.getElementById("typed-text");
 const cursor = document.getElementById("cursor");
 let phraseIndex = 0;
 let letterIndex = 0;
-let typing = true;
 
 function type() {
     if (letterIndex < phrases[phraseIndex].length) {
@@ -104,7 +155,6 @@ function type() {
         letterIndex++;
         setTimeout(type, 100);
     } else {
-        typing = false;
         setTimeout(erase, 1200);
     }
 }
@@ -115,18 +165,12 @@ function erase() {
         letterIndex--;
         setTimeout(erase, 50);
     } else {
-        typing = true;
         phraseIndex = (phraseIndex + 1) % phrases.length;
         setTimeout(type, 400);
     }
 }
 
 type();
-
-// Optional: blinking cursor
-setInterval(() => {
-    cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
-}, 500);
 </script>
 </body>
 </html>
