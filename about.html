@@ -25,6 +25,26 @@
             font-weight: 700;
             margin-bottom: 20px;
         }
+        #typed-text {
+            display: inline;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        #cursor {
+            display: inline;
+            width: 10px;
+            height: 20px;
+            background-color: #343a40;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            font-size: 2rem;
+            color: #343a40;
+            transition: opacity 0.2s;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -46,7 +66,10 @@
         <div class="card p-4">
             <div class="text-center">
                 <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
-                <h1>About Me</h1>
+                <h1>
+                    <span id="typed-text"></span>
+                    <span id="cursor" style="font-weight: bold;">|</span>
+                </h1>
             </div>
             <div class="card-body">
                 <p class="lead">Hi, I'm Elliot! I'm currently studying at Princeton and working on various research projects. I enjoy exploring new ideas, collaborating with others, and building things that make a difference.</p>
@@ -54,5 +77,50 @@
             </div>
         </div>
     </section>
+
+    <script>
+const phrases = [
+    "elliot s. lee",
+    "a student",
+    "a researcher",
+    "a builder",
+    "an explorer"
+];
+const typedText = document.getElementById("typed-text");
+const cursor = document.getElementById("cursor");
+let phraseIndex = 0;
+let letterIndex = 0;
+let typing = true;
+
+function type() {
+    if (letterIndex < phrases[phraseIndex].length) {
+        typedText.textContent += phrases[phraseIndex][letterIndex];
+        letterIndex++;
+        setTimeout(type, 100);
+    } else {
+        typing = false;
+        setTimeout(erase, 1200);
+    }
+}
+
+function erase() {
+    if (letterIndex > 0) {
+        typedText.textContent = phrases[phraseIndex].slice(0, letterIndex - 1);
+        letterIndex--;
+        setTimeout(erase, 50);
+    } else {
+        typing = true;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(type, 400);
+    }
+}
+
+type();
+
+// Optional: blinking cursor
+setInterval(() => {
+    cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
+}, 500);
+</script>
 </body>
 </html>

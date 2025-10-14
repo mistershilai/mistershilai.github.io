@@ -1,0 +1,21 @@
+{
+  "name": "typing-animation-web",
+  "version": "1.0.0",
+  "description": "A web project that features a typing animation for displaying and deleting text.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "typing",
+    "animation",
+    "web",
+    "javascript"
+  ],
+  "author": "Elliot S. Lee",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
