@@ -6,26 +6,24 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
+            background-color: #f8f9fa;
         }
-        nav {
-            background-color: #333;
-            padding: 10px;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #343a40;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            padding: 10px;
-            font-size: 18px;
+        .card {
+            max-width: 600px;
+            margin: 40px auto;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
-        nav a:hover {
-            background-color: #555;
-        }
-        section {
-            padding: 20px;
+        h1 {
+            font-weight: 700;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -45,9 +43,16 @@
     </nav>
 
     <section>
-        <h1>About Me</h1>
-        <p>Hi, I'm Elliot! I'm interested in health economics, evolutionary genomics, and medicine!</p>
-        <p>Currently, I'm studying at Princeton and working on various research projects.</p>
+        <div class="card p-4">
+            <div class="text-center">
+                <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+                <h1>About Me</h1>
+            </div>
+            <div class="card-body">
+                <p class="lead">Hi, I'm Elliot! I'm currently studying at Princeton and working on various research projects. I enjoy exploring new ideas, collaborating with others, and building things that make a difference.</p>
+                <p>Feel free to check out my <a href="projects.html">projects</a> or <a href="contact.html">get in touch</a>!</p>
+            </div>
+        </div>
     </section>
 </body>
 </html>
