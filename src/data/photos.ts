@@ -236,4 +236,17 @@ export const places: Place[] = [
       { file: 'IMG_3161.jpeg' },
     ],
   },
+  {
+    slug: 'mahalapye',
+    name: 'Mahalapye, Botswana',
+    lat: -23.1030,
+    lon: 26.8140,
+    blurb: 'Ko Diponeng.',
+    photos: [
+      { file: 'IMG_3427.jpeg' },
+      { file: 'IMG_3435.jpeg' },
+      { file: 'IMG_3437.jpeg' },
+      { file: 'IMG_3438.jpeg' },
+    ],
+  },
 ];
