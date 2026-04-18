@@ -360,7 +360,7 @@ import { places } from '@/data/photos';
       const topo = await res.json();
       const countries: any = feature(topo, topo.objects.countries);
 
-      const borderMat = new THREE.LineBasicMaterial({ color: borderCol(), transparent: true, opacity: 0.6 });
+      const borderMat = new THREE.LineBasicMaterial({ color: borderCol(), transparent: true, opacity: 0.95 });
       const accentLineMat = new THREE.LineBasicMaterial({ color: accent(), transparent: true, opacity: 0.9 });
       const borderLs = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b);
       group.add(meshToLineSegments(borderLs, 1.001, borderMat));
