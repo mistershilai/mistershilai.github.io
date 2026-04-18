@@ -272,4 +272,17 @@ export const places: Place[] = [
       { file: '1000003627.JPG' },
     ],
   },
+  {
+    slug: 'amritsar',
+    name: 'Amritsar, India',
+    lat: 31.6340,
+    lon: 74.8723,
+    blurb: 'City of the Guru.',
+    photos: [
+      { file: '1000004026.JPG' },
+      { file: '1000004039.JPG' },
+      { file: '1000004040.JPG' },
+      { file: '1000004055.JPG' },
+    ],
+  },
 ];
