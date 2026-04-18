@@ -156,4 +156,22 @@ export const places: Place[] = [
       { file: 'IMG_4172.jpeg' },
     ],
   },
+  {
+    slug: 'swakopmund',
+    name: 'Swakopmund, Namibia',
+    lat: -22.6792,
+    lon: 14.5272,
+    blurb: 'Mouth of the Swakop.',
+    photos: [
+      { file: 'IMG_3620.jpeg' },
+      { file: 'IMG_3634.jpeg' },
+      { file: 'IMG_3668.jpeg' },
+      { file: 'IMG_3697.jpeg' },
+      { file: 'IMG_3790.jpeg' },
+      { file: 'IMG_3797.jpeg' },
+      { file: 'IMG_3834.jpeg' },
+      { file: 'IMG_3848.jpeg' },
+      { file: 'IMG_3877.jpeg' },
+    ],
+  },
 ];
