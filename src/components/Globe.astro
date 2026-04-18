@@ -316,9 +316,11 @@
         color: accent(), transparent: true, opacity: 0.95,
       });
 
-      const borderLs = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b);
+      // All country borders, including coastlines (no filter → include a === b exterior arcs)
+      const borderLs = mesh(topo, topo.objects.countries);
       group.add(meshToLineSegments(borderLs, 1.001, borderMat));
 
+      // Visited countries: single accent-color outline on top of the gray base
       const visitedGroup = new THREE.Group();
       for (const f of countries.features) {
         const id = String(f.id).padStart(3, '0');
@@ -327,11 +329,7 @@
           ? [f.geometry.coordinates]
           : f.geometry.coordinates;
         for (const poly of polys) {
-          const outer = poly[0];
-          visitedGroup.add(ringToLine(outer, 1.008, accentLineMat));
-          visitedGroup.add(ringToLine(outer, 1.012, new THREE.LineBasicMaterial({
-            color: accent(), transparent: true, opacity: 0.5,
-          })));
+          visitedGroup.add(ringToLine(poly[0], 1.006, accentLineMat));
         }
       }
       group.add(visitedGroup);

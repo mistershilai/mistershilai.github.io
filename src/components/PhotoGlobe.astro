@@ -250,6 +250,18 @@ import { places } from '@/data/photos';
     function hidePanel() {
       panel!.classList.remove('visible');
       panel!.setAttribute('aria-hidden', 'true');
+      // Wait for fade-out, then wipe content so nothing lingers on the page
+      setTimeout(() => {
+        if (panel!.classList.contains('visible')) return;
+        const t = document.getElementById('pg-title');
+        const y = document.getElementById('pg-year');
+        const b = document.getElementById('pg-blurb');
+        const g = document.getElementById('pg-grid');
+        if (t) t.textContent = '';
+        if (y) y.textContent = '';
+        if (b) b.textContent = '';
+        if (g) g.innerHTML = '';
+      }, 400);
     }
 
     // Interaction
@@ -362,15 +374,17 @@ import { places } from '@/data/photos';
 
       const borderMat = new THREE.LineBasicMaterial({ color: borderCol(), transparent: true, opacity: 0.95 });
       const accentLineMat = new THREE.LineBasicMaterial({ color: accent(), transparent: true, opacity: 0.9 });
-      const borderLs = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b);
+      // All country borders, including coastlines (no filter → keep a === b exterior arcs)
+      const borderLs = mesh(topo, topo.objects.countries);
       group.add(meshToLineSegments(borderLs, 1.001, borderMat));
 
+      // Visited countries: single accent outline on top of the base borders
       for (const f of countries.features) {
         const id = String(f.id).padStart(3, '0');
         if (!VISITED_IDS.has(id)) continue;
         const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
         for (const poly of polys) {
-          group.add(ringToLine(poly[0], 1.008, accentLineMat));
+          group.add(ringToLine(poly[0], 1.006, accentLineMat));
         }
       }
 
