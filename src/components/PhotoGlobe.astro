@@ -31,8 +31,9 @@ import { places } from '@/data/photos';
     backdrop-filter: blur(8px);
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     opacity: 0;
+    visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
     pointer-events: none;
     position: relative;
   }
@@ -42,8 +43,10 @@ import { places } from '@/data/photos';
   }
   .pg-panel.visible {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0s;
   }
   .pg-close {
     position: absolute;
@@ -172,14 +175,14 @@ import { places } from '@/data/photos';
     places.forEach((place) => {
       const pos = latLonToVec3(place.lat, place.lon, 1.015);
       const mat = new THREE.MeshBasicMaterial({ color: pinCol() });
-      const pin = new THREE.Mesh(new THREE.SphereGeometry(0.035, 16, 16), mat);
+      const pin = new THREE.Mesh(new THREE.SphereGeometry(0.02, 16, 16), mat);
       pin.position.copy(pos);
       (pin as any).userData = { place };
       group.add(pin);
 
       const halo = new THREE.Mesh(
-        new THREE.SphereGeometry(0.08, 16, 16),
-        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.25 })
+        new THREE.SphereGeometry(0.045, 16, 16),
+        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.28 })
       );
       halo.position.copy(pos);
       group.add(halo);
@@ -204,10 +207,11 @@ import { places } from '@/data/photos';
 
     function pinUnderPointer(): typeof pins[number] | null {
       raycaster.setFromCamera(pointer, camera);
-      const hits = raycaster.intersectObjects(pins.map(p => p.mesh), false);
+      const targets = pins.flatMap(p => [p.mesh, p.halo]);
+      const hits = raycaster.intersectObjects(targets, false);
       if (hits.length === 0) return null;
       const hit = hits[0].object;
-      return pins.find(p => p.mesh === hit) ?? null;
+      return pins.find(p => p.mesh === hit || p.halo === hit) ?? null;
     }
 
     // Zoom to a place: aim camera at its lat/lon and move closer

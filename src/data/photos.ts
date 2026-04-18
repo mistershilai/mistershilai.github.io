@@ -30,4 +30,21 @@ export const places: Place[] = [
       { file: 'IMG_6644.jpeg' },
     ],
   },
+  {
+    slug: 'lesotho-drakensberg',
+    name: 'Lesotho / KZN Drakensberg',
+    lat: -29.5874,
+    lon: 29.2922,
+    blurb: 'Kingdom in the sky.',
+    photos: [
+      { file: 'IMG_6488.jpeg' },
+      { file: 'IMG_6496.jpeg' },
+      { file: 'IMG_6501.jpeg' },
+      { file: 'IMG_6508.jpeg' },
+      { file: 'IMG_6557.jpeg' },
+      { file: 'IMG_6581.jpeg' },
+      { file: 'IMG_6590.jpeg' },
+      { file: 'IMG_6599.jpeg' },
+    ],
+  },
 ];
