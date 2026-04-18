@@ -1,0 +1,112 @@
+---
+---
+
+<div id="cmdk" class="cmdk-backdrop" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmdk-panel">
+    <input id="cmdk-input" class="cmdk-input" placeholder="Jump to a page, toggle theme, email me…" autocomplete="off" />
+    <ul id="cmdk-list" class="cmdk-list list-none m-0"></ul>
+  </div>
+</div>
+
+<script>
+  type Cmd = { id: string; label: string; hint?: string; kbd?: string; action: () => void };
+
+  function init() {
+    const backdrop = document.getElementById('cmdk');
+    const input = document.getElementById('cmdk-input') as HTMLInputElement | null;
+    const list = document.getElementById('cmdk-list');
+    if (!backdrop || !input || !list) return;
+    if ((backdrop as any).dataset.wired) return;
+    (backdrop as any).dataset.wired = '1';
+
+    const go = (href: string) => {
+      close();
+      // Use the view-transition-aware navigation
+      (window as any).navigate ? (window as any).navigate(href) : (location.href = href);
+    };
+
+    const commands: Cmd[] = [
+      { id: 'home', label: 'Go to Home', hint: '/', action: () => go('/') },
+      { id: 'about', label: 'Go to About', hint: '/about', action: () => go('/about') },
+      { id: 'projects', label: 'Go to Projects', hint: '/projects', action: () => go('/projects') },
+      { id: 'hobbies', label: 'Go to Hobbies', hint: '/hobbies', action: () => go('/hobbies') },
+      { id: 'blog', label: 'Go to Blog', hint: '/blog', action: () => go('/blog') },
+      { id: 'contact', label: 'Go to Contact', hint: '/contact', action: () => go('/contact') },
+      { id: 'theme', label: 'Toggle dark/light mode', kbd: '⇧T', action: () => {
+        const next = document.documentElement.classList.toggle('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', next);
+        close();
+      }},
+      { id: 'email', label: 'Email Elliot', hint: 'mistershilai@gmail.com', action: () => { location.href = 'mailto:mistershilai@gmail.com'; close(); }},
+      { id: 'github', label: 'Open source on GitHub', action: () => { window.open('https://github.com/mistershilai', '_blank'); close(); }},
+    ];
+
+    let filtered = commands.slice();
+    let activeIdx = 0;
+
+    function render() {
+      if (!list) return;
+      list.innerHTML = filtered.map((c, i) => `
+        <li class="cmdk-item" role="option" data-idx="${i}" aria-selected="${i === activeIdx}">
+          <span>${c.label}</span>
+          ${c.hint ? `<span class="ml-auto text-xs opacity-60 font-mono">${c.hint}</span>` : ''}
+          ${c.kbd ? `<span class="cmdk-kbd">${c.kbd}</span>` : ''}
+        </li>
+      `).join('');
+      list.querySelectorAll('.cmdk-item').forEach((el) => {
+        el.addEventListener('click', () => {
+          const idx = Number((el as HTMLElement).dataset.idx);
+          filtered[idx]?.action();
+        });
+      });
+    }
+
+    function filter(q: string) {
+      const ql = q.trim().toLowerCase();
+      filtered = ql ? commands.filter(c =>
+        c.label.toLowerCase().includes(ql) || (c.hint || '').toLowerCase().includes(ql)
+      ) : commands.slice();
+      activeIdx = 0;
+      render();
+    }
+
+    function open() {
+      if (!backdrop || !input) return;
+      backdrop.classList.add('open');
+      input.value = '';
+      filter('');
+      setTimeout(() => input.focus(), 10);
+    }
+    function close() {
+      if (!backdrop) return;
+      backdrop.classList.remove('open');
+    }
+
+    input.addEventListener('input', (e) => filter((e.target as HTMLInputElement).value));
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx = Math.min(activeIdx + 1, filtered.length - 1); render(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); activeIdx = Math.max(activeIdx - 1, 0); render(); }
+      else if (e.key === 'Enter') { e.preventDefault(); filtered[activeIdx]?.action(); }
+      else if (e.key === 'Escape') { close(); }
+    });
+
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) close();
+    });
+
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        backdrop.classList.contains('open') ? close() : open();
+      }
+    };
+    // Remove any previous listener before adding (re-init after swap)
+    (window as any).__cmdkKey && window.removeEventListener('keydown', (window as any).__cmdkKey);
+    (window as any).__cmdkKey = onKey;
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('open-cmdk', open);
+  }
+
+  init();
+  document.addEventListener('astro:after-swap', init);
+</script>

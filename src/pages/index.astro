@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Globe from '@/components/Globe.astro';
+import TypingText from '@/components/TypingText.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+---
+
+<BaseLayout title="Elliot S. Lee | Home">
+  <section class="max-w-5xl mx-auto px-6 pt-10 md:pt-16 pb-20">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-sm font-sans uppercase tracking-[0.2em] opacity-60 mb-3">hello, world</p>
+        <TypingText phrases={[
+          "Elliot S. Lee",
+          "ORFE '26 @ Princeton",
+          "Global Health × Applied Math",
+          "Aspiring Surgeon-Statistician",
+        ]} />
+        <p class="mt-5 text-lg leading-relaxed font-serif opacity-90">
+          An ORFE '26 undergrad at Princeton with interests in health systems, biostatistics, and building things that matter.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3 font-sans text-sm">
+          <a href="/about" class="px-4 py-2 rounded-full bg-[color:var(--color-accent)] text-white no-underline hover:opacity-90">about me →</a>
+          <a href="/projects" class="px-4 py-2 rounded-full border border-current no-underline hover:bg-black/5 dark:hover:bg-white/10">projects</a>
+          <a href="/contact" class="px-4 py-2 rounded-full border border-current no-underline hover:bg-black/5 dark:hover:bg-white/10">get in touch</a>
+        </div>
+      </div>
+      <div class="order-first md:order-last">
+        <Globe />
+        <p class="text-center text-xs font-sans opacity-50 mt-3">↻ drag to rotate · dots are places I've visited</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-24">
+    <ScrollReveal>
+      <div class="card p-8">
+        <h2 class="font-serif text-2xl font-bold mb-6">Currently</h2>
+        <div class="grid md:grid-cols-3 gap-6 font-sans text-sm">
+          <div>
+            <div class="text-[color:var(--color-accent)] font-semibold mb-1">Research</div>
+            <p class="opacity-80">Designing antimicrobial supply chains in Botswana with Princeton ORFE × ACHAP.</p>
+          </div>
+          <div>
+            <div class="text-[color:var(--color-accent)] font-semibold mb-1">Modeling</div>
+            <p class="opacity-80">Genetic mutation effects in population genomics at Lewis-Sigler.</p>
+          </div>
+          <div>
+            <div class="text-[color:var(--color-accent)] font-semibold mb-1">Service</div>
+            <p class="opacity-80">EMT and disaster-response volunteer.</p>
+          </div>
+        </div>
+      </div>
+    </ScrollReveal>
+  </section>
+</BaseLayout>

@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TypingText from '@/components/TypingText.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+
+const stem = [
+  "ORF245: Introduction to Engineering Statistics",
+  "ORF307: Optimization^%",
+  "ORF309/MAT380: Probability & Stochastic Systems^%",
+  "ORF335/ECO364: Introduction to Financial Mathematics^#%",
+  "ORF363/COS323: Computing and Optimization for the Physical and Social Sciences^%",
+  "ORF387: Networks^%",
+  "ORF405: Regression and Applied Time Series^#%",
+  "ORF418: Optimal Learning^%",
+  "ORF498/499: Senior Thesis%",
+  "MAT201: Multivariable Calculus",
+  "MAT202: Linear Algebra",
+  "PHY103/104: General Physics I/II",
+  "COS126: Introduction to Computer Science",
+  "APC350/MAT322: Introduction to Differential Equations^%",
+];
+
+const bio = [
+  "MOL214: Introduction to Cellular and Molecular Biology",
+  "CHM215: Advanced General Chemistry",
+  "CHM301: Organic Chemistry I%",
+  "CHM304: Organic Chemistry II%",
+  "MOL345: Biochemistry*%",
+  "EEB325: Mathematical Modeling in Biology and Medicine*+^%",
+  "EEB327: Immunology+",
+  "MOL459: Virology*+",
+  "CBE419: Enzymes*",
+  "NEU202: Cognitive Neuroscience",
+  "NEU437: Computational Neuroscience*^%",
+  "QCB408: Introduction to Statistical Genomics*+^%",
+];
+
+const econ = [
+  "ECO310: Microeconomics: A Mathematical Approach#%",
+  "ECO311: Macroeconomics: A Mathematical Approach#%",
+  "ECO312: Econometrics: A Mathematical Approach^#%",
+  "ECO317: Economics of Uncertainty^#%",
+];
+
+const hum = [
+  "GHP350: Critical Perspectives in Global Health+",
+  "GHP351: Epidemiology+",
+  "SPI364: History of Pandemics+",
+  "HIS393: History of Drug Policy+",
+  "HIS317: Making of Modern India and Pakistan",
+  "POL325: Presidency and Executive Power",
+  "POL380: Human Rights",
+  "WRI188: This Course is Out to Get You",
+  "COM350: Ways of Knowing in Southern African Literature",
+];
+
+const berkeley = [
+  "CS61B: Data Structures",
+  "MATH104: Introduction to Analysis",
+  "MATH113: Introduction to Abstract Algebra",
+];
+---
+
+<BaseLayout title="About | Elliot S. Lee">
+  <section class="max-w-4xl mx-auto px-6 pt-12 pb-10">
+    <div class="flex flex-col items-center text-center mb-10">
+      <img src="/IMG_4086.jpg" alt="Elliot S. Lee" class="w-36 h-36 rounded-full object-cover border-4 border-[color:var(--color-accent)] mb-6" />
+      <TypingText phrases={[
+        "Elliot S. Lee",
+        "Operations Research",
+        "Health Economics",
+        "Biostatistics",
+        "Emergency Care",
+        "Optimization for Sparse Data",
+      ]} />
+    </div>
+
+    <ScrollReveal>
+      <div class="card p-8 mb-8 leading-relaxed text-[1.05rem]">
+        <p class="mb-5">
+          Hi! I'm Elliot, a senior at Princeton University studying Operations Research and Financial Engineering (pre-med)
+          with minors in Applied & Computational Mathematics, Quantitative Economics, Global Health & Health Policy, and Bioengineering.
+          My work sits at the intersection of health systems, biostatistics, operations research, machine learning, and economics.
+          I'm passionate about using quantitative methods to address real-world health challenges, from optimizing antimicrobial supply chains
+          in Botswana to modeling population genetics and vaccination program effectiveness.
+        </p>
+        <p class="mb-5">
+          Beyond research, I serve as a certified EMT, have traveled across five continents, and enjoy exploring history, geography, and music.
+          After graduation, I'll be joining UC Berkeley as a predoctoral fellow in health economics in 2026, where I hope to continue building
+          tools and insights that improve health outcomes for underserved populations. After my gap, I hope to attend medical school and become
+          a dual orthopedic surgeon-statistician, working on cool ML projects that can have positive impacts on patient care and global health.
+        </p>
+        <p>
+          Feel free to explore my <a href="/projects">research projects</a>, check out my <a href="/hobbies">hobbies and travels</a>, or <a href="/contact">get in touch</a>!
+        </p>
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <div class="card p-8">
+        <h2 class="font-serif font-bold text-2xl mb-6">Coursework (41 credits)</h2>
+        <div class="grid md:grid-cols-2 gap-8 font-sans text-sm">
+          <div>
+            <h3 class="font-semibold mb-2 text-[color:var(--color-accent)]">math, engineering, physics, cs</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              {stem.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-[color:var(--color-accent)]">biology, chemistry, neuroscience</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              {bio.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-[color:var(--color-accent)]">mathematical economics</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              {econ.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2 text-[color:var(--color-accent)]">humanities & social sciences</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              {hum.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+          <div class="md:col-span-2">
+            <h3 class="font-semibold mb-2 text-[color:var(--color-accent)]">tentative plans at berkeley</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              {berkeley.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 text-xs font-sans opacity-70 space-y-1">
+          <p><strong>Legend:</strong></p>
+          <p>% Departmental Course · * Bioengineering Minor · + Global Health &amp; Health Policy Minor</p>
+          <p>^ Applied &amp; Computational Mathematics Minor · # Quantitative Economics Minor</p>
+        </div>
+      </div>
+    </ScrollReveal>
+  </section>
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+  { href: '/', label: 'home' },
+  { href: '/about', label: 'about' },
+  { href: '/projects', label: 'projects' },
+  { href: '/hobbies', label: 'hobbies' },
+  { href: '/blog', label: 'blog' },
+  { href: '/contact', label: 'contact' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<nav class="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--color-paper)]/80 dark:bg-[color:var(--color-paper-dark)]/80 border-b border-black/5 dark:border-white/5">
+  <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="font-serif font-bold text-lg no-underline">elliot s. lee</a>
+    <div class="flex items-center gap-5">
+      <ul class="hidden md:flex gap-5 list-none p-0 m-0 font-sans text-sm">
+        {links.map(l => (
+          <li>
+            <a
+              href={l.href}
+              class:list={[
+                'no-underline hover:underline',
+                (path === l.href || (l.href !== '/' && path.startsWith(l.href))) && 'underline font-semibold'
+              ]}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button
+        id="cmdk-trigger"
+        aria-label="Open command palette"
+        class="hidden md:flex items-center gap-2 text-xs font-sans px-2.5 py-1 rounded-md border border-black/10 dark:border-white/15 opacity-70 hover:opacity-100 transition"
+      >
+        <span>Search</span>
+        <kbd class="cmdk-kbd">⌘K</kbd>
+      </button>
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('#cmdk-trigger')) {
+      window.dispatchEvent(new CustomEvent('open-cmdk'));
+    }
+  });
+</script>

@@ -1,0 +1,161 @@
+---
+// 3D wireframe globe with visited-country markers.
+// Client-only (renders after mount).
+---
+
+<div id="globe-wrap" class="relative w-full aspect-square max-w-md mx-auto">
+  <canvas id="globe" class="w-full h-full rounded-full"></canvas>
+  <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  const visited: Array<[number, number, string]> = [
+    [-14, -51, 'Brazil'], [-30, 25, 'South Africa'], [-22, 24, 'Botswana'],
+    [-22, 17, 'Namibia'], [-20, 31, 'Zimbabwe'], [-13, 28, 'Zambia'],
+    [25, 51, 'Qatar'], [35, 104, 'China'], [20, 77, 'India'],
+    [65, -18, 'Iceland'], [56, -106, 'Canada'], [38, -97, 'United States'],
+    [25, -76, 'Bahamas'], [18, -63, 'St. Martin'], [39, 35, 'Türkiye'],
+    [36, 138, 'Japan'], [22, 114, 'Hong Kong'], [22, 113, 'Macao'],
+    [-29, 28, 'Lesotho'],
+  ];
+
+  function latLonToVec3(lat: number, lon: number, r: number) {
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
+    return new THREE.Vector3(
+      -r * Math.sin(phi) * Math.cos(theta),
+      r * Math.cos(phi),
+      r * Math.sin(phi) * Math.sin(theta)
+    );
+  }
+
+  function init() {
+    const canvas = document.getElementById('globe') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    if ((canvas as any).__init) return;
+    (canvas as any).__init = true;
+
+    const wrap = canvas.parentElement!;
+    const dim = wrap.clientWidth;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 3.5;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(dim, dim, false);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const accent = () => document.documentElement.classList.contains('dark') ? 0x4aa3d9 : 0x0077be;
+    const fg = () => document.documentElement.classList.contains('dark') ? 0x5a6878 : 0x8a95a3;
+
+    // Wireframe sphere
+    const sphereGeo = new THREE.SphereGeometry(1, 36, 24);
+    const wire = new THREE.LineSegments(
+      new THREE.WireframeGeometry(sphereGeo),
+      new THREE.LineBasicMaterial({ color: fg(), transparent: true, opacity: 0.35 })
+    );
+    group.add(wire);
+
+    // Subtle inner sphere for depth
+    const inner = new THREE.Mesh(
+      new THREE.SphereGeometry(0.995, 64, 48),
+      new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.15 })
+    );
+    group.add(inner);
+
+    // Visited dots
+    const dots = new THREE.Group();
+    visited.forEach(([lat, lon]) => {
+      const pos = latLonToVec3(lat, lon, 1.01);
+      const dot = new THREE.Mesh(
+        new THREE.SphereGeometry(0.022, 12, 12),
+        new THREE.MeshBasicMaterial({ color: accent() })
+      );
+      dot.position.copy(pos);
+      dots.add(dot);
+
+      // Glow halo
+      const glow = new THREE.Mesh(
+        new THREE.SphereGeometry(0.05, 12, 12),
+        new THREE.MeshBasicMaterial({ color: accent(), transparent: true, opacity: 0.25 })
+      );
+      glow.position.copy(pos);
+      dots.add(glow);
+    });
+    group.add(dots);
+
+    // Arcs between a few key visited pairs — adds motion/interest
+    const arcPairs: Array<[[number, number], [number, number]]> = [
+      [[38, -97], [-22, 24]],   // USA → Botswana
+      [[38, -97], [20, 77]],    // USA → India
+      [[38, -97], [36, 138]],   // USA → Japan
+      [[38, -97], [65, -18]],   // USA → Iceland
+      [[38, -97], [-14, -51]],  // USA → Brazil
+    ];
+    arcPairs.forEach(([a, b]) => {
+      const p1 = latLonToVec3(a[0], a[1], 1);
+      const p2 = latLonToVec3(b[0], b[1], 1);
+      const mid = p1.clone().add(p2).multiplyScalar(0.5).setLength(1.35);
+      const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+      const pts = curve.getPoints(40);
+      const g = new THREE.BufferGeometry().setFromPoints(pts);
+      const line = new THREE.Line(g, new THREE.LineBasicMaterial({ color: accent(), transparent: true, opacity: 0.45 }));
+      group.add(line);
+    });
+
+    // Interaction
+    let targetRotY = 0, targetRotX = 0;
+    let dragging = false, lastX = 0, lastY = 0;
+    canvas.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; lastY = e.clientY; });
+    window.addEventListener('pointerup', () => dragging = false);
+    window.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      targetRotY += (e.clientX - lastX) * 0.005;
+      targetRotX += (e.clientY - lastY) * 0.005;
+      lastX = e.clientX; lastY = e.clientY;
+    });
+
+    function resize() {
+      const d = wrap.clientWidth;
+      renderer.setSize(d, d, false);
+      camera.aspect = 1;
+      camera.updateProjectionMatrix();
+    }
+    const ro = new ResizeObserver(resize);
+    ro.observe(wrap);
+
+    let raf = 0;
+    function loop() {
+      if (!dragging) targetRotY += 0.0025;
+      group.rotation.y += (targetRotY - group.rotation.y) * 0.08;
+      group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Re-tint on theme change
+    const mo = new MutationObserver(() => {
+      (wire.material as THREE.LineBasicMaterial).color.setHex(fg());
+      dots.children.forEach((d) => ((d as THREE.Mesh).material as THREE.MeshBasicMaterial).color.setHex(accent()));
+    });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    // Cleanup on page swap
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      mo.disconnect();
+      renderer.dispose();
+    }, { once: true });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

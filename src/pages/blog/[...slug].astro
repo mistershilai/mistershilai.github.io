@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={`${post.data.title} | Elliot S. Lee`} description={post.data.description}>
+  <article class="max-w-2xl mx-auto px-6 pt-12 pb-20">
+    <a href="/blog" class="font-sans text-sm opacity-70 hover:opacity-100 no-underline">← back to blog</a>
+    <header class="my-6">
+      <h1 class="font-serif font-bold text-3xl md:text-4xl mb-2">{post.data.title}</h1>
+      <time class="font-sans text-sm opacity-60">
+        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+    </header>
+
+    <div class="card p-8 font-serif text-[1.08rem] leading-relaxed prose-custom">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .prose-custom h2 { font-family: var(--font-serif); font-weight: 700; font-size: 1.6rem; margin: 1.6rem 0 0.8rem; }
+  .prose-custom h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; margin: 1.4rem 0 0.6rem; }
+  .prose-custom p  { margin: 0.9rem 0; }
+  .prose-custom ul, .prose-custom ol { margin: 0.9rem 0 0.9rem 1.5rem; }
+  .prose-custom li { margin: 0.3rem 0; }
+  .prose-custom code {
+    font-family: ui-monospace, monospace; font-size: 0.93em;
+    background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 4px;
+  }
+  .dark .prose-custom code { background: rgba(255,255,255,0.08); }
+  .prose-custom pre {
+    background: #0e1117; color: #f3f0e8; padding: 14px 18px; border-radius: 10px; overflow-x: auto;
+  }
+  .prose-custom pre code { background: transparent; padding: 0; color: inherit; }
+  .prose-custom blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem; margin: 1rem 0; opacity: 0.85; font-style: italic;
+  }
+</style>
