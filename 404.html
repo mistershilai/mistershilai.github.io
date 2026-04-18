@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page moved — Elliot S. Lee</title>
+  <meta http-equiv="refresh" content="0; url=https://mistershilai-github-io.vercel.app" />
+  <style>
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      font-family: Georgia, serif; background: #fbfaf7; color: #1a1a1a;
+    }
+    @media (prefers-color-scheme: dark) { body { background: #0e1117; color: #f3f0e8; } }
+    a { color: #0077be; }
+  </style>
+</head>
+<body>
+  <div style="text-align:center; padding:2rem;">
+    <p>This page has moved.</p>
+    <p><a id="new" href="https://mistershilai-github-io.vercel.app">Take me to the new site →</a></p>
+  </div>
+  <script>
+    const NEW_SITE = "https://mistershilai-github-io.vercel.app";
+    document.getElementById("new").href = NEW_SITE;
+    location.replace(NEW_SITE);
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I've migrated — Elliot S. Lee</title>
+  <meta name="description" content="This site has a new home." />
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fbfaf7;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0e1117; color: #f3f0e8; }
+    }
+    .card {
+      max-width: 520px;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      .card { background: rgba(23,27,34,0.6); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 2rem; font-weight: 700; }
+    .wave { display: inline-block; animation: wave 2s ease-in-out infinite; transform-origin: 70% 70%; }
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(14deg); }
+      50% { transform: rotate(-4deg); }
+    }
+    p { margin: 0.6rem 0; opacity: 0.85; }
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.6rem;
+      background: #0077be;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-family: system-ui, -apple-system, sans-serif;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn:hover { background: #005f94; transform: translateY(-2px); }
+    .fine { margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.6; font-family: system-ui, sans-serif; }
+    code { font-family: ui-monospace, "SF Mono", monospace; font-size: 0.95em; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1><span class="wave">👋</span> I've migrated!</h1>
+    <p>This site has a new home with a 3D globe, dark mode, and a working contact form.</p>
+    <p>Same Elliot, shinier pixels.</p>
+
+    <a id="new-site" class="btn" href="https://mistershilai-github-io.vercel.app">Visit the new site →</a>
+
+    <p class="fine">
+      Auto-redirecting in <span id="count">5</span> seconds.
+      <br />
+      Bookmarks pointing to <code>mistershilai.github.io</code> will keep working,
+      but please update them when you can.
+    </p>
+  </main>
+
+  <script>
+    // ⚠️ Update this URL after deploying to Vercel / buying a custom domain.
+    const NEW_SITE = "https://mistershilai-github-io.vercel.app";
+
+    document.getElementById("new-site").href = NEW_SITE;
+
+    let n = 5;
+    const countEl = document.getElementById("count");
+    const timer = setInterval(() => {
+      n -= 1;
+      if (countEl) countEl.textContent = String(n);
+      if (n <= 0) {
+        clearInterval(timer);
+        location.href = NEW_SITE;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

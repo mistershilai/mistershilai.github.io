@@ -2,7 +2,7 @@
 import '@/styles/global.css';
 import Nav from '@/components/Nav.astro';
 import CommandPalette from '@/components/CommandPalette.astro';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const { title, description = "Elliot S. Lee — Princeton ORFE '26, global healt
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/1000004463.JPG" />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
     <script is:inline>
       // Flash-free theme init (runs before render)
       (function () {
