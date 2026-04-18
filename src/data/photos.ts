@@ -280,7 +280,6 @@ export const places: Place[] = [
     blurb: 'City of the Guru.',
     photos: [
       { file: '1000004026.JPG' },
-      { file: '1000004039.JPG' },
       { file: '1000004040.JPG' },
       { file: '1000004055.JPG' },
     ],
