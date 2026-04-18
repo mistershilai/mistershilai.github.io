@@ -5,7 +5,6 @@ import { places } from '@/data/photos';
 <div id="pg-wrap" class="relative w-full max-w-xl aspect-square mx-auto">
   <canvas id="pg-canvas" class="w-full h-full rounded-full cursor-grab" data-places={JSON.stringify(places)}></canvas>
   <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
-  <div id="pg-tooltip" class="globe-tooltip" aria-hidden="true"></div>
 </div>
 <p id="pg-hint" class="mt-5 text-center text-xs font-sans opacity-50 transition-opacity">
   click a pin to zoom · drag to rotate
@@ -137,9 +136,8 @@ import { places } from '@/data/photos';
   async function init() {
     const canvas = document.getElementById('pg-canvas') as HTMLCanvasElement | null;
     const panel = document.getElementById('pg-panel');
-    const tooltip = document.getElementById('pg-tooltip') as HTMLDivElement | null;
     const hint = document.getElementById('pg-hint');
-    if (!canvas || !panel || !tooltip) return;
+    if (!canvas || !panel) return;
     if ((canvas as any).__init) return;
     (canvas as any).__init = true;
 
@@ -269,13 +267,10 @@ import { places } from '@/data/photos';
 
     canvas.addEventListener('pointerdown', (e) => {
       setPointer(e);
-      const hitPin = pinUnderPointer();
-      if (hitPin) {
-        // Don't start dragging — wait for pointerup to decide between click and drag
-      }
       dragging = true;
       dragMoved = false;
-      lastX = e.clientX; lastY = e.clientY;
+      lastX = e.clientX;
+      lastY = e.clientY;
       canvas.setPointerCapture(e.pointerId);
       canvas.classList.add('grabbing');
     });
@@ -286,25 +281,14 @@ import { places } from '@/data/photos';
         const dx = e.clientX - lastX;
         const dy = e.clientY - lastY;
         if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
-        // While zoomed in, drag just slightly nudges; while overview, normal drag
         const factor = zoomed ? 0.003 : 0.006;
         targetRotY += dx * factor;
         targetRotX += dy * factor;
         targetRotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotX));
         lastX = e.clientX; lastY = e.clientY;
       } else {
-        // Hover tooltip for pins
-        const hp = pinUnderPointer();
-        if (hp) {
-          tooltip.textContent = hp.place.name;
-          const wrapRect = wrap.getBoundingClientRect();
-          tooltip.style.transform = `translate(calc(${e.clientX - wrapRect.left}px - 50%), calc(${e.clientY - wrapRect.top}px - 130%))`;
-          tooltip.classList.add('visible');
-          canvas.style.cursor = 'pointer';
-        } else {
-          tooltip.classList.remove('visible');
-          canvas.style.cursor = '';
-        }
+        // Just update cursor when hovering a pin — no tooltip label
+        canvas.style.cursor = pinUnderPointer() ? 'pointer' : '';
       }
     });
 
@@ -320,7 +304,6 @@ import { places } from '@/data/photos';
     });
 
     canvas.addEventListener('pointerleave', () => {
-      tooltip.classList.remove('visible');
       canvas.style.cursor = '';
     });
 
