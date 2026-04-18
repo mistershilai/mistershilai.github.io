@@ -174,4 +174,18 @@ export const places: Place[] = [
       { file: 'IMG_3877.jpeg' },
     ],
   },
+  {
+    slug: 'windhoek',
+    name: 'Windhoek, Namibia',
+    lat: -22.5594,
+    lon: 17.0832,
+    blurb: 'Windy Corner.',
+    photos: [
+      { file: 'IMG_3552.jpeg' },
+      { file: 'IMG_3553.jpeg' },
+      { file: 'IMG_3556.jpeg' },
+      { file: 'IMG_3568.jpeg' },
+      { file: 'IMG_3576.jpeg' },
+    ],
+  },
 ];
