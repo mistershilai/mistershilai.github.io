@@ -262,4 +262,14 @@ export const places: Place[] = [
       { file: 'IMG_3469.jpeg' },
     ],
   },
+  {
+    slug: 'agra',
+    name: 'Agra, India',
+    lat: 27.1767,
+    lon: 78.0081,
+    blurb: 'Taj City.',
+    photos: [
+      { file: '1000003627.JPG' },
+    ],
+  },
 ];
