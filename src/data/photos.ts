@@ -249,4 +249,18 @@ export const places: Place[] = [
       { file: 'IMG_3438.jpeg' },
     ],
   },
+  {
+    slug: 'bobonong',
+    name: 'Bobonong, Botswana',
+    lat: -21.9805,
+    lon: 28.4263,
+    blurb: 'Bobcity.',
+    photos: [
+      { file: 'IMG_3438.jpeg' },
+      { file: 'IMG_3455.jpeg' },
+      { file: 'IMG_3461.jpeg' },
+      { file: 'IMG_3462.jpeg' },
+      { file: 'IMG_3469.jpeg' },
+    ],
+  },
 ];
