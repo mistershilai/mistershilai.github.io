@@ -77,4 +77,17 @@ export const places: Place[] = [
       { file: 'IMG_5498.jpeg' },
     ],
   },
+  {
+    slug: 'yancheng',
+    name: 'Yancheng, China',
+    lat: 33.3476,
+    lon: 120.1630,
+    blurb: 'Ancestral homeland.',
+    photos: [
+      { file: 'IMG_5196.jpeg' },
+      { file: 'IMG_5212.jpeg' },
+      { file: 'IMG_5224.jpeg' },
+      { file: 'IMG_5232.jpeg' },
+    ],
+  },
 ];
