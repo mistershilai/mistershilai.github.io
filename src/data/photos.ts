@@ -204,4 +204,19 @@ export const places: Place[] = [
       { file: 'IMG_3383.jpeg' },
     ],
   },
+  {
+    slug: 'macapa',
+    name: 'Macapá, Brazil',
+    lat: 0.0356,
+    lon: -51.0705,
+    blurb: 'Mouth of the Amazon.',
+    photos: [
+      { file: 'IMG_2496.jpeg' },
+      { file: 'IMG_2522.jpeg' },
+      { file: 'IMG_2530.jpeg' },
+      { file: 'IMG_2581.jpeg' },
+      { file: 'IMG_2613.jpeg' },
+      { file: 'IMG_2640.jpeg' },
+    ],
+  },
 ];
