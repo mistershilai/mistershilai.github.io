@@ -246,7 +246,6 @@ export const places: Place[] = [
       { file: 'IMG_3427.jpeg' },
       { file: 'IMG_3435.jpeg' },
       { file: 'IMG_3437.jpeg' },
-      { file: 'IMG_3438.jpeg' },
     ],
   },
   {
