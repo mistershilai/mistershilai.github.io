@@ -90,4 +90,20 @@ export const places: Place[] = [
       { file: 'IMG_5232.jpeg' },
     ],
   },
+  {
+    slug: 'istanbul',
+    name: 'Istanbul, Türkiye',
+    lat: 41.0082,
+    lon: 28.9784,
+    blurb: 'City on two continents.',
+    photos: [
+      { file: 'IMG_5144.jpeg' },
+      { file: 'IMG_5147.jpeg' },
+      { file: 'IMG_5154.jpeg' },
+      { file: 'IMG_5160.jpeg' },
+      { file: 'IMG_5162.jpeg' },
+      { file: 'IMG_5166.jpeg' },
+      { file: 'IMG_5177.jpeg' },
+    ],
+  },
 ];
