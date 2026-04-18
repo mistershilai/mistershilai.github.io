@@ -6,10 +6,10 @@ import { places } from '@/data/photos';
   <canvas id="pg-canvas" class="w-full h-full rounded-full cursor-grab" data-places={JSON.stringify(places)}></canvas>
   <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
   <div id="pg-tooltip" class="globe-tooltip" aria-hidden="true"></div>
-  <div id="pg-hint" class="absolute left-1/2 -translate-x-1/2 bottom-3 text-xs font-sans opacity-60 pointer-events-none transition-opacity">
-    click a pin to zoom · drag to rotate
-  </div>
 </div>
+<p id="pg-hint" class="mt-5 text-center text-xs font-sans opacity-50 transition-opacity">
+  click a pin to zoom · drag to rotate
+</p>
 
 <div id="pg-panel" class="pg-panel" aria-hidden="true">
   <button id="pg-close" class="pg-close" aria-label="Close">×</button>
