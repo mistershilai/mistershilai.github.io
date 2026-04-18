@@ -22,11 +22,16 @@ const { title, description = "Elliot S. Lee — Princeton ORFE '26, global healt
     <title>{title}</title>
     <ClientRouter />
     <script is:inline>
-      // Flash-free theme init (runs before render). Default: dark.
+      // Flash-free theme init. Runs on initial load and on every SPA swap
+      // (ClientRouter re-renders <html> without classes, so we must re-apply).
       (function () {
-        const saved = localStorage.getItem('theme');
-        const theme = saved || 'dark';
-        document.documentElement.classList.toggle('dark', theme === 'dark');
+        function theme() {
+          return localStorage.getItem('theme') || 'dark';
+        }
+        document.documentElement.classList.toggle('dark', theme() === 'dark');
+        document.addEventListener('astro:before-swap', (e) => {
+          e.newDocument.documentElement.classList.toggle('dark', theme() === 'dark');
+        });
       })();
     </script>
   </head>

@@ -5,7 +5,6 @@ import ScrollReveal from '@/components/ScrollReveal.astro';
 type Project = {
   title: string;
   category: string;
-  tags: string[];
   description: string;
 };
 
@@ -13,81 +12,61 @@ const projects: Project[] = [
   {
     title: "Antimicrobial Supply Chain Optimization (ACHAP)",
     category: "Global Health Systems",
-    tags: ["optimization", "global-health", "supply-chain"],
     description:
       "Leading the development of supply chain models for Botswana's Ministry of Health, integrating distance matrices with economic and epidemiological data. Presented proposal to government officials at the Central Medical Stores and Ministry of Health to improve antimicrobial distribution networks across the country. Under supervision of Dr. Bartolomeo Stellato (ORFE), with collaborators from ACHAP (Mr. Lesego Busang, Mr. Stanley Mapiki, Mr. Tiro Molefe, Dr. Khumo Seipone).",
   },
   {
     title: "Vaccination Program Cost-Effectiveness Analysis",
     category: "Global Health Systems",
-    tags: ["markov", "health-economics", "policy"],
     description:
       "RA to Dr. Giridara Gopal and Dr. Ramanan Laxminarayan with the One Health Trust in Karnataka to model vaccination program cost-effectiveness through Markov chain simulations. Contributor to policy briefs for Pakistan (primary writer), South Africa, Nepal, Uganda, and Nigeria. Contributor to presentations for Tanzania, Zimbabwe, India, Kenya, South Africa, Vietnam, Mozambique, Laos, and Nigeria.",
   },
   {
     title: "Organ Donation Allocation Tool",
     category: "Healthcare Technology",
-    tags: ["machine-learning", "healthcare", "in-progress"],
     description:
       "Developing a machine-learning-based tool to optimize organ donation matching and allocation. The system aims to enable physicians to immediately identify compatible organ matches in their geographic area, reducing time-to-transplant and improving patient outcomes through real-time compatibility analysis.",
   },
   {
     title: "Population Genetics Research",
     category: "Biostatistics & Genomics",
-    tags: ["biostatistics", "genomics", "simulation"],
     description:
       "Currently conducting research at Princeton's Lewis-Sigler Center for Integrative Genomics under Dr. Olivia Harringmeyer and Dr. John Storey. Using SLiM to model fixed genetic mutation effects in populations under migration conditions. Developing a research paper on chromosomal inversions under three-loci continent-island extension to established models.",
   },
   {
     title: "RA to Samya Aboutajdine",
     category: "Economic Research",
-    tags: ["econometrics", "regression", "disaster-resilience"],
     description:
       "Analyzed 10 million+ building permits alongside FEMA risk data to examine housing disaster resilience. Conducted regression analyses of local resilience investments on FEMA grant flows to understand intervention effectiveness.",
   },
   {
     title: "RA to Dr. Janet Currie",
     category: "Economic Research",
-    tags: ["econometrics", "data-cleaning"],
     description:
       "Contributed to research on adolescent social programs through data cleaning and visualization. Work acknowledged in Working Paper 33632.",
   },
   {
     title: "RA to Dr. Sylvain Chassang",
     category: "Economic Research",
-    tags: ["econometrics", "survey-weighting"],
     description:
       "Reweighted survey data to correct for sampling bias in French transportation studies.",
   },
 ];
-
-const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
 ---
 
 <BaseLayout title="Projects | Elliot S. Lee">
   <section class="max-w-5xl mx-auto px-6 pt-12 pb-20">
     <div class="text-center mb-10">
       <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Research & Projects</h1>
-      <p class="font-sans opacity-70 text-sm">Click a tag to filter · hover a card for detail</p>
     </div>
 
-    <div id="tag-bar" class="flex flex-wrap justify-center gap-2 mb-10 font-sans">
-      <button class="tag" data-tag="*" aria-pressed="true">all</button>
-      {allTags.map(t => (
-        <button class="tag" data-tag={t} aria-pressed="false">{t}</button>
-      ))}
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-5" id="project-grid">
+    <div class="grid md:grid-cols-2 gap-5">
       {projects.map((p, i) => (
         <ScrollReveal delay={i * 60}>
-          <article class="project-card h-full" data-tags={p.tags.join(',')}>
+          <article class="project-card h-full">
             <div class="text-xs font-sans opacity-60 italic mb-2">{p.category}</div>
             <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
-            <p class="text-sm leading-relaxed mb-4 font-serif opacity-90">{p.description}</p>
-            <div class="flex flex-wrap gap-1.5">
-              {p.tags.map(t => <span class="tag" style="cursor:default" aria-pressed="false">{t}</span>)}
-            </div>
+            <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
           </article>
         </ScrollReveal>
       ))}
@@ -97,33 +76,14 @@ const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
 
 <script>
   function wire() {
-    const bar = document.getElementById('tag-bar');
-    const grid = document.getElementById('project-grid');
-    if (!bar || !grid) return;
-    if ((bar as any).__wired) return;
-    (bar as any).__wired = true;
-
-    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.project-card'));
-
-    // Mouse parallax glow
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
     cards.forEach(card => {
+      if ((card as any).__wired) return;
+      (card as any).__wired = true;
       card.addEventListener('pointermove', (e) => {
         const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', `${e.clientX - r.left}px`);
         card.style.setProperty('--my', `${e.clientY - r.top}px`);
-      });
-    });
-
-    // Tag filter
-    bar.querySelectorAll<HTMLButtonElement>('button.tag').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tag = btn.dataset.tag!;
-        bar.querySelectorAll<HTMLButtonElement>('button.tag').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
-        cards.forEach(c => {
-          const tags = (c.dataset.tags || '').split(',');
-          const show = tag === '*' || tags.includes(tag);
-          (c.parentElement as HTMLElement).style.display = show ? '' : 'none';
-        });
       });
     });
   }
