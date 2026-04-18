@@ -25,8 +25,9 @@ export const places: Place[] = [
     lon: 31.0218,
     blurb: 'Largest port in ZA, along the Indian Ocean coast.',
     photos: [
-      { file: 'durban-skyline-sunset.jpg', caption: 'Durban skyline at sunset' },
-      { file: 'durban-pier-sunset.jpg', caption: 'Pier at sunrise' },
+      { file: 'IMG_6633.jpeg' },
+      { file: 'IMG_6643.jpeg' },
+      { file: 'IMG_6644.jpeg' },
     ],
   },
 ];

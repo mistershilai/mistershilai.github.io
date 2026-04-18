@@ -1,0 +1,391 @@
+---
+import { places } from '@/data/photos';
+---
+
+<div id="pg-wrap" class="relative w-full max-w-xl aspect-square mx-auto">
+  <canvas id="pg-canvas" class="w-full h-full rounded-full cursor-grab" data-places={JSON.stringify(places)}></canvas>
+  <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
+  <div id="pg-tooltip" class="globe-tooltip" aria-hidden="true"></div>
+  <div id="pg-hint" class="absolute left-1/2 -translate-x-1/2 bottom-3 text-xs font-sans opacity-60 pointer-events-none transition-opacity">
+    click a pin to zoom · drag to rotate
+  </div>
+</div>
+
+<div id="pg-panel" class="pg-panel" aria-hidden="true">
+  <button id="pg-close" class="pg-close" aria-label="Close">×</button>
+  <div class="flex items-baseline justify-between gap-4 mb-3">
+    <h2 id="pg-title" class="font-serif font-bold text-2xl md:text-3xl"></h2>
+    <div id="pg-year" class="font-sans text-sm opacity-60"></div>
+  </div>
+  <p id="pg-blurb" class="font-serif opacity-80 mb-5"></p>
+  <div id="pg-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3"></div>
+</div>
+
+<style>
+  .pg-panel {
+    max-width: 64rem;
+    margin: 2.5rem auto 0;
+    padding: 1.75rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+    position: relative;
+  }
+  :global(.dark) .pg-panel {
+    background: rgba(23,27,34,0.8);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+  .pg-panel.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .pg-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.12);
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  :global(.dark) .pg-close { border-color: rgba(255,255,255,0.15); }
+  .pg-close:hover { background: rgba(0,0,0,0.05); }
+  :global(.dark) .pg-close:hover { background: rgba(255,255,255,0.1); }
+  .pg-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 4 / 3;
+    background: rgba(0,0,0,0.05);
+  }
+  :global(.dark) .pg-photo { background: rgba(255,255,255,0.05); }
+  .pg-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .pg-photo:hover img { transform: scale(1.05); }
+  #pg-canvas.grabbing { cursor: grabbing; }
+</style>
+
+<script>
+  import * as THREE from 'three';
+  import { feature, mesh } from 'topojson-client';
+
+  const VISITED_IDS = new Set([
+    '076', '710', '072', '516', '716', '894', '634', '156', '356', '352',
+    '124', '840', '044', '792', '392', '426',
+  ]);
+
+  type Place = {
+    slug: string;
+    name: string;
+    lat: number;
+    lon: number;
+    year?: string;
+    blurb?: string;
+    photos: { file: string; caption?: string }[];
+  };
+
+  function latLonToVec3(lat: number, lon: number, r: number) {
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
+    return new THREE.Vector3(
+      -r * Math.sin(phi) * Math.cos(theta),
+      r * Math.cos(phi),
+      r * Math.sin(phi) * Math.sin(theta)
+    );
+  }
+
+  function ringToLine(ring: number[][], r: number, material: THREE.LineBasicMaterial) {
+    const pts = ring.map(([lon, lat]) => latLonToVec3(lat, lon, r));
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    return new THREE.Line(geo, material);
+  }
+  function meshToLineSegments(ls: any, r: number, material: THREE.LineBasicMaterial) {
+    const positions: number[] = [];
+    for (const line of ls.coordinates) {
+      for (let i = 0; i < line.length - 1; i++) {
+        const [lon1, lat1] = line[i];
+        const [lon2, lat2] = line[i + 1];
+        const p1 = latLonToVec3(lat1, lon1, r);
+        const p2 = latLonToVec3(lat2, lon2, r);
+        positions.push(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
+      }
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    return new THREE.LineSegments(geo, material);
+  }
+
+  async function init() {
+    const canvas = document.getElementById('pg-canvas') as HTMLCanvasElement | null;
+    const panel = document.getElementById('pg-panel');
+    const tooltip = document.getElementById('pg-tooltip') as HTMLDivElement | null;
+    const hint = document.getElementById('pg-hint');
+    if (!canvas || !panel || !tooltip) return;
+    if ((canvas as any).__init) return;
+    (canvas as any).__init = true;
+
+    const places: Place[] = JSON.parse(canvas.dataset.places || '[]');
+    const wrap = canvas.parentElement!;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 3.2;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(wrap.clientWidth, wrap.clientWidth, false);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const isDark = () => document.documentElement.classList.contains('dark');
+    const accent = () => (isDark() ? 0x4aa3d9 : 0x0077be);
+    const pinCol = () => (isDark() ? 0xffe27a : 0xf0b000);
+    const oceanCol = () => (isDark() ? 0x0e141d : 0xe8ecf2);
+    const borderCol = () => (isDark() ? 0x4a5668 : 0xb6bfcc);
+
+    const ocean = new THREE.Mesh(
+      new THREE.SphereGeometry(0.995, 64, 48),
+      new THREE.MeshBasicMaterial({ color: oceanCol() })
+    );
+    group.add(ocean);
+
+    // Photo pins — interactive
+    const pins: { mesh: THREE.Mesh; halo: THREE.Mesh; place: Place }[] = [];
+    places.forEach((place) => {
+      const pos = latLonToVec3(place.lat, place.lon, 1.015);
+      const mat = new THREE.MeshBasicMaterial({ color: pinCol() });
+      const pin = new THREE.Mesh(new THREE.SphereGeometry(0.035, 16, 16), mat);
+      pin.position.copy(pos);
+      (pin as any).userData = { place };
+      group.add(pin);
+
+      const halo = new THREE.Mesh(
+        new THREE.SphereGeometry(0.08, 16, 16),
+        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.25 })
+      );
+      halo.position.copy(pos);
+      group.add(halo);
+
+      pins.push({ mesh: pin, halo, place });
+    });
+
+    // Camera + rotation targets
+    let targetRotY = 0, targetRotX = 0.3;
+    let targetCamZ = 3.2;
+    let zoomed = false;
+    let selectedPlace: Place | null = null;
+
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+    function setPointer(e: PointerEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    }
+
+    function pinUnderPointer(): typeof pins[number] | null {
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(pins.map(p => p.mesh), false);
+      if (hits.length === 0) return null;
+      const hit = hits[0].object;
+      return pins.find(p => p.mesh === hit) ?? null;
+    }
+
+    // Zoom to a place: aim camera at its lat/lon and move closer
+    function zoomTo(place: Place) {
+      targetRotY = -(place.lon + 90) * Math.PI / 180;
+      targetRotX = place.lat * Math.PI / 180;
+      targetCamZ = 1.8;
+      zoomed = true;
+      selectedPlace = place;
+      showPanel(place);
+      hint && hint.classList.add('opacity-0');
+    }
+    function zoomOut() {
+      targetCamZ = 3.2;
+      zoomed = false;
+      selectedPlace = null;
+      hidePanel();
+      hint && hint.classList.remove('opacity-0');
+    }
+
+    function showPanel(place: Place) {
+      (document.getElementById('pg-title') as HTMLElement).textContent = place.name;
+      (document.getElementById('pg-year') as HTMLElement).textContent = place.year || '';
+      (document.getElementById('pg-blurb') as HTMLElement).textContent = place.blurb || '';
+      const grid = document.getElementById('pg-grid')!;
+      grid.innerHTML = place.photos.map(p =>
+        `<div class="pg-photo"><img src="/photos/${place.slug}/${p.file}" alt="${p.caption || place.name}" loading="lazy" /></div>`
+      ).join('');
+      panel!.classList.add('visible');
+      panel!.setAttribute('aria-hidden', 'false');
+      // Scroll the panel into view smoothly
+      requestAnimationFrame(() => {
+        panel!.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+    function hidePanel() {
+      panel!.classList.remove('visible');
+      panel!.setAttribute('aria-hidden', 'true');
+    }
+
+    // Interaction
+    let dragging = false;
+    let dragMoved = false;
+    let lastX = 0, lastY = 0;
+
+    canvas.addEventListener('pointerdown', (e) => {
+      setPointer(e);
+      const hitPin = pinUnderPointer();
+      if (hitPin) {
+        // Don't start dragging — wait for pointerup to decide between click and drag
+      }
+      dragging = true;
+      dragMoved = false;
+      lastX = e.clientX; lastY = e.clientY;
+      canvas.setPointerCapture(e.pointerId);
+      canvas.classList.add('grabbing');
+    });
+
+    canvas.addEventListener('pointermove', (e) => {
+      setPointer(e);
+      if (dragging) {
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        if (Math.abs(dx) + Math.abs(dy) > 3) dragMoved = true;
+        // While zoomed in, drag just slightly nudges; while overview, normal drag
+        const factor = zoomed ? 0.003 : 0.006;
+        targetRotY += dx * factor;
+        targetRotX += dy * factor;
+        targetRotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotX));
+        lastX = e.clientX; lastY = e.clientY;
+      } else {
+        // Hover tooltip for pins
+        const hp = pinUnderPointer();
+        if (hp) {
+          tooltip.textContent = hp.place.name;
+          const wrapRect = wrap.getBoundingClientRect();
+          tooltip.style.transform = `translate(calc(${e.clientX - wrapRect.left}px - 50%), calc(${e.clientY - wrapRect.top}px - 130%))`;
+          tooltip.classList.add('visible');
+          canvas.style.cursor = 'pointer';
+        } else {
+          tooltip.classList.remove('visible');
+          canvas.style.cursor = '';
+        }
+      }
+    });
+
+    canvas.addEventListener('pointerup', (e) => {
+      dragging = false;
+      canvas.releasePointerCapture?.(e.pointerId);
+      canvas.classList.remove('grabbing');
+      if (!dragMoved) {
+        setPointer(e);
+        const hp = pinUnderPointer();
+        if (hp) zoomTo(hp.place);
+      }
+    });
+
+    canvas.addEventListener('pointerleave', () => {
+      tooltip.classList.remove('visible');
+      canvas.style.cursor = '';
+    });
+
+    document.getElementById('pg-close')?.addEventListener('click', zoomOut);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && zoomed) zoomOut();
+    });
+
+    const ro = new ResizeObserver(() => {
+      const d = wrap.clientWidth;
+      renderer.setSize(d, d, false);
+      camera.aspect = 1;
+      camera.updateProjectionMatrix();
+    });
+    ro.observe(wrap);
+
+    // Animation loop
+    let raf = 0;
+    let t = 0;
+    function loop() {
+      t += 0.016;
+      if (!dragging && !zoomed) targetRotY += 0.002;
+      group.rotation.y += (targetRotY - group.rotation.y) * 0.08;
+      group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
+      camera.position.z += (targetCamZ - camera.position.z) * 0.08;
+
+      // Pulse halos so pins draw the eye
+      pins.forEach((p, i) => {
+        const s = 1 + Math.sin(t * 2 + i) * 0.15;
+        p.halo.scale.setScalar(s);
+      });
+
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(loop);
+    }
+    loop();
+
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      renderer.dispose();
+    }, { once: true });
+
+    // Country outlines (decorative, non-interactive)
+    try {
+      const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      const topo = await res.json();
+      const countries: any = feature(topo, topo.objects.countries);
+
+      const borderMat = new THREE.LineBasicMaterial({ color: borderCol(), transparent: true, opacity: 0.6 });
+      const accentLineMat = new THREE.LineBasicMaterial({ color: accent(), transparent: true, opacity: 0.9 });
+      const borderLs = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b);
+      group.add(meshToLineSegments(borderLs, 1.001, borderMat));
+
+      for (const f of countries.features) {
+        const id = String(f.id).padStart(3, '0');
+        if (!VISITED_IDS.has(id)) continue;
+        const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+        for (const poly of polys) {
+          group.add(ringToLine(poly[0], 1.008, accentLineMat));
+        }
+      }
+
+      const mo = new MutationObserver(() => {
+        (ocean.material as THREE.MeshBasicMaterial).color.setHex(oceanCol());
+        borderMat.color.setHex(borderCol());
+        accentLineMat.color.setHex(accent());
+        pins.forEach(p => {
+          ((p.mesh.material as THREE.MeshBasicMaterial)).color.setHex(pinCol());
+          ((p.halo.material as THREE.MeshBasicMaterial)).color.setHex(pinCol());
+        });
+      });
+      mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      document.addEventListener('astro:before-swap', () => mo.disconnect(), { once: true });
+    } catch (err) {
+      console.warn('PhotoGlobe: country shapes failed to load.', err);
+    }
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

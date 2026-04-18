@@ -1,52 +1,22 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ScrollReveal from '@/components/ScrollReveal.astro';
+import PhotoGlobe from '@/components/PhotoGlobe.astro';
 import { places } from '@/data/photos';
 ---
 
-<BaseLayout title="Photos | Elliot S. Lee" description="Photos from places I've been.">
-  <section class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+<BaseLayout title="Photos | Elliot S. Lee" description="Photos from the places I've been — click a pin to zoom in.">
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-24">
     <div class="text-center mb-10">
       <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Photos</h1>
-      <p class="font-serif opacity-80 max-w-xl mx-auto">Images from fieldwork, travel, and the places in between.</p>
+      <p class="font-serif opacity-80 max-w-xl mx-auto">Click a glowing pin to zoom in.</p>
     </div>
 
-    {places.length === 0 && (
-      <ScrollReveal>
-        <div class="card p-10 text-center">
-          <p class="font-serif text-lg opacity-80 mb-2">Coming soon.</p>
-          <p class="font-sans text-sm opacity-60">First batch of photos is being curated.</p>
-        </div>
-      </ScrollReveal>
+    {places.length === 0 ? (
+      <div class="card p-10 text-center">
+        <p class="font-serif text-lg opacity-80">Coming soon.</p>
+      </div>
+    ) : (
+      <PhotoGlobe />
     )}
-
-    {places.map((place, i) => (
-      <ScrollReveal delay={i * 80}>
-        <article class="mb-16">
-          <div class="flex items-baseline justify-between gap-4 mb-5 border-b border-black/10 dark:border-white/10 pb-3">
-            <div>
-              <h2 class="font-serif font-bold text-2xl md:text-3xl">{place.name}</h2>
-              {place.blurb && <p class="font-serif opacity-75 mt-1">{place.blurb}</p>}
-            </div>
-            {place.year && (
-              <div class="font-sans text-sm opacity-50 shrink-0">{place.year}</div>
-            )}
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {place.photos.map((p) => (
-              <figure class="relative overflow-hidden rounded-lg aspect-[4/3] bg-black/5 dark:bg-white/5 group">
-                <img
-                  src={`/photos/${place.slug}/${p.file}`}
-                  alt={p.caption || `${place.name} — ${p.file}`}
-                  loading="lazy"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-              </figure>
-            ))}
-          </div>
-        </article>
-      </ScrollReveal>
-    ))}
   </section>
 </BaseLayout>
