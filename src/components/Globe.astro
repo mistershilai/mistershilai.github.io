@@ -1,11 +1,36 @@
 ---
-// 3D globe with country outlines and visited-place markers.
+// 3D globe with country outlines, visited-place markers, and hover tooltips.
 ---
 
 <div id="globe-wrap" class="relative w-full aspect-square max-w-md mx-auto">
   <canvas id="globe" class="w-full h-full rounded-full"></canvas>
   <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
+  <div id="globe-tooltip" class="globe-tooltip" aria-hidden="true"></div>
 </div>
+
+<style>
+  .globe-tooltip {
+    position: absolute;
+    pointer-events: none;
+    padding: 4px 10px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: rgba(14, 17, 23, 0.9);
+    color: #f3f0e8;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    transform: translate(-50%, -130%);
+    white-space: nowrap;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    will-change: transform, opacity;
+  }
+  .globe-tooltip.visible { opacity: 1; }
+</style>
 
 <script>
   import * as THREE from 'three';
@@ -34,7 +59,6 @@
     { lat: -29, lon: 28, name: 'Lesotho' },
   ];
 
-  // ISO 3166-1 numeric codes for visited places (matches world-atlas 110m `id` field).
   const VISITED_IDS = new Set([
     '076', '710', '072', '516', '716', '894', '634', '156', '356', '352',
     '124', '840', '044', '792', '392', '426',
@@ -50,14 +74,51 @@
     );
   }
 
-  // Convert a GeoJSON ring (array of [lon,lat]) to a closed Line on the sphere.
+  function vec3ToLatLon(v: THREE.Vector3) {
+    const r = v.length();
+    const lat = Math.asin(v.y / r) * 180 / Math.PI;
+    let lon = Math.atan2(v.z, -v.x) * 180 / Math.PI - 180;
+    while (lon < -180) lon += 360;
+    while (lon > 180) lon -= 360;
+    return { lat, lon };
+  }
+
+  // Point-in-polygon via ray casting (2D, in lon/lat space).
+  function pointInRing(lon: number, lat: number, ring: number[][]) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const xi = ring[i][0], yi = ring[i][1];
+      const xj = ring[j][0], yj = ring[j][1];
+      const intersect = (yi > lat) !== (yj > lat)
+        && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi;
+      if (intersect) inside = !inside;
+    }
+    return inside;
+  }
+
+  function findCountry(features: any[], lon: number, lat: number): string | null {
+    for (const f of features) {
+      const geom = f.geometry;
+      const polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
+      for (const poly of polys) {
+        if (pointInRing(lon, lat, poly[0])) {
+          let inHole = false;
+          for (let h = 1; h < poly.length; h++) {
+            if (pointInRing(lon, lat, poly[h])) { inHole = true; break; }
+          }
+          if (!inHole) return f.properties?.name || null;
+        }
+      }
+    }
+    return null;
+  }
+
   function ringToLine(ring: number[][], r: number, material: THREE.LineBasicMaterial) {
     const pts = ring.map(([lon, lat]) => latLonToVec3(lat, lon, r));
     const geo = new THREE.BufferGeometry().setFromPoints(pts);
     return new THREE.Line(geo, material);
   }
 
-  // A MultiLineString (from topojson.mesh) is an array of coordinate arrays.
   function meshToLineSegments(ls: any, r: number, material: THREE.LineBasicMaterial) {
     const positions: number[] = [];
     for (const line of ls.coordinates) {
@@ -76,7 +137,8 @@
 
   async function init() {
     const canvas = document.getElementById('globe') as HTMLCanvasElement | null;
-    if (!canvas) return;
+    const tooltip = document.getElementById('globe-tooltip') as HTMLDivElement | null;
+    if (!canvas || !tooltip) return;
     if ((canvas as any).__init) return;
     (canvas as any).__init = true;
 
@@ -96,24 +158,20 @@
     const isDark = () => document.documentElement.classList.contains('dark');
     const accent = () => (isDark() ? 0x4aa3d9 : 0x0077be);
     const oceanCol = () => (isDark() ? 0x0e141d : 0xe8ecf2);
-    const landCol = () => (isDark() ? 0x2a3442 : 0xf5f1e8);
     const borderCol = () => (isDark() ? 0x4a5668 : 0xb6bfcc);
 
-    // Ocean sphere (solid fill)
     const ocean = new THREE.Mesh(
       new THREE.SphereGeometry(0.995, 64, 48),
       new THREE.MeshBasicMaterial({ color: oceanCol() })
     );
     group.add(ocean);
 
-    // Loading indicator while topojson fetches
     const loading = new THREE.Mesh(
       new THREE.RingGeometry(0.6, 0.62, 32),
       new THREE.MeshBasicMaterial({ color: accent(), transparent: true, opacity: 0.4 })
     );
     group.add(loading);
 
-    // Dots for visited places (always visible, even before countries load)
     const markers = new THREE.Group();
     visited.forEach(({ lat, lon }) => {
       const pos = latLonToVec3(lat, lon, 1.015);
@@ -133,7 +191,6 @@
     });
     group.add(markers);
 
-    // Arcs from USA to key destinations
     const home: [number, number] = [38, -97];
     const arcDestinations: [number, number][] = [
       [-22, 24], [20, 77], [36, 138], [65, -18], [-14, -51],
@@ -152,23 +209,72 @@
       group.add(line);
     });
 
+    // Raycaster + hover state
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let countryFeatures: any[] = [];
+    let hoveredCountry: string | null = null;
+
+    function updateTooltip(x: number, y: number, name: string | null) {
+      if (name) {
+        if (name !== hoveredCountry) {
+          tooltip!.textContent = name;
+          hoveredCountry = name;
+        }
+        const wrapRect = wrap.getBoundingClientRect();
+        tooltip!.style.transform = `translate(calc(${x - wrapRect.left}px - 50%), calc(${y - wrapRect.top}px - 130%))`;
+        tooltip!.classList.add('visible');
+      } else {
+        tooltip!.classList.remove('visible');
+        hoveredCountry = null;
+      }
+    }
+
+    function hoverAt(clientX: number, clientY: number) {
+      if (countryFeatures.length === 0) return;
+      const rect = canvas.getBoundingClientRect();
+      pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -(((clientY - rect.top) / rect.height) * 2 - 1);
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObject(ocean, false);
+      if (hits.length === 0) { updateTooltip(clientX, clientY, null); return; }
+      const local = group.worldToLocal(hits[0].point.clone());
+      const { lat, lon } = vec3ToLatLon(local);
+      const country = findCountry(countryFeatures, lon, lat);
+      updateTooltip(clientX, clientY, country);
+    }
+
     // Interaction
     let targetRotY = 0, targetRotX = 0.3;
-    let dragging = false, lastX = 0, lastY = 0;
+    let dragging = false, lastX = 0, lastY = 0, downX = 0, downY = 0;
+
     canvas.addEventListener('pointerdown', (e) => {
-      dragging = true; lastX = e.clientX; lastY = e.clientY;
+      dragging = true;
+      lastX = downX = e.clientX;
+      lastY = downY = e.clientY;
       canvas.setPointerCapture(e.pointerId);
+      tooltip.classList.remove('visible');
     });
     canvas.addEventListener('pointerup', (e) => {
       dragging = false;
       canvas.releasePointerCapture?.(e.pointerId);
+      // If it was more of a click than a drag, re-check hover
+      if (Math.abs(e.clientX - downX) < 4 && Math.abs(e.clientY - downY) < 4) {
+        hoverAt(e.clientX, e.clientY);
+      }
     });
     canvas.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      targetRotY += (e.clientX - lastX) * 0.006;
-      targetRotX += (e.clientY - lastY) * 0.006;
-      targetRotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotX));
-      lastX = e.clientX; lastY = e.clientY;
+      if (dragging) {
+        targetRotY += (e.clientX - lastX) * 0.006;
+        targetRotX += (e.clientY - lastY) * 0.006;
+        targetRotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotX));
+        lastX = e.clientX; lastY = e.clientY;
+      } else {
+        hoverAt(e.clientX, e.clientY);
+      }
+    });
+    canvas.addEventListener('pointerleave', () => {
+      updateTooltip(0, 0, null);
     });
 
     const ro = new ResizeObserver(() => {
@@ -189,20 +295,20 @@
     }
     loop();
 
-    // Cleanup on SPA nav
     document.addEventListener('astro:before-swap', () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
       renderer.dispose();
     }, { once: true });
 
-    // Fetch & draw country shapes
     try {
       const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
       const topo = await res.json();
       group.remove(loading);
 
       const countries: any = feature(topo, topo.objects.countries);
+      countryFeatures = countries.features;
+
       const borderMat = new THREE.LineBasicMaterial({
         color: borderCol(), transparent: true, opacity: 0.6,
       });
@@ -210,37 +316,26 @@
         color: accent(), transparent: true, opacity: 0.95,
       });
 
-      // All country borders (subtle)
       const borderLs = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b);
       group.add(meshToLineSegments(borderLs, 1.001, borderMat));
 
-      // Visited countries: fill-color polygons (as outlines layered thick)
       const visitedGroup = new THREE.Group();
       for (const f of countries.features) {
         const id = String(f.id).padStart(3, '0');
         if (!VISITED_IDS.has(id)) continue;
-
-        // Convert polygons into accent-colored outline triangulated meshes.
         const polys = f.geometry.type === 'Polygon'
           ? [f.geometry.coordinates]
           : f.geometry.coordinates;
-
         for (const poly of polys) {
           const outer = poly[0];
-          // Draw filled-in highlight by closing the ring into a triangle fan to globe surface.
-          const line = ringToLine(outer, 1.008, accentLineMat);
-          visitedGroup.add(line);
-
-          // Also thicken the outline by adding a second line slightly above
-          const line2 = ringToLine(outer, 1.012, new THREE.LineBasicMaterial({
+          visitedGroup.add(ringToLine(outer, 1.008, accentLineMat));
+          visitedGroup.add(ringToLine(outer, 1.012, new THREE.LineBasicMaterial({
             color: accent(), transparent: true, opacity: 0.5,
-          }));
-          visitedGroup.add(line2);
+          })));
         }
       }
       group.add(visitedGroup);
 
-      // Re-tint on theme toggle
       const mo = new MutationObserver(() => {
         (ocean.material as THREE.MeshBasicMaterial).color.setHex(oceanCol());
         borderMat.color.setHex(borderCol());
@@ -250,11 +345,10 @@
         });
       });
       mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
       document.addEventListener('astro:before-swap', () => mo.disconnect(), { once: true });
     } catch (err) {
       group.remove(loading);
-      console.warn('Globe countries failed to load; showing markers only.', err);
+      console.warn('Globe countries failed to load; hover disabled.', err);
     }
   }
 
