@@ -6,12 +6,14 @@ type Project = {
   title: string;
   category: string;
   description: string;
+  href?: string;
 };
 
 const projects: Project[] = [
   {
-    title: "Antimicrobial Supply Chain Optimization (ACHAP)",
+    title: "Kaelo — Antimicrobial Supply Chain Optimization",
     category: "Global Health Systems",
+    href: "/kaelo",
     description:
       "Leading the development of supply chain models for Botswana's Ministry of Health, integrating distance matrices with economic and epidemiological data. Presented proposal to government officials at the Central Medical Stores and Ministry of Health to improve antimicrobial distribution networks across the country. Under supervision of Dr. Bartolomeo Stellato (ORFE), with collaborators from ACHAP (Mr. Lesego Busang, Mr. Stanley Mapiki, Mr. Tiro Molefe, Dr. Khumo Seipone).",
   },
@@ -63,11 +65,22 @@ const projects: Project[] = [
     <div class="grid md:grid-cols-2 gap-5">
       {projects.map((p, i) => (
         <ScrollReveal delay={i * 60}>
-          <article class="project-card h-full">
-            <div class="text-xs font-sans opacity-60 italic mb-2">{p.category}</div>
-            <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
-            <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
-          </article>
+          {p.href ? (
+            <a href={p.href} class="project-card h-full block no-underline text-inherit">
+              <div class="text-xs font-sans opacity-60 italic mb-2 flex items-center gap-1.5">
+                {p.category}
+                <span class="text-[color:var(--color-accent)] font-semibold not-italic">· read more →</span>
+              </div>
+              <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
+              <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
+            </a>
+          ) : (
+            <article class="project-card h-full">
+              <div class="text-xs font-sans opacity-60 italic mb-2">{p.category}</div>
+              <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
+              <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
+            </article>
+          )}
         </ScrollReveal>
       ))}
     </div>

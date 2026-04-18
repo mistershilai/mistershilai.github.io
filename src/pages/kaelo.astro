@@ -1,0 +1,173 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+
+const stats = [
+  { n: '619', label: 'health facilities' },
+  { n: '2.4M', label: 'people served' },
+  { n: '18', label: 'health districts' },
+];
+
+const team = [
+  { group: 'Princeton ORFE', people: ['Dr. Bartolomeo Stellato (advisor)'] },
+  { group: 'ACHAP', people: ['Mr. Lesego Busang', 'Mr. Stanley Mapiki', 'Mr. Tiro Molefe', 'Dr. Khumo Seipone'] },
+  { group: 'Partners', people: ['Ministry of Health, Botswana', 'Central Medical Stores'] },
+];
+---
+
+<BaseLayout title="Kaelo | Elliot S. Lee" description="Kaelo — an antimicrobial supply chain optimization platform built for the Government of Botswana.">
+  <!-- Background decoration -->
+  <div class="kaelo-bg" aria-hidden="true">
+    <svg class="caduceus" viewBox="0 0 100 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="rodGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.05" />
+        </linearGradient>
+      </defs>
+      <!-- Rod -->
+      <line x1="50" y1="10" x2="50" y2="390" stroke="url(#rodGrad)" stroke-width="1.5" />
+      <!-- Serpent (two interlaced sinusoidal curves) -->
+      <path d="M50,30 C20,60 80,90 50,120 C20,150 80,180 50,210 C20,240 80,270 50,300 C20,330 80,360 50,390"
+            fill="none" stroke="url(#rodGrad)" stroke-width="1.2" />
+      <path d="M50,30 C80,60 20,90 50,120 C80,150 20,180 50,210 C80,240 20,270 50,300 C80,330 20,360 50,390"
+            fill="none" stroke="url(#rodGrad)" stroke-width="1.2" />
+      <!-- Wings hint at top -->
+      <path d="M20,20 Q40,30 50,25 Q60,30 80,20" fill="none" stroke="url(#rodGrad)" stroke-width="1" />
+    </svg>
+  </div>
+
+  <section class="relative max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
+    <ScrollReveal>
+      <h1 class="font-serif font-bold text-5xl md:text-7xl mb-5">Kaelo</h1>
+      <p class="font-sans text-sm md:text-base opacity-70">
+        <span class="font-mono">/ka.ˈe.lo/</span>
+        <span class="mx-2 opacity-50">·</span>
+        <em>Setswana</em>
+        <span class="mx-2 opacity-50">·</span>
+        "to care for, to nurture, to look after"
+      </p>
+      <div class="mx-auto mt-10 mb-12 h-px w-24 bg-gradient-to-r from-transparent via-[color:var(--color-accent)] to-transparent"></div>
+    </ScrollReveal>
+
+    <ScrollReveal delay={120}>
+      <p class="font-serif text-lg md:text-xl leading-relaxed max-w-2xl mx-auto opacity-95">
+        When a child in rural Botswana needs antibiotics, the distance between life and loss is measured
+        not in kilometers, but in whether the right medicine sits on the right shelf at the right moment.
+      </p>
+      <p class="font-serif text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mt-4 text-[color:var(--color-accent)]">
+        Kaelo exists to close that gap.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <!-- Stats row -->
+  <section class="relative max-w-4xl mx-auto px-6 py-10">
+    <div class="grid grid-cols-3 gap-4 md:gap-8">
+      {stats.map((s, i) => (
+        <ScrollReveal delay={i * 100}>
+          <div class="text-center py-6">
+            <div class="font-serif font-bold text-4xl md:text-5xl">{s.n}</div>
+            <div class="font-sans text-xs md:text-sm opacity-60 uppercase tracking-[0.15em] mt-2">{s.label}</div>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="relative max-w-3xl mx-auto px-6 py-12">
+    <ScrollReveal>
+      <h2 class="font-serif font-bold text-3xl mb-6">What we do</h2>
+      <div class="space-y-5 font-serif text-[1.05rem] leading-relaxed opacity-90">
+        <p>
+          Kaelo is an antimicrobial supply chain optimization platform built for the Government of Botswana.
+          It uses advanced mathematical models — robust optimization and adaptive (affine) decision rules — to
+          determine how medicines should be procured, stored, and distributed across the country's 619 health facilities.
+        </p>
+        <p>
+          The system accounts for demand uncertainty, transport constraints, procurement costs, and the
+          complex tiered network of warehouses, hospitals, clinics, and health posts that serve 2.4M people
+          across 18 health districts.
+        </p>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <!-- How it works -->
+  <section class="relative max-w-3xl mx-auto px-6 py-12">
+    <ScrollReveal>
+      <h2 class="font-serif font-bold text-3xl mb-6">How it works</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6">
+          <h3 class="font-serif font-bold text-xl mb-3">Robust optimization</h3>
+          <p class="font-serif opacity-85 leading-relaxed">
+            Instead of assuming a single forecast is correct, the model optimizes against the
+            <em>worst-case</em> demand scenario within a plausible uncertainty set. Decisions that
+            hold up under the hardest month hold up under every month.
+          </p>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-serif font-bold text-xl mb-3">Affine decision rules</h3>
+          <p class="font-serif opacity-85 leading-relaxed">
+            Rather than fixing every order up front, Kaelo learns a linear policy: "order <em>x</em> if
+            we've observed demand <em>y</em>." This keeps the math tractable while letting the system
+            adapt as real demand unfolds month by month.
+          </p>
+        </div>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <!-- Team -->
+  <section class="relative max-w-3xl mx-auto px-6 py-12 pb-24">
+    <ScrollReveal>
+      <h2 class="font-serif font-bold text-3xl mb-6">Team &amp; partners</h2>
+      <div class="grid md:grid-cols-3 gap-6 font-sans text-sm">
+        {team.map((t) => (
+          <div>
+            <div class="font-semibold text-[color:var(--color-accent)] mb-2">{t.group}</div>
+            <ul class="space-y-1 opacity-85 list-none p-0">
+              {t.people.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </ScrollReveal>
+  </section>
+</BaseLayout>
+
+<style>
+  .kaelo-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .kaelo-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, currentColor 6%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.5;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+  }
+  .caduceus {
+    position: absolute;
+    right: 4%;
+    top: 8%;
+    width: clamp(60px, 8vw, 120px);
+    height: auto;
+    color: var(--color-accent);
+    opacity: 0.4;
+  }
+  @media (max-width: 768px) {
+    .caduceus { right: 2%; top: 6%; opacity: 0.25; }
+  }
+  .font-mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+</style>

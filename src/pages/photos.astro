@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+import { places } from '@/data/photos';
+---
+
+<BaseLayout title="Photos | Elliot S. Lee" description="Photos from places I've been.">
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+    <div class="text-center mb-10">
+      <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Photos</h1>
+      <p class="font-serif opacity-80 max-w-xl mx-auto">Images from fieldwork, travel, and the places in between.</p>
+    </div>
+
+    {places.length === 0 && (
+      <ScrollReveal>
+        <div class="card p-10 text-center">
+          <p class="font-serif text-lg opacity-80 mb-2">Coming soon.</p>
+          <p class="font-sans text-sm opacity-60">First batch of photos is being curated.</p>
+        </div>
+      </ScrollReveal>
+    )}
+
+    {places.map((place, i) => (
+      <ScrollReveal delay={i * 80}>
+        <article class="mb-16">
+          <div class="flex items-baseline justify-between gap-4 mb-5 border-b border-black/10 dark:border-white/10 pb-3">
+            <div>
+              <h2 class="font-serif font-bold text-2xl md:text-3xl">{place.name}</h2>
+              {place.blurb && <p class="font-serif opacity-75 mt-1">{place.blurb}</p>}
+            </div>
+            {place.year && (
+              <div class="font-sans text-sm opacity-50 shrink-0">{place.year}</div>
+            )}
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {place.photos.map((p) => (
+              <figure class="relative overflow-hidden rounded-lg aspect-[4/3] bg-black/5 dark:bg-white/5 group">
+                <img
+                  src={`/photos/${place.slug}/${p.file}`}
+                  alt={p.caption || `${place.name} — ${p.file}`}
+                  loading="lazy"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+                {p.caption && (
+                  <figcaption class="absolute inset-x-0 bottom-0 px-3 py-2 text-xs font-sans text-white bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    {p.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </article>
+      </ScrollReveal>
+    ))}
+  </section>
+</BaseLayout>
