@@ -18,17 +18,15 @@ export type Place = {
 };
 
 export const places: Place[] = [
-  // Example entry — replace/add as photos come in.
-  // {
-  //   slug: 'botswana',
-  //   name: 'Botswana',
-  //   lat: -22,
-  //   lon: 24,
-  //   year: '2024',
-  //   blurb: 'ACHAP + Ministry of Health fieldwork. Gaborone, Serowe, and out to the Central Medical Stores.',
-  //   photos: [
-  //     { file: 'gaborone-1.jpg', caption: 'Gaborone, at dusk' },
-  //     { file: 'cms-visit.jpg', caption: 'Central Medical Stores' },
-  //   ],
-  // },
+  {
+    slug: 'durban',
+    name: 'Durban, South Africa',
+    lat: -29.8587,
+    lon: 31.0218,
+    blurb: 'Largest port in ZA, along the Indian Ocean coast.',
+    photos: [
+      { file: 'durban-skyline-sunset.jpg', caption: 'Durban skyline at sunset' },
+      { file: 'durban-pier-sunset.jpg', caption: 'Pier at sunrise' },
+    ],
+  },
 ];
