@@ -52,6 +52,7 @@ export const places: Place[] = [
     name: 'Hong Kong',
     lat: 22.3193,
     lon: 114.1694,
+    blurb: 'Highest concentration of skyscrapers in the world.',
     photos: [
       { file: 'IMG_5522.jpeg' },
       { file: 'IMG_5546.jpeg' },
@@ -67,6 +68,7 @@ export const places: Place[] = [
     name: 'Macau',
     lat: 22.1987,
     lon: 113.5439,
+    blurb: 'Las Vegas of Asia.',
     photos: [
       { file: 'IMG_5439.jpeg' },
       { file: 'IMG_5443.jpeg' },
