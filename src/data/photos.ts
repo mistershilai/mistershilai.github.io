@@ -47,4 +47,32 @@ export const places: Place[] = [
       { file: 'IMG_6599.jpeg' },
     ],
   },
+  {
+    slug: 'hongkong',
+    name: 'Hong Kong',
+    lat: 22.3193,
+    lon: 114.1694,
+    photos: [
+      { file: 'IMG_5522.jpeg' },
+      { file: 'IMG_5546.jpeg' },
+      { file: 'IMG_5642.jpeg' },
+      { file: 'IMG_5669.jpeg' },
+      { file: 'IMG_5674.jpeg' },
+      { file: 'IMG_5737.jpeg' },
+      { file: 'IMG_5766.jpeg' },
+    ],
+  },
+  {
+    slug: 'macau',
+    name: 'Macau',
+    lat: 22.1987,
+    lon: 113.5439,
+    photos: [
+      { file: 'IMG_5439.jpeg' },
+      { file: 'IMG_5443.jpeg' },
+      { file: 'IMG_5455.jpeg' },
+      { file: 'IMG_5497.jpeg' },
+      { file: 'IMG_5498.jpeg' },
+    ],
+  },
 ];
