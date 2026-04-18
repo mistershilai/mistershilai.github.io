@@ -219,4 +219,21 @@ export const places: Place[] = [
       { file: 'IMG_2640.jpeg' },
     ],
   },
+  {
+    slug: 'gabs',
+    name: 'Gaborone, Botswana',
+    lat: -24.6282,
+    lon: 25.9231,
+    blurb: 'Gabz.',
+    photos: [
+      { file: 'IMG_2995.jpeg' },
+      { file: 'IMG_3005.jpeg' },
+      { file: 'IMG_3022.jpeg' },
+      { file: 'IMG_3037.jpeg' },
+      { file: 'IMG_3097.jpeg' },
+      { file: 'IMG_3114.jpeg' },
+      { file: 'IMG_3122.jpeg' },
+      { file: 'IMG_3161.jpeg' },
+    ],
+  },
 ];
