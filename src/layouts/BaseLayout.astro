@@ -22,11 +22,10 @@ const { title, description = "Elliot S. Lee — Princeton ORFE '26, global healt
     <title>{title}</title>
     <ClientRouter />
     <script is:inline>
-      // Flash-free theme init (runs before render)
+      // Flash-free theme init (runs before render). Default: dark.
       (function () {
         const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'dark' : 'light');
+        const theme = saved || 'dark';
         document.documentElement.classList.toggle('dark', theme === 'dark');
       })();
     </script>

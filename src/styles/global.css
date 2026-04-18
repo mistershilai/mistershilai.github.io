@@ -131,13 +131,14 @@ body {
   color: var(--color-paper-dark);
 }
 
-/* Links */
-a {
+/* Links — :where() gives these 0 specificity so utility classes like
+   text-white on styled buttons always win. */
+:where(a) {
   color: var(--color-accent);
   text-decoration: none;
 }
-a:hover { text-decoration: underline; }
-.dark a { color: var(--color-accent-dark); }
+:where(a:hover) { text-decoration: underline; }
+:where(.dark a) { color: var(--color-accent-dark); }
 
 /* View transition names */
 ::view-transition-old(root),
