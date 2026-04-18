@@ -188,4 +188,20 @@ export const places: Place[] = [
       { file: 'IMG_3576.jpeg' },
     ],
   },
+  {
+    slug: 'joburg-pretoria',
+    name: 'Johannesburg / Pretoria',
+    lat: -26.1052,
+    lon: 28.0560,
+    blurb: 'City of Gold.',
+    photos: [
+      { file: 'IMG_3273.jpeg' },
+      { file: 'IMG_3298.jpeg' },
+      { file: 'IMG_3305.jpeg' },
+      { file: 'IMG_3316.jpeg' },
+      { file: 'IMG_3330.jpeg' },
+      { file: 'IMG_3339.jpeg' },
+      { file: 'IMG_3383.jpeg' },
+    ],
+  },
 ];
