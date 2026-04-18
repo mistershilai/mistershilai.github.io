@@ -13,27 +13,28 @@ const links = [
 ];
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
 ---
 
 <nav class="sticky top-0 z-50 backdrop-blur-md bg-[color:var(--color-paper)]/80 dark:bg-[color:var(--color-paper-dark)]/80 border-b border-black/5 dark:border-white/5">
   <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
     <a href="/" class="font-serif font-bold text-lg no-underline">elliot s. lee</a>
-    <div class="flex items-center gap-5">
+
+    <div class="flex items-center gap-4">
+      <!-- Desktop nav -->
       <ul class="hidden md:flex gap-5 list-none p-0 m-0 font-sans text-sm">
         {links.map(l => (
           <li>
             <a
               href={l.href}
-              class:list={[
-                'no-underline hover:underline',
-                (path === l.href || (l.href !== '/' && path.startsWith(l.href))) && 'underline font-semibold'
-              ]}
+              class:list={['no-underline hover:underline', isActive(l.href) && 'underline font-semibold']}
             >
               {l.label}
             </a>
           </li>
         ))}
       </ul>
+
       <button
         id="cmdk-trigger"
         aria-label="Open command palette"
@@ -42,16 +43,85 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
         <span>Search</span>
         <kbd class="cmdk-kbd">⌘K</kbd>
       </button>
+
       <ThemeToggle />
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 transition"
+      >
+        <svg class="menu-icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+        <svg class="close-icon w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+        </svg>
+      </button>
     </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="md:hidden border-t border-black/5 dark:border-white/5 hidden">
+    <ul class="list-none p-0 m-0 font-sans text-base">
+      {links.map(l => (
+        <li>
+          <a
+            href={l.href}
+            class:list={[
+              'block px-6 py-3 no-underline border-b border-black/5 dark:border-white/5',
+              isActive(l.href) && 'font-semibold bg-black/5 dark:bg-white/5'
+            ]}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 </nav>
 
 <script>
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('#cmdk-trigger')) {
-      window.dispatchEvent(new CustomEvent('open-cmdk'));
+  function wireNav() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    if ((toggle as any).__wired) return;
+    (toggle as any).__wired = true;
+
+    const menuIcon = toggle.querySelector('.menu-icon');
+    const closeIcon = toggle.querySelector('.close-icon');
+
+    function setOpen(open: boolean) {
+      menu!.classList.toggle('hidden', !open);
+      toggle!.setAttribute('aria-expanded', String(open));
+      menuIcon?.classList.toggle('hidden', open);
+      closeIcon?.classList.toggle('hidden', !open);
     }
-  });
+
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      setOpen(!isOpen);
+    });
+
+    // Close menu when any link inside is tapped (so SPA nav continues cleanly)
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+
+    // Also wire the desktop search trigger (once)
+    document.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (t.closest('#cmdk-trigger')) {
+        window.dispatchEvent(new CustomEvent('open-cmdk'));
+      }
+    });
+  }
+
+  wireNav();
+  document.addEventListener('astro:page-load', wireNav);
 </script>
