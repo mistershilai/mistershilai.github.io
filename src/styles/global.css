@@ -37,6 +37,56 @@ h1, h2, h3, h4 {
   letter-spacing: -0.005em;
 }
 
+/* Shimmer effect on bold / heading text — subtle animated gradient in blues. */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+h1, h2, h3, strong, b, .font-bold, .font-semibold {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    var(--color-accent) 35%,
+    #9fd2ff 50%,
+    var(--color-accent) 65%,
+    var(--color-accent) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.dark h1, .dark h2, .dark h3, .dark strong, .dark b, .dark .font-bold, .dark .font-semibold {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-dark) 0%,
+    var(--color-accent-dark) 35%,
+    #d6ecff 50%,
+    var(--color-accent-dark) 65%,
+    var(--color-accent-dark) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keep the typing cursor from inheriting the gradient (stays solid). */
+.cursor {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--color-accent);
+}
+.dark .cursor { color: var(--color-accent-dark); }
+
+/* Respect reduced motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  h1, h2, h3, strong, b, .font-bold, .font-semibold { animation: none; }
+}
+
 html.dark {
   background: var(--color-paper-dark);
   color: var(--color-ink-dark);
