@@ -106,4 +106,18 @@ export const places: Place[] = [
       { file: 'IMG_5177.jpeg' },
     ],
   },
+  {
+    slug: 'wuxi',
+    name: 'Wuxi, China',
+    lat: 31.4912,
+    lon: 120.3119,
+    blurb: 'Pearl of Taihu Lake.',
+    photos: [
+      { file: 'IMG_5321.jpeg' },
+      { file: 'IMG_5329.jpeg' },
+      { file: 'IMG_5339.jpeg' },
+      { file: 'IMG_5375.jpeg' },
+      { file: 'IMG_5387.jpeg' },
+    ],
+  },
 ];
