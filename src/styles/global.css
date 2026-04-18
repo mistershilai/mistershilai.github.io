@@ -31,6 +31,8 @@ html {
 h1, h2, h3, h4 {
   letter-spacing: -0.015em;
   font-feature-settings: "kern", "liga", "lnum";
+  line-height: 1.15;
+  padding-bottom: 0.06em;
 }
 
 .font-sans {
