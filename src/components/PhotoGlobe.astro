@@ -175,14 +175,14 @@ import { places } from '@/data/photos';
     places.forEach((place) => {
       const pos = latLonToVec3(place.lat, place.lon, 1.015);
       const mat = new THREE.MeshBasicMaterial({ color: pinCol() });
-      const pin = new THREE.Mesh(new THREE.SphereGeometry(0.02, 16, 16), mat);
+      const pin = new THREE.Mesh(new THREE.SphereGeometry(0.013, 16, 16), mat);
       pin.position.copy(pos);
       (pin as any).userData = { place };
       group.add(pin);
 
       const halo = new THREE.Mesh(
-        new THREE.SphereGeometry(0.045, 16, 16),
-        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.28 })
+        new THREE.SphereGeometry(0.028, 16, 16),
+        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.32 })
       );
       halo.position.copy(pos);
       group.add(halo);
