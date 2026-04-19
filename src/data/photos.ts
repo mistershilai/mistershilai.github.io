@@ -122,7 +122,7 @@ export const places: Place[] = [
   },
   {
     slug: 'vicfalls',
-    name: 'Victoria Falls',
+    name: 'Victoria Falls, Zambia / Zimbabwe',
     lat: -17.9243,
     lon: 25.8572,
     blurb: 'Mosi-oa-Tunya.',
