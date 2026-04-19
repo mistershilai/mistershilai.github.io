@@ -458,7 +458,7 @@ export const places: Place[] = [
   },
   {
     slug: 'miami',
-    name: 'Miami, USA',
+    name: 'Miami, Florida, USA',
     lat: 25.7617,
     lon: -80.1918,
     blurb: 'Gateway to Latin America.',
@@ -482,7 +482,7 @@ export const places: Place[] = [
   },
   {
     slug: 'boston',
-    name: 'Boston, USA',
+    name: 'Boston, Massachusetts, USA',
     lat: 42.3601,
     lon: -71.0589,
     blurb: 'Tea party.',
@@ -496,7 +496,7 @@ export const places: Place[] = [
   },
   {
     slug: 'philly',
-    name: 'Philadelphia, USA',
+    name: 'Philadelphia, Pennsylvania, USA',
     lat: 39.9526,
     lon: -75.1652,
     blurb: 'Quaker city.',
