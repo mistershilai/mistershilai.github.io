@@ -372,6 +372,30 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'niagara',
+    name: 'Niagara Falls, Canada / USA',
+    lat: 43.0962,
+    lon: -79.0377,
+    blurb: 'Thunder of waters.',
+    photos: [
+      { file: '0204dcae-9606-4457-90a0-554eb1f15b98.JPG' },
+      { file: '02879253-c61b-4265-9f5a-c7664c4c5afa.JPG' },
+      { file: '5df4a999-d90c-4a3b-9dfe-cf56c75298a6.JPG' },
+      { file: 'c234e043-096c-4fea-820d-6d42cc75fc77.JPG' },
+    ],
+  },
+  {
+    slug: 'montreal',
+    name: 'Montreal, Quebec, Canada',
+    lat: 45.5019,
+    lon: -73.5674,
+    blurb: 'La Métropole.',
+    photos: [
+      { file: 'IMG_8091.JPG' },
+      { file: 'PHOTO-2026-04-19-15-07-28.jpg' },
+    ],
+  },
+  {
     slug: 'ketchikan',
     name: 'Ketchikan, Alaska, USA',
     lat: 55.3422,
