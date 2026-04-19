@@ -372,6 +372,20 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'sanfrancisco',
+    name: 'San Francisco, California, USA',
+    lat: 37.7749,
+    lon: -122.4194,
+    blurb: 'Silicon Valley.',
+    photos: [
+      { file: '16ea35cf-98ae-465b-a1a8-b5128e03c123.jpeg' },
+      { file: '1a19b1b7-5007-4bcf-8861-2055c423ab3c.jpeg' },
+      { file: '207528a6-9cd4-414a-b2b0-c17e5c481ec0.jpeg' },
+      { file: '40f49520-0b77-4796-94a4-f65e5424d26a.jpeg' },
+      { file: 'cf3a4cef-c6c3-4515-9b71-867026125975.jpeg' },
+    ],
+  },
+  {
     slug: 'burlington',
     name: 'Burlington, Vermont, USA',
     lat: 44.4759,
