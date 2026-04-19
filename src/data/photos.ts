@@ -372,6 +372,17 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'dc',
+    name: 'Washington, DC, USA',
+    lat: 38.9072,
+    lon: -77.0369,
+    blurb: 'Hey, I was born here.',
+    photos: [
+      { file: 'IMG_1767.jpeg' },
+      { file: 'IMG_1771.jpeg' },
+    ],
+  },
+  {
     slug: 'boston',
     name: 'Boston, USA',
     lat: 42.3601,
