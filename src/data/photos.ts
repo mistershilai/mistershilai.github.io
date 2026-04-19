@@ -408,11 +408,21 @@ export const places: Place[] = [
       { file: 'PHOTO-2026-04-19-14-11-56-1.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-2.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-3.jpg' },
-      { file: 'PHOTO-2026-04-19-14-11-56-4.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-5.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-6.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-57.jpg' },
+    ],
+  },
+  {
+    slug: 'anchorage',
+    name: 'Anchorage, Alaska, USA',
+    lat: 61.2181,
+    lon: -149.9003,
+    blurb: 'Air crossroads of the world.',
+    photos: [
+      { file: 'PHOTO-2026-04-19-14-11-57.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-57-1.jpg' },
+      { file: 'PHOTO-2026-04-19-15-01-28.jpg' },
     ],
   },
   {
