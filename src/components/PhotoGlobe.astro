@@ -409,7 +409,7 @@ import { places } from '@/data/photos';
       try {
         const lakesRes = await fetch('https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_lakes.geojson');
         const lakesGeo = await lakesRes.json();
-        const lakeFillMat = new THREE.MeshBasicMaterial({ color: oceanCol(), side: THREE.DoubleSide });
+        const lakeFillMat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
         for (const f of lakesGeo.features) {
           const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
           for (const poly of polys) {
@@ -423,12 +423,6 @@ import { places } from '@/data/photos';
             group.add(ringToLine(outer, 1.0075, borderMat));
           }
         }
-        // Keep lake fill in sync with theme changes
-        const lakeMo = new MutationObserver(() => {
-          lakeFillMat.color.setHex(oceanCol());
-        });
-        lakeMo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-        document.addEventListener('astro:before-swap', () => lakeMo.disconnect(), { once: true });
       } catch (err) {
         console.warn('PhotoGlobe: lake shapes failed to load.', err);
       }
