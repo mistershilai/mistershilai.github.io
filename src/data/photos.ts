@@ -190,7 +190,7 @@ export const places: Place[] = [
   },
   {
     slug: 'joburg-pretoria',
-    name: 'Johannesburg / Pretoria',
+    name: 'Johannesburg / Pretoria, South Africa',
     lat: -26.1052,
     lon: 28.0560,
     blurb: 'City of Gold.',
