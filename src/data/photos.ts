@@ -372,6 +372,33 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'boston',
+    name: 'Boston, USA',
+    lat: 42.3601,
+    lon: -71.0589,
+    blurb: 'Tea party.',
+    photos: [
+      { file: '2272.JPG' },
+      { file: '2306.JPG' },
+      { file: '2307.JPG' },
+      { file: '2311.JPG' },
+      { file: '2313.JPG' },
+    ],
+  },
+  {
+    slug: 'philly',
+    name: 'Philadelphia, USA',
+    lat: 39.9526,
+    lon: -75.1652,
+    blurb: 'Quaker city.',
+    photos: [
+      { file: 'IMG_2030.jpeg' },
+      { file: 'IMG_2036.jpeg' },
+      { file: 'IMG_2038.jpeg' },
+      { file: 'IMG_2039.jpeg' },
+    ],
+  },
+  {
     slug: 'solheimajokull',
     name: 'Sólheimajökull / Skógafoss, Iceland',
     lat: 63.5278,
