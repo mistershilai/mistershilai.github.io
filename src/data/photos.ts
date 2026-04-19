@@ -372,6 +372,16 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'madison',
+    name: 'Madison, Wisconsin, USA',
+    lat: 43.0731,
+    lon: -89.4012,
+    blurb: 'City of four lakes.',
+    photos: [
+      { file: 'IMG_5830.jpeg' },
+    ],
+  },
+  {
     slug: 'sanfrancisco',
     name: 'San Francisco, California, USA',
     lat: 37.7749,
