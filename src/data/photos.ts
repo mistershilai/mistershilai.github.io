@@ -372,6 +372,28 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'burlington',
+    name: 'Burlington, Vermont, USA',
+    lat: 44.4759,
+    lon: -73.2121,
+    blurb: 'BTV.',
+    photos: [
+      { file: 'unnamed.jpg' },
+      { file: 'unnamed-1.jpg' },
+    ],
+  },
+  {
+    slug: 'atlanta',
+    name: 'Atlanta, Georgia, USA',
+    lat: 33.7490,
+    lon: -84.3880,
+    blurb: 'The Big Peach.',
+    photos: [
+      { file: 'PHOTO-2026-04-19-15-08-38.jpg' },
+      { file: 'unnamed.jpg' },
+    ],
+  },
+  {
     slug: 'niagara',
     name: 'Niagara Falls, Canada / USA',
     lat: 43.0962,
