@@ -117,6 +117,27 @@ import { places } from '@/data/photos';
     const geo = new THREE.BufferGeometry().setFromPoints(pts);
     return new THREE.Line(geo, material);
   }
+  function ringFillMesh(ring: number[][], holes: number[][][], r: number, material: THREE.Material) {
+    // Triangulate in lon/lat space, then project each vertex onto the sphere.
+    // Works fine for the small lake polygons in the 110m dataset.
+    const contour2 = ring.map(([lon, lat]) => new THREE.Vector2(lon, lat));
+    const holes2 = holes.map(h => h.map(([lon, lat]) => new THREE.Vector2(lon, lat)));
+    const tris = (THREE as any).ShapeUtils.triangulateShape(contour2, holes2);
+    const positions: number[] = [];
+    const allPts = [ring, ...holes];
+    for (const arr of allPts) {
+      for (const [lon, lat] of arr) {
+        const v = latLonToVec3(lat, lon, r);
+        positions.push(v.x, v.y, v.z);
+      }
+    }
+    const indices: number[] = [];
+    for (const t of tris) indices.push(t[0], t[1], t[2]);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geo.setIndex(indices);
+    return new THREE.Mesh(geo, material);
+  }
   function meshToLineSegments(ls: any, r: number, material: THREE.LineBasicMaterial) {
     const positions: number[] = [];
     for (const line of ls.coordinates) {
@@ -382,15 +403,32 @@ import { places } from '@/data/photos';
       document.addEventListener('astro:before-swap', () => mo.disconnect(), { once: true });
 
       // Major lakes (Natural Earth 110m → only the big ones: Great Lakes, Caspian, Victoria, etc.)
+      // Fill the lake interior in ocean color so country borders that cut through the
+      // lake (because the lake is split between countries) are masked, then re-stroke
+      // the outline so the lake reads as water.
       try {
         const lakesRes = await fetch('https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_lakes.geojson');
         const lakesGeo = await lakesRes.json();
+        const lakeFillMat = new THREE.MeshBasicMaterial({ color: oceanCol(), side: THREE.DoubleSide });
         for (const f of lakesGeo.features) {
           const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
           for (const poly of polys) {
-            group.add(ringToLine(poly[0], 1.002, borderMat));
+            const outer = poly[0];
+            const holes = poly.slice(1);
+            try {
+              group.add(ringFillMesh(outer, holes, 1.007, lakeFillMat));
+            } catch {
+              /* skip un-triangulable polygons */
+            }
+            group.add(ringToLine(outer, 1.0075, borderMat));
           }
         }
+        // Keep lake fill in sync with theme changes
+        const lakeMo = new MutationObserver(() => {
+          lakeFillMat.color.setHex(oceanCol());
+        });
+        lakeMo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        document.addEventListener('astro:before-swap', () => lakeMo.disconnect(), { once: true });
       } catch (err) {
         console.warn('PhotoGlobe: lake shapes failed to load.', err);
       }
