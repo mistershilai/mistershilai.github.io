@@ -23,7 +23,7 @@ export const places: Place[] = [
     name: 'Durban, South Africa',
     lat: -29.8587,
     lon: 31.0218,
-    blurb: 'Largest port in ZA, along the Indian Ocean coast.',
+    blurb: 'Land of King Shaka.',
     photos: [
       { file: 'IMG_6633.jpeg' },
       { file: 'IMG_6643.jpeg' },
@@ -369,6 +369,19 @@ export const places: Place[] = [
       { file: '1000004207.JPG' },
       { file: '1000004211.JPG' },
       { file: '1000004226.JPG' },
+    ],
+  },
+  {
+    slug: 'solheimajokull',
+    name: 'Sólheimajökull / Skógafoss, Iceland',
+    lat: 63.5278,
+    lon: -19.4375,
+    blurb: 'Eyjafjallajökull is calling.',
+    photos: [
+      { file: '873.JPG' },
+      { file: '875.JPG' },
+      { file: '883.JPG' },
+      { file: '891.JPG' },
     ],
   },
   {
