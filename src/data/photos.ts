@@ -562,7 +562,6 @@ export const places: Place[] = [
       { file: 'PHOTO-2026-04-19-14-11-56-3.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-5.jpg' },
       { file: 'PHOTO-2026-04-19-14-11-56-6.jpg' },
-      { file: 'PHOTO-2026-04-19-14-11-57.jpg' },
     ],
   },
   {
