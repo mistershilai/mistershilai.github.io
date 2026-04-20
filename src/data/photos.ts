@@ -463,6 +463,20 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'stmartin',
+    name: 'Saint Martin / Sint Maarten',
+    lat: 18.0708,
+    lon: -63.0501,
+    blurb: 'One island, two countries.',
+    photos: [
+      { file: 'PHOTO-2026-04-19-21-44-36.jpg' },
+      { file: 'PHOTO-2026-04-19-21-44-36-1.jpg' },
+      { file: 'PHOTO-2026-04-19-21-44-36-2.jpg' },
+      { file: 'PHOTO-2026-04-19-21-44-36-3.jpg' },
+      { file: 'PHOTO-2026-04-19-21-44-37.jpg' },
+    ],
+  },
+  {
     slug: 'nassau',
     name: 'Nassau, Bahamas',
     lat: 25.0343,
