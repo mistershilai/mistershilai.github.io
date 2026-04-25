@@ -1,7 +1,7 @@
 ---
 title: "The pills came from somewhere"
 description: "On Gaborone, Macapá, and the geography underneath every health system."
-date: 2026-04-22T20:00:00Z
+date: 2026-04-25T20:00:00Z
 tags: ["global health", "health systems", "supply chains"]
 ---
 
