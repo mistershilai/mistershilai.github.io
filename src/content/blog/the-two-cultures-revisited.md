@@ -1,5 +1,5 @@
 ---
-title: "The Two Cultures, Revisited"
+title: "The two cultures, revisited"
 description: "On prediction, inference, and the temperamental disagreement underneath the methodological one."
 date: 2026-04-29T12:00:00Z
 tags: ["statistics", "machine learning", "research methods"]
