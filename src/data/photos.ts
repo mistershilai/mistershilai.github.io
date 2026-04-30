@@ -275,6 +275,8 @@ export const places: Place[] = [
       { file: 'IMG_3427.jpeg' },
       { file: 'IMG_3435.jpeg' },
       { file: 'IMG_3437.jpeg' },
+      { file: 'IMG_3438.jpeg' },
+      { file: 'IMG_3469.jpeg' },
     ],
   },
   {
@@ -284,11 +286,9 @@ export const places: Place[] = [
     lon: 28.4263,
     blurb: 'Bobcity.',
     photos: [
-      { file: 'IMG_3438.jpeg' },
       { file: 'IMG_3455.jpeg' },
       { file: 'IMG_3461.jpeg' },
       { file: 'IMG_3462.jpeg' },
-      { file: 'IMG_3469.jpeg' },
     ],
   },
   {
