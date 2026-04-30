@@ -593,7 +593,7 @@ export const places: Place[] = [
   },
   {
     slug: 'vancouver',
-    name: 'Vancouver, Canada',
+    name: 'Vancouver, British Columbia, Canada',
     lat: 49.2827,
     lon: -123.1207,
     blurb: 'City of glass.',
