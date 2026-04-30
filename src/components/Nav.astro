@@ -1,7 +1,8 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 
-const links = [
+type NavLink = { href: string; label: string; download?: boolean };
+const links: NavLink[] = [
   { href: '/', label: 'home' },
   { href: '/about', label: 'about' },
   { href: '/projects', label: 'projects' },
@@ -10,6 +11,7 @@ const links = [
   { href: '/photos', label: 'photos' },
   { href: '/blog', label: 'blog' },
   { href: '/contact', label: 'contact' },
+  { href: '/ESLee_CV_UPDATED.pdf', label: 'download cv', download: true },
 ];
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -27,7 +29,8 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
           <li>
             <a
               href={l.href}
-              class:list={['no-underline hover:underline', isActive(l.href) && 'underline font-semibold']}
+              download={l.download}
+              class:list={['no-underline hover:underline', !l.download && isActive(l.href) && 'underline font-semibold']}
             >
               {l.label}
             </a>
@@ -74,9 +77,10 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
         <li>
           <a
             href={l.href}
+            download={l.download}
             class:list={[
               'block px-6 py-3 no-underline border-b border-black/5 dark:border-white/5',
-              isActive(l.href) && 'font-semibold bg-black/5 dark:bg-white/5'
+              !l.download && isActive(l.href) && 'font-semibold bg-black/5 dark:bg-white/5'
             ]}
           >
             {l.label}
