@@ -78,8 +78,37 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'xiangxi',
+    name: 'Xiangxi Tujia and Miao Autonomous Prefecture, Hunan, China',
+    lat: 28.3144,
+    lon: 109.7396,
+    blurb: 'Hanging on the waterfalls.',
+    photos: [
+      { file: 'PHOTO-2026-04-19-16-06-29.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-1.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-2.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-3.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-4.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-30.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-30-1.JPG' },
+    ],
+  },
+  {
+    slug: 'zhangjiajie',
+    name: 'Zhangjiajie, Hunan, China',
+    lat: 29.1170,
+    lon: 110.4799,
+    blurb: 'Avatar mountains.',
+    photos: [
+      { file: 'PHOTO-2026-04-19-16-06-29.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-1.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-2.JPG' },
+      { file: 'PHOTO-2026-04-19-16-06-29-3.JPG' },
+    ],
+  },
+  {
     slug: 'yancheng',
-    name: 'Yancheng, China',
+    name: 'Yancheng, Jiangsu, China',
     lat: 33.3476,
     lon: 120.1630,
     blurb: 'Ancestral homeland.',
@@ -108,7 +137,7 @@ export const places: Place[] = [
   },
   {
     slug: 'wuxi',
-    name: 'Wuxi, China',
+    name: 'Wuxi, Jiangsu, China',
     lat: 31.4912,
     lon: 120.3119,
     blurb: 'Pearl of Taihu Lake.',
@@ -629,6 +658,9 @@ export const places: Place[] = [
     photos: [
       { file: 'IMG_1767.jpeg' },
       { file: 'IMG_1771.jpeg' },
+      { file: 'IMG_6829.JPG' },
+      { file: 'IMG_9651.JPG' },
+      { file: 'FE007988-E576-4C20-913A-5E45267D7F6C.jpeg' },
     ],
   },
   {
