@@ -460,6 +460,18 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'toronto',
+    name: 'Toronto, Ontario, Canada',
+    lat: 43.6532,
+    lon: -79.3832,
+    blurb: 'The 6ix.',
+    photos: [
+      { file: 'IMG_7624.JPG' },
+      { file: 'IMG_7693.JPG' },
+      { file: 'unnamed.jpg' },
+    ],
+  },
+  {
     slug: 'montreal',
     name: 'Montreal, Quebec, Canada',
     lat: 45.5019,
