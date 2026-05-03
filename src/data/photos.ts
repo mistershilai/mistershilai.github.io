@@ -20,7 +20,7 @@ export type Place = {
 export const places: Place[] = [
   {
     slug: 'durban',
-    name: 'Durban, South Africa',
+    name: 'Durban, KwaZulu-Natal, South Africa',
     lat: -29.8587,
     lon: 31.0218,
     blurb: 'Land of King Shaka.',
@@ -166,7 +166,7 @@ export const places: Place[] = [
   },
   {
     slug: 'capetown',
-    name: 'Cape Town, South Africa',
+    name: 'Cape Town, Western Cape, South Africa',
     lat: -33.9249,
     lon: 18.4241,
     blurb: 'Mother City.',
@@ -219,7 +219,7 @@ export const places: Place[] = [
   },
   {
     slug: 'joburg-pretoria',
-    name: 'Johannesburg / Pretoria, South Africa',
+    name: 'Johannesburg / Pretoria, Gauteng, South Africa',
     lat: -26.1052,
     lon: 28.0560,
     blurb: 'City of Gold.',
@@ -235,7 +235,7 @@ export const places: Place[] = [
   },
   {
     slug: 'macapa',
-    name: 'Macapá, Brazil',
+    name: 'Macapá, Amapá, Brazil',
     lat: 0.0356,
     lon: -51.0705,
     blurb: 'Mouth of the Amazon.',
@@ -717,7 +717,7 @@ export const places: Place[] = [
   },
   {
     slug: 'rio',
-    name: 'Rio de Janeiro, Brazil',
+    name: 'Rio de Janeiro, RJ, Brazil',
     lat: -22.9068,
     lon: -43.1729,
     blurb: 'Cidade Maravilhosa.',
