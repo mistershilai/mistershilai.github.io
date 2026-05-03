@@ -250,7 +250,7 @@ export const places: Place[] = [
   },
   {
     slug: 'gabs',
-    name: 'Gaborone, Botswana',
+    name: 'Gaborone, South-East, Botswana',
     lat: -24.6282,
     lon: 25.9231,
     blurb: 'Gabz.',
@@ -267,7 +267,7 @@ export const places: Place[] = [
   },
   {
     slug: 'mahalapye',
-    name: 'Mahalapye, Botswana',
+    name: 'Mahalapye, Central, Botswana',
     lat: -23.1030,
     lon: 26.8140,
     blurb: 'Ko Diponeng.',
@@ -281,7 +281,7 @@ export const places: Place[] = [
   },
   {
     slug: 'bobonong',
-    name: 'Bobonong, Botswana',
+    name: 'Bobonong, Central, Botswana',
     lat: -21.9805,
     lon: 28.4263,
     blurb: 'Bobcity.',
