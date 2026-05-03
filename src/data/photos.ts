@@ -293,7 +293,7 @@ export const places: Place[] = [
   },
   {
     slug: 'agra',
-    name: 'Agra, India',
+    name: 'Agra, Uttar Pradesh, India',
     lat: 27.1767,
     lon: 78.0081,
     blurb: 'Taj City.',
@@ -303,7 +303,7 @@ export const places: Place[] = [
   },
   {
     slug: 'amritsar',
-    name: 'Amritsar, India',
+    name: 'Amritsar, Punjab, India',
     lat: 31.6340,
     lon: 74.8723,
     blurb: 'City of the Guru.',
@@ -325,7 +325,7 @@ export const places: Place[] = [
   },
   {
     slug: 'bangalore',
-    name: 'Bangalore, India',
+    name: 'Bangalore, Karnataka, India',
     lat: 12.9716,
     lon: 77.5946,
     blurb: 'Silicon Valley of India.',
@@ -369,7 +369,7 @@ export const places: Place[] = [
   },
   {
     slug: 'hampi',
-    name: 'Hampi, India',
+    name: 'Hampi, Karnataka, India',
     lat: 15.3350,
     lon: 76.4600,
     blurb: 'Vijayanagara.',
@@ -386,7 +386,7 @@ export const places: Place[] = [
   },
   {
     slug: 'mumbai',
-    name: 'Mumbai, India',
+    name: 'Mumbai, Maharashtra, India',
     lat: 19.0760,
     lon: 72.8777,
     blurb: 'Financial capital of India.',
