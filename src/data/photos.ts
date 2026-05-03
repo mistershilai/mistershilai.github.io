@@ -341,7 +341,7 @@ export const places: Place[] = [
   },
   {
     slug: 'delhi',
-    name: 'Delhi, India',
+    name: 'Delhi, NCT, India',
     lat: 28.6139,
     lon: 77.2090,
     blurb: 'Indraprastha.',
