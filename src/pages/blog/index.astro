@@ -11,6 +11,15 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="max-w-3xl mx-auto px-6 pt-12 pb-20">
     <div class="text-center mb-10">
       <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Blog</h1>
+      <a
+        href="/rss.xml"
+        class="inline-flex items-center gap-1.5 text-xs font-sans opacity-70 hover:opacity-100 no-underline"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44A19.56 19.56 0 0 1 23.56 24h-2.83A16.73 16.73 0 0 0 4 7.27V4.44zm0 5.66a13.9 13.9 0 0 1 13.9 13.9h-2.82A11.08 11.08 0 0 0 4 12.93V10.1z"/>
+        </svg>
+        Subscribe via RSS
+      </a>
     </div>
 
     {posts.length === 0 && (
