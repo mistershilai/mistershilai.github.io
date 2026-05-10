@@ -46,4 +46,18 @@ const { Content } = await post.render();
     border-left: 3px solid var(--color-accent);
     padding-left: 1rem; margin: 1rem 0; opacity: 0.85; font-style: italic;
   }
+  /* KaTeX: let wide display equations scroll horizontally instead of overflowing the page */
+  .prose-custom .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
+  }
+  .prose-custom .katex-display > .katex {
+    white-space: nowrap;
+  }
+  /* Inline math: shrink slightly on narrow screens so it doesn't push line wrap */
+  @media (max-width: 480px) {
+    .prose-custom .katex { font-size: 0.95em; }
+    .prose-custom .katex-display .katex { font-size: 1em; }
+  }
 </style>
