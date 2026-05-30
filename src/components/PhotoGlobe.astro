@@ -5,6 +5,13 @@ import { places } from '@/data/photos';
 <div id="pg-wrap" class="relative w-full max-w-xl aspect-square mx-auto">
   <canvas id="pg-canvas" class="w-full h-full rounded-full cursor-grab" data-places={JSON.stringify(places)}></canvas>
   <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
+  <div id="pg-vidpop" class="pg-vidpop" aria-hidden="true">
+    <video id="pg-vidpop-video" class="pg-vidpop-video" muted loop playsinline preload="metadata"></video>
+    <div class="pg-vidpop-meta">
+      <div id="pg-vidpop-title" class="pg-vidpop-title"></div>
+      <div id="pg-vidpop-desc" class="pg-vidpop-desc"></div>
+    </div>
+  </div>
 </div>
 <p id="pg-hint" class="mt-5 text-center text-xs font-sans opacity-50 transition-opacity">
   click a pin to zoom · drag to rotate
@@ -81,6 +88,70 @@ import { places } from '@/data/photos';
   }
   .pg-photo:hover img { transform: scale(1.05); }
   #pg-canvas.grabbing { cursor: grabbing; }
+
+  /* Video preview popup: appears next to orange (video) pins on hover/tap */
+  .pg-vidpop {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.6rem;
+    width: 320px;
+    max-width: calc(100vw - 2rem);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+  :global(.dark) .pg-vidpop {
+    background: rgba(23,27,34,0.92);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+  }
+  .pg-vidpop.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .pg-vidpop-video {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+  .pg-vidpop-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .pg-vidpop-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  .pg-vidpop-desc {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    opacity: 0.75;
+  }
+  /* Video in click panel sits above the photo grid */
+  .pg-panel-video {
+    width: 100%;
+    max-height: 360px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+  }
+  :global(.dark) .pg-panel-video { background: rgba(255,255,255,0.05); }
 </style>
 
 <script>
@@ -92,6 +163,7 @@ import { places } from '@/data/photos';
     '124', '840', '044', '792', '392', '426',
   ]);
 
+  type Video = { file: string; description?: string };
   type Place = {
     slug: string;
     name: string;
@@ -100,6 +172,7 @@ import { places } from '@/data/photos';
     year?: string;
     blurb?: string;
     photos: { file: string; caption?: string }[];
+    video?: Video;
   };
 
   function latLonToVec3(lat: number, lon: number, r: number) {
@@ -179,6 +252,7 @@ import { places } from '@/data/photos';
     const isDark = () => document.documentElement.classList.contains('dark');
     const accent = () => (isDark() ? 0x4aa3d9 : 0x0077be);
     const pinCol = () => (isDark() ? 0xffe27a : 0xf0b000);
+    const videoPinCol = () => (isDark() ? 0xffa552 : 0xff7a18); // orange for places with a video
     const oceanCol = () => (isDark() ? 0x1a2535 : 0xe8ecf2);
     const borderCol = () => (isDark() ? 0xadb9cc : 0x8a95a8);
 
@@ -188,11 +262,13 @@ import { places } from '@/data/photos';
     );
     group.add(ocean);
 
-    // Photo pins — interactive
-    const pins: { mesh: THREE.Mesh; halo: THREE.Mesh; place: Place }[] = [];
+    // Pins — interactive. Orange when the place has a video, yellow otherwise.
+    const pins: { mesh: THREE.Mesh; halo: THREE.Mesh; place: Place; hasVideo: boolean }[] = [];
     places.forEach((place) => {
       const pos = latLonToVec3(place.lat, place.lon, 1.015);
-      const mat = new THREE.MeshBasicMaterial({ color: pinCol() });
+      const hasVideo = !!place.video;
+      const col = hasVideo ? videoPinCol() : pinCol();
+      const mat = new THREE.MeshBasicMaterial({ color: col });
       const pin = new THREE.Mesh(new THREE.SphereGeometry(0.013, 16, 16), mat);
       pin.position.copy(pos);
       (pin as any).userData = { place };
@@ -200,12 +276,12 @@ import { places } from '@/data/photos';
 
       const halo = new THREE.Mesh(
         new THREE.SphereGeometry(0.028, 16, 16),
-        new THREE.MeshBasicMaterial({ color: pinCol(), transparent: true, opacity: 0.32 })
+        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: hasVideo ? 0.4 : 0.32 })
       );
       halo.position.copy(pos);
       group.add(halo);
 
-      pins.push({ mesh: pin, halo, place });
+      pins.push({ mesh: pin, halo, place, hasVideo });
     });
 
     // Camera + rotation targets
@@ -255,7 +331,10 @@ import { places } from '@/data/photos';
       (document.getElementById('pg-year') as HTMLElement).textContent = place.year || '';
       (document.getElementById('pg-blurb') as HTMLElement).textContent = place.blurb || '';
       const grid = document.getElementById('pg-grid')!;
-      grid.innerHTML = place.photos.map(p =>
+      const videoMarkup = place.video
+        ? `<video class="pg-panel-video" src="/photos/videos/${place.video.file}" controls playsinline preload="metadata" loop></video>`
+        : '';
+      grid.innerHTML = videoMarkup + place.photos.map(p =>
         `<div class="pg-photo"><img src="/photos/${place.slug}/${p.file}" alt="${p.caption || place.name}" loading="lazy" /></div>`
       ).join('');
       // Two-step show so the opacity/transform transition actually runs
@@ -281,6 +360,46 @@ import { places } from '@/data/photos';
       if (g) g.innerHTML = '';
     }
 
+    // Video hover popup (only for orange pins)
+    const vidpop = document.getElementById('pg-vidpop') as HTMLDivElement | null;
+    const vidpopVideo = document.getElementById('pg-vidpop-video') as HTMLVideoElement | null;
+    const vidpopTitle = document.getElementById('pg-vidpop-title') as HTMLDivElement | null;
+    const vidpopDesc = document.getElementById('pg-vidpop-desc') as HTMLDivElement | null;
+    let hoveredPlaceSlug: string | null = null;
+
+    function showVidpop(place: Place, screenX: number, screenY: number) {
+      if (!vidpop || !vidpopVideo || !vidpopTitle || !vidpopDesc || !place.video) return;
+      if (hoveredPlaceSlug !== place.slug) {
+        hoveredPlaceSlug = place.slug;
+        vidpopVideo.src = `/photos/videos/${place.video.file}`;
+        vidpopTitle.textContent = place.name;
+        vidpopDesc.textContent = place.video.description || place.blurb || '';
+        vidpopVideo.play().catch(() => {/* autoplay can fail; ignore */});
+      }
+      // Position relative to canvas wrapper, with a small offset so the popup doesn't sit on top of the pin
+      const wrapRect = wrap.getBoundingClientRect();
+      const popW = 320;
+      const popH = vidpop.offsetHeight || 110;
+      let left = screenX - wrapRect.left + 18;
+      let top = screenY - wrapRect.top - popH / 2;
+      // Clamp inside the wrapper
+      left = Math.max(0, Math.min(left, wrapRect.width - popW));
+      top = Math.max(0, Math.min(top, wrapRect.height - popH));
+      vidpop.style.left = `${left}px`;
+      vidpop.style.top = `${top}px`;
+      vidpop.classList.add('visible');
+      vidpop.setAttribute('aria-hidden', 'false');
+    }
+    function hideVidpop() {
+      if (!vidpop || !vidpopVideo) return;
+      hoveredPlaceSlug = null;
+      vidpop.classList.remove('visible');
+      vidpop.setAttribute('aria-hidden', 'true');
+      vidpopVideo.pause();
+      vidpopVideo.removeAttribute('src');
+      vidpopVideo.load();
+    }
+
     // Interaction
     let dragging = false;
     let dragMoved = false;
@@ -296,6 +415,10 @@ import { places } from '@/data/photos';
       canvas.classList.add('grabbing');
     });
 
+    // Devices that don't support hover (touch primarily) get tap-to-preview;
+    // devices with hover get hover-to-preview.
+    const hoverSupported = window.matchMedia('(hover: hover)').matches;
+
     canvas.addEventListener('pointermove', (e) => {
       setPointer(e);
       if (dragging) {
@@ -308,8 +431,15 @@ import { places } from '@/data/photos';
         targetRotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotX));
         lastX = e.clientX; lastY = e.clientY;
       } else {
-        // Just update cursor when hovering a pin — no tooltip label
-        canvas.style.cursor = pinUnderPointer() ? 'pointer' : '';
+        const hp = pinUnderPointer();
+        canvas.style.cursor = hp ? 'pointer' : '';
+        if (hoverSupported) {
+          if (hp && hp.hasVideo) {
+            showVidpop(hp.place, e.clientX, e.clientY);
+          } else if (hoveredPlaceSlug !== null) {
+            hideVidpop();
+          }
+        }
       }
     });
 
@@ -320,12 +450,24 @@ import { places } from '@/data/photos';
       if (!dragMoved) {
         setPointer(e);
         const hp = pinUnderPointer();
-        if (hp) zoomTo(hp.place);
+        if (hp) {
+          // Touch path: first tap on a video pin previews; tapping again zooms in.
+          if (!hoverSupported && hp.hasVideo && hoveredPlaceSlug !== hp.place.slug) {
+            showVidpop(hp.place, e.clientX, e.clientY);
+          } else {
+            hideVidpop();
+            zoomTo(hp.place);
+          }
+        } else if (!hoverSupported) {
+          // Tap outside a pin dismisses an open preview
+          hideVidpop();
+        }
       }
     });
 
     canvas.addEventListener('pointerleave', () => {
       canvas.style.cursor = '';
+      if (hoverSupported) hideVidpop();
     });
 
     document.getElementById('pg-close')?.addEventListener('click', zoomOut);
@@ -395,8 +537,9 @@ import { places } from '@/data/photos';
         borderMat.color.setHex(borderCol());
         accentLineMat.color.setHex(accent());
         pins.forEach(p => {
-          ((p.mesh.material as THREE.MeshBasicMaterial)).color.setHex(pinCol());
-          ((p.halo.material as THREE.MeshBasicMaterial)).color.setHex(pinCol());
+          const c = p.hasVideo ? videoPinCol() : pinCol();
+          ((p.mesh.material as THREE.MeshBasicMaterial)).color.setHex(c);
+          ((p.halo.material as THREE.MeshBasicMaterial)).color.setHex(c);
         });
       });
       mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });

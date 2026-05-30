@@ -7,6 +7,10 @@
 
 export type Photo = { file: string; caption?: string };
 
+// Optional looping video shown on hover/tap for special pins.
+// File lives under /public/photos/videos/<file>.
+export type Video = { file: string; description?: string };
+
 export type Place = {
   slug: string;
   name: string;
@@ -15,6 +19,7 @@ export type Place = {
   year?: string;
   blurb?: string;
   photos: Photo[];
+  video?: Video;
 };
 
 export const places: Place[] = [
@@ -70,6 +75,18 @@ export const places: Place[] = [
     ],
   },
   {
+    slug: 'izalco',
+    name: 'Mount Izalco, El Salvador',
+    lat: 13.8126,
+    lon: -89.6321,
+    blurb: 'Lighthouse of the Pacific.',
+    video: {
+      file: 'Izalco.mp4',
+      description: 'A stratovolcano in western El Salvador, dormant since 1958, once called the Lighthouse of the Pacific for the eruptions visible from sea.',
+    },
+    photos: [],
+  },
+  {
     slug: 'cerroverde',
     name: 'Cerro Verde National Park, El Salvador',
     lat: 13.8264,
@@ -97,6 +114,10 @@ export const places: Place[] = [
     lat: -29.8587,
     lon: 31.0218,
     blurb: 'Land of King Shaka.',
+    video: {
+      file: 'Durban.mp4',
+      description: "South Africa's largest port, on the warm-water Indian Ocean coast and the historic seat of the Zulu kingdom.",
+    },
     photos: [
       { file: 'IMG_6633.jpeg' },
       { file: 'IMG_6643.jpeg' },
