@@ -99,8 +99,8 @@ import { places } from '@/data/photos';
 
   /* Video preview popup: appears next to orange (video) pins on hover/tap */
   .pg-vidpop {
-    position: absolute;
-    z-index: 5;
+    position: fixed;
+    z-index: 50;
     display: flex;
     gap: 0.75rem;
     align-items: center;
@@ -163,8 +163,8 @@ import { places } from '@/data/photos';
 
   /* Cluster inset: zoomed-in mini-globe view of the hovered region */
   .pg-cluster {
-    position: absolute;
-    z-index: 6;
+    position: fixed;
+    z-index: 51;
     width: 280px;
     padding: 0.5rem 0.6rem 0.6rem;
     background: rgba(255,255,255,0.95);
@@ -365,26 +365,60 @@ import { places } from '@/data/photos';
     }
     const CLUSTER_DEG = 1.5; // pins within 1.5° (~165km) of each other count as clustered
 
+    // Three.js layers: main camera sees borders/lakes/ocean (layer 0) + big pins (layer 2).
+    // Magnifier camera sees borders/lakes/ocean (layer 0) + a smaller set of pins (layer 1).
+    // Layer 0 is default for every object, so we only have to set layers on the pins.
+    const LAYER_BIG_PINS = 2;
+    const LAYER_SMALL_PINS = 1;
+    camera.layers.enable(LAYER_BIG_PINS);
     // Pins — interactive. Orange when the place has a video, yellow otherwise.
-    const pins: { mesh: THREE.Mesh; halo: THREE.Mesh; place: Place; hasVideo: boolean }[] = [];
+    // We create two copies of each pin so the magnifier can use a smaller geometry
+    // (the large 3D spheres look correct at globe scale but balloon to fill the
+    // viewport when the camera is close, which is what the magnifier does).
+    const pins: {
+      mesh: THREE.Mesh; halo: THREE.Mesh;
+      smallMesh: THREE.Mesh; smallHalo: THREE.Mesh;
+      place: Place; hasVideo: boolean;
+    }[] = [];
     places.forEach((place) => {
       const pos = latLonToVec3(place.lat, place.lon, 1.015);
       const hasVideo = !!place.video;
       const col = hasVideo ? videoPinCol() : pinCol();
+      const haloOpacity = hasVideo ? 0.4 : 0.32;
+
+      // Big pin (main view only)
       const mat = new THREE.MeshBasicMaterial({ color: col });
       const pin = new THREE.Mesh(new THREE.SphereGeometry(0.013, 16, 16), mat);
       pin.position.copy(pos);
+      pin.layers.set(LAYER_BIG_PINS);
       (pin as any).userData = { place };
       group.add(pin);
 
       const halo = new THREE.Mesh(
         new THREE.SphereGeometry(0.028, 16, 16),
-        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: hasVideo ? 0.4 : 0.32 })
+        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: haloOpacity })
       );
       halo.position.copy(pos);
+      halo.layers.set(LAYER_BIG_PINS);
       group.add(halo);
 
-      pins.push({ mesh: pin, halo, place, hasVideo });
+      // Small pin (magnifier view only) — ~1/3 the size so it doesn't dominate the frame
+      const smallMat = new THREE.MeshBasicMaterial({ color: col });
+      const smallMesh = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 16, 16), smallMat);
+      smallMesh.position.copy(pos);
+      smallMesh.layers.set(LAYER_SMALL_PINS);
+      (smallMesh as any).userData = { place };
+      group.add(smallMesh);
+
+      const smallHalo = new THREE.Mesh(
+        new THREE.SphereGeometry(0.009, 16, 16),
+        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: haloOpacity })
+      );
+      smallHalo.position.copy(pos);
+      smallHalo.layers.set(LAYER_SMALL_PINS);
+      group.add(smallHalo);
+
+      pins.push({ mesh: pin, halo, smallMesh, smallHalo, place, hasVideo });
     });
 
     // Precompute clusters: for each place, list all places within CLUSTER_DEG (including self).
@@ -412,6 +446,7 @@ import { places } from '@/data/photos';
     }
 
     function pinUnderPointer(): typeof pins[number] | null {
+      raycaster.layers.set(LAYER_BIG_PINS); // ignore the magnifier-only small pins
       raycaster.setFromCamera(pointer, camera);
       const targets = pins.flatMap(p => [p.mesh, p.halo]);
       const hits = raycaster.intersectObjects(targets, false);
@@ -490,15 +525,16 @@ import { places } from '@/data/photos';
         vidpopDesc.textContent = place.video.description || place.blurb || '';
         vidpopVideo.play().catch(() => {/* autoplay can fail; ignore */});
       }
-      // Position relative to canvas wrapper, with a small offset so the popup doesn't sit on top of the pin
-      const wrapRect = wrap.getBoundingClientRect();
-      const popW = 320;
+      // Viewport-fixed positioning. Anchor next to the (screenX, screenY) point,
+      // clamped inside the viewport so the popup never gets cut off.
+      const popW = vidpop.offsetWidth || 320;
       const popH = vidpop.offsetHeight || 110;
-      let left = screenX - wrapRect.left + 18;
-      let top = screenY - wrapRect.top - popH / 2;
-      // Clamp inside the wrapper
-      left = Math.max(0, Math.min(left, wrapRect.width - popW));
-      top = Math.max(0, Math.min(top, wrapRect.height - popH));
+      const margin = 8;
+      let left = screenX + 18;
+      let top = screenY - popH / 2;
+      if (left + popW > window.innerWidth - margin) left = screenX - popW - 18;
+      left = Math.max(margin, Math.min(left, window.innerWidth - popW - margin));
+      top = Math.max(margin, Math.min(top, window.innerHeight - popH - margin));
       vidpop.style.left = `${left}px`;
       vidpop.style.top = `${top}px`;
       vidpop.classList.add('visible');
@@ -532,6 +568,7 @@ import { places } from '@/data/photos';
       // Narrow FOV ~= telephoto; tight distance ~= satellite-zoomed-in.
       // Together these frame a country-sized region (~3 deg arc).
       magCamera = new THREE.PerspectiveCamera(7, 1, 0.01, 100);
+      magCamera.layers.enable(LAYER_SMALL_PINS);
     }
 
     function showCluster(members: Place[], anchorScreenX: number, anchorScreenY: number, anchorSlug: string) {
@@ -546,14 +583,29 @@ import { places } from '@/data/photos';
       const hovered = members.find(m => m.slug === anchorSlug);
       if (clusterLabel) clusterLabel.textContent = hovered?.name || '';
 
+      // Viewport-fixed positioning. Place beside the globe wrap when there's room,
+      // otherwise above/below it, so the popup never sits on top of the map.
       const wrapRect = wrap.getBoundingClientRect();
-      const popW = 280;
-      const popH = cluster.offsetHeight || 320;
-      let left = anchorScreenX - wrapRect.left + 18;
-      let top = anchorScreenY - wrapRect.top - popH / 2;
-      if (left + popW > wrapRect.width) left = anchorScreenX - wrapRect.left - popW - 18;
-      left = Math.max(0, Math.min(left, wrapRect.width - popW));
-      top = Math.max(0, Math.min(top, wrapRect.height - popH));
+      const popW = cluster.offsetWidth || 280;
+      const popH = cluster.offsetHeight || 340;
+      const margin = 12;
+      const rightSpace = window.innerWidth - wrapRect.right - margin;
+      const leftSpace = wrapRect.left - margin;
+      let left: number, top: number;
+      if (rightSpace >= popW) {
+        left = wrapRect.right + margin;
+        top = wrapRect.top + (wrapRect.height - popH) / 2;
+      } else if (leftSpace >= popW) {
+        left = wrapRect.left - popW - margin;
+        top = wrapRect.top + (wrapRect.height - popH) / 2;
+      } else {
+        // No side room (mobile): drop the popup below the globe
+        left = wrapRect.left + (wrapRect.width - popW) / 2;
+        top = wrapRect.bottom + margin;
+      }
+      // Final clamp inside the viewport
+      left = Math.max(margin, Math.min(left, window.innerWidth - popW - margin));
+      top = Math.max(margin, Math.min(top, window.innerHeight - popH - margin));
       cluster.style.left = `${left}px`;
       cluster.style.top = `${top}px`;
       cluster.classList.add('visible');
@@ -576,12 +628,13 @@ import { places } from '@/data/photos';
         -(((e.clientY - rect.top) / rect.height) * 2 - 1),
       );
       const rc = new THREE.Raycaster();
+      rc.layers.set(LAYER_SMALL_PINS); // only hit-test the small magnifier-only pins
       rc.setFromCamera(p, magCamera);
-      const targets = pins.flatMap(pn => [pn.mesh, pn.halo]);
+      const targets = pins.flatMap(pn => [pn.smallMesh, pn.smallHalo]);
       const hits = rc.intersectObjects(targets, false);
       if (hits.length === 0) return null;
       const hit = hits[0].object;
-      return pins.find(pn => pn.mesh === hit || pn.halo === hit) ?? null;
+      return pins.find(pn => pn.smallMesh === hit || pn.smallHalo === hit) ?? null;
     }
 
     clusterCanvas?.addEventListener('pointermove', (e) => {
@@ -752,10 +805,11 @@ import { places } from '@/data/photos';
       group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
       camera.position.z += (targetCamZ - camera.position.z) * 0.08;
 
-      // Pulse halos so pins draw the eye
+      // Pulse halos so pins draw the eye (both the big and the magnifier-only small ones)
       pins.forEach((p, i) => {
         const s = 1 + Math.sin(t * 2 + i) * 0.15;
         p.halo.scale.setScalar(s);
+        p.smallHalo.scale.setScalar(s);
       });
 
       renderer.render(scene, camera);
@@ -811,6 +865,8 @@ import { places } from '@/data/photos';
           const c = p.hasVideo ? videoPinCol() : pinCol();
           ((p.mesh.material as THREE.MeshBasicMaterial)).color.setHex(c);
           ((p.halo.material as THREE.MeshBasicMaterial)).color.setHex(c);
+          ((p.smallMesh.material as THREE.MeshBasicMaterial)).color.setHex(c);
+          ((p.smallHalo.material as THREE.MeshBasicMaterial)).color.setHex(c);
         });
       });
       mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
