@@ -12,10 +12,11 @@ import { places } from '@/data/photos';
       <div id="pg-vidpop-desc" class="pg-vidpop-desc"></div>
     </div>
   </div>
-  <!-- Cluster inset: shows a zoomed-in spread of nearby pins so users can pick the one they want -->
+  <!-- Cluster inset: zoomed-in 3D view of the hovered region so users can pick overlapping pins -->
   <div id="pg-cluster" class="pg-cluster" aria-hidden="true">
-    <div class="pg-cluster-title">Pins nearby</div>
-    <ul id="pg-cluster-list" class="pg-cluster-list"></ul>
+    <div class="pg-cluster-title">Zoomed in</div>
+    <canvas id="pg-cluster-canvas" class="pg-cluster-canvas" width="280" height="280"></canvas>
+    <div id="pg-cluster-label" class="pg-cluster-label"></div>
   </div>
 </div>
 <p id="pg-hint" class="mt-5 text-center text-xs font-sans opacity-50 transition-opacity">
@@ -158,13 +159,12 @@ import { places } from '@/data/photos';
   }
   :global(.dark) .pg-panel-video { background: rgba(255,255,255,0.05); }
 
-  /* Cluster inset: appears when hovering a pin that sits near others */
+  /* Cluster inset: zoomed-in mini-globe view of the hovered region */
   .pg-cluster {
     position: absolute;
     z-index: 6;
-    width: 220px;
-    max-width: calc(100vw - 2rem);
-    padding: 0.6rem 0.75rem;
+    width: 280px;
+    padding: 0.5rem 0.6rem 0.6rem;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(0,0,0,0.08);
@@ -193,31 +193,24 @@ import { places } from '@/data/photos';
     opacity: 0.55;
     margin-bottom: 0.4rem;
   }
-  .pg-cluster-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .pg-cluster-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.4rem;
-    margin: 0 -0.4rem;
-    border-radius: 6px;
-    font-family: var(--font-serif);
-    font-size: 0.88rem;
-    line-height: 1.25;
+  .pg-cluster-canvas {
+    display: block;
+    width: 268px;
+    height: 268px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s;
+    background: rgba(0,0,0,0.04);
   }
-  .pg-cluster-item:hover { background: rgba(0,0,0,0.06); }
-  :global(.dark) .pg-cluster-item:hover { background: rgba(255,255,255,0.08); }
-  .pg-cluster-dot {
-    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  :global(.dark) .pg-cluster-canvas { background: rgba(255,255,255,0.04); }
+  .pg-cluster-label {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    line-height: 1.25;
+    margin-top: 0.45rem;
+    min-height: 1.1em;
+    opacity: 0.85;
+    text-align: center;
   }
-  .pg-cluster-dot.video { background: #ff7a18; }
-  .pg-cluster-dot.photo { background: #f0b000; }
 </style>
 
 <script>
@@ -487,27 +480,41 @@ import { places } from '@/data/photos';
       vidpopVideo.load();
     }
 
-    // Cluster inset: when hovering a pin that has nearby siblings, show a small
-    // list panel so the user can pick the specific pin even if they overlap.
+    // Cluster magnifier: a small second 3D render of the same scene, zoomed in
+    // on the hovered region so overlapping pins separate visually. Click a pin
+    // inside the magnifier to zoom to that place.
     const cluster = document.getElementById('pg-cluster') as HTMLDivElement | null;
-    const clusterList = document.getElementById('pg-cluster-list') as HTMLUListElement | null;
+    const clusterCanvas = document.getElementById('pg-cluster-canvas') as HTMLCanvasElement | null;
+    const clusterLabel = document.getElementById('pg-cluster-label') as HTMLDivElement | null;
     let clusterShownForSlug: string | null = null;
+    let clusterMembers: Place[] = [];
+    let clusterCenterLocal = new THREE.Vector3(); // center of cluster in local (group) coords
+    let magRenderer: THREE.WebGLRenderer | null = null;
+    let magCamera: THREE.PerspectiveCamera | null = null;
+    if (clusterCanvas) {
+      magRenderer = new THREE.WebGLRenderer({ canvas: clusterCanvas, alpha: true, antialias: true });
+      magRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      magRenderer.setSize(268, 268, false);
+      magCamera = new THREE.PerspectiveCamera(14, 1, 0.1, 100);
+    }
+
     function showCluster(members: Place[], anchorScreenX: number, anchorScreenY: number, anchorSlug: string) {
-      if (!cluster || !clusterList) return;
-      if (clusterShownForSlug !== anchorSlug) {
-        clusterShownForSlug = anchorSlug;
-        clusterList.innerHTML = members
-          .map(m => `<li class="pg-cluster-item" data-slug="${m.slug}">` +
-            `<span class="pg-cluster-dot ${m.video ? 'video' : 'photo'}"></span>` +
-            `<span>${m.name}</span></li>`)
-          .join('');
-      }
+      if (!cluster) return;
+      clusterShownForSlug = anchorSlug;
+      clusterMembers = members;
+      // Compute the cluster center in lat/lon (mean of members), convert to local sphere coords
+      const centerLat = members.reduce((s, m) => s + m.lat, 0) / members.length;
+      const centerLon = members.reduce((s, m) => s + m.lon, 0) / members.length;
+      clusterCenterLocal = latLonToVec3(centerLat, centerLon, 1).normalize();
+      // Update the label with the hovered place's name
+      const hovered = members.find(m => m.slug === anchorSlug);
+      if (clusterLabel) clusterLabel.textContent = hovered?.name || '';
+
       const wrapRect = wrap.getBoundingClientRect();
-      const popW = 220;
-      const popH = cluster.offsetHeight || 120;
+      const popW = 280;
+      const popH = cluster.offsetHeight || 320;
       let left = anchorScreenX - wrapRect.left + 18;
       let top = anchorScreenY - wrapRect.top - popH / 2;
-      // Try right side first; if it overflows, flip to left
       if (left + popW > wrapRect.width) left = anchorScreenX - wrapRect.left - popW - 18;
       left = Math.max(0, Math.min(left, wrapRect.width - popW));
       top = Math.max(0, Math.min(top, wrapRect.height - popH));
@@ -519,22 +526,47 @@ import { places } from '@/data/photos';
     function hideCluster() {
       if (!cluster) return;
       clusterShownForSlug = null;
+      clusterMembers = [];
       cluster.classList.remove('visible');
       cluster.setAttribute('aria-hidden', 'true');
     }
-    // Clicking a cluster item zooms to that place
-    clusterList?.addEventListener('click', (e) => {
-      const li = (e.target as HTMLElement).closest('.pg-cluster-item') as HTMLElement | null;
-      if (!li) return;
-      const slug = li.dataset.slug;
-      const place = places.find(p => p.slug === slug);
-      if (place) {
+
+    // Pick a pin from a pointer event over the magnifier canvas
+    function pinUnderMagPointer(e: PointerEvent): typeof pins[number] | null {
+      if (!clusterCanvas || !magCamera) return null;
+      const rect = clusterCanvas.getBoundingClientRect();
+      const p = new THREE.Vector2(
+        ((e.clientX - rect.left) / rect.width) * 2 - 1,
+        -(((e.clientY - rect.top) / rect.height) * 2 - 1),
+      );
+      const rc = new THREE.Raycaster();
+      rc.setFromCamera(p, magCamera);
+      const targets = pins.flatMap(pn => [pn.mesh, pn.halo]);
+      const hits = rc.intersectObjects(targets, false);
+      if (hits.length === 0) return null;
+      const hit = hits[0].object;
+      return pins.find(pn => pn.mesh === hit || pn.halo === hit) ?? null;
+    }
+
+    clusterCanvas?.addEventListener('pointermove', (e) => {
+      const hp = pinUnderMagPointer(e);
+      if (clusterCanvas) clusterCanvas.style.cursor = hp ? 'pointer' : 'default';
+      if (hp && clusterLabel) clusterLabel.textContent = hp.place.name;
+    });
+    clusterCanvas?.addEventListener('pointerleave', () => {
+      // Reset label to the originally hovered place
+      const hovered = clusterMembers.find(m => m.slug === clusterShownForSlug);
+      if (clusterLabel) clusterLabel.textContent = hovered?.name || '';
+    });
+    clusterCanvas?.addEventListener('click', (e) => {
+      const hp = pinUnderMagPointer(e);
+      if (hp) {
         hideCluster();
         hideVidpop();
-        zoomTo(place);
+        zoomTo(hp.place);
       }
     });
-    // Keep popups alive while the cursor is over them (so the user can actually click items)
+    // Keep popups alive while the cursor is over them
     cluster?.addEventListener('pointerenter', () => { pointerOnPinOrPopup = true; });
     cluster?.addEventListener('pointerleave', () => {
       pointerOnPinOrPopup = false;
@@ -672,6 +704,17 @@ import { places } from '@/data/photos';
       });
 
       renderer.render(scene, camera);
+
+      // Magnifier render: same scene, camera aimed at the hovered cluster from closer in
+      if (magRenderer && magCamera && clusterShownForSlug) {
+        // World position of the cluster center (after current group rotation)
+        const worldCenter = clusterCenterLocal.clone().applyMatrix4(group.matrixWorld);
+        // Place camera in the same direction as the cluster center but much closer to the surface
+        magCamera.position.copy(worldCenter).normalize().multiplyScalar(1.55);
+        magCamera.lookAt(0, 0, 0);
+        magRenderer.render(scene, magCamera);
+      }
+
       raf = requestAnimationFrame(loop);
     }
     loop();

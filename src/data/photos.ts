@@ -75,23 +75,15 @@ export const places: Place[] = [
     ],
   },
   {
-    slug: 'izalco',
-    name: 'Mount Izalco, El Salvador',
-    lat: 13.8126,
-    lon: -89.6321,
-    blurb: 'Lighthouse of the Pacific.',
-    video: {
-      file: 'Izalco.mp4',
-      description: 'A stratovolcano in western El Salvador, dormant since 1958, once called the Lighthouse of the Pacific for the eruptions visible from sea.',
-    },
-    photos: [],
-  },
-  {
     slug: 'cerroverde',
     name: 'Cerro Verde National Park, El Salvador',
     lat: 13.8264,
     lon: -89.6242,
     blurb: 'Land of volcanoes.',
+    video: {
+      file: 'Izalco.mp4',
+      description: 'Cerro Verde sits beside Mount Izalco, a stratovolcano dormant since 1958 and once called the Lighthouse of the Pacific for the eruptions visible from sea.',
+    },
     photos: [
       { file: 'IMG_0955.jpeg' },
       { file: 'IMG_0983.jpeg' },
