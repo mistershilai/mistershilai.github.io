@@ -6,6 +6,7 @@ import { places } from '@/data/photos';
   <canvas id="pg-canvas" class="w-full h-full rounded-full cursor-grab" data-places={JSON.stringify(places)}></canvas>
   <div class="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_80px_rgba(0,119,190,0.2)]"></div>
   <div id="pg-vidpop" class="pg-vidpop" aria-hidden="true">
+    <button id="pg-vidpop-close" class="pg-popup-close" aria-label="Close preview">×</button>
     <video id="pg-vidpop-video" class="pg-vidpop-video" muted loop playsinline preload="metadata"></video>
     <div class="pg-vidpop-meta">
       <div id="pg-vidpop-title" class="pg-vidpop-title"></div>
@@ -14,6 +15,7 @@ import { places } from '@/data/photos';
   </div>
   <!-- Cluster inset: zoomed-in 3D view of the hovered region so users can pick overlapping pins -->
   <div id="pg-cluster" class="pg-cluster" aria-hidden="true">
+    <button id="pg-cluster-close" class="pg-popup-close" aria-label="Close zoomed view">×</button>
     <div class="pg-cluster-title">Zoomed in</div>
     <canvas id="pg-cluster-canvas" class="pg-cluster-canvas" width="280" height="280"></canvas>
     <div id="pg-cluster-label" class="pg-cluster-label"></div>
@@ -210,6 +212,38 @@ import { places } from '@/data/photos';
     min-height: 1.1em;
     opacity: 0.85;
     text-align: center;
+  }
+
+  /* Small close button shared by both popups (helps touch users) */
+  .pg-popup-close {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.12);
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  .pg-popup-close:hover { opacity: 1; background: rgba(0,0,0,0.05); }
+  :global(.dark) .pg-popup-close { border-color: rgba(255,255,255,0.18); }
+  :global(.dark) .pg-popup-close:hover { background: rgba(255,255,255,0.1); }
+
+  /* Narrow viewport: shrink popups so they don't crowd a small wrap */
+  @media (max-width: 480px) {
+    .pg-vidpop { width: 260px; }
+    .pg-vidpop-video { width: 96px; height: 72px; }
+    .pg-cluster { width: 240px; }
+    .pg-cluster-canvas { width: 228px; height: 228px; }
   }
 </style>
 
@@ -495,7 +529,9 @@ import { places } from '@/data/photos';
       magRenderer = new THREE.WebGLRenderer({ canvas: clusterCanvas, alpha: true, antialias: true });
       magRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       magRenderer.setSize(268, 268, false);
-      magCamera = new THREE.PerspectiveCamera(14, 1, 0.1, 100);
+      // Narrow FOV ~= telephoto; tight distance ~= satellite-zoomed-in.
+      // Together these frame a country-sized region (~3 deg arc).
+      magCamera = new THREE.PerspectiveCamera(7, 1, 0.01, 100);
     }
 
     function showCluster(members: Place[], anchorScreenX: number, anchorScreenY: number, anchorSlug: string) {
@@ -552,11 +588,20 @@ import { places } from '@/data/photos';
       const hp = pinUnderMagPointer(e);
       if (clusterCanvas) clusterCanvas.style.cursor = hp ? 'pointer' : 'default';
       if (hp && clusterLabel) clusterLabel.textContent = hp.place.name;
+      // If the magnifier-hovered pin has a video, show the preview anchored next to the magnifier
+      if (hp && hp.hasVideo && cluster) {
+        const cRect = cluster.getBoundingClientRect();
+        showVidpop(hp.place, cRect.right, cRect.top + cRect.height / 2);
+      } else if (hoveredPlaceSlug !== null) {
+        hideVidpop();
+      }
     });
     clusterCanvas?.addEventListener('pointerleave', () => {
       // Reset label to the originally hovered place
       const hovered = clusterMembers.find(m => m.slug === clusterShownForSlug);
       if (clusterLabel) clusterLabel.textContent = hovered?.name || '';
+      // Don't auto-hide the vidpop if the cursor moved INTO it; its own pointerenter
+      // sets pointerOnPinOrPopup and its pointerleave will hide it.
     });
     clusterCanvas?.addEventListener('click', (e) => {
       const hp = pinUnderMagPointer(e);
@@ -575,6 +620,16 @@ import { places } from '@/data/photos';
     vidpop?.addEventListener('pointerenter', () => { pointerOnPinOrPopup = true; });
     vidpop?.addEventListener('pointerleave', () => {
       pointerOnPinOrPopup = false;
+      hideVidpop();
+    });
+    // Close buttons (especially helpful on touch where "tap outside" is non-obvious)
+    document.getElementById('pg-vidpop-close')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hideVidpop();
+    });
+    document.getElementById('pg-cluster-close')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hideCluster();
       hideVidpop();
     });
 
@@ -709,9 +764,10 @@ import { places } from '@/data/photos';
       if (magRenderer && magCamera && clusterShownForSlug) {
         // World position of the cluster center (after current group rotation)
         const worldCenter = clusterCenterLocal.clone().applyMatrix4(group.matrixWorld);
-        // Place camera in the same direction as the cluster center but much closer to the surface
-        magCamera.position.copy(worldCenter).normalize().multiplyScalar(1.55);
-        magCamera.lookAt(0, 0, 0);
+        // Camera sits 1.3 units from origin in the cluster's direction (just above the
+        // sphere surface) and looks at the cluster center itself so it stays framed.
+        magCamera.position.copy(worldCenter).normalize().multiplyScalar(1.3);
+        magCamera.lookAt(worldCenter);
         magRenderer.render(scene, magCamera);
       }
 
