@@ -12,6 +12,11 @@ import { places } from '@/data/photos';
       <div id="pg-vidpop-desc" class="pg-vidpop-desc"></div>
     </div>
   </div>
+  <!-- Cluster inset: shows a zoomed-in spread of nearby pins so users can pick the one they want -->
+  <div id="pg-cluster" class="pg-cluster" aria-hidden="true">
+    <div class="pg-cluster-title">Pins nearby</div>
+    <ul id="pg-cluster-list" class="pg-cluster-list"></ul>
+  </div>
 </div>
 <p id="pg-hint" class="mt-5 text-center text-xs font-sans opacity-50 transition-opacity">
   click a pin to zoom · drag to rotate
@@ -152,6 +157,67 @@ import { places } from '@/data/photos';
     margin-bottom: 1rem;
   }
   :global(.dark) .pg-panel-video { background: rgba(255,255,255,0.05); }
+
+  /* Cluster inset: appears when hovering a pin that sits near others */
+  .pg-cluster {
+    position: absolute;
+    z-index: 6;
+    width: 220px;
+    max-width: calc(100vw - 2rem);
+    padding: 0.6rem 0.75rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+  }
+  :global(.dark) .pg-cluster {
+    background: rgba(23,27,34,0.92);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+  }
+  .pg-cluster.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .pg-cluster-title {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.55;
+    margin-bottom: 0.4rem;
+  }
+  .pg-cluster-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pg-cluster-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.4rem;
+    margin: 0 -0.4rem;
+    border-radius: 6px;
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .pg-cluster-item:hover { background: rgba(0,0,0,0.06); }
+  :global(.dark) .pg-cluster-item:hover { background: rgba(255,255,255,0.08); }
+  .pg-cluster-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .pg-cluster-dot.video { background: #ff7a18; }
+  .pg-cluster-dot.photo { background: #f0b000; }
 </style>
 
 <script>
@@ -160,7 +226,7 @@ import { places } from '@/data/photos';
 
   const VISITED_IDS = new Set([
     '076', '710', '072', '516', '716', '894', '634', '156', '356', '352',
-    '124', '840', '044', '792', '392', '426',
+    '124', '840', '044', '792', '392', '426', '222',
   ]);
 
   type Video = { file: string; description?: string };
@@ -262,6 +328,16 @@ import { places } from '@/data/photos';
     );
     group.add(ocean);
 
+    // Great-circle distance (degrees) between two lat/lon points.
+    function gcDeg(lat1: number, lon1: number, lat2: number, lon2: number) {
+      const toRad = Math.PI / 180;
+      const a = Math.sin((lat2 - lat1) * toRad / 2) ** 2 +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+        Math.sin((lon2 - lon1) * toRad / 2) ** 2;
+      return 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * 180 / Math.PI;
+    }
+    const CLUSTER_DEG = 1.5; // pins within 1.5° (~165km) of each other count as clustered
+
     // Pins — interactive. Orange when the place has a video, yellow otherwise.
     const pins: { mesh: THREE.Mesh; halo: THREE.Mesh; place: Place; hasVideo: boolean }[] = [];
     places.forEach((place) => {
@@ -283,6 +359,15 @@ import { places } from '@/data/photos';
 
       pins.push({ mesh: pin, halo, place, hasVideo });
     });
+
+    // Precompute clusters: for each place, list all places within CLUSTER_DEG (including self).
+    const clusterFor = new Map<string, Place[]>();
+    for (const p of pins) {
+      const neighbors = pins
+        .filter(q => gcDeg(p.place.lat, p.place.lon, q.place.lat, q.place.lon) <= CLUSTER_DEG)
+        .map(q => q.place);
+      clusterFor.set(p.place.slug, neighbors);
+    }
 
     // Camera + rotation targets
     let targetRotY = 0, targetRotX = 0.3;
@@ -366,6 +451,8 @@ import { places } from '@/data/photos';
     const vidpopTitle = document.getElementById('pg-vidpop-title') as HTMLDivElement | null;
     const vidpopDesc = document.getElementById('pg-vidpop-desc') as HTMLDivElement | null;
     let hoveredPlaceSlug: string | null = null;
+    // True whenever the cursor is on a pin OR over an open popup — used to pause auto-rotation
+    let pointerOnPinOrPopup = false;
 
     function showVidpop(place: Place, screenX: number, screenY: number) {
       if (!vidpop || !vidpopVideo || !vidpopTitle || !vidpopDesc || !place.video) return;
@@ -400,6 +487,65 @@ import { places } from '@/data/photos';
       vidpopVideo.load();
     }
 
+    // Cluster inset: when hovering a pin that has nearby siblings, show a small
+    // list panel so the user can pick the specific pin even if they overlap.
+    const cluster = document.getElementById('pg-cluster') as HTMLDivElement | null;
+    const clusterList = document.getElementById('pg-cluster-list') as HTMLUListElement | null;
+    let clusterShownForSlug: string | null = null;
+    function showCluster(members: Place[], anchorScreenX: number, anchorScreenY: number, anchorSlug: string) {
+      if (!cluster || !clusterList) return;
+      if (clusterShownForSlug !== anchorSlug) {
+        clusterShownForSlug = anchorSlug;
+        clusterList.innerHTML = members
+          .map(m => `<li class="pg-cluster-item" data-slug="${m.slug}">` +
+            `<span class="pg-cluster-dot ${m.video ? 'video' : 'photo'}"></span>` +
+            `<span>${m.name}</span></li>`)
+          .join('');
+      }
+      const wrapRect = wrap.getBoundingClientRect();
+      const popW = 220;
+      const popH = cluster.offsetHeight || 120;
+      let left = anchorScreenX - wrapRect.left + 18;
+      let top = anchorScreenY - wrapRect.top - popH / 2;
+      // Try right side first; if it overflows, flip to left
+      if (left + popW > wrapRect.width) left = anchorScreenX - wrapRect.left - popW - 18;
+      left = Math.max(0, Math.min(left, wrapRect.width - popW));
+      top = Math.max(0, Math.min(top, wrapRect.height - popH));
+      cluster.style.left = `${left}px`;
+      cluster.style.top = `${top}px`;
+      cluster.classList.add('visible');
+      cluster.setAttribute('aria-hidden', 'false');
+    }
+    function hideCluster() {
+      if (!cluster) return;
+      clusterShownForSlug = null;
+      cluster.classList.remove('visible');
+      cluster.setAttribute('aria-hidden', 'true');
+    }
+    // Clicking a cluster item zooms to that place
+    clusterList?.addEventListener('click', (e) => {
+      const li = (e.target as HTMLElement).closest('.pg-cluster-item') as HTMLElement | null;
+      if (!li) return;
+      const slug = li.dataset.slug;
+      const place = places.find(p => p.slug === slug);
+      if (place) {
+        hideCluster();
+        hideVidpop();
+        zoomTo(place);
+      }
+    });
+    // Keep popups alive while the cursor is over them (so the user can actually click items)
+    cluster?.addEventListener('pointerenter', () => { pointerOnPinOrPopup = true; });
+    cluster?.addEventListener('pointerleave', () => {
+      pointerOnPinOrPopup = false;
+      hideCluster();
+    });
+    vidpop?.addEventListener('pointerenter', () => { pointerOnPinOrPopup = true; });
+    vidpop?.addEventListener('pointerleave', () => {
+      pointerOnPinOrPopup = false;
+      hideVidpop();
+    });
+
     // Interaction
     let dragging = false;
     let dragMoved = false;
@@ -433,11 +579,24 @@ import { places } from '@/data/photos';
       } else {
         const hp = pinUnderPointer();
         canvas.style.cursor = hp ? 'pointer' : '';
+        pointerOnPinOrPopup = !!hp;
         if (hoverSupported) {
-          if (hp && hp.hasVideo) {
-            showVidpop(hp.place, e.clientX, e.clientY);
-          } else if (hoveredPlaceSlug !== null) {
-            hideVidpop();
+          if (hp) {
+            const members = clusterFor.get(hp.place.slug) || [hp.place];
+            if (members.length > 1) {
+              showCluster(members, e.clientX, e.clientY, hp.place.slug);
+            } else if (clusterShownForSlug !== null) {
+              hideCluster();
+            }
+            if (hp.hasVideo) {
+              showVidpop(hp.place, e.clientX, e.clientY);
+            } else if (hoveredPlaceSlug !== null) {
+              hideVidpop();
+            }
+          } else {
+            if (hoveredPlaceSlug !== null) hideVidpop();
+            // Don't auto-hide the cluster popup on pointer leaving the pin — the
+            // popup's own pointerleave handler will hide it when the cursor leaves it too.
           }
         }
       }
@@ -451,23 +610,35 @@ import { places } from '@/data/photos';
         setPointer(e);
         const hp = pinUnderPointer();
         if (hp) {
+          const members = clusterFor.get(hp.place.slug) || [hp.place];
+          const inCluster = members.length > 1;
           // Touch path: first tap on a video pin previews; tapping again zooms in.
+          // For clusters, first tap shows the list; second tap zooms.
           if (!hoverSupported && hp.hasVideo && hoveredPlaceSlug !== hp.place.slug) {
             showVidpop(hp.place, e.clientX, e.clientY);
+            if (inCluster) showCluster(members, e.clientX, e.clientY, hp.place.slug);
+          } else if (!hoverSupported && inCluster && clusterShownForSlug !== hp.place.slug) {
+            showCluster(members, e.clientX, e.clientY, hp.place.slug);
           } else {
             hideVidpop();
+            hideCluster();
             zoomTo(hp.place);
           }
         } else if (!hoverSupported) {
-          // Tap outside a pin dismisses an open preview
+          // Tap outside a pin dismisses open previews
           hideVidpop();
+          hideCluster();
         }
       }
     });
 
     canvas.addEventListener('pointerleave', () => {
       canvas.style.cursor = '';
-      if (hoverSupported) hideVidpop();
+      pointerOnPinOrPopup = false;
+      if (hoverSupported) {
+        hideVidpop();
+        // Note: cluster popup stays open if user is hovering it; its own pointerleave hides it.
+      }
     });
 
     document.getElementById('pg-close')?.addEventListener('click', zoomOut);
@@ -488,7 +659,8 @@ import { places } from '@/data/photos';
     let t = 0;
     function loop() {
       t += 0.016;
-      if (!dragging && !zoomed) targetRotY += 0.002;
+      // Auto-rotate unless dragging, zoomed in, or hovering a pin / popup
+      if (!dragging && !zoomed && !pointerOnPinOrPopup) targetRotY += 0.002;
       group.rotation.y += (targetRotY - group.rotation.y) * 0.08;
       group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
       camera.position.z += (targetCamZ - camera.position.z) * 0.08;
