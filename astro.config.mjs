@@ -10,6 +10,9 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   integrations: [mdx()],
+  redirects: {
+    '/hobbies': '/awards',
+  },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
