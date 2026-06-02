@@ -202,6 +202,7 @@ import { places } from '@/data/photos';
     border-radius: 8px;
     cursor: pointer;
     background: rgba(0,0,0,0.04);
+    touch-action: manipulation; /* avoid iOS double-tap-zoom delay */
   }
   :global(.dark) .pg-cluster-canvas { background: rgba(255,255,255,0.04); }
   .pg-cluster-label {
@@ -377,7 +378,7 @@ import { places } from '@/data/photos';
     // viewport when the camera is close, which is what the magnifier does).
     const pins: {
       mesh: THREE.Mesh; halo: THREE.Mesh;
-      smallMesh: THREE.Mesh; smallHalo: THREE.Mesh;
+      smallMesh: THREE.Mesh; smallHalo: THREE.Mesh; smallHit: THREE.Mesh;
       place: Place; hasVideo: boolean;
     }[] = [];
     places.forEach((place) => {
@@ -402,23 +403,35 @@ import { places } from '@/data/photos';
       halo.layers.set(LAYER_BIG_PINS);
       group.add(halo);
 
-      // Small pin (magnifier view only) — ~1/3 the size so it doesn't dominate the frame
+      // Small pin (magnifier view only) — tiny dot so adjacent cluster pins
+      // (San Salvador, Joya de Cerén, La Libertad are all within ~0.2 deg) stay
+      // visually separated in the zoomed-in view.
       const smallMat = new THREE.MeshBasicMaterial({ color: col });
-      const smallMesh = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 16, 16), smallMat);
+      const smallMesh = new THREE.Mesh(new THREE.SphereGeometry(0.0009, 12, 12), smallMat);
       smallMesh.position.copy(pos);
       smallMesh.layers.set(LAYER_SMALL_PINS);
       (smallMesh as any).userData = { place };
       group.add(smallMesh);
 
+      // Thin halo just to give it a subtle edge — kept tight so it doesn't overlap neighbors
       const smallHalo = new THREE.Mesh(
-        new THREE.SphereGeometry(0.009, 16, 16),
+        new THREE.SphereGeometry(0.0013, 12, 12),
         new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: haloOpacity })
       );
       smallHalo.position.copy(pos);
       smallHalo.layers.set(LAYER_SMALL_PINS);
       group.add(smallHalo);
 
-      pins.push({ mesh: pin, halo, smallMesh, smallHalo, place, hasVideo });
+      // Invisible larger hit target so taps still register easily on touch screens
+      const smallHit = new THREE.Mesh(
+        new THREE.SphereGeometry(0.014, 12, 12),
+        new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false })
+      );
+      smallHit.position.copy(pos);
+      smallHit.layers.set(LAYER_SMALL_PINS);
+      group.add(smallHit);
+
+      pins.push({ mesh: pin, halo, smallMesh, smallHalo, smallHit, place, hasVideo });
     });
 
     // Precompute clusters: for each place, list all places within CLUSTER_DEG (including self).
@@ -525,14 +538,37 @@ import { places } from '@/data/photos';
         vidpopDesc.textContent = place.video.description || place.blurb || '';
         vidpopVideo.play().catch(() => {/* autoplay can fail; ignore */});
       }
-      // Viewport-fixed positioning. Anchor next to the (screenX, screenY) point,
-      // clamped inside the viewport so the popup never gets cut off.
       const popW = vidpop.offsetWidth || 320;
       const popH = vidpop.offsetHeight || 110;
-      const margin = 8;
-      let left = screenX + 18;
-      let top = screenY - popH / 2;
-      if (left + popW > window.innerWidth - margin) left = screenX - popW - 18;
+      const margin = 10;
+
+      // If the cluster magnifier is open, the vidpop must not overlap it.
+      const avoid = cluster?.classList.contains('visible') ? cluster.getBoundingClientRect() : null;
+
+      let left: number, top: number;
+      if (avoid) {
+        const rightSpace = window.innerWidth - avoid.right - margin;
+        const leftSpace = avoid.left - margin;
+        const belowSpace = window.innerHeight - avoid.bottom - margin;
+        if (rightSpace >= popW + margin) {
+          left = avoid.right + margin;
+          top = avoid.top + (avoid.height - popH) / 2;
+        } else if (leftSpace >= popW + margin) {
+          left = avoid.left - popW - margin;
+          top = avoid.top + (avoid.height - popH) / 2;
+        } else if (belowSpace >= popH + margin) {
+          left = avoid.left + (avoid.width - popW) / 2;
+          top = avoid.bottom + margin;
+        } else {
+          left = avoid.left + (avoid.width - popW) / 2;
+          top = Math.max(margin, avoid.top - popH - margin);
+        }
+      } else {
+        left = screenX + 18;
+        top = screenY - popH / 2;
+        if (left + popW > window.innerWidth - margin) left = screenX - popW - 18;
+      }
+      // Final viewport clamp
       left = Math.max(margin, Math.min(left, window.innerWidth - popW - margin));
       top = Math.max(margin, Math.min(top, window.innerHeight - popH - margin));
       vidpop.style.left = `${left}px`;
@@ -630,38 +666,59 @@ import { places } from '@/data/photos';
       const rc = new THREE.Raycaster();
       rc.layers.set(LAYER_SMALL_PINS); // only hit-test the small magnifier-only pins
       rc.setFromCamera(p, magCamera);
-      const targets = pins.flatMap(pn => [pn.smallMesh, pn.smallHalo]);
+      const targets = pins.flatMap(pn => [pn.smallMesh, pn.smallHalo, pn.smallHit]);
       const hits = rc.intersectObjects(targets, false);
       if (hits.length === 0) return null;
       const hit = hits[0].object;
-      return pins.find(pn => pn.smallMesh === hit || pn.smallHalo === hit) ?? null;
+      return pins.find(pn => pn.smallMesh === hit || pn.smallHalo === hit || pn.smallHit === hit) ?? null;
     }
 
+    // Hover (desktop) handlers
     clusterCanvas?.addEventListener('pointermove', (e) => {
+      // On touch this only fires while the finger is moving across the canvas, which
+      // is fine — taps go through the pointerdown/up path below.
       const hp = pinUnderMagPointer(e);
       if (clusterCanvas) clusterCanvas.style.cursor = hp ? 'pointer' : 'default';
       if (hp && clusterLabel) clusterLabel.textContent = hp.place.name;
-      // If the magnifier-hovered pin has a video, show the preview anchored next to the magnifier
-      if (hp && hp.hasVideo && cluster) {
+      if (hp && hp.hasVideo && cluster && hoverSupported) {
         const cRect = cluster.getBoundingClientRect();
         showVidpop(hp.place, cRect.right, cRect.top + cRect.height / 2);
-      } else if (hoveredPlaceSlug !== null) {
+      } else if (!hp && hoveredPlaceSlug !== null && hoverSupported) {
         hideVidpop();
       }
     });
     clusterCanvas?.addEventListener('pointerleave', () => {
-      // Reset label to the originally hovered place
       const hovered = clusterMembers.find(m => m.slug === clusterShownForSlug);
       if (clusterLabel) clusterLabel.textContent = hovered?.name || '';
-      // Don't auto-hide the vidpop if the cursor moved INTO it; its own pointerenter
-      // sets pointerOnPinOrPopup and its pointerleave will hide it.
     });
-    clusterCanvas?.addEventListener('click', (e) => {
+    // Tap handling on the magnifier — use pointerdown/up directly instead of relying
+    // on click, which can fail silently on some mobile browsers.
+    let magDownX = 0, magDownY = 0;
+    clusterCanvas?.addEventListener('pointerdown', (e) => {
+      magDownX = e.clientX;
+      magDownY = e.clientY;
+      clusterCanvas?.setPointerCapture?.(e.pointerId);
+    });
+    clusterCanvas?.addEventListener('pointerup', (e) => {
+      clusterCanvas?.releasePointerCapture?.(e.pointerId);
+      const dx = Math.abs(e.clientX - magDownX);
+      const dy = Math.abs(e.clientY - magDownY);
+      if (dx + dy > 8) return; // treat as drag, not tap
       const hp = pinUnderMagPointer(e);
       if (hp) {
-        hideCluster();
-        hideVidpop();
-        zoomTo(hp.place);
+        if (hp.hasVideo && !hoverSupported && hoveredPlaceSlug !== hp.place.slug) {
+          // Touch: first tap on a video pin inside the magnifier shows the preview
+          // anchored next to the magnifier (so the user can see it without zooming).
+          if (cluster) {
+            const cRect = cluster.getBoundingClientRect();
+            showVidpop(hp.place, cRect.right, cRect.top + cRect.height / 2);
+          }
+          if (clusterLabel) clusterLabel.textContent = hp.place.name;
+        } else {
+          hideCluster();
+          hideVidpop();
+          zoomTo(hp.place);
+        }
       }
     });
     // Keep popups alive while the cursor is over them
