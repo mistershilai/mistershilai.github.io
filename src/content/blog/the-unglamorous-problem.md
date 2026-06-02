@@ -1,6 +1,6 @@
 ---
 title: "The unglamorous problem"
-description: "On medicine supply chains, the problems nobody wants to work on, and why designing for the average is a quiet decision to accept the tail."
+description: "On medical supply chains, the problems nobody wants to work on, and why designing for the average is a quiet decision to accept the tail."
 date: 2026-06-02T12:00:00Z
 tags: ["global health", "operations research", "supply chains"]
 ---
