@@ -197,10 +197,21 @@ const { title, description = "Elliot S. Lee — Princeton ORFE '26, global healt
     font-size: 1.85rem;
     line-height: 1.1;
     margin: 0 0 1rem;
-    background: none;
-    background-image: none;
-    -webkit-text-fill-color: #ffffff;
-    color: #ffffff;
+    /* Princeton orange shimmer (reuses the site-wide @keyframes shimmer) */
+    background: linear-gradient(
+      90deg,
+      #f58025 0%,
+      #f58025 35%,
+      #ffd9b3 50%,
+      #f58025 65%,
+      #f58025 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #f58025;
+    animation: shimmer 6s linear infinite;
   }
   .grad-popup-body {
     font-family: var(--font-serif);
