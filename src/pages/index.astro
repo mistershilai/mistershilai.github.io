@@ -6,6 +6,34 @@ import ScrollReveal from '@/components/ScrollReveal.astro';
 ---
 
 <BaseLayout title="Elliot S. Lee | Home">
+  <!-- Graduation popup: shows on first home-page visit, dismiss persists in localStorage -->
+  <div id="grad-popup" class="grad-popup-backdrop" aria-hidden="true">
+    <div class="grad-popup" role="dialog" aria-labelledby="grad-popup-title" aria-modal="true">
+      <button id="grad-popup-close" class="grad-popup-close" aria-label="Close announcement">×</button>
+      <div class="grad-popup-photos">
+        <img class="grad-popup-photo is-active" src="/photos/graduation/IMG_3015.jpeg" alt="" loading="eager" />
+        <img class="grad-popup-photo" src="/photos/graduation/IMG_3691.jpeg" alt="" loading="lazy" />
+        <img class="grad-popup-photo" src="/photos/graduation/IMG_3705.jpeg" alt="" loading="lazy" />
+        <img class="grad-popup-photo" src="/photos/graduation/IMG_7305.jpeg" alt="" loading="lazy" />
+        <div class="grad-popup-photo-overlay" aria-hidden="true"></div>
+        <div class="grad-popup-eyebrow grad-popup-eyebrow-overlay">
+          <span class="grad-popup-shield" aria-hidden="true">🐅</span>
+          <span>Princeton, Class of 2026</span>
+        </div>
+      </div>
+      <div class="grad-popup-content">
+        <h2 id="grad-popup-title" class="grad-popup-title">I just graduated.</h2>
+        <p class="grad-popup-body">
+          The work I'm proudest of isn't really mine. It came from advisors who gave me their time, friends who carried me through the hardest weeks, collaborators in Botswana who let me work on something that mattered, and a first squad that taught me what showing up looks like.
+        </p>
+        <p class="grad-popup-body">
+          Four years of being shaped by people more generous than I had any right to expect. Thank you, all of you.
+        </p>
+        <p class="grad-popup-signature">Elliot, ORFE '26</p>
+      </div>
+    </div>
+  </div>
+
   <section class="max-w-5xl mx-auto px-6 pt-10 md:pt-16 pb-20">
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
@@ -93,3 +121,210 @@ import ScrollReveal from '@/components/ScrollReveal.astro';
     </ScrollReveal>
   </section>
 </BaseLayout>
+
+<style>
+  .grad-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .grad-popup-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .grad-popup {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: #0c0c0c;
+    color: #f8f4ec;
+    border: 1px solid rgba(245, 128, 37, 0.4);
+    border-top: 4px solid #f58025; /* Princeton orange */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(245, 128, 37, 0.1);
+    transform: translateY(14px) scale(0.98);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .grad-popup-backdrop.visible .grad-popup {
+    transform: translateY(0) scale(1);
+  }
+  .grad-popup-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    z-index: 3;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #f8f4ec;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .grad-popup-close:hover {
+    background: rgba(245, 128, 37, 0.6);
+    border-color: rgba(245, 128, 37, 0.8);
+  }
+  /* Crossfading Ken-Burns photo strip across the top of the popup */
+  .grad-popup-photos {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #000;
+  }
+  .grad-popup-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 1.2s ease;
+  }
+  .grad-popup-photo.is-active {
+    opacity: 1;
+    animation: gradKenBurns 6s ease-out forwards;
+  }
+  @keyframes gradKenBurns {
+    from { transform: scale(1.12); }
+    to   { transform: scale(1.0);  }
+  }
+  .grad-popup-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+  }
+  .grad-popup-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #f58025;
+  }
+  .grad-popup-eyebrow-overlay {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1rem;
+    z-index: 2;
+    color: #ffd9b3;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+  .grad-popup-shield {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .grad-popup-content {
+    padding: 1.5rem 1.75rem 1.5rem;
+  }
+  .grad-popup-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.85rem;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: #ffffff;
+  }
+  .grad-popup-body {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0 0 0.85rem;
+    color: rgba(248, 244, 236, 0.92);
+  }
+  .grad-popup-signature {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 1.2rem 0 0;
+    color: #f58025;
+  }
+  @media (max-width: 480px) {
+    .grad-popup-content { padding: 1.25rem 1.25rem 1.2rem; }
+    .grad-popup-title { font-size: 1.5rem; }
+    .grad-popup-body { font-size: 0.95rem; }
+    .grad-popup-eyebrow-overlay { left: 1rem; bottom: 0.8rem; }
+  }
+</style>
+
+<script>
+  // Show the graduation popup on first visit; remember dismissal in localStorage.
+  function initGradPopup() {
+    const popup = document.getElementById('grad-popup');
+    const closeBtn = document.getElementById('grad-popup-close');
+    if (!popup || !closeBtn) return;
+    if ((popup as any).__init) return;
+    (popup as any).__init = true;
+
+    const DISMISS_KEY = 'grad-popup-2026-dismissed';
+    if (localStorage.getItem(DISMISS_KEY)) return;
+
+    function show() {
+      popup!.classList.add('visible');
+      popup!.setAttribute('aria-hidden', 'false');
+    }
+    function hide() {
+      popup!.classList.remove('visible');
+      popup!.setAttribute('aria-hidden', 'true');
+      try { localStorage.setItem(DISMISS_KEY, '1'); } catch {}
+      if (cycleTimer) {
+        clearInterval(cycleTimer);
+        cycleTimer = null;
+      }
+    }
+
+    // Photo crossfade — restart Ken Burns animation on each transition
+    const photos = Array.from(popup.querySelectorAll('.grad-popup-photo')) as HTMLElement[];
+    let cycleIdx = 0;
+    let cycleTimer: ReturnType<typeof setInterval> | null = null;
+    if (photos.length > 1) {
+      cycleTimer = setInterval(() => {
+        photos[cycleIdx].classList.remove('is-active');
+        cycleIdx = (cycleIdx + 1) % photos.length;
+        // Force animation restart by removing/reapplying the class on next frame
+        const next = photos[cycleIdx];
+        next.classList.remove('is-active');
+        void next.offsetWidth;
+        next.classList.add('is-active');
+      }, 4200);
+    }
+
+    // Small delay so the page can render first
+    setTimeout(show, 900);
+
+    closeBtn.addEventListener('click', hide);
+    // Click on the backdrop (outside the modal) also dismisses
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) hide();
+    });
+    // Escape key dismisses too
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('visible')) hide();
+    });
+  }
+
+  initGradPopup();
+  document.addEventListener('astro:page-load', initGradPopup);
+</script>
