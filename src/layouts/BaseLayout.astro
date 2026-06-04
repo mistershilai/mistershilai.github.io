@@ -191,7 +191,9 @@ const { title, description = "Elliot S. Lee — Princeton ORFE '26, global healt
   }
   .grad-popup-shield { font-size: 1.1rem; line-height: 1; }
   .grad-popup-content { padding: 1.5rem 1.75rem 1.5rem; }
-  .grad-popup-title {
+  /* Two-class selector to beat the site-wide `.dark h2` gradient (specificity 0,0,1,1) */
+  .grad-popup .grad-popup-title,
+  .dark .grad-popup .grad-popup-title {
     font-family: var(--font-serif);
     font-weight: 700;
     font-size: 1.85rem;
