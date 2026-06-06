@@ -24,6 +24,46 @@ export type Place = {
 
 export const places: Place[] = [
   {
+    slug: 'lima',
+    name: 'Lima, Peru',
+    lat: -12.0464,
+    lon: -77.0428,
+    blurb: 'Ciudad de los Reyes.',
+    photos: [],
+  },
+  {
+    slug: 'iquitos',
+    name: 'Iquitos, Peru',
+    lat: -3.7437,
+    lon: -73.2516,
+    blurb: 'Largest city on Earth unreachable by roads.',
+    photos: [],
+  },
+  {
+    slug: 'nazca',
+    name: 'Nazca, Peru',
+    lat: -14.8364,
+    lon: -74.9479,
+    blurb: 'From the desert to the heavens.',
+    photos: [],
+  },
+  {
+    slug: 'ica-huacachina',
+    name: 'Ica and Huacachina, Peru',
+    lat: -14.0700,
+    lon: -75.7300,
+    blurb: 'Oasis of America.',
+    photos: [],
+  },
+  {
+    slug: 'cusco',
+    name: 'Cusco and the Inca Trail, Peru',
+    lat: -13.3500,
+    lon: -72.2500,
+    blurb: 'Qhapaq Ñan to the Lost City.',
+    photos: [],
+  },
+  {
     slug: 'sansalvador',
     name: 'San Salvador, El Salvador',
     lat: 13.6929,
