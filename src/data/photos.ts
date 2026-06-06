@@ -36,7 +36,7 @@ export const places: Place[] = [
     name: 'Iquitos, Peru',
     lat: -3.7437,
     lon: -73.2516,
-    blurb: 'Largest city on Earth unreachable by roads.',
+    blurb: 'Largest city on Earth unreachable by roads and gateway to the Amazon.',
     photos: [],
   },
   {
