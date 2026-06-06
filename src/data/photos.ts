@@ -267,6 +267,10 @@ export const places: Place[] = [
     lat: 31.4912,
     lon: 120.3119,
     blurb: 'Pearl of Taihu Lake.',
+    video: {
+      file: 'Wuxi.mp4',
+      description: 'A canal city on the shore of Taihu Lake in southern Jiangsu, known for its lakeside gardens, silk industry, and as a Grand Canal port.',
+    },
     photos: [
       { file: 'IMG_5321.jpeg' },
       { file: 'IMG_5329.jpeg' },
