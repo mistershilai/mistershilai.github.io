@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+
+type Award = { title: string; description?: string; href?: string };
+const awards: Award[] = [
+  {
+    title: "2026 Beth N. Rom-Rymer '73 Senior Thesis Prize in Global Health and Health Policy (Awarded by Princeton Global Health Program)",
+    description: "Recognizes the most outstanding theses written by students minoring in global health and health policy.",
+    href: "https://globalhealth.princeton.edu/news/2026/2026-senior-thesis-prize-winners",
+  },
+  {
+    title: "2026 Procter and Gamble Prize (Awarded by Princeton Department of Operations Research and Financial Engineering)",
+    description: "Awarded to a graduating senior who has written the best thesis in operations research.",
+    href: "https://orfe.princeton.edu/undergraduate/awards",
+  },
+  {
+    title: "2026 Joseph Clifton Elgin Prize (Awarded by Princeton School of Engineering and Applied Sciences)",
+    description: "Awarded to a senior who has done the most to advance the interests of the School of Engineering and Applied Sciences in the community at large.",
+    href: "https://engineering.princeton.edu/news/2026/05/28/uncertain-time-dean-encourages-graduates-rely-strength-knowledge-and-adaptability",
+  },
+  {
+    title: "Health Scholar (Awarded by Princeton Center for Health and Wellbeing)",
+    href: "https://chw.princeton.edu/news/meet-class-2026-health-scholars",
+  },
+  {
+    title: "National Federal Reserve Challenge Team (1st Place), Presenter and Labor Specialist",
+    href: "https://www.federalreserve.gov/newsevents/pressreleases/other20241122b.htm",
+  },
+  { title: "2021 National Champion in Quiz Bowl · PACE National Quiz Bowl Championship, 1st Place (Captain, TJHSST Quizbowl)" },
+  { title: "2022 High School National Championship Tournament ~ 5th Place" },
+  { title: "2021 Virginia History Bee Champion" },
+  { title: "2022 VHSL Scholastic Bowl State Champions" },
+  { title: "In 2021, I was on a game show with some teammates from TJ — you might find it on YouTube." },
+  { title: "2021 National History Bowl Runner-Up Team (President, TJHSST History Bowl)" },
+  { title: "National Merit Scholarship (Sponsored by Leidos, Inc.)" },
+];
+---
+
+<BaseLayout title="Awards & Interests | Elliot S. Lee">
+  <section class="max-w-4xl mx-auto px-6 pt-12 pb-20">
+    <div class="text-center mb-8">
+      <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Awards & Interests</h1>
+      <p class="font-serif opacity-80 text-lg max-w-2xl mx-auto">
+        I'm not the heavy-hitting quizbowler I was in high school, but I've moved on to more interesting things. I like exploring new places, geeking over history and geography, and taking over the world (in Civ VI).
+      </p>
+    </div>
+
+    <ScrollReveal>
+      <div class="card p-8 mb-8">
+        <h2 class="font-serif font-bold text-2xl mb-4">Awards</h2>
+        <ul class="list-disc pl-6 space-y-2 font-serif">
+          {awards.map(a => (
+            <li>
+              {a.href ? (
+                <a href={a.href} target="_blank" rel="noopener noreferrer">{a.title}</a>
+              ) : a.title}
+              {a.description && <div class="text-sm opacity-70 mt-0.5">{a.description}</div>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <div class="card p-8">
+        <h2 class="font-serif font-bold text-2xl mb-4">Interests</h2>
+        <ul class="space-y-2 font-serif text-[1.05rem]">
+          <li>🐧 Keep the African Penguin from a 2035 extinction by supporting <a href="https://sanccob.co.za" target="_blank" rel="noopener">SANCCOB</a></li>
+          <li>🎹 Piano [favorite composer: Tchaikovsky]</li>
+          <li>🎶 Clarinet [favorite classical piece: Prince Igor Overture · favorite band piece: El Camino Real]</li>
+          <li>🚴 Cycling enthusiast</li>
+          <li>🪐 Fan of <a href="https://www.coldplay.com/" target="_blank" rel="noopener">Coldplay</a>, <a href="https://www.wearethestrike.com/" target="_blank" rel="noopener">The Strike</a>, and <a href="https://www.brucehornsby.com/" target="_blank" rel="noopener">Bruce Hornsby &amp; The Range</a>.</li>
+        </ul>
+      </div>
+    </ScrollReveal>
+  </section>
+</BaseLayout>

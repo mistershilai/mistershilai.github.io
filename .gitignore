@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.local
+.DS_Store
+*.log
+
+# Raw video masters (keep only compressed .mp4 in git)
+public/photos/videos/*.MOV
+public/photos/videos/*.MP4
+public/photos/videos/*_ORIG.*

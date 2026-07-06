@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PhotoGlobe from '@/components/PhotoGlobe.astro';
+import { places } from '@/data/photos';
+---
+
+<BaseLayout title="Photos | Elliot S. Lee" description="Photos from the places I've been — click a pin to zoom in.">
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-24">
+    <div class="text-center mb-10">
+      <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Photos</h1>
+      <p class="font-serif opacity-80 max-w-xl mx-auto">Click a glowing pin to zoom in.</p>
+    </div>
+
+    {places.length === 0 ? (
+      <div class="card p-10 text-center">
+        <p class="font-serif text-lg opacity-80">Coming soon.</p>
+      </div>
+    ) : (
+      <PhotoGlobe />
+    )}
+  </section>
+</BaseLayout>

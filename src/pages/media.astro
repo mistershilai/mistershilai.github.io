@@ -1,0 +1,54 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+import { media } from '@/data/media';
+
+const items = [...media].sort((a, b) => b.date.localeCompare(a.date));
+
+// Group by year for visual chunking
+const byYear = items.reduce<Record<string, typeof items>>((acc, m) => {
+  const year = m.date.slice(0, 4);
+  (acc[year] ||= []).push(m);
+  return acc;
+}, {});
+const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a));
+
+const fmt = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout title="Media | Elliot S. Lee" description="Talks, mentions, and other public-facing things.">
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+    <div class="text-center mb-10">
+      <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Media</h1>
+      <p class="font-serif opacity-80">Talks, mentions, and other public-facing things.</p>
+    </div>
+
+    {items.length === 0 && (
+      <p class="text-center opacity-60 italic">Nothing here yet.</p>
+    )}
+
+    {years.map(year => (
+      <section class="mb-10">
+        <h2 class="font-serif font-bold text-2xl mb-4 text-[color:var(--color-accent)]">{year}</h2>
+        <ul class="space-y-3 list-none p-0">
+          {byYear[year].map((m, i) => (
+            <ScrollReveal delay={i * 60}>
+              <li class="card p-5">
+                <div class="flex items-baseline justify-between gap-4 mb-1">
+                  <h3 class="font-serif font-bold text-lg">
+                    {m.href ? (
+                      <a href={m.href} target="_blank" rel="noopener noreferrer" class="no-underline hover:underline">{m.title}</a>
+                    ) : m.title}
+                  </h3>
+                  <time class="text-xs font-sans opacity-60 shrink-0">{fmt(m.date)}</time>
+                </div>
+                {m.description && <p class="font-serif opacity-80 text-sm">{m.description}</p>}
+              </li>
+            </ScrollReveal>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </section>
+</BaseLayout>

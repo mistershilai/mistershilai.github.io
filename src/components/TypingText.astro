@@ -1,0 +1,44 @@
+---
+interface Props {
+  phrases: string[];
+  class?: string;
+}
+const { phrases, class: cls = '' } = Astro.props;
+---
+
+<h1 class:list={["font-serif font-bold text-3xl md:text-5xl", cls]}>
+  <span id="typed-text" data-phrases={JSON.stringify(phrases)}></span>
+  <span class="cursor">|</span>
+</h1>
+
+<script>
+  function start() {
+    const el = document.getElementById('typed-text');
+    if (!el) return;
+    if ((el as any).__typed) return;
+    (el as any).__typed = true;
+    const phrases: string[] = JSON.parse(el.dataset.phrases || '[]');
+    let pi = 0, li = 0;
+
+    function type() {
+      if (li < phrases[pi].length) {
+        el!.textContent += phrases[pi][li++];
+        setTimeout(type, 90);
+      } else {
+        setTimeout(erase, 1400);
+      }
+    }
+    function erase() {
+      if (li > 0) {
+        el!.textContent = phrases[pi].slice(0, --li);
+        setTimeout(erase, 40);
+      } else {
+        pi = (pi + 1) % phrases.length;
+        setTimeout(type, 350);
+      }
+    }
+    type();
+  }
+  start();
+  document.addEventListener('astro:page-load', start);
+</script>

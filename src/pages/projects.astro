@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
+
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  href?: string;
+};
+
+const projects: Project[] = [
+  {
+    title: "Kaelo — Antimicrobial Supply Chain Optimization",
+    category: "Global Health Systems",
+    href: "/kaelo",
+    description:
+      "Leading the development of supply chain models for Botswana's Ministry of Health, integrating distance matrices with economic and epidemiological data. Presented proposal to government officials at the Central Medical Stores and Ministry of Health to improve antimicrobial distribution networks across the country. Under supervision of Dr. Bartolomeo Stellato (ORFE), with collaborators from ACHAP (Mr. Lesego Busang, Mr. Stanley Mapiki, Mr. Tiro Molefe, Dr. Khumo Seipone). Preprint pending.",
+  },
+  {
+    title: "Vaccination Program Cost-Effectiveness Analysis",
+    category: "Global Health Systems",
+    description:
+      "RA to Dr. Giridara Gopal and Dr. Ramanan Laxminarayan with the One Health Trust in Karnataka to model vaccination program cost-effectiveness through Markov chain simulations. Contributor to policy briefs for Pakistan (primary writer), South Africa, Nepal, Uganda, and Nigeria. Contributor to presentations for Tanzania, Zimbabwe, India, Kenya, South Africa, Vietnam, Mozambique, Laos, and Nigeria.",
+  },
+  {
+    title: "Organ Donation Allocation Tool",
+    category: "Healthcare Technology",
+    description:
+      "Developing a machine-learning-based tool to optimize organ donation matching and allocation. The system aims to enable physicians to immediately identify compatible organ matches in their geographic area, reducing time-to-transplant and improving patient outcomes through real-time compatibility analysis.",
+  },
+  {
+    title: "Population Genetics Research",
+    category: "Biostatistics & Genomics",
+    description:
+      "Currently conducting research at Princeton's Lewis-Sigler Center for Integrative Genomics under Dr. Olivia Harringmeyer and Dr. John Storey. Using SLiM to model fixed genetic mutation effects in populations under migration conditions. Developing a research paper on chromosomal inversions under three-loci continent-island extension to established models.",
+  },
+  {
+    title: "RA to Samya Aboutajdine",
+    category: "Economic Research",
+    description:
+      "Analyzed 10 million+ building permits alongside FEMA risk data to examine housing disaster resilience. Conducted regression analyses of local resilience investments on FEMA grant flows to understand intervention effectiveness.",
+  },
+  {
+    title: "RA to Dr. Janet Currie",
+    category: "Economic Research",
+    description:
+      "Contributed to research on adolescent social programs through data cleaning and visualization. Work acknowledged in Working Paper 33632.",
+  },
+  {
+    title: "RA to Dr. Sylvain Chassang",
+    category: "Economic Research",
+    description:
+      "Reweighted survey data to correct for sampling bias in French transportation studies.",
+  },
+];
+---
+
+<BaseLayout title="Projects | Elliot S. Lee">
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-20">
+    <div class="text-center mb-10">
+      <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Research & Projects</h1>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {projects.map((p, i) => (
+        <ScrollReveal delay={i * 60}>
+          {p.href ? (
+            <a href={p.href} class="project-card h-full block no-underline text-inherit">
+              <div class="text-xs font-sans opacity-60 italic mb-2 flex items-center gap-1.5">
+                {p.category}
+                <span class="text-[color:var(--color-accent)] font-semibold not-italic">· read more →</span>
+              </div>
+              <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
+              <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
+            </a>
+          ) : (
+            <article class="project-card h-full">
+              <div class="text-xs font-sans opacity-60 italic mb-2">{p.category}</div>
+              <h3 class="font-serif font-bold text-xl mb-3">{p.title}</h3>
+              <p class="text-sm leading-relaxed font-serif opacity-90">{p.description}</p>
+            </article>
+          )}
+        </ScrollReveal>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function wire() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+    cards.forEach(card => {
+      if ((card as any).__wired) return;
+      (card as any).__wired = true;
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+    });
+  }
+  wire();
+  document.addEventListener('astro:page-load', wire);
+</script>
