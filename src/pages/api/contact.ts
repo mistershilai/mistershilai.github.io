@@ -23,10 +23,21 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Forward to FormSubmit (no SMTP credentials needed, zero-config).
     // Replace with Resend / Postmark / SendGrid if you want full control.
+    //
+    // FormSubmit's AJAX endpoint rejects any request that doesn't look like it
+    // came from a browser (no Referer header), which server-to-server fetch
+    // never sends — so we set one explicitly. It also returns HTTP 200 with
+    // {"success":"false", ...} on rejection, so the status code alone can't
+    // be trusted; the body has to be checked too.
+    const origin = request.headers.get('origin') || 'https://elliotlee.info';
     const formEndpoint = 'https://formsubmit.co/ajax/mistershilai@gmail.com';
     const res = await fetch(formEndpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Referer: `${origin}/contact`,
+      },
       body: JSON.stringify({
         name,
         email,
@@ -36,8 +47,12 @@ export const POST: APIRoute = async ({ request }) => {
       }),
     });
 
-    if (!res.ok) {
-      return json({ error: 'Mail provider rejected the request.' }, 502);
+    const body = await res.json().catch(() => null);
+    const success = body?.success === true || body?.success === 'true';
+
+    if (!res.ok || !success) {
+      console.error('FormSubmit rejected the request:', body);
+      return json({ error: body?.message || 'Mail provider rejected the request.' }, 502);
     }
 
     return json({ ok: true });
