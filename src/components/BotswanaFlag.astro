@@ -1,0 +1,161 @@
+---
+// Styles and animation for a waving flag of Botswana, drawn procedurally on
+// canvas (no image asset). The wave is a travelling sine whose amplitude
+// swells and settles, so the cloth ripples in and out rather than flapping
+// at a constant rate.
+//
+// This component renders no markup of its own. Posts opt in with
+// `botswanaFlag: true` in frontmatter and place the figure inline as HTML,
+// so the flag can sit at an exact point in the prose while the post stays a
+// plain .md file like the rest of the collection.
+---
+
+<style is:global>
+  .botswana-flag {
+    margin: 2rem 0;
+  }
+  .botswana-flag-stage {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 2;
+    /* The cloth casts a soft shadow that sells the sense of depth. */
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.18));
+  }
+  .botswana-flag-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .prose-custom .botswana-flag figcaption,
+  .botswana-flag figcaption {
+    margin-top: 0.9rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    opacity: 0.6;
+    font-style: normal;
+  }
+</style>
+
+<script>
+  // Official band ratios, top to bottom: blue 9, white 1, black 4, white 1, blue 9.
+  const BANDS: Array<[number, string]> = [
+    [9, '#75aadb'],
+    [1, '#ffffff'],
+    [4, '#000000'],
+    [1, '#ffffff'],
+    [9, '#75aadb'],
+  ];
+  const TOTAL = BANDS.reduce((sum, [span]) => sum + span, 0);
+
+  function drawFlatFlag(w: number, h: number) {
+    const off = document.createElement('canvas');
+    off.width = w;
+    off.height = h;
+    const ctx = off.getContext('2d')!;
+    let y = 0;
+    for (const [span, color] of BANDS) {
+      const band = (span / TOTAL) * h;
+      ctx.fillStyle = color;
+      // Overdraw by a hair so band seams never show a background hairline.
+      ctx.fillRect(0, Math.floor(y), w, Math.ceil(band) + 1);
+      y += band;
+    }
+    return off;
+  }
+
+  function startFlag(canvas: HTMLCanvasElement) {
+    if (canvas.dataset.wired) return;
+    canvas.dataset.wired = 'true';
+
+    const ctx = canvas.getContext('2d')!;
+    const w = canvas.width;
+    const h = canvas.height;
+    const flat = drawFlatFlag(w, h);
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let raf = 0;
+    let visible = true;
+
+    function render(elapsed: number) {
+      ctx.clearRect(0, 0, w, h);
+
+      // Amplitude breathes on a slow cycle: the ripple builds, then settles.
+      const swell = 0.45 + 0.55 * (0.5 - 0.5 * Math.cos(elapsed * 0.55));
+      const amp = h * 0.055 * swell;
+      const waves = 2.1;
+
+      for (let x = 0; x < w; x++) {
+        const u = x / w;
+        // The hoist edge is fixed to the pole, so motion grows toward the fly.
+        const grip = u * u * (3 - 2 * u);
+        const phase = u * Math.PI * 2 * waves - elapsed * 2.1;
+
+        const offset = Math.sin(phase) * amp * grip;
+        // Cloth turning away from the viewer foreshortens slightly.
+        const squash = 1 - 0.1 * grip * Math.sin(phase + Math.PI / 2);
+        const sliceH = h * squash;
+        const top = offset + (h - sliceH) / 2;
+
+        ctx.drawImage(flat, x, 0, 1, h, x, top, 1, sliceH);
+
+        // Shade by the slope of the wave to imply light raking across folds.
+        const slope = Math.cos(phase) * grip;
+        const shade = slope * 0.28;
+        if (shade > 0) {
+          ctx.fillStyle = `rgba(255,255,255,${shade})`;
+        } else {
+          ctx.fillStyle = `rgba(0,0,0,${-shade})`;
+        }
+        ctx.fillRect(x, top, 1, sliceH);
+      }
+    }
+
+    function frame(now: number) {
+      render(now / 1000);
+      raf = requestAnimationFrame(frame);
+    }
+
+    function play() {
+      if (raf || reduced.matches || !visible) return;
+      raf = requestAnimationFrame(frame);
+    }
+    function pause() {
+      if (!raf) return;
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
+
+    if (reduced.matches) {
+      render(0);
+    } else {
+      play();
+    }
+    reduced.addEventListener('change', () => {
+      pause();
+      if (reduced.matches) render(0);
+      else play();
+    });
+
+    // Don't burn frames while the flag is scrolled out of view.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        if (visible) play();
+        else pause();
+      }, { threshold: 0 }).observe(canvas);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) pause();
+      else play();
+    });
+  }
+
+  function wireFlags() {
+    document.querySelectorAll<HTMLCanvasElement>('.botswana-flag-canvas').forEach(startFlag);
+  }
+  wireFlags();
+  document.addEventListener('astro:page-load', wireFlags);
+</script>

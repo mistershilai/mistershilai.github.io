@@ -9,6 +9,8 @@ const blog = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // Loads the canvas flag animation for posts that embed the figure inline.
+    botswanaFlag: z.boolean().default(false),
   }),
 });
 

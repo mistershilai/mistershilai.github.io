@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BotswanaFlag from '@/components/BotswanaFlag.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -24,6 +25,7 @@ const { Content } = await render(post);
     <div class="card p-8 font-serif text-[1.08rem] leading-relaxed prose-custom">
       <Content />
     </div>
+    {post.data.botswanaFlag && <BotswanaFlag />}
   </article>
 </BaseLayout>
 
