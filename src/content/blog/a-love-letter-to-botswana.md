@@ -30,7 +30,7 @@ The harder chapter is the one that made the institution my colleagues work for. 
 
 None of which turns Botswana into a brochure. Inequality there is severe, unemployment has been stubborn for as long as I have been alive, and the diamonds that paid for everything rest on a narrower footing now than they did. I am not writing an audit and would not be the person to deliver one. I only mean that a place can carry real trouble and still have got the important things right.
 
-Which brings me to October 2024, when the party of Seretse Khama lost an election after fifty-eight years in office. Mokgweetsi Masisi conceded before the counting had finished, said the people had spoken, and went home. Duma Boko was sworn in a few days later. Everything anyone had claimed on Botswana's behalf up to that point had been, strictly speaking, a hypothesis.
+Which brings me to October 2024, when the party of Seretse Khama lost an election after fifty-eight years in office. Mokgweetsi Masisi conceded before the counting had finished, said the people had spoken, and went home. Duma Boko was sworn in a few days later. The willingness to hand over power is the one civic virtue that cannot be demonstrated in advance, only when the moment arrives. That week the moment arrived.
 
 <figure class="botswana-flag">
   <div class="botswana-flag-stage">
