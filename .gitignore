@@ -7,7 +7,9 @@ dist/
 .DS_Store
 *.log
 
-# Raw video masters (keep only compressed .mp4 in git)
+# Raw video masters (keep only compressed .mp4 in git).
+# No *.MP4 rule here: git's ignorecase is on for macOS checkouts, so it would
+# also match the compressed *.mp4 files we do want tracked. Masters are covered
+# by the .MOV and _ORIG rules instead.
 public/photos/videos/*.MOV
-public/photos/videos/*.MP4
 public/photos/videos/*_ORIG.*
