@@ -12,6 +12,8 @@ export default defineConfig({
   integrations: [mdx()],
   redirects: {
     '/hobbies': '/awards',
+    // Old CV filename, kept alive because the link has been shared externally.
+    '/ESLee_CV_UPDATED.pdf': '/ESLEE_CV.pdf',
   },
   markdown: {
     remarkPlugins: [remarkMath],
