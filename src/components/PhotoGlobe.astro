@@ -251,11 +251,7 @@ import { places } from '@/data/photos';
 <script>
   import * as THREE from 'three';
   import { feature, mesh } from 'topojson-client';
-
-  const VISITED_IDS = new Set([
-    '076', '710', '072', '516', '716', '894', '634', '156', '356', '352',
-    '124', '840', '044', '792', '392', '426', '222',
-  ]);
+  import { VISITED_IDS } from '@/data/visited';
 
   type Video = { file: string; description?: string };
   type Place = {

@@ -35,6 +35,7 @@
 <script>
   import * as THREE from 'three';
   import { feature, mesh } from 'topojson-client';
+  import { VISITED_IDS } from '@/data/visited';
 
   type Visited = { lat: number; lon: number; name: string };
   const visited: Visited[] = [
@@ -60,11 +61,6 @@
     { lat: -29, lon: 28, name: 'Lesotho' },
     { lat: 13.7, lon: -88.9, name: 'El Salvador' },
   ];
-
-  const VISITED_IDS = new Set([
-    '076', '710', '072', '516', '716', '894', '634', '156', '356', '352',
-    '124', '840', '044', '792', '392', '426', '222', '604',
-  ]);
 
   function latLonToVec3(lat: number, lon: number, r: number) {
     const phi = (90 - lat) * (Math.PI / 180);
