@@ -37,13 +37,22 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-_cors_origins = os.environ.get(
-    "CORS_ORIGINS", "http://localhost:5173,http://localhost:3000"
-).split(",")
+# Exact-match origins. Whitespace is stripped because a stray space makes an
+# entry silently fail to match, which surfaces only as a blocked fetch.
+_cors_origins = [
+    o.strip()
+    for o in os.environ.get(
+        "CORS_ORIGINS", "http://localhost:5173,http://localhost:3000,http://localhost:4321"
+    ).split(",")
+    if o.strip()
+]
+# Optional pattern, e.g. https://.*\.vercel\.app for preview deployments.
+_cors_origin_regex = os.environ.get("CORS_ORIGIN_REGEX") or None
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
+    allow_origin_regex=_cors_origin_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
