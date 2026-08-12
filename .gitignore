@@ -13,3 +13,9 @@ dist/
 # by the .MOV and _ORIG rules instead.
 public/photos/videos/*.MOV
 public/photos/videos/*_ORIG.*
+
+# Kaelo demo app has its own build
+kaelo-app/frontend/node_modules/
+kaelo-app/frontend/dist/
+kaelo-app/**/__pycache__/
+kaelo-app/**/*.db
