@@ -314,8 +314,11 @@ def build_region_instance(target_dhmt: str) -> dict:
         fac_region[["facility_key", "tier"]], on="facility_key", how="left"
     )
     pop_fac_age["tier"] = pop_fac_age["tier"].fillna("clinic")
+    # The prescribing data covers hospital tiers only, so clinic-level
+    # facilities take district-hospital rates: district hospitals are what
+    # serves primary care in this network.
     tier_to_hosp_type = {
-        "clinic": "Clinic", "health_post": "Clinic",
+        "clinic": "District", "health_post": "District",
         "hospital": "Primary", "warehouse": "Tertiary",
     }
     pop_fac_age["hospital_type"] = pop_fac_age["tier"].map(tier_to_hosp_type)

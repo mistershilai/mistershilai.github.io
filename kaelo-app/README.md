@@ -70,26 +70,15 @@ The API starts without any data and reports what is missing at `/api/health`.
 Endpoints that need inputs return 503 with an explanation rather than failing
 opaquely, so a deployment is never broken, only limited.
 
-The facility list, routing matrices, district boundaries, age breakdown, and
-admissions estimates are vendored under `data/app/`. Two inputs are **not**
-included, so demand optimization returns 503:
+All reference data is vendored under `data/app/`, so the planner runs end to
+end with no further setup.
 
-| Missing file | Enables |
-| --- | --- |
-| `census_population_2022_geocoded_final_uniform.csv` | population weighting per facility |
-| `glm/p_class.csv`, `glm/m_ak.csv` | baseline demand by drug class |
+One modelling note: the prescribing data covers hospital tiers only
+(`District`, `Primary`, `Specialist`, `Tertiary`). Clinics and health posts,
+which are 569 of the 619 facilities, take **district-hospital** rates, since
+district hospitals are what serves primary care in this network. That mapping
+lives in `build_region_instance`.
 
-Both are generated, not stored: `data/app/` is gitignored in the research repo
-and produced by `offline/_full_offline.bash` (geocoding plus OSRM routing).
-
-A caution if you substitute older artifacts: the GLM copies in the thesis repo
-cover hospital tiers only (`District`, `Primary`, `Specialist`, `Tertiary`) and
-have no `Clinic` category, while 569 of 619 facilities are clinic-level. Joining
-against them yields an empty demand matrix rather than an error, so the
-optimizer reports `optimal` with every value at zero. `p_class` from that
-vintage also ships raw labels (`"11 to 15 years"`, `"CAI"`); the loader
-normalizes those now, but the missing tier is not something normalization can
-fix.
 
 **2. Point the site at it.** Set both variables in the Vercel project, then
 redeploy:
