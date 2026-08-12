@@ -8,6 +8,9 @@ const stats = [
   { n: '18', label: 'health districts' },
 ];
 
+// The app is a separate service; it only appears once an API is configured.
+const kaeloApiUrl = import.meta.env.PUBLIC_KAELO_API_URL;
+
 const team = [
   { group: 'Princeton ORFE', people: ['Dr. Bartolomeo Stellato (advisor)'] },
   { group: 'ACHAP', people: ['Mr. Lesego Busang', 'Mr. Stanley Mapiki', 'Mr. Tiro Molefe', 'Dr. Khumo Seipone'] },
@@ -115,6 +118,29 @@ const team = [
             adapt as real demand unfolds month by month.
           </p>
         </div>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <!-- The app -->
+  <section class="relative max-w-3xl mx-auto px-6 py-12">
+    <ScrollReveal>
+      <h2 class="font-serif font-bold text-3xl mb-6">The app</h2>
+      <div class="card p-6">
+        <p class="font-serif opacity-85 leading-relaxed mb-4">
+          A public build of the planning tool, with the optimization model intact and every
+          procurement figure stripped out. You supply the demand and cost numbers yourself.
+        </p>
+        {kaeloApiUrl ? (
+          <a href="/kaelo-app/" class="inline-block px-4 py-2 rounded-full bg-[color:var(--color-accent)] text-white font-sans text-sm no-underline hover:opacity-90">
+            Open the app &rarr;
+          </a>
+        ) : (
+          <p class="font-sans text-sm opacity-60">
+            Source at <a href="https://github.com/mistershilai/mistershilai.github.io/tree/main/kaelo-app">kaelo-app</a>.
+            The solver runs as a separate service, so the hosted version goes live once its API is deployed.
+          </p>
+        )}
       </div>
     </ScrollReveal>
   </section>

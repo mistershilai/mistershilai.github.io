@@ -19,3 +19,4 @@ kaelo-app/frontend/node_modules/
 kaelo-app/frontend/dist/
 kaelo-app/**/__pycache__/
 kaelo-app/**/*.db
+public/kaelo-app/

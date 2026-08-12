@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import RegionDetail from "./pages/RegionDetail";
@@ -98,9 +98,9 @@ function AppContent() {
 
 function App() {
   return (
-      <BrowserRouter>
+      <HashRouter>
         <AppContent />
-      </BrowserRouter>
+      </HashRouter>
   );
 }
 

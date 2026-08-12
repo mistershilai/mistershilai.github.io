@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/optimize-photos.mjs && astro build",
+    "build": "node scripts/optimize-photos.mjs && npm run build:kaelo && astro build",
     "optimize-photos": "node scripts/optimize-photos.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:kaelo": "cd kaelo-app/frontend && npm install --no-audit --no-fund && npm run build"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

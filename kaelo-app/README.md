@@ -45,8 +45,31 @@ district boundaries, population) under `data/app/` relative to the repository
 root. Those files are public but are not vendored here; point `DATA_APP` at your
 own copy.
 
-## Note on hosting
+## Hosting
 
-This is a Python service plus a React SPA, so it does not run on the static
-Astro site in the parent directory. It needs its own deployment, or a port of
-the solver to WebAssembly to run entirely in the browser.
+The frontend ships with the site; the solver does not. The site is a static
+Astro build, and the optimizer needs Python (`cvxpy`, `highspy`), so the API has
+to run somewhere that executes containers.
+
+**1. Deploy the API.** `Dockerfile` in this directory builds it. On Render, Fly,
+or Railway, point the service at `kaelo-app/Dockerfile` and set:
+
+- `CORS_ORIGINS=https://elliotlee.info` (the site origin, comma-separated for more)
+- `PORT` if the platform requires a specific one
+
+The backend also needs public reference data (facility list with coordinates,
+district boundaries, population) under `data/app/`. Uncomment the `COPY data`
+line in the Dockerfile once you have placed your copy there.
+
+**2. Point the site at it.** Set both variables in the Vercel project, then
+redeploy:
+
+- `VITE_API_URL=https://your-api-host` (baked into the frontend at build time)
+- `PUBLIC_KAELO_API_URL=https://your-api-host` (reveals the link on `/kaelo`)
+
+Until `PUBLIC_KAELO_API_URL` is set, `/kaelo` shows a source link instead of a
+button, so the site never advertises an app that cannot answer.
+
+The frontend is built to `public/kaelo-app/` by `npm run build:kaelo`, which the
+site's `build` script runs automatically. It uses a hash router, so it needs no
+SPA rewrite rules to work from a subpath.
