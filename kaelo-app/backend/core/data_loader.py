@@ -108,18 +108,49 @@ class AppData:
 
     def __init__(self):
         self.loaded = False
+        self.dhmt_list: list[str] = []
+        # Which inputs are present. This build ships without data, and a
+        # deployment may legitimately have only some of it, so a missing file
+        # disables the features that need it instead of killing startup.
+        self.available: dict[str, bool] = {}
+
+    def _try(self, key: str, fn):
+        try:
+            fn()
+            self.available[key] = True
+        except FileNotFoundError as e:
+            self.available[key] = False
+            print(f"[data] optional input missing, {key} disabled: {e.filename}")
+        except Exception as e:
+            self.available[key] = False
+            print(f"[data] failed to load {key}: {e}")
 
     def load(self):
         if self.loaded:
             return
-        self._load_population()
-        self._load_facilities()
-        self._load_matrices()
-        self._load_age_data()
-        self._load_glm_artifacts()
-        self._compute_facility_assignments()
-        self._compute_pop_shares()
+        self._try("population", self._load_population)
+        self._try("facilities", self._load_facilities)
+        self._try("matrices", self._load_matrices)
+        self._try("age", self._load_age_data)
+        self._try("admissions", self._load_admissions)
+        self._try("glm", self._load_glm_artifacts)
+
+        if self.available.get("population") and self.available.get("facilities"):
+            self._try("assignments", self._compute_facility_assignments)
+            self._try("pop_shares", self._compute_pop_shares)
+
         self.loaded = True
+
+    @property
+    def demand_model_available(self) -> bool:
+        """Baseline demand needs the admissions estimates and GLM artifacts."""
+        return all(self.available.get(k) for k in
+                   ("population", "facilities", "age", "admissions", "glm", "pop_shares"))
+
+    @property
+    def network_available(self) -> bool:
+        """Facility network and routing, enough to describe the problem."""
+        return all(self.available.get(k) for k in ("facilities", "matrices"))
 
     # Population
     def _load_population(self):
@@ -188,6 +219,8 @@ class AppData:
         age_df["district_key"] = age_df["district"].astype(str).str.strip().str.lower()
         self.age_df = age_df
 
+    # Derived admissions estimates; separate so a build without them still runs.
+    def _load_admissions(self):
         district_adm = pd.read_csv(DATA_APP / "district_admissions_estimates_2021.csv")
         district_adm = district_adm.rename(columns={
             "Health District": "district",
@@ -299,12 +332,18 @@ class AppData:
 
     def get_facility_summary(self) -> dict:
         """Return summary statistics about facilities."""
+        if not self.available.get("facilities"):
+            return {
+                "total_facilities": 0, "total_population": 0, "dhmt_count": 0,
+                "facility_type_counts": {}, "dhmt_facility_counts": {},
+                "data_available": False,
+            }
         fac = self.fac
         type_counts = fac["Service Delivery Type"].value_counts().to_dict()
         dhmt_counts = fac["DHMT"].astype(str).str.strip().value_counts().to_dict()
         return {
             "total_facilities": len(fac),
-            "total_population": int(self.national_pop),
+            "total_population": int(getattr(self, "national_pop", 0) or 0),
             "dhmt_count": len([d for d in self.dhmt_list if d.strip() not in ("", "--")]),
             "facility_type_counts": type_counts,
             "dhmt_facility_counts": {k: v for k, v in dhmt_counts.items() if k.strip() not in ("", "--")},

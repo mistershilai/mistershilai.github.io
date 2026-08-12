@@ -20,7 +20,12 @@ async def lifespan(app: FastAPI):
     # Startup: load data
     print("Loading data...")
     app_data.load()
-    print(f"Data loaded: {app_data.get_facility_summary()['total_facilities']} facilities")
+    if app_data.available.get("facilities"):
+        print(f"Data loaded: {app_data.get_facility_summary()['total_facilities']} facilities")
+    else:
+        missing = [k for k, ok in app_data.available.items() if not ok]
+        print(f"Started without reference data (disabled: {', '.join(missing)}). "
+              f"See kaelo-app/README.md.")
     yield
     # Shutdown: nothing to clean up
 

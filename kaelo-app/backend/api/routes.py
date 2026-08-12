@@ -28,7 +28,35 @@ router = APIRouter(prefix="/api")
 
 @router.get("/health")
 def health_check():
-    return {"status": "ok", "data_loaded": app_data.loaded}
+    # Reports which inputs are present so the UI can explain what is disabled
+    # rather than failing opaquely.
+    return {
+        "status": "ok",
+        "data_loaded": app_data.loaded,
+        "inputs": app_data.available,
+        "network_available": app_data.network_available,
+        "demand_model_available": app_data.demand_model_available,
+    }
+
+
+def _require_network():
+    if not app_data.network_available:
+        raise HTTPException(
+            503,
+            "Facility network data is not configured on this deployment. "
+            "See kaelo-app/README.md for the reference files the API expects.",
+        )
+
+
+def _require_demand_model():
+    _require_network()
+    if not app_data.demand_model_available:
+        raise HTTPException(
+            503,
+            "Baseline demand is unavailable on this deployment: the admissions "
+            "estimates and GLM artifacts are not included. Supply demand values "
+            "directly via custom_demand instead.",
+        )
 
 
 @router.get("/summary")
@@ -362,6 +390,7 @@ def get_region_demand(region: str, scenario: str = "2526"):
     Response: { facilities: [...], drug_classes: [...], demand: {facility: {drug: value}} }
     Users can edit these values and send them back via custom_demand in /optimize.
     """
+    _require_demand_model()
     try:
         instance = build_region_instance(region)
     except ValueError as e:
@@ -385,6 +414,7 @@ def get_region_demand(region: str, scenario: str = "2526"):
 
 @router.post("/optimize", response_model=OptimizationResult)
 def run_optimization(req: OptimizationRequest):
+    _require_demand_model()
     try:
         # CMS procurement data is withheld from this build; demand always comes
         # from what the user supplies.
@@ -465,6 +495,7 @@ def run_optimization(req: OptimizationRequest):
 
 @router.post("/plan")
 def run_plan(req: PlanningRequest):
+    _require_demand_model()
     try:
         # CMS procurement data is withheld from this build; demand always comes
         # from what the user supplies.
@@ -514,6 +545,7 @@ def _build_region_template(region: str) -> io.BytesIO:
     from openpyxl.styles import Font, PatternFill, Alignment
     from openpyxl.utils import get_column_letter
 
+    _require_demand_model()
     try:
         instance = build_region_instance(region)
     except ValueError as e:
@@ -739,6 +771,7 @@ async def parse_region_template(region: str, file: UploadFile = File(...)):
     """Parse an uploaded filled template and return {inventory, order_request} dicts."""
     from openpyxl import load_workbook
 
+    _require_demand_model()
     try:
         instance = build_region_instance(region)
     except ValueError as e:

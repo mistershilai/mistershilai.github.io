@@ -57,9 +57,25 @@ or Railway, point the service at `kaelo-app/Dockerfile` and set:
 - `CORS_ORIGINS=https://elliotlee.info` (the site origin, comma-separated for more)
 - `PORT` if the platform requires a specific one
 
-The backend also needs public reference data (facility list with coordinates,
-district boundaries, population) under `data/app/`. Uncomment the `COPY data`
-line in the Dockerfile once you have placed your copy there.
+### Reference data
+
+The API starts without any data and reports what is missing at `/api/health`.
+Endpoints that need inputs return 503 with an explanation rather than failing
+opaquely, so a deployment is never broken, only limited.
+
+To enable the full planner, place these under `data/app/` and uncomment the
+`COPY data` line in the Dockerfile:
+
+| File | Enables |
+| --- | --- |
+| `facilities_with_warehouses.csv`, `distance_matrix_named.csv`, `duration_matrix_named.csv` | the facility network and routing |
+| `census_population_2022_geocoded_final_uniform.csv`, `botswana_population_age_breakdown.csv` | population weighting |
+| `district_admissions_estimates_2021.csv`, `glm/p_class.csv`, `glm/m_ak.csv` | baseline demand |
+| `botswana.geojson` | district boundaries on the map |
+
+These are generated artifacts, not stored files: in the research repo `data/app/`
+is gitignored and produced by `offline/_full_offline.bash` (geocoding plus OSRM
+routing). Run that first, then copy the output here.
 
 **2. Point the site at it.** Set both variables in the Vercel project, then
 redeploy:
