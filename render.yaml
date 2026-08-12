@@ -19,4 +19,5 @@ services:
     envVars:
       # Origins allowed to call the API. Comma-separated.
       - key: CORS_ORIGINS
-        value: https://elliotlee.info,https://mistershilai-github-io-mistershilais-projects.vercel.app
+        # The apex redirects to www, so the browser's origin is the www host.
+        value: https://www.elliotlee.info,https://elliotlee.info,https://mistershilai-github-io-mistershilais-projects.vercel.app
