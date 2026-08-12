@@ -7,6 +7,8 @@ export async function GET(context: APIContext) {
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
+    // Renders the feed as a readable page in browsers; readers ignore it.
+    stylesheet: '/rss-styles.xsl',
     title: 'Elliot S. Lee — Blog',
     description: 'Notes on global health, machine learning, operations research, and adjacent things.',
     site: context.site!,

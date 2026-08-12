@@ -11,15 +11,30 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="max-w-3xl mx-auto px-6 pt-12 pb-20">
     <div class="text-center mb-10">
       <h1 class="font-serif font-bold text-4xl md:text-5xl mb-3">Blog</h1>
-      <a
-        href="/rss.xml"
-        class="inline-flex items-center gap-1.5 text-xs font-sans opacity-70 hover:opacity-100 no-underline"
-      >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44A19.56 19.56 0 0 1 23.56 24h-2.83A16.73 16.73 0 0 0 4 7.27V4.44zm0 5.66a13.9 13.9 0 0 1 13.9 13.9h-2.82A11.08 11.08 0 0 0 4 12.93V10.1z"/>
-        </svg>
-        Subscribe via RSS
-      </a>
+      <div class="subscribe">
+        <button id="subscribe-toggle" type="button" class="subscribe-trigger" aria-expanded="false" aria-controls="subscribe-panel">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44A19.56 19.56 0 0 1 23.56 24h-2.83A16.73 16.73 0 0 0 4 7.27V4.44zm0 5.66a13.9 13.9 0 0 1 13.9 13.9h-2.82A11.08 11.08 0 0 0 4 12.93V10.1z"/>
+          </svg>
+          Subscribe
+        </button>
+
+        <div id="subscribe-panel" class="subscribe-panel" hidden>
+          <p class="subscribe-lead">
+            New posts land in your reader automatically. No email, no list, nothing to unsubscribe from.
+          </p>
+          <div class="subscribe-row">
+            <input id="subscribe-url" class="subscribe-url" readonly value="https://elliotlee.info/rss.xml" aria-label="Feed address" />
+            <button id="subscribe-copy" type="button" class="subscribe-copy">Copy</button>
+          </div>
+          <p class="subscribe-hint">
+            Paste it into <a href="https://netnewswire.com/" target="_blank" rel="noopener noreferrer">NetNewsWire</a>,
+            <a href="https://feedly.com/" target="_blank" rel="noopener noreferrer">Feedly</a>, or
+            <a href="https://www.inoreader.com/" target="_blank" rel="noopener noreferrer">Inoreader</a>,
+            or just <a href="/rss.xml">open the feed</a>.
+          </p>
+        </div>
+      </div>
     </div>
 
     {posts.length === 0 && (
@@ -50,3 +65,139 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </ul>
   </section>
 </BaseLayout>
+
+<style>
+  .subscribe { position: relative; display: inline-block; }
+
+  .subscribe-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    opacity: 0.7;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    transition: opacity 0.2s ease;
+  }
+  .subscribe-trigger:hover,
+  .subscribe-trigger[aria-expanded='true'] { opacity: 1; }
+
+  .subscribe-panel {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(21rem, calc(100vw - 3rem));
+    z-index: 30;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.45);
+  }
+  :global(.dark) .subscribe-panel {
+    background: #161b24;
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .subscribe-lead {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin: 0 0 0.7rem;
+  }
+
+  .subscribe-row { display: flex; gap: 0.4rem; }
+
+  .subscribe-url {
+    flex: 1;
+    min-width: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    padding: 0.4rem 0.55rem;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: rgba(0, 0, 0, 0.03);
+    color: inherit;
+  }
+  :global(.dark) .subscribe-url {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .subscribe-copy {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.4rem 0.7rem;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    background: var(--color-accent);
+    color: white;
+    white-space: nowrap;
+  }
+  .subscribe-copy:hover { opacity: 0.9; }
+
+  .subscribe-hint {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    opacity: 0.65;
+    margin: 0.7rem 0 0;
+  }
+  .subscribe-hint a { color: var(--color-accent); }
+</style>
+
+<script>
+  function wireSubscribe() {
+    const toggle = document.getElementById('subscribe-toggle');
+    const panel = document.getElementById('subscribe-panel');
+    const copy = document.getElementById('subscribe-copy') as HTMLButtonElement | null;
+    const url = document.getElementById('subscribe-url') as HTMLInputElement | null;
+    if (!toggle || !panel || !copy || !url) return;
+    if ((toggle as any).__wired) return;
+    (toggle as any).__wired = true;
+
+    // Use the real origin so a local or preview build copies its own address.
+    url.value = `${location.origin}/rss.xml`;
+
+    function close() {
+      panel!.hidden = true;
+      toggle!.setAttribute('aria-expanded', 'false');
+    }
+    function open() {
+      panel!.hidden = false;
+      toggle!.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.hidden ? open() : close();
+    });
+    panel.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('click', () => { if (!panel.hidden) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) close();
+    });
+
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(url.value);
+      } catch {
+        url.select();
+        document.execCommand('copy');
+      }
+      copy.textContent = 'Copied';
+      setTimeout(() => { copy.textContent = 'Copy'; }, 1600);
+    });
+  }
+  wireSubscribe();
+  document.addEventListener('astro:page-load', wireSubscribe);
+</script>
