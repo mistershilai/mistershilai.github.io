@@ -351,6 +351,10 @@ class AppData:
 
     def get_all_facilities_geojson(self) -> dict:
         """Return all facilities as GeoJSON for map display."""
+        # An empty FeatureCollection lets the map render its basemap instead of
+        # erroring when no facility data is configured.
+        if not self.available.get("facilities"):
+            return {"type": "FeatureCollection", "features": []}
         features = []
         for _, row in self.fac.iterrows():
             features.append({
@@ -369,6 +373,8 @@ class AppData:
 
     def get_districts_geojson(self) -> dict:
         """Load Botswana district boundary polygons and enrich with facility stats."""
+        if not (DATA_APP / "botswana.geojson").exists():
+            return {"type": "FeatureCollection", "features": []}
         import json
         geo_path = DATA_APP / "botswana.geojson"
         with open(geo_path) as f:

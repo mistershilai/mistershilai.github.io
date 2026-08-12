@@ -33,7 +33,7 @@ function AppContent() {
       {
       <nav className="navbar">
         <Link to="/" className="nav-brand">
-          <img src="/logos/kaelo.png" alt="Kaelo" className="nav-logo" />
+          <img src={`${import.meta.env.BASE_URL}logos/kaelo.png`} alt="Kaelo" className="nav-logo" />
           Kaelo
         </Link>
         <div className="nav-links">
@@ -65,16 +65,16 @@ function AppContent() {
             <span className="footer-label">In partnership with</span>
             <div className="footer-logos">
               <a href="https://www.moh.gov.bw/" target="_blank" rel="noopener noreferrer">
-                <img src="/logos/moh.png" alt="Ministry of Health, Republic of Botswana" className="footer-logo footer-logo-invert" />
+                <img src={`${import.meta.env.BASE_URL}logos/moh.png`} alt="Ministry of Health, Republic of Botswana" className="footer-logo footer-logo-invert" />
               </a>
               <a href="https://achap.org/" target="_blank" rel="noopener noreferrer">
-                <img src="/logos/achap.png" alt="ACHAP - Partnerships for a healthy Africa" className="footer-logo footer-logo-achap" />
+                <img src={`${import.meta.env.BASE_URL}logos/achap.png`} alt="ACHAP - Partnerships for a healthy Africa" className="footer-logo footer-logo-achap" />
               </a>
               <a href="https://chw.princeton.edu/" target="_blank" rel="noopener noreferrer">
-                <img src="/logos/chw.png" alt="Princeton Center for Health and Wellbeing" className="footer-logo footer-logo-chw" />
+                <img src={`${import.meta.env.BASE_URL}logos/chw.png`} alt="Princeton Center for Health and Wellbeing" className="footer-logo footer-logo-chw" />
               </a>
               <a href="https://globalhealth.princeton.edu/" target="_blank" rel="noopener noreferrer">
-                <img src="/logos/ghp.png" alt="Princeton Global Health Program" className="footer-logo footer-logo-ghp" />
+                <img src={`${import.meta.env.BASE_URL}logos/ghp.png`} alt="Princeton Global Health Program" className="footer-logo footer-logo-ghp" />
               </a>
             </div>
           </div>
@@ -82,7 +82,7 @@ function AppContent() {
             <span className="footer-label">Built with <span className="footer-heart">&hearts;</span> by researchers from</span>
             <div className="footer-logos">
               <a href="https://orfe.princeton.edu/" target="_blank" rel="noopener noreferrer">
-                <img src="/logos/orfe.png" alt="Princeton ORFE" className="footer-logo footer-logo-orfe" />
+                <img src={`${import.meta.env.BASE_URL}logos/orfe.png`} alt="Princeton ORFE" className="footer-logo footer-logo-orfe" />
               </a>
             </div>
           </div>
