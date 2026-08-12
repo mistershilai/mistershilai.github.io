@@ -1,4 +1,10 @@
-const API_BASE = (import.meta as any).env?.VITE_API_URL || "/api";
+// Accepts either a bare host or one already ending in /api, since every route
+// below is written relative to the /api prefix.
+const RAW_API_BASE = (import.meta as any).env?.VITE_API_URL || "/api";
+const API_BASE = (() => {
+  const base = String(RAW_API_BASE).replace(/\/+$/, "");
+  return /\/api$/.test(base) ? base : `${base}/api`;
+})();
 
 async function fetchJSON<T>(url: string, options?: RequestInit): Promise<T> {
   const headers: Record<string, string> = {

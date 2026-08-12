@@ -20,3 +20,5 @@ kaelo-app/frontend/dist/
 kaelo-app/**/__pycache__/
 kaelo-app/**/*.db
 public/kaelo-app/
+.vercel
+.env*
