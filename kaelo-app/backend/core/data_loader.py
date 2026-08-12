@@ -7,12 +7,16 @@ import re
 from pathlib import Path
 
 import numpy as np
+import os
 import pandas as pd
 import yaml
 from scipy.spatial import cKDTree
 
-# Repo root (4 levels up from this file)
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+# Repo root (4 levels up from this file), overridable because the deployed
+# image lays the tree out differently from the research repo: there the app
+# sits under app/, in the container backend/ and data/ are siblings.
+BASE_DIR = Path(os.environ.get("KAELO_DATA_ROOT") or
+                Path(__file__).resolve().parent.parent.parent.parent)
 
 # Read config.yaml — if missing, default to production mode
 _cfg_path = BASE_DIR / "config.yaml"

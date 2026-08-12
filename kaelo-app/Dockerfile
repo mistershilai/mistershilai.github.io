@@ -14,10 +14,12 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 
 COPY backend ./backend
 
-# Public reference data (facility list, district boundaries, population).
-# Not vendored in this repo; mount or COPY your own copy at build time.
-# COPY data ./data
+# Public reference data: the facility list and district boundaries. The
+# generated inputs (routing matrices, geocoded population, GLM artifacts) are
+# not here, so demand optimization stays disabled until they are added.
+COPY data ./data
 
+ENV KAELO_DATA_ROOT=/srv
 ENV PORT=8000
 # CORS_ORIGINS must include the site origin, e.g. https://elliotlee.info
 ENV CORS_ORIGINS=http://localhost:4321

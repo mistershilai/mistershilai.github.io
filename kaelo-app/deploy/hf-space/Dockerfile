@@ -25,6 +25,7 @@ COPY --chown=user backend ./backend
 # Not vendored here; add your copy and uncomment.
 # COPY --chown=user data ./data
 
+ENV KAELO_DATA_ROOT=$HOME/app
 ENV PORT=7860
 EXPOSE 7860
 CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT}"]
