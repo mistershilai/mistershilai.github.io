@@ -490,9 +490,22 @@ import { places } from '@/data/photos';
       const videoMarkup = place.video
         ? `<video class="pg-panel-video" src="/photos/videos/${place.video.file}" controls playsinline preload="metadata" loop></video>`
         : '';
-      grid.innerHTML = videoMarkup + place.photos.map(p =>
-        `<div class="pg-photo"><img src="/photos/${place.slug}/${p.file}" alt="${p.caption || place.name}" loading="lazy" /></div>`
-      ).join('');
+      grid.innerHTML = videoMarkup + place.photos.map(p => {
+        // Derivatives from scripts/optimize-photos.mjs. If one is missing
+        // (photo added without re-running the script), fall back to the
+        // original rather than showing a broken tile.
+        const base = p.file.replace(/\.[^.]+$/, '');
+        const opt = `/photos-opt/${place.slug}/${base}`;
+        const original = `/photos/${place.slug}/${p.file}`;
+        const alt = (p.caption || place.name).replace(/"/g, '&quot;');
+        return `<div class="pg-photo"><img
+          src="${opt}-800.webp"
+          srcset="${opt}-400.webp 400w, ${opt}-800.webp 800w"
+          sizes="(min-width: 768px) 33vw, 50vw"
+          alt="${alt}" loading="lazy" decoding="async"
+          onerror="this.onerror=null;this.removeAttribute('srcset');this.src='${original}';"
+        /></div>`;
+      }).join('');
       // Two-step show so the opacity/transform transition actually runs
       panel!.style.display = 'block';
       requestAnimationFrame(() => {
