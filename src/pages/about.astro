@@ -65,6 +65,15 @@ const hum = [
     <ScrollReveal>
       <figure class="quote">
         <blockquote>
+          The final test of a theory is its capacity to solve the problems which originated it.
+        </blockquote>
+        <figcaption>
+          George B. Dantzig<span class="quote-source">Linear Programming and Extensions, 1963</span>
+        </figcaption>
+      </figure>
+
+      <figure class="quote">
+        <blockquote>
           We can only see a short distance ahead, but we can see plenty there that needs to be done.
         </blockquote>
         <figcaption>
@@ -151,6 +160,9 @@ const hum = [
     border-left: 2px solid var(--color-accent);
   }
   :global(.dark) .quote { border-left-color: var(--color-accent-dark); }
+  /* Stacked epigraphs read as a pair, so keep them closer than the gap
+     separating them from the bio below. */
+  .quote + .quote { margin-top: -0.9rem; }
 
   .quote blockquote {
     margin: 0;
