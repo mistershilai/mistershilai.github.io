@@ -57,7 +57,7 @@ export default function Dashboard() {
           <div className="stat-value">
             {(summary.total_population / 1e6).toFixed(2)}M
           </div>
-          <div className="stat-label">Population Served</div>
+          <div className="stat-label">Population</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{summary.dhmt_count}</div>
