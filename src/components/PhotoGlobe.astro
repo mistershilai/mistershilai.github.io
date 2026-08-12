@@ -577,8 +577,12 @@ import { places } from '@/data/photos';
     // Dates come from photo EXIF via scripts/extract-photo-dates.mjs. Places
     // whose photos carry no EXIF date simply sit out the replay.
     type Leg = { place: Place; date: string };
+    // Domestic stops sit out the replay, which is about the travelling.
+    // Matches only a trailing "USA" country segment, so a shared site like
+    // "Niagara Falls, Canada / USA" is kept.
+    const isDomestic = (name: string) => /,\s*USA\s*$/.test(name);
     const legs: Leg[] = places
-      .filter((p) => (placeDates as any)[p.slug])
+      .filter((p) => (placeDates as any)[p.slug] && !isDomestic(p.name))
       .map((p) => ({ place: p, date: (placeDates as any)[p.slug].first as string }))
       .sort((a, b) => a.date.localeCompare(b.date));
 
@@ -1082,8 +1086,10 @@ import { places } from '@/data/photos';
     let t = 0;
     function loop() {
       t += 0.016;
-      // Auto-rotate unless dragging, zoomed in, or hovering a pin / popup
-      if (!dragging && !zoomed && !pointerOnPinOrPopup) targetRotY += 0.002;
+      // Auto-rotate unless dragging, zoomed in, hovering a pin / popup, or
+      // replaying the journey, where the spin would drag the globe off each stop.
+      const journeyActive = journeyIdx >= 0;
+      if (!dragging && !zoomed && !pointerOnPinOrPopup && !journeyActive) targetRotY += 0.002;
       group.rotation.y += (targetRotY - group.rotation.y) * 0.08;
       group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
       camera.position.z += (targetCamZ - camera.position.z) * 0.08;
