@@ -242,7 +242,7 @@ class AppData:
     # GLM artifacts
     def _load_glm_artifacts(self):
         ART_DIR = DATA_APP / "glm"
-        self.p_class = pd.read_csv(ART_DIR / "p_class.csv")
+        p_class = pd.read_csv(ART_DIR / "p_class.csv")
         m_ak = pd.read_csv(ART_DIR / "m_ak.csv")
 
         self.age_map = {
@@ -255,6 +255,15 @@ class AppData:
             "56 to 60 years": "56-60", "61 to 65 years": "61-65",
             "66+": "66+",
         }
+        # p_class ships with raw labels ("11 to 15 years", "CAI") while the rest
+        # of the pipeline uses normalized ones ("11-15", "cai"). Without this the
+        # demand join matches nothing and every facility comes out at zero.
+        p_class["agegroup"] = p_class["agegroup"].replace(self.age_map)
+        p_class["infectionstatus"] = (
+            p_class["infectionstatus"].astype(str).str.strip().str.lower()
+        )
+        self.p_class = p_class
+
         m_ak["agegroup"] = m_ak["agegroup"].replace(self.age_map)
         m_ak["infectionstatus"] = m_ak["infectionstatus"].astype(str).str.strip().str.lower()
         m_ak["patients"] = pd.to_numeric(m_ak["patients"], errors="coerce").fillna(0)
