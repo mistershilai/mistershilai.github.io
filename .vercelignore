@@ -1,0 +1,13 @@
+# Only consulted when deploying from the CLI (`vercel deploy`), not for the
+# GitHub integration. Without it the CLI uploads the raw video masters and
+# node_modules, which is ~1.7GB and trips the 100MB per-file limit.
+node_modules
+kaelo-app/frontend/node_modules
+kaelo-app/frontend/dist
+dist
+.vercel/output
+.astro
+
+# Raw video masters (only the compressed .mp4s are served)
+public/photos/videos/*.MOV
+public/photos/videos/*_ORIG.*
