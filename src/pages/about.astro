@@ -63,6 +63,17 @@ const hum = [
     </div>
 
     <ScrollReveal>
+      <figure class="quote">
+        <blockquote>
+          We can only see a short distance ahead, but we can see plenty there that needs to be done.
+        </blockquote>
+        <figcaption>
+          Alan Turing<span class="quote-source">Computing Machinery and Intelligence, 1950</span>
+        </figcaption>
+      </figure>
+    </ScrollReveal>
+
+    <ScrollReveal>
       <div class="card p-8 mb-8 leading-relaxed text-[1.05rem]">
         <p class="mb-5">
           Hi! I'm Elliot, a 2026 Princeton graduate (summa cum laude, Sigma Xi) in Operations Research and Financial Engineering (pre-med)
@@ -131,3 +142,39 @@ const hum = [
     </ScrollReveal>
   </section>
 </BaseLayout>
+
+<style>
+  .quote {
+    max-width: 44rem;
+    margin: 0 auto 2.25rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--color-accent);
+  }
+  :global(.dark) .quote { border-left-color: var(--color-accent-dark); }
+
+  .quote blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    font-style: italic;
+    opacity: 0.9;
+  }
+  .quote figcaption {
+    margin-top: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .quote-source {
+    display: block;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0.75;
+    margin-top: 0.1rem;
+  }
+  @media (max-width: 640px) {
+    .quote blockquote { font-size: 1.02rem; }
+  }
+</style>
