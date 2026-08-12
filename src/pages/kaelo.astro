@@ -132,9 +132,15 @@ const team = [
           procurement figure stripped out. You supply the demand and cost numbers yourself.
         </p>
         {kaeloApiUrl ? (
-          <a href="/kaelo-app/" class="inline-block px-4 py-2 rounded-full bg-[color:var(--color-accent)] text-white font-sans text-sm no-underline hover:opacity-90">
-            Open the software &rarr;
-          </a>
+          <>
+            <a href="/kaelo-app/" class="inline-block px-4 py-2 rounded-full bg-[color:var(--color-accent)] text-white font-sans text-sm no-underline hover:opacity-90">
+              Open the software &rarr;
+            </a>
+            <p class="font-sans text-xs opacity-60 mt-3 mb-0">
+              Best on a desktop browser for now. The solver sleeps when idle, so the first load can take
+              a moment to wake up.
+            </p>
+          </>
         ) : (
           <p class="font-sans text-sm opacity-60">
             Source at <a href="https://github.com/mistershilai/mistershilai.github.io/tree/main/kaelo-app">kaelo-app</a>.
