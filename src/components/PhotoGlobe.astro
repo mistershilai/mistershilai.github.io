@@ -25,6 +25,24 @@ import { places } from '@/data/photos';
   click a pin to zoom · drag to rotate
 </p>
 
+<!-- Journey scrubber: replays trips in the order their photos were taken -->
+<div id="pg-journey" class="pg-journey">
+  <div class="pg-journey-controls">
+    <button id="pg-journey-play" class="pg-journey-play" type="button" aria-label="Play journey">
+      <svg class="pg-icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <svg class="pg-icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
+        <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+      </svg>
+      <span id="pg-journey-playlabel">Play journey</span>
+    </button>
+    <input id="pg-journey-range" class="pg-journey-range" type="range" min="0" max="0" value="0" step="1" aria-label="Scrub through trips" />
+    <button id="pg-journey-reset" class="pg-journey-reset" type="button" hidden>Reset</button>
+  </div>
+  <div id="pg-journey-label" class="pg-journey-label"></div>
+</div>
+
 <div id="pg-panel" class="pg-panel" aria-hidden="true">
   <button id="pg-close" class="pg-close" aria-label="Close">×</button>
   <div class="flex items-baseline justify-between gap-4 mb-3">
@@ -82,6 +100,72 @@ import { places } from '@/data/photos';
   :global(.dark) .pg-close { border-color: rgba(255,255,255,0.15); }
   .pg-close:hover { background: rgba(0,0,0,0.05); }
   :global(.dark) .pg-close:hover { background: rgba(255,255,255,0.1); }
+  /* Journey scrubber */
+  .pg-journey {
+    max-width: 36rem;
+    margin: 0.9rem auto 0;
+    font-family: var(--font-sans);
+  }
+  .pg-journey-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .pg-journey-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.38rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  :global(.dark) .pg-journey-play { border-color: rgba(255, 255, 255, 0.16); }
+  .pg-journey-play:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  :global(.dark) .pg-journey-play:hover { color: var(--color-accent-dark); }
+
+  .pg-journey-range {
+    flex: 1;
+    min-width: 0;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+  :global(.dark) .pg-journey-range { accent-color: var(--color-accent-dark); }
+
+  .pg-journey-reset {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    padding: 0;
+  }
+  .pg-journey-reset:hover { opacity: 1; }
+
+  .pg-journey-label {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.78rem;
+    min-height: 1.2em;
+    opacity: 0.75;
+  }
+  .pg-journey-label .pg-journey-date {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+  :global(.dark) .pg-journey-label .pg-journey-date { color: var(--color-accent-dark); }
+
   .pg-photo {
     position: relative;
     overflow: hidden;
@@ -252,6 +336,13 @@ import { places } from '@/data/photos';
   import * as THREE from 'three';
   import { feature, mesh } from 'topojson-client';
   import { VISITED_IDS } from '@/data/visited';
+  import placeDates from '@/data/place-dates.json';
+
+  function escapeHtml(s: string) {
+    return s.replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!
+    ));
+  }
 
   type Video = { file: string; description?: string };
   type Place = {
@@ -480,6 +571,130 @@ import { places } from '@/data/photos';
       selectedPlace = null;
       hidePanel();
       hint && hint.classList.remove('opacity-0');
+    }
+
+    // ---- Journey: replay trips in the order their photos were taken ----
+    // Dates come from photo EXIF via scripts/extract-photo-dates.mjs. Places
+    // whose photos carry no EXIF date simply sit out the replay.
+    type Leg = { place: Place; date: string };
+    const legs: Leg[] = places
+      .filter((p) => (placeDates as any)[p.slug])
+      .map((p) => ({ place: p, date: (placeDates as any)[p.slug].first as string }))
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    const journeyEl = document.getElementById('pg-journey');
+    const playBtn = document.getElementById('pg-journey-play') as HTMLButtonElement | null;
+    const playLabel = document.getElementById('pg-journey-playlabel');
+    const iconPlay = playBtn?.querySelector('.pg-icon-play') as SVGElement | null;
+    const iconPause = playBtn?.querySelector('.pg-icon-pause') as SVGElement | null;
+    const range = document.getElementById('pg-journey-range') as HTMLInputElement | null;
+    const resetBtn = document.getElementById('pg-journey-reset') as HTMLButtonElement | null;
+    const journeyLabel = document.getElementById('pg-journey-label');
+
+    const arcGroup = new THREE.Group();
+    group.add(arcGroup);
+    const arcMat = () => new THREE.LineBasicMaterial({
+      color: isDark() ? 0xffa552 : 0xff7a18,
+      transparent: true,
+      opacity: 0,
+    });
+    const arcs: THREE.Line[] = [];
+
+    // A lifted quadratic curve reads as a flight path rather than a chord
+    // cutting through the globe.
+    function buildArc(a: Place, b: Place) {
+      const va = latLonToVec3(a.lat, a.lon, 1.02);
+      const vb = latLonToVec3(b.lat, b.lon, 1.02);
+      const lift = 1.02 + va.distanceTo(vb) * 0.32;
+      const mid = va.clone().add(vb).normalize().multiplyScalar(lift);
+      const pts = new THREE.QuadraticBezierCurve3(va, mid, vb).getPoints(48);
+      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), arcMat());
+      arcGroup.add(line);
+      return line;
+    }
+
+    let journeyIdx = -1;
+    let playing = false;
+    let playTimer: ReturnType<typeof setInterval> | null = null;
+
+    function fmtDate(iso: string) {
+      const [y, m] = iso.split('-');
+      const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m - 1];
+      return `${month} ${y}`;
+    }
+
+    function clearArcs() {
+      arcs.forEach((l) => {
+        arcGroup.remove(l);
+        l.geometry.dispose();
+        (l.material as THREE.Material).dispose();
+      });
+      arcs.length = 0;
+    }
+
+    function setJourney(i: number) {
+      if (!legs.length) return;
+      const idx = Math.max(0, Math.min(i, legs.length - 1));
+      const goingBack = idx < journeyIdx;
+      journeyIdx = idx;
+
+      // Rebuild arcs when scrubbing backwards; otherwise just extend the path.
+      if (goingBack) clearArcs();
+      const from = goingBack ? 1 : Math.max(1, arcs.length + 1);
+      for (let k = from; k <= idx; k++) {
+        arcs.push(buildArc(legs[k - 1].place, legs[k].place));
+      }
+
+      const leg = legs[idx];
+      targetRotY = -(leg.place.lon + 90) * Math.PI / 180;
+      targetRotX = leg.place.lat * Math.PI / 180;
+      targetCamZ = 2.5;
+
+      if (range) range.value = String(idx);
+      if (journeyLabel) {
+        journeyLabel.innerHTML =
+          `<span class="pg-journey-date">${fmtDate(leg.date)}</span> · ${escapeHtml(leg.place.name)}` +
+          ` <span style="opacity:0.5">(${idx + 1}/${legs.length})</span>`;
+      }
+      if (resetBtn) resetBtn.hidden = false;
+    }
+
+    function setPlaying(on: boolean) {
+      playing = on;
+      if (iconPlay) iconPlay.hidden = on;
+      if (iconPause) iconPause.hidden = !on;
+      if (playLabel) playLabel.textContent = on ? 'Pause' : 'Play journey';
+      if (playTimer) { clearInterval(playTimer); playTimer = null; }
+      if (on) {
+        if (journeyIdx >= legs.length - 1) setJourney(0);
+        playTimer = setInterval(() => {
+          if (journeyIdx >= legs.length - 1) { setPlaying(false); return; }
+          setJourney(journeyIdx + 1);
+        }, 1500);
+      }
+    }
+
+    function resetJourney() {
+      setPlaying(false);
+      clearArcs();
+      journeyIdx = -1;
+      targetCamZ = 3.2;
+      if (range) range.value = '0';
+      if (journeyLabel) journeyLabel.textContent = '';
+      if (resetBtn) resetBtn.hidden = true;
+    }
+
+    if (legs.length > 1 && range && playBtn) {
+      range.max = String(legs.length - 1);
+      playBtn.addEventListener('click', () => setPlaying(!playing));
+      range.addEventListener('input', () => {
+        setPlaying(false);
+        setJourney(Number(range.value));
+      });
+      resetBtn?.addEventListener('click', resetJourney);
+    } else if (journeyEl) {
+      // Nothing to replay (no dated photos) — don't show a dead control.
+      journeyEl.style.display = 'none';
     }
 
     function showPanel(place: Place) {
@@ -759,6 +974,8 @@ import { places } from '@/data/photos';
 
     canvas.addEventListener('pointerdown', (e) => {
       setPointer(e);
+      // Taking hold of the globe hands control back to the user.
+      if (playing) setPlaying(false);
       dragging = true;
       dragMoved = false;
       lastX = e.clientX;
@@ -876,6 +1093,13 @@ import { places } from '@/data/photos';
         const s = 1 + Math.sin(t * 2 + i) * 0.15;
         p.halo.scale.setScalar(s);
         p.smallHalo.scale.setScalar(s);
+      });
+
+      // Journey arcs fade in as they are added; the newest stays brightest.
+      arcs.forEach((line, i) => {
+        const mat = line.material as THREE.LineBasicMaterial;
+        const target = i === arcs.length - 1 ? 0.85 : 0.28;
+        mat.opacity += (target - mat.opacity) * 0.08;
       });
 
       renderer.render(scene, camera);

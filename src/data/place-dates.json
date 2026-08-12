@@ -1,0 +1,266 @@
+{
+  "dc": {
+    "first": "2017-03-25",
+    "last": "2024-05-22",
+    "dated": 5,
+    "photos": 5
+  },
+  "toronto": {
+    "first": "2017-08-14",
+    "last": "2017-08-14",
+    "dated": 3,
+    "photos": 3
+  },
+  "montreal": {
+    "first": "2017-08-17",
+    "last": "2017-08-17",
+    "dated": 1,
+    "photos": 7
+  },
+  "quebeccity": {
+    "first": "2017-08-18",
+    "last": "2017-08-18",
+    "dated": 2,
+    "photos": 7
+  },
+  "solheimajokull": {
+    "first": "2022-06-16",
+    "last": "2022-06-16",
+    "dated": 4,
+    "photos": 4
+  },
+  "reykjavik": {
+    "first": "2022-06-18",
+    "last": "2022-06-18",
+    "dated": 1,
+    "photos": 6
+  },
+  "boston": {
+    "first": "2022-12-25",
+    "last": "2022-12-31",
+    "dated": 5,
+    "photos": 5
+  },
+  "bahrain": {
+    "first": "2023-07-12",
+    "last": "2023-07-12",
+    "dated": 1,
+    "photos": 1
+  },
+  "doha": {
+    "first": "2023-07-12",
+    "last": "2023-07-12",
+    "dated": 3,
+    "photos": 3
+  },
+  "bangalore": {
+    "first": "2023-07-13",
+    "last": "2023-08-05",
+    "dated": 7,
+    "photos": 7
+  },
+  "hampi": {
+    "first": "2023-07-29",
+    "last": "2023-07-29",
+    "dated": 8,
+    "photos": 8
+  },
+  "delhi": {
+    "first": "2023-08-12",
+    "last": "2023-08-15",
+    "dated": 7,
+    "photos": 7
+  },
+  "agra": {
+    "first": "2023-08-13",
+    "last": "2023-08-13",
+    "dated": 1,
+    "photos": 1
+  },
+  "amritsar": {
+    "first": "2023-08-15",
+    "last": "2023-08-15",
+    "dated": 3,
+    "photos": 3
+  },
+  "mumbai": {
+    "first": "2023-08-19",
+    "last": "2023-08-20",
+    "dated": 7,
+    "photos": 7
+  },
+  "philly": {
+    "first": "2024-06-08",
+    "last": "2024-06-08",
+    "dated": 4,
+    "photos": 4
+  },
+  "rio": {
+    "first": "2025-01-07",
+    "last": "2025-01-12",
+    "dated": 9,
+    "photos": 9
+  },
+  "macapa": {
+    "first": "2025-01-13",
+    "last": "2025-01-16",
+    "dated": 6,
+    "photos": 6
+  },
+  "gabs": {
+    "first": "2025-06-07",
+    "last": "2025-07-05",
+    "dated": 8,
+    "photos": 8
+  },
+  "joburg-pretoria": {
+    "first": "2025-07-12",
+    "last": "2025-07-12",
+    "dated": 7,
+    "photos": 7
+  },
+  "bobonong": {
+    "first": "2025-07-14",
+    "last": "2025-07-15",
+    "dated": 3,
+    "photos": 3
+  },
+  "mahalapye": {
+    "first": "2025-07-14",
+    "last": "2025-07-15",
+    "dated": 5,
+    "photos": 5
+  },
+  "swakopmund": {
+    "first": "2025-07-19",
+    "last": "2025-07-21",
+    "dated": 9,
+    "photos": 9
+  },
+  "windhoek": {
+    "first": "2025-07-19",
+    "last": "2025-07-19",
+    "dated": 5,
+    "photos": 5
+  },
+  "capetown": {
+    "first": "2025-07-29",
+    "last": "2025-08-01",
+    "dated": 12,
+    "photos": 12
+  },
+  "vicfalls": {
+    "first": "2025-08-02",
+    "last": "2025-08-02",
+    "dated": 6,
+    "photos": 6
+  },
+  "istanbul": {
+    "first": "2026-01-04",
+    "last": "2026-01-04",
+    "dated": 7,
+    "photos": 7
+  },
+  "yancheng": {
+    "first": "2026-01-06",
+    "last": "2026-01-07",
+    "dated": 4,
+    "photos": 4
+  },
+  "wuxi": {
+    "first": "2026-01-09",
+    "last": "2026-01-09",
+    "dated": 5,
+    "photos": 5
+  },
+  "macau": {
+    "first": "2026-01-11",
+    "last": "2026-01-11",
+    "dated": 5,
+    "photos": 5
+  },
+  "hongkong": {
+    "first": "2026-01-12",
+    "last": "2026-01-13",
+    "dated": 7,
+    "photos": 7
+  },
+  "madison": {
+    "first": "2026-01-17",
+    "last": "2026-01-17",
+    "dated": 1,
+    "photos": 1
+  },
+  "lesotho-drakensberg": {
+    "first": "2026-03-12",
+    "last": "2026-03-12",
+    "dated": 8,
+    "photos": 8
+  },
+  "durban": {
+    "first": "2026-03-13",
+    "last": "2026-03-13",
+    "dated": 3,
+    "photos": 3
+  },
+  "baltimore": {
+    "first": "2026-04-19",
+    "last": "2026-04-19",
+    "dated": 2,
+    "photos": 2
+  },
+  "cerroverde": {
+    "first": "2026-05-17",
+    "last": "2026-05-17",
+    "dated": 13,
+    "photos": 13
+  },
+  "sansalvador": {
+    "first": "2026-05-17",
+    "last": "2026-05-19",
+    "dated": 8,
+    "photos": 8
+  },
+  "lalibertad": {
+    "first": "2026-05-18",
+    "last": "2026-05-18",
+    "dated": 6,
+    "photos": 6
+  },
+  "joyadecerensanandres": {
+    "first": "2026-05-19",
+    "last": "2026-05-19",
+    "dated": 10,
+    "photos": 10
+  },
+  "lima": {
+    "first": "2026-06-08",
+    "last": "2026-06-08",
+    "dated": 15,
+    "photos": 15
+  },
+  "ica-huacachina": {
+    "first": "2026-06-09",
+    "last": "2026-06-09",
+    "dated": 8,
+    "photos": 8
+  },
+  "nazca": {
+    "first": "2026-06-09",
+    "last": "2026-06-09",
+    "dated": 8,
+    "photos": 8
+  },
+  "cusco": {
+    "first": "2026-06-10",
+    "last": "2026-06-14",
+    "dated": 10,
+    "photos": 10
+  },
+  "iquitos": {
+    "first": "2026-06-15",
+    "last": "2026-06-16",
+    "dated": 9,
+    "photos": 9
+  }
+}
