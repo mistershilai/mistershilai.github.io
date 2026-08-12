@@ -78,8 +78,10 @@ for await (const src of walkPhotos(SRC_ROOT)) {
 // Standalone images used in page markup, plus the favicon. Same idea, but
 // each has one known display size rather than a responsive set.
 const SINGLES = [
-  { src: 'public/IMG_4086.jpg', out: 'public/img-opt/contact-avatar.webp', width: 320 },
-  { src: 'public/facepicture.png', out: 'public/img-opt/about-avatar.webp', width: 360 },
+  { src: 'public/IMG_4086.jpg', out: 'public/img-opt/contact-avatar.webp', width: 320, square: true },
+  // cropTop is deliberate: automatic salience picks the monkey and slices
+  // through the face. 480 keeps both subjects whole.
+  { src: 'public/facepicture.JPG', out: 'public/img-opt/about-avatar.webp', width: 360, square: true, cropTop: 480 },
   {
     src: 'public/photos/presentation/b728273a-6867-4f22-bbe6-621aac1259ef.JPG',
     out: 'public/img-opt/presentation.webp',
@@ -90,7 +92,7 @@ const SINGLES = [
   { src: 'public/1000004463.JPG', out: 'public/img-opt/favicon-180.png', width: 180, png: true },
 ];
 
-for (const { src, out, width, png } of SINGLES) {
+for (const { src, out, width, png, square, cropTop } of SINGLES) {
   if (!existsSync(src)) {
     console.warn(`missing source, skipped: ${src}`);
     continue;
@@ -98,7 +100,27 @@ for (const { src, out, width, png } of SINGLES) {
   await mkdir(path.dirname(out), { recursive: true });
   srcBytes += (await stat(src)).size;
   if (await isStale(src, out)) {
-    const img = sharp(src).rotate().resize({ width, withoutEnlargement: true });
+    // Avatars render inside a circle with object-cover, so crop to a square
+    // here rather than letting the browser centre-crop a portrait frame and
+    // slice through the face. `attention` picks the most salient region.
+    let pipeline = sharp(src).rotate();
+    if (square && cropTop !== undefined) {
+      const meta = await pipeline.metadata();
+      const side = Math.min(meta.width, meta.height);
+      pipeline = sharp(src).rotate().extract({
+        left: Math.max(0, Math.round((meta.width - side) / 2)),
+        top: Math.min(cropTop, Math.max(0, meta.height - side)),
+        width: side,
+        height: side,
+      });
+    }
+    const img = square
+      ? pipeline.resize(width, width, {
+          fit: 'cover',
+          position: sharp.strategy.attention,
+          withoutEnlargement: true,
+        })
+      : pipeline.resize({ width, withoutEnlargement: true });
     await writeFile(out, await (png ? img.png({ compressionLevel: 9 }) : img.webp({ quality: 82 })).toBuffer());
     built++;
   } else {
