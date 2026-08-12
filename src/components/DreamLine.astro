@@ -1,0 +1,153 @@
+---
+// "I dream of a world where ..." with the closing clause cycling.
+//
+// The clauses carry markup (highlighted words), so this crossfades
+// pre-rendered spans rather than typing character by character the way
+// TypingText does.
+const phrases = [
+  '<span class="dream-good">decision intelligence</span> gives you access to care no matter where you live',
+  'responsible ML/AI for health systems isn’t <span class="dream-bad">inaccessible</span>, it’s <span class="dream-good">inevitable</span>',
+  'even the most rural parts of our global community have access to <span class="dream-good">quality surgery</span>',
+  'medical supplies are globally available in a <span class="dream-good">resilient supply chain</span>',
+];
+---
+
+<div class="dream">
+  <h1 class="dream-lead">I dream of a world where</h1>
+  <div class="dream-rotator">
+    {phrases.map((p, i) => (
+      <p class:list={["dream-phrase", i === 0 && "is-active"]} set:html={p} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .dream {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 46rem;
+  }
+
+  /* Opts out of the site-wide gradient that h1/h2/h3 pick up, so the lead
+     stays quiet and the colored words below carry the emphasis. */
+  .dream-lead {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    opacity: 0.75;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+  }
+
+  /* Every phrase occupies the same grid cell, so the block is as tall as the
+     longest one and nothing below it shifts as they cycle. */
+  .dream-rotator {
+    display: grid;
+  }
+  .dream-rotator > .dream-phrase {
+    grid-area: 1 / 1;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.9rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(0.35em);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  :global(.dark) .dream-rotator > .dream-phrase {
+    color: var(--color-accent-dark);
+  }
+  .dream-rotator > .dream-phrase.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Highlighted words. -webkit-text-fill-color and background are reset
+     because the site-wide gradient on bold text would otherwise repaint
+     them blue. */
+  .dream :global(.dream-good),
+  .dream :global(.dream-bad) {
+    background: none;
+    animation: none;
+  }
+  .dream :global(.dream-good) {
+    color: #1f7a45;
+    -webkit-text-fill-color: #1f7a45;
+  }
+  .dream :global(.dream-bad) {
+    color: #c62828;
+    -webkit-text-fill-color: #c62828;
+  }
+  :global(.dark) .dream :global(.dream-good) {
+    color: #5fd08a;
+    -webkit-text-fill-color: #5fd08a;
+  }
+  :global(.dark) .dream :global(.dream-bad) {
+    color: #ff7b7b;
+    -webkit-text-fill-color: #ff7b7b;
+  }
+
+  @media (max-width: 640px) {
+    .dream-lead { font-size: 1.2rem; }
+    .dream-rotator > .dream-phrase { font-size: 1.35rem; }
+  }
+
+  /* Still cycle the message, but drop the travel. */
+  @media (prefers-reduced-motion: reduce) {
+    .dream-rotator > .dream-phrase {
+      transform: none;
+      transition: opacity 0.2s linear;
+    }
+    .dream-rotator > .dream-phrase.is-active { transform: none; }
+  }
+</style>
+
+<script>
+  function startDream() {
+    const rotator = document.querySelector<HTMLElement>('.dream-rotator');
+    if (!rotator || rotator.dataset.wired) return;
+    rotator.dataset.wired = 'true';
+
+    const phrases = Array.from(rotator.querySelectorAll<HTMLElement>('.dream-phrase'));
+    if (phrases.length < 2) return;
+
+    let idx = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    function advance() {
+      phrases[idx].classList.remove('is-active');
+      idx = (idx + 1) % phrases.length;
+      phrases[idx].classList.add('is-active');
+    }
+
+    function play() {
+      if (timer) return;
+      timer = setInterval(advance, 4000);
+    }
+    function pause() {
+      if (!timer) return;
+      clearInterval(timer);
+      timer = null;
+    }
+
+    play();
+
+    // Don't cycle in a hidden tab or when scrolled past.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) pause();
+      else play();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) play();
+        else pause();
+      }, { threshold: 0 }).observe(rotator);
+    }
+  }
+  startDream();
+  document.addEventListener('astro:page-load', startDream);
+</script>
