@@ -51,11 +51,18 @@ The frontend ships with the site; the solver does not. The site is a static
 Astro build, and the optimizer needs Python (`cvxpy`, `highspy`), so the API has
 to run somewhere that executes containers.
 
-**1. Deploy the API.** `Dockerfile` in this directory builds it. On Render, Fly,
-or Railway, point the service at `kaelo-app/Dockerfile` and set:
+**1. Deploy the API.** `render.yaml` at the repository root defines the service.
+In Render: New > Blueprint, connect this repo, apply. It builds
+`kaelo-app/Dockerfile` on the free plan and sets `CORS_ORIGINS`.
 
-- `CORS_ORIGINS=https://elliotlee.info` (the site origin, comma-separated for more)
-- `PORT` if the platform requires a specific one
+Measured at ~122MB resident with no data loaded, so it fits the free plan's
+512MB. Free services spin down when idle, so the first request after a pause is
+slow.
+
+Any container host works; the image reads `PORT` and `CORS_ORIGINS` from the
+environment. Note that Hugging Face Spaces is **not** an option on the free
+tier: Docker Spaces require a PRO subscription, and only static Spaces are free.
+`deploy/hf-space/` is kept for anyone who does have PRO.
 
 ### Reference data
 

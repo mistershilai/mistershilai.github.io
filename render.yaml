@@ -1,0 +1,22 @@
+# Render blueprint for the Kaelo API.
+#
+# Render reads this from the repository root. The site itself deploys on Vercel;
+# only the optimization API lives here, because it needs Python (cvxpy, highspy)
+# which a static build cannot run.
+#
+# Measured at ~122MB resident with no data loaded, so it fits the free plan's
+# 512MB. Free services spin down when idle and cold-start on the next request.
+services:
+  - type: web
+    name: kaelo-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./kaelo-app/Dockerfile
+    dockerContext: ./kaelo-app
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Origins allowed to call the API. Comma-separated.
+      - key: CORS_ORIGINS
+        value: https://elliotlee.info,https://mistershilai-github-io-mistershilais-projects.vercel.app
