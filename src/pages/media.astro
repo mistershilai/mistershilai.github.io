@@ -13,8 +13,14 @@ const byYear = items.reduce<Record<string, typeof items>>((acc, m) => {
 }, {});
 const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a));
 
-const fmt = (iso: string) =>
-  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+// Format from the parts rather than via Date. A date-only string parses as
+// midnight UTC, which toLocaleDateString then renders a day early anywhere
+// west of Greenwich.
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmt = (iso: string) => {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+};
 ---
 
 <BaseLayout title="Media | Elliot S. Lee" description="Talks, mentions, and other public-facing things.">
