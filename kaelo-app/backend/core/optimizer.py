@@ -323,6 +323,16 @@ def build_region_instance(target_dhmt: str) -> dict:
     demand_fac = expected_class_counts_by_facility(pop_fac_age)
     node_demand_mat = build_node_demand_matrix(demand_fac)
 
+    if node_demand_mat.empty or not len(node_demand_mat.columns):
+        # An empty demand matrix still solves, reporting "optimal" with every
+        # cost at zero, which reads as a real answer. Fail loudly instead.
+        raise ValueError(
+            "Demand model produced no drug classes for this region. The GLM "
+            "artifacts cover hospital tiers only (District, Primary, Specialist, "
+            "Tertiary), but population is assigned to clinic-level facilities, "
+            "which map to a 'Clinic' hospital_type that no artifact provides."
+        )
+
     model_classes = sorted(node_demand_mat.columns.tolist())
     model_nodes = list(D_region.index)
     mu_mat = node_demand_mat.reindex(index=model_nodes, columns=model_classes).fillna(0.0).astype(float)

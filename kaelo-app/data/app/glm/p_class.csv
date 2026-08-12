@@ -1,0 +1,2881 @@
+agegroup,infectionstatus,hospital_type,Class,p_class
+<1,CAI,Primary,Aminoglycosides,0.05194805194805195
+<1,CAI,Primary,Amphenicols,0.0
+<1,CAI,Primary,Carbapenems,0.0
+<1,CAI,Primary,Cephalosporins,0.2337662337662337
+<1,CAI,Primary,Glycopeptides,0.0
+<1,CAI,Primary,Lincosamides,0.0
+<1,CAI,Primary,Macrolides,0.05194805194805198
+<1,CAI,Primary,Nitroimidazoles,0.20779220779220786
+<1,CAI,Primary,Penicillins,0.3506493506493506
+<1,CAI,Primary,Quinolones,0.05194805194805196
+<1,CAI,Primary,Sulphonamides,0.03896103896103896
+<1,CAI,Primary,Tetracyclines,0.01298701298701299
+<1,CAI,District,Aminoglycosides,0.04593639575971732
+<1,CAI,District,Amphenicols,0.0
+<1,CAI,District,Carbapenems,0.0035335689045936404
+<1,CAI,District,Cephalosporins,0.282685512367491
+<1,CAI,District,Glycopeptides,0.03180212014134278
+<1,CAI,District,Lincosamides,0.007067137809187285
+<1,CAI,District,Macrolides,0.06360424028268555
+<1,CAI,District,Nitroimidazoles,0.23321554770318037
+<1,CAI,District,Penicillins,0.23674911660777376
+<1,CAI,District,Quinolones,0.014134275618374562
+<1,CAI,District,Sulphonamides,0.04946996466431098
+<1,CAI,District,Tetracyclines,0.03180212014134277
+<1,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+<1,CAI,Tertiary,Amphenicols,0.0018484288354898334
+<1,CAI,Tertiary,Carbapenems,0.022181146025877996
+<1,CAI,Tertiary,Cephalosporins,0.21996303142329024
+<1,CAI,Tertiary,Glycopeptides,0.02772643253234751
+<1,CAI,Tertiary,Lincosamides,0.00369685767097967
+<1,CAI,Tertiary,Macrolides,0.00924214417744917
+<1,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+<1,CAI,Tertiary,Penicillins,0.31792975970425125
+<1,CAI,Tertiary,Quinolones,0.014787430683918672
+<1,CAI,Tertiary,Sulphonamides,0.059149722735674676
+<1,CAI,Tertiary,Tetracyclines,0.02587800369685768
+<1,CAI,Specialist,Aminoglycosides,0.03703703703703703
+<1,CAI,Specialist,Amphenicols,0.0
+<1,CAI,Specialist,Carbapenems,0.09876543209876543
+<1,CAI,Specialist,Cephalosporins,0.48148148148148145
+<1,CAI,Specialist,Glycopeptides,0.08641975308641979
+<1,CAI,Specialist,Lincosamides,0.0
+<1,CAI,Specialist,Macrolides,0.01234567901234568
+<1,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+<1,CAI,Specialist,Penicillins,0.1358024691358024
+<1,CAI,Specialist,Quinolones,0.0
+<1,CAI,Specialist,Sulphonamides,0.0
+<1,CAI,Specialist,Tetracyclines,0.0
+<1,HAI,Primary,Aminoglycosides,0.05194805194805196
+<1,HAI,Primary,Amphenicols,0.0
+<1,HAI,Primary,Carbapenems,0.0
+<1,HAI,Primary,Cephalosporins,0.23376623376623376
+<1,HAI,Primary,Glycopeptides,0.0
+<1,HAI,Primary,Lincosamides,0.0
+<1,HAI,Primary,Macrolides,0.05194805194805197
+<1,HAI,Primary,Nitroimidazoles,0.2077922077922079
+<1,HAI,Primary,Penicillins,0.3506493506493506
+<1,HAI,Primary,Quinolones,0.05194805194805195
+<1,HAI,Primary,Sulphonamides,0.03896103896103896
+<1,HAI,Primary,Tetracyclines,0.01298701298701299
+<1,HAI,District,Aminoglycosides,0.045936395759717315
+<1,HAI,District,Amphenicols,0.0
+<1,HAI,District,Carbapenems,0.0035335689045936404
+<1,HAI,District,Cephalosporins,0.28268551236749107
+<1,HAI,District,Glycopeptides,0.031802120141342774
+<1,HAI,District,Lincosamides,0.007067137809187286
+<1,HAI,District,Macrolides,0.06360424028268555
+<1,HAI,District,Nitroimidazoles,0.23321554770318031
+<1,HAI,District,Penicillins,0.23674911660777379
+<1,HAI,District,Quinolones,0.014134275618374562
+<1,HAI,District,Sulphonamides,0.049469964664310986
+<1,HAI,District,Tetracyclines,0.03180212014134277
+<1,HAI,Tertiary,Aminoglycosides,0.09611829944547133
+<1,HAI,Tertiary,Amphenicols,0.001848428835489833
+<1,HAI,Tertiary,Carbapenems,0.022181146025877993
+<1,HAI,Tertiary,Cephalosporins,0.21996303142329024
+<1,HAI,Tertiary,Glycopeptides,0.027726432532347505
+<1,HAI,Tertiary,Lincosamides,0.00369685767097967
+<1,HAI,Tertiary,Macrolides,0.009242144177449167
+<1,HAI,Tertiary,Nitroimidazoles,0.20147874306839197
+<1,HAI,Tertiary,Penicillins,0.31792975970425125
+<1,HAI,Tertiary,Quinolones,0.014787430683918667
+<1,HAI,Tertiary,Sulphonamides,0.05914972273567468
+<1,HAI,Tertiary,Tetracyclines,0.02587800369685767
+<1,HAI,Specialist,Aminoglycosides,0.03703703703703702
+<1,HAI,Specialist,Amphenicols,0.0
+<1,HAI,Specialist,Carbapenems,0.09876543209876544
+<1,HAI,Specialist,Cephalosporins,0.4814814814814815
+<1,HAI,Specialist,Glycopeptides,0.0864197530864198
+<1,HAI,Specialist,Lincosamides,0.0
+<1,HAI,Specialist,Macrolides,0.01234567901234568
+<1,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+<1,HAI,Specialist,Penicillins,0.13580246913580243
+<1,HAI,Specialist,Quinolones,0.0
+<1,HAI,Specialist,Sulphonamides,0.0
+<1,HAI,Specialist,Tetracyclines,0.0
+<1,HBCI,Primary,Aminoglycosides,0.03896103896103897
+<1,HBCI,Primary,Amphenicols,0.0625
+<1,HBCI,Primary,Carbapenems,0.0625
+<1,HBCI,Primary,Cephalosporins,0.17532467532467533
+<1,HBCI,Primary,Glycopeptides,0.0625
+<1,HBCI,Primary,Lincosamides,0.0625
+<1,HBCI,Primary,Macrolides,0.03896103896103897
+<1,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+<1,HBCI,Primary,Penicillins,0.262987012987013
+<1,HBCI,Primary,Quinolones,0.03896103896103897
+<1,HBCI,Primary,Sulphonamides,0.02922077922077922
+<1,HBCI,Primary,Tetracyclines,0.009740259740259742
+<1,HBCI,District,Aminoglycosides,0.04240282685512368
+<1,HBCI,District,Amphenicols,0.07692307692307693
+<1,HBCI,District,Carbapenems,0.0032617559119325905
+<1,HBCI,District,Cephalosporins,0.26094047295460726
+<1,HBCI,District,Glycopeptides,0.029355803207393314
+<1,HBCI,District,Lincosamides,0.006523511823865181
+<1,HBCI,District,Macrolides,0.05871160641478663
+<1,HBCI,District,Nitroimidazoles,0.21527589018755097
+<1,HBCI,District,Penicillins,0.21853764609948356
+<1,HBCI,District,Quinolones,0.013047023647730362
+<1,HBCI,District,Sulphonamides,0.04566458276705627
+<1,HBCI,District,Tetracyclines,0.029355803207393314
+<1,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+<1,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+<1,HBCI,Tertiary,Carbapenems,0.022181146025878003
+<1,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+<1,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+<1,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+<1,HBCI,Tertiary,Macrolides,0.009242144177449169
+<1,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+<1,HBCI,Tertiary,Penicillins,0.3179297597042514
+<1,HBCI,Tertiary,Quinolones,0.014787430683918669
+<1,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+<1,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+<1,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+<1,HBCI,Specialist,Amphenicols,0.05882352941176471
+<1,HBCI,Specialist,Carbapenems,0.06971677559912855
+<1,HBCI,Specialist,Cephalosporins,0.33986928104575165
+<1,HBCI,Specialist,Glycopeptides,0.06100217864923747
+<1,HBCI,Specialist,Lincosamides,0.05882352941176471
+<1,HBCI,Specialist,Macrolides,0.008714596949891068
+<1,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+<1,HBCI,Specialist,Penicillins,0.09586056644880175
+<1,HBCI,Specialist,Quinolones,0.05882352941176471
+<1,HBCI,Specialist,Sulphonamides,0.05882352941176471
+<1,HBCI,Specialist,Tetracyclines,0.05882352941176471
+<1,NIC,Primary,Aminoglycosides,0.05194805194805197
+<1,NIC,Primary,Amphenicols,0.0
+<1,NIC,Primary,Carbapenems,0.0
+<1,NIC,Primary,Cephalosporins,0.23376623376623373
+<1,NIC,Primary,Glycopeptides,0.0
+<1,NIC,Primary,Lincosamides,0.0
+<1,NIC,Primary,Macrolides,0.05194805194805196
+<1,NIC,Primary,Nitroimidazoles,0.2077922077922079
+<1,NIC,Primary,Penicillins,0.35064935064935054
+<1,NIC,Primary,Quinolones,0.051948051948051945
+<1,NIC,Primary,Sulphonamides,0.038961038961038946
+<1,NIC,Primary,Tetracyclines,0.012987012987012988
+<1,NIC,District,Aminoglycosides,0.045936395759717315
+<1,NIC,District,Amphenicols,0.0
+<1,NIC,District,Carbapenems,0.0035335689045936404
+<1,NIC,District,Cephalosporins,0.28268551236749107
+<1,NIC,District,Glycopeptides,0.03180212014134279
+<1,NIC,District,Lincosamides,0.007067137809187286
+<1,NIC,District,Macrolides,0.06360424028268553
+<1,NIC,District,Nitroimidazoles,0.23321554770318031
+<1,NIC,District,Penicillins,0.23674911660777379
+<1,NIC,District,Quinolones,0.014134275618374563
+<1,NIC,District,Sulphonamides,0.04946996466431098
+<1,NIC,District,Tetracyclines,0.03180212014134277
+<1,NIC,Tertiary,Aminoglycosides,0.09611829944547134
+<1,NIC,Tertiary,Amphenicols,0.0018484288354898334
+<1,NIC,Tertiary,Carbapenems,0.022181146025877996
+<1,NIC,Tertiary,Cephalosporins,0.21996303142329024
+<1,NIC,Tertiary,Glycopeptides,0.027726432532347512
+<1,NIC,Tertiary,Lincosamides,0.0036968576709796703
+<1,NIC,Tertiary,Macrolides,0.009242144177449169
+<1,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+<1,NIC,Tertiary,Penicillins,0.3179297597042513
+<1,NIC,Tertiary,Quinolones,0.01478743068391867
+<1,NIC,Tertiary,Sulphonamides,0.05914972273567468
+<1,NIC,Tertiary,Tetracyclines,0.025878003696857676
+<1,NIC,Specialist,Aminoglycosides,0.03703703703703703
+<1,NIC,Specialist,Amphenicols,0.0
+<1,NIC,Specialist,Carbapenems,0.09876543209876544
+<1,NIC,Specialist,Cephalosporins,0.48148148148148145
+<1,NIC,Specialist,Glycopeptides,0.0864197530864198
+<1,NIC,Specialist,Lincosamides,0.0
+<1,NIC,Specialist,Macrolides,0.012345679012345682
+<1,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+<1,NIC,Specialist,Penicillins,0.1358024691358024
+<1,NIC,Specialist,Quinolones,0.0
+<1,NIC,Specialist,Sulphonamides,0.0
+<1,NIC,Specialist,Tetracyclines,0.0
+1-5,CAI,Primary,Aminoglycosides,0.05194805194805195
+1-5,CAI,Primary,Amphenicols,0.0
+1-5,CAI,Primary,Carbapenems,0.0
+1-5,CAI,Primary,Cephalosporins,0.2337662337662337
+1-5,CAI,Primary,Glycopeptides,0.0
+1-5,CAI,Primary,Lincosamides,0.0
+1-5,CAI,Primary,Macrolides,0.05194805194805197
+1-5,CAI,Primary,Nitroimidazoles,0.20779220779220792
+1-5,CAI,Primary,Penicillins,0.3506493506493506
+1-5,CAI,Primary,Quinolones,0.051948051948051945
+1-5,CAI,Primary,Sulphonamides,0.03896103896103896
+1-5,CAI,Primary,Tetracyclines,0.012987012987012986
+1-5,CAI,District,Aminoglycosides,0.045936395759717315
+1-5,CAI,District,Amphenicols,0.0
+1-5,CAI,District,Carbapenems,0.0035335689045936395
+1-5,CAI,District,Cephalosporins,0.282685512367491
+1-5,CAI,District,Glycopeptides,0.03180212014134278
+1-5,CAI,District,Lincosamides,0.007067137809187286
+1-5,CAI,District,Macrolides,0.06360424028268553
+1-5,CAI,District,Nitroimidazoles,0.23321554770318034
+1-5,CAI,District,Penicillins,0.23674911660777376
+1-5,CAI,District,Quinolones,0.014134275618374562
+1-5,CAI,District,Sulphonamides,0.049469964664310986
+1-5,CAI,District,Tetracyclines,0.03180212014134276
+1-5,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+1-5,CAI,Tertiary,Amphenicols,0.0018484288354898336
+1-5,CAI,Tertiary,Carbapenems,0.022181146025878
+1-5,CAI,Tertiary,Cephalosporins,0.21996303142329027
+1-5,CAI,Tertiary,Glycopeptides,0.02772643253234751
+1-5,CAI,Tertiary,Lincosamides,0.0036968576709796703
+1-5,CAI,Tertiary,Macrolides,0.009242144177449169
+1-5,CAI,Tertiary,Nitroimidazoles,0.20147874306839192
+1-5,CAI,Tertiary,Penicillins,0.3179297597042513
+1-5,CAI,Tertiary,Quinolones,0.01478743068391867
+1-5,CAI,Tertiary,Sulphonamides,0.059149722735674676
+1-5,CAI,Tertiary,Tetracyclines,0.02587800369685768
+1-5,CAI,Specialist,Aminoglycosides,0.03703703703703702
+1-5,CAI,Specialist,Amphenicols,0.0
+1-5,CAI,Specialist,Carbapenems,0.09876543209876543
+1-5,CAI,Specialist,Cephalosporins,0.48148148148148145
+1-5,CAI,Specialist,Glycopeptides,0.08641975308641978
+1-5,CAI,Specialist,Lincosamides,0.0
+1-5,CAI,Specialist,Macrolides,0.012345679012345678
+1-5,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+1-5,CAI,Specialist,Penicillins,0.1358024691358024
+1-5,CAI,Specialist,Quinolones,0.0
+1-5,CAI,Specialist,Sulphonamides,0.0
+1-5,CAI,Specialist,Tetracyclines,0.0
+1-5,HAI,Primary,Aminoglycosides,0.05194805194805195
+1-5,HAI,Primary,Amphenicols,0.0
+1-5,HAI,Primary,Carbapenems,0.0
+1-5,HAI,Primary,Cephalosporins,0.23376623376623376
+1-5,HAI,Primary,Glycopeptides,0.0
+1-5,HAI,Primary,Lincosamides,0.0
+1-5,HAI,Primary,Macrolides,0.05194805194805197
+1-5,HAI,Primary,Nitroimidazoles,0.2077922077922079
+1-5,HAI,Primary,Penicillins,0.3506493506493506
+1-5,HAI,Primary,Quinolones,0.051948051948051945
+1-5,HAI,Primary,Sulphonamides,0.03896103896103896
+1-5,HAI,Primary,Tetracyclines,0.012987012987012988
+1-5,HAI,District,Aminoglycosides,0.04593639575971731
+1-5,HAI,District,Amphenicols,0.0
+1-5,HAI,District,Carbapenems,0.0035335689045936395
+1-5,HAI,District,Cephalosporins,0.28268551236749107
+1-5,HAI,District,Glycopeptides,0.03180212014134278
+1-5,HAI,District,Lincosamides,0.007067137809187284
+1-5,HAI,District,Macrolides,0.06360424028268553
+1-5,HAI,District,Nitroimidazoles,0.23321554770318037
+1-5,HAI,District,Penicillins,0.23674911660777373
+1-5,HAI,District,Quinolones,0.014134275618374558
+1-5,HAI,District,Sulphonamides,0.04946996466431098
+1-5,HAI,District,Tetracyclines,0.03180212014134277
+1-5,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+1-5,HAI,Tertiary,Amphenicols,0.0018484288354898334
+1-5,HAI,Tertiary,Carbapenems,0.022181146025877996
+1-5,HAI,Tertiary,Cephalosporins,0.21996303142329027
+1-5,HAI,Tertiary,Glycopeptides,0.027726432532347512
+1-5,HAI,Tertiary,Lincosamides,0.0036968576709796703
+1-5,HAI,Tertiary,Macrolides,0.00924214417744917
+1-5,HAI,Tertiary,Nitroimidazoles,0.20147874306839195
+1-5,HAI,Tertiary,Penicillins,0.3179297597042513
+1-5,HAI,Tertiary,Quinolones,0.01478743068391867
+1-5,HAI,Tertiary,Sulphonamides,0.05914972273567469
+1-5,HAI,Tertiary,Tetracyclines,0.02587800369685768
+1-5,HAI,Specialist,Aminoglycosides,0.03703703703703702
+1-5,HAI,Specialist,Amphenicols,0.0
+1-5,HAI,Specialist,Carbapenems,0.09876543209876544
+1-5,HAI,Specialist,Cephalosporins,0.48148148148148145
+1-5,HAI,Specialist,Glycopeptides,0.08641975308641979
+1-5,HAI,Specialist,Lincosamides,0.0
+1-5,HAI,Specialist,Macrolides,0.012345679012345682
+1-5,HAI,Specialist,Nitroimidazoles,0.14814814814814822
+1-5,HAI,Specialist,Penicillins,0.13580246913580243
+1-5,HAI,Specialist,Quinolones,0.0
+1-5,HAI,Specialist,Sulphonamides,0.0
+1-5,HAI,Specialist,Tetracyclines,0.0
+1-5,HBCI,Primary,Aminoglycosides,0.03896103896103897
+1-5,HBCI,Primary,Amphenicols,0.0625
+1-5,HBCI,Primary,Carbapenems,0.0625
+1-5,HBCI,Primary,Cephalosporins,0.17532467532467533
+1-5,HBCI,Primary,Glycopeptides,0.0625
+1-5,HBCI,Primary,Lincosamides,0.0625
+1-5,HBCI,Primary,Macrolides,0.03896103896103897
+1-5,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+1-5,HBCI,Primary,Penicillins,0.262987012987013
+1-5,HBCI,Primary,Quinolones,0.03896103896103897
+1-5,HBCI,Primary,Sulphonamides,0.02922077922077922
+1-5,HBCI,Primary,Tetracyclines,0.009740259740259742
+1-5,HBCI,District,Aminoglycosides,0.04240282685512368
+1-5,HBCI,District,Amphenicols,0.07692307692307693
+1-5,HBCI,District,Carbapenems,0.0032617559119325905
+1-5,HBCI,District,Cephalosporins,0.26094047295460726
+1-5,HBCI,District,Glycopeptides,0.029355803207393314
+1-5,HBCI,District,Lincosamides,0.006523511823865181
+1-5,HBCI,District,Macrolides,0.05871160641478663
+1-5,HBCI,District,Nitroimidazoles,0.21527589018755097
+1-5,HBCI,District,Penicillins,0.21853764609948356
+1-5,HBCI,District,Quinolones,0.013047023647730362
+1-5,HBCI,District,Sulphonamides,0.04566458276705627
+1-5,HBCI,District,Tetracyclines,0.029355803207393314
+1-5,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+1-5,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+1-5,HBCI,Tertiary,Carbapenems,0.022181146025878003
+1-5,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+1-5,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+1-5,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+1-5,HBCI,Tertiary,Macrolides,0.009242144177449169
+1-5,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+1-5,HBCI,Tertiary,Penicillins,0.3179297597042514
+1-5,HBCI,Tertiary,Quinolones,0.014787430683918669
+1-5,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+1-5,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+1-5,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+1-5,HBCI,Specialist,Amphenicols,0.05882352941176471
+1-5,HBCI,Specialist,Carbapenems,0.06971677559912855
+1-5,HBCI,Specialist,Cephalosporins,0.33986928104575165
+1-5,HBCI,Specialist,Glycopeptides,0.06100217864923747
+1-5,HBCI,Specialist,Lincosamides,0.05882352941176471
+1-5,HBCI,Specialist,Macrolides,0.008714596949891068
+1-5,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+1-5,HBCI,Specialist,Penicillins,0.09586056644880175
+1-5,HBCI,Specialist,Quinolones,0.05882352941176471
+1-5,HBCI,Specialist,Sulphonamides,0.05882352941176471
+1-5,HBCI,Specialist,Tetracyclines,0.05882352941176471
+1-5,NIC,Primary,Aminoglycosides,0.05194805194805195
+1-5,NIC,Primary,Amphenicols,0.0
+1-5,NIC,Primary,Carbapenems,0.0
+1-5,NIC,Primary,Cephalosporins,0.23376623376623368
+1-5,NIC,Primary,Glycopeptides,0.0
+1-5,NIC,Primary,Lincosamides,0.0
+1-5,NIC,Primary,Macrolides,0.05194805194805196
+1-5,NIC,Primary,Nitroimidazoles,0.20779220779220783
+1-5,NIC,Primary,Penicillins,0.3506493506493506
+1-5,NIC,Primary,Quinolones,0.051948051948051945
+1-5,NIC,Primary,Sulphonamides,0.038961038961038946
+1-5,NIC,Primary,Tetracyclines,0.012987012987012988
+1-5,NIC,District,Aminoglycosides,0.0459363957597173
+1-5,NIC,District,Amphenicols,0.0
+1-5,NIC,District,Carbapenems,0.00353356890459364
+1-5,NIC,District,Cephalosporins,0.282685512367491
+1-5,NIC,District,Glycopeptides,0.031802120141342774
+1-5,NIC,District,Lincosamides,0.007067137809187284
+1-5,NIC,District,Macrolides,0.06360424028268553
+1-5,NIC,District,Nitroimidazoles,0.23321554770318037
+1-5,NIC,District,Penicillins,0.23674911660777376
+1-5,NIC,District,Quinolones,0.014134275618374558
+1-5,NIC,District,Sulphonamides,0.04946996466431097
+1-5,NIC,District,Tetracyclines,0.03180212014134276
+1-5,NIC,Tertiary,Aminoglycosides,0.09611829944547137
+1-5,NIC,Tertiary,Amphenicols,0.001848428835489833
+1-5,NIC,Tertiary,Carbapenems,0.022181146025877996
+1-5,NIC,Tertiary,Cephalosporins,0.21996303142329027
+1-5,NIC,Tertiary,Glycopeptides,0.027726432532347512
+1-5,NIC,Tertiary,Lincosamides,0.0036968576709796707
+1-5,NIC,Tertiary,Macrolides,0.009242144177449165
+1-5,NIC,Tertiary,Nitroimidazoles,0.20147874306839197
+1-5,NIC,Tertiary,Penicillins,0.3179297597042512
+1-5,NIC,Tertiary,Quinolones,0.014787430683918672
+1-5,NIC,Tertiary,Sulphonamides,0.05914972273567468
+1-5,NIC,Tertiary,Tetracyclines,0.025878003696857672
+1-5,NIC,Specialist,Aminoglycosides,0.037037037037037035
+1-5,NIC,Specialist,Amphenicols,0.0
+1-5,NIC,Specialist,Carbapenems,0.09876543209876543
+1-5,NIC,Specialist,Cephalosporins,0.4814814814814815
+1-5,NIC,Specialist,Glycopeptides,0.0864197530864198
+1-5,NIC,Specialist,Lincosamides,0.0
+1-5,NIC,Specialist,Macrolides,0.01234567901234568
+1-5,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+1-5,NIC,Specialist,Penicillins,0.1358024691358024
+1-5,NIC,Specialist,Quinolones,0.0
+1-5,NIC,Specialist,Sulphonamides,0.0
+1-5,NIC,Specialist,Tetracyclines,0.0
+6 to 10 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+6 to 10 years,CAI,Primary,Amphenicols,0.0
+6 to 10 years,CAI,Primary,Carbapenems,0.0
+6 to 10 years,CAI,Primary,Cephalosporins,0.2337662337662337
+6 to 10 years,CAI,Primary,Glycopeptides,0.0
+6 to 10 years,CAI,Primary,Lincosamides,0.0
+6 to 10 years,CAI,Primary,Macrolides,0.051948051948051965
+6 to 10 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+6 to 10 years,CAI,Primary,Penicillins,0.3506493506493506
+6 to 10 years,CAI,Primary,Quinolones,0.05194805194805196
+6 to 10 years,CAI,Primary,Sulphonamides,0.03896103896103897
+6 to 10 years,CAI,Primary,Tetracyclines,0.01298701298701299
+6 to 10 years,CAI,District,Aminoglycosides,0.04593639575971732
+6 to 10 years,CAI,District,Amphenicols,0.0
+6 to 10 years,CAI,District,Carbapenems,0.0035335689045936404
+6 to 10 years,CAI,District,Cephalosporins,0.282685512367491
+6 to 10 years,CAI,District,Glycopeptides,0.031802120141342774
+6 to 10 years,CAI,District,Lincosamides,0.007067137809187286
+6 to 10 years,CAI,District,Macrolides,0.06360424028268555
+6 to 10 years,CAI,District,Nitroimidazoles,0.2332155477031804
+6 to 10 years,CAI,District,Penicillins,0.23674911660777376
+6 to 10 years,CAI,District,Quinolones,0.014134275618374562
+6 to 10 years,CAI,District,Sulphonamides,0.04946996466431098
+6 to 10 years,CAI,District,Tetracyclines,0.031802120141342774
+6 to 10 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+6 to 10 years,CAI,Tertiary,Amphenicols,0.0018484288354898327
+6 to 10 years,CAI,Tertiary,Carbapenems,0.022181146025877996
+6 to 10 years,CAI,Tertiary,Cephalosporins,0.2199630314232902
+6 to 10 years,CAI,Tertiary,Glycopeptides,0.02772643253234751
+6 to 10 years,CAI,Tertiary,Lincosamides,0.0036968576709796694
+6 to 10 years,CAI,Tertiary,Macrolides,0.009242144177449169
+6 to 10 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839192
+6 to 10 years,CAI,Tertiary,Penicillins,0.31792975970425125
+6 to 10 years,CAI,Tertiary,Quinolones,0.014787430683918669
+6 to 10 years,CAI,Tertiary,Sulphonamides,0.059149722735674676
+6 to 10 years,CAI,Tertiary,Tetracyclines,0.025878003696857672
+6 to 10 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+6 to 10 years,CAI,Specialist,Amphenicols,0.0
+6 to 10 years,CAI,Specialist,Carbapenems,0.09876543209876543
+6 to 10 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+6 to 10 years,CAI,Specialist,Glycopeptides,0.08641975308641979
+6 to 10 years,CAI,Specialist,Lincosamides,0.0
+6 to 10 years,CAI,Specialist,Macrolides,0.01234567901234568
+6 to 10 years,CAI,Specialist,Nitroimidazoles,0.14814814814814814
+6 to 10 years,CAI,Specialist,Penicillins,0.1358024691358024
+6 to 10 years,CAI,Specialist,Quinolones,0.0
+6 to 10 years,CAI,Specialist,Sulphonamides,0.0
+6 to 10 years,CAI,Specialist,Tetracyclines,0.0
+6 to 10 years,HAI,Primary,Aminoglycosides,0.03896103896103897
+6 to 10 years,HAI,Primary,Amphenicols,0.0625
+6 to 10 years,HAI,Primary,Carbapenems,0.0625
+6 to 10 years,HAI,Primary,Cephalosporins,0.17532467532467533
+6 to 10 years,HAI,Primary,Glycopeptides,0.0625
+6 to 10 years,HAI,Primary,Lincosamides,0.0625
+6 to 10 years,HAI,Primary,Macrolides,0.03896103896103897
+6 to 10 years,HAI,Primary,Nitroimidazoles,0.15584415584415587
+6 to 10 years,HAI,Primary,Penicillins,0.262987012987013
+6 to 10 years,HAI,Primary,Quinolones,0.03896103896103897
+6 to 10 years,HAI,Primary,Sulphonamides,0.02922077922077922
+6 to 10 years,HAI,Primary,Tetracyclines,0.009740259740259742
+6 to 10 years,HAI,District,Aminoglycosides,0.04240282685512368
+6 to 10 years,HAI,District,Amphenicols,0.07692307692307693
+6 to 10 years,HAI,District,Carbapenems,0.0032617559119325905
+6 to 10 years,HAI,District,Cephalosporins,0.26094047295460726
+6 to 10 years,HAI,District,Glycopeptides,0.029355803207393314
+6 to 10 years,HAI,District,Lincosamides,0.006523511823865181
+6 to 10 years,HAI,District,Macrolides,0.05871160641478663
+6 to 10 years,HAI,District,Nitroimidazoles,0.21527589018755097
+6 to 10 years,HAI,District,Penicillins,0.21853764609948356
+6 to 10 years,HAI,District,Quinolones,0.013047023647730362
+6 to 10 years,HAI,District,Sulphonamides,0.04566458276705627
+6 to 10 years,HAI,District,Tetracyclines,0.029355803207393314
+6 to 10 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+6 to 10 years,HAI,Tertiary,Amphenicols,0.0018484288354898336
+6 to 10 years,HAI,Tertiary,Carbapenems,0.022181146025878003
+6 to 10 years,HAI,Tertiary,Cephalosporins,0.2199630314232902
+6 to 10 years,HAI,Tertiary,Glycopeptides,0.027726432532347505
+6 to 10 years,HAI,Tertiary,Lincosamides,0.0036968576709796672
+6 to 10 years,HAI,Tertiary,Macrolides,0.009242144177449169
+6 to 10 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839186
+6 to 10 years,HAI,Tertiary,Penicillins,0.3179297597042514
+6 to 10 years,HAI,Tertiary,Quinolones,0.014787430683918669
+6 to 10 years,HAI,Tertiary,Sulphonamides,0.059149722735674676
+6 to 10 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+6 to 10 years,HAI,Specialist,Aminoglycosides,0.026143790849673203
+6 to 10 years,HAI,Specialist,Amphenicols,0.05882352941176471
+6 to 10 years,HAI,Specialist,Carbapenems,0.06971677559912855
+6 to 10 years,HAI,Specialist,Cephalosporins,0.33986928104575165
+6 to 10 years,HAI,Specialist,Glycopeptides,0.06100217864923747
+6 to 10 years,HAI,Specialist,Lincosamides,0.05882352941176471
+6 to 10 years,HAI,Specialist,Macrolides,0.008714596949891068
+6 to 10 years,HAI,Specialist,Nitroimidazoles,0.10457516339869281
+6 to 10 years,HAI,Specialist,Penicillins,0.09586056644880175
+6 to 10 years,HAI,Specialist,Quinolones,0.05882352941176471
+6 to 10 years,HAI,Specialist,Sulphonamides,0.05882352941176471
+6 to 10 years,HAI,Specialist,Tetracyclines,0.05882352941176471
+6 to 10 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+6 to 10 years,HBCI,Primary,Amphenicols,0.0625
+6 to 10 years,HBCI,Primary,Carbapenems,0.0625
+6 to 10 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+6 to 10 years,HBCI,Primary,Glycopeptides,0.0625
+6 to 10 years,HBCI,Primary,Lincosamides,0.0625
+6 to 10 years,HBCI,Primary,Macrolides,0.03896103896103897
+6 to 10 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+6 to 10 years,HBCI,Primary,Penicillins,0.262987012987013
+6 to 10 years,HBCI,Primary,Quinolones,0.03896103896103897
+6 to 10 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+6 to 10 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+6 to 10 years,HBCI,District,Aminoglycosides,0.04240282685512368
+6 to 10 years,HBCI,District,Amphenicols,0.07692307692307693
+6 to 10 years,HBCI,District,Carbapenems,0.0032617559119325905
+6 to 10 years,HBCI,District,Cephalosporins,0.26094047295460726
+6 to 10 years,HBCI,District,Glycopeptides,0.029355803207393314
+6 to 10 years,HBCI,District,Lincosamides,0.006523511823865181
+6 to 10 years,HBCI,District,Macrolides,0.05871160641478663
+6 to 10 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+6 to 10 years,HBCI,District,Penicillins,0.21853764609948356
+6 to 10 years,HBCI,District,Quinolones,0.013047023647730362
+6 to 10 years,HBCI,District,Sulphonamides,0.04566458276705627
+6 to 10 years,HBCI,District,Tetracyclines,0.029355803207393314
+6 to 10 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+6 to 10 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+6 to 10 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+6 to 10 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+6 to 10 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+6 to 10 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+6 to 10 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+6 to 10 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+6 to 10 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+6 to 10 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+6 to 10 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+6 to 10 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+6 to 10 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+6 to 10 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+6 to 10 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+6 to 10 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+6 to 10 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+6 to 10 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+6 to 10 years,HBCI,Specialist,Macrolides,0.008714596949891068
+6 to 10 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+6 to 10 years,HBCI,Specialist,Penicillins,0.09586056644880175
+6 to 10 years,HBCI,Specialist,Quinolones,0.05882352941176471
+6 to 10 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+6 to 10 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+6 to 10 years,NIC,Primary,Aminoglycosides,0.051948051948051945
+6 to 10 years,NIC,Primary,Amphenicols,0.0
+6 to 10 years,NIC,Primary,Carbapenems,0.0
+6 to 10 years,NIC,Primary,Cephalosporins,0.2337662337662337
+6 to 10 years,NIC,Primary,Glycopeptides,0.0
+6 to 10 years,NIC,Primary,Lincosamides,0.0
+6 to 10 years,NIC,Primary,Macrolides,0.05194805194805196
+6 to 10 years,NIC,Primary,Nitroimidazoles,0.20779220779220792
+6 to 10 years,NIC,Primary,Penicillins,0.35064935064935054
+6 to 10 years,NIC,Primary,Quinolones,0.051948051948051945
+6 to 10 years,NIC,Primary,Sulphonamides,0.03896103896103895
+6 to 10 years,NIC,Primary,Tetracyclines,0.012987012987012988
+6 to 10 years,NIC,District,Aminoglycosides,0.045936395759717315
+6 to 10 years,NIC,District,Amphenicols,0.0
+6 to 10 years,NIC,District,Carbapenems,0.0035335689045936404
+6 to 10 years,NIC,District,Cephalosporins,0.28268551236749107
+6 to 10 years,NIC,District,Glycopeptides,0.031802120141342774
+6 to 10 years,NIC,District,Lincosamides,0.007067137809187286
+6 to 10 years,NIC,District,Macrolides,0.06360424028268553
+6 to 10 years,NIC,District,Nitroimidazoles,0.2332155477031804
+6 to 10 years,NIC,District,Penicillins,0.23674911660777373
+6 to 10 years,NIC,District,Quinolones,0.01413427561837456
+6 to 10 years,NIC,District,Sulphonamides,0.04946996466431098
+6 to 10 years,NIC,District,Tetracyclines,0.03180212014134277
+6 to 10 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+6 to 10 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+6 to 10 years,NIC,Tertiary,Carbapenems,0.022181146025878
+6 to 10 years,NIC,Tertiary,Cephalosporins,0.2199630314232902
+6 to 10 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+6 to 10 years,NIC,Tertiary,Lincosamides,0.0036968576709796694
+6 to 10 years,NIC,Tertiary,Macrolides,0.009242144177449167
+6 to 10 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839192
+6 to 10 years,NIC,Tertiary,Penicillins,0.3179297597042513
+6 to 10 years,NIC,Tertiary,Quinolones,0.01478743068391867
+6 to 10 years,NIC,Tertiary,Sulphonamides,0.05914972273567467
+6 to 10 years,NIC,Tertiary,Tetracyclines,0.02587800369685767
+6 to 10 years,NIC,Specialist,Aminoglycosides,0.03703703703703703
+6 to 10 years,NIC,Specialist,Amphenicols,0.0
+6 to 10 years,NIC,Specialist,Carbapenems,0.09876543209876543
+6 to 10 years,NIC,Specialist,Cephalosporins,0.4814814814814815
+6 to 10 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+6 to 10 years,NIC,Specialist,Lincosamides,0.0
+6 to 10 years,NIC,Specialist,Macrolides,0.012345679012345682
+6 to 10 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+6 to 10 years,NIC,Specialist,Penicillins,0.1358024691358024
+6 to 10 years,NIC,Specialist,Quinolones,0.0
+6 to 10 years,NIC,Specialist,Sulphonamides,0.0
+6 to 10 years,NIC,Specialist,Tetracyclines,0.0
+11 to 15 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+11 to 15 years,CAI,Primary,Amphenicols,0.0
+11 to 15 years,CAI,Primary,Carbapenems,0.0
+11 to 15 years,CAI,Primary,Cephalosporins,0.23376623376623368
+11 to 15 years,CAI,Primary,Glycopeptides,0.0
+11 to 15 years,CAI,Primary,Lincosamides,0.0
+11 to 15 years,CAI,Primary,Macrolides,0.05194805194805197
+11 to 15 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+11 to 15 years,CAI,Primary,Penicillins,0.35064935064935054
+11 to 15 years,CAI,Primary,Quinolones,0.051948051948051945
+11 to 15 years,CAI,Primary,Sulphonamides,0.03896103896103895
+11 to 15 years,CAI,Primary,Tetracyclines,0.012987012987012988
+11 to 15 years,CAI,District,Aminoglycosides,0.04593639575971732
+11 to 15 years,CAI,District,Amphenicols,0.0
+11 to 15 years,CAI,District,Carbapenems,0.0035335689045936404
+11 to 15 years,CAI,District,Cephalosporins,0.28268551236749107
+11 to 15 years,CAI,District,Glycopeptides,0.03180212014134278
+11 to 15 years,CAI,District,Lincosamides,0.007067137809187287
+11 to 15 years,CAI,District,Macrolides,0.06360424028268555
+11 to 15 years,CAI,District,Nitroimidazoles,0.23321554770318031
+11 to 15 years,CAI,District,Penicillins,0.23674911660777379
+11 to 15 years,CAI,District,Quinolones,0.014134275618374563
+11 to 15 years,CAI,District,Sulphonamides,0.04946996466431098
+11 to 15 years,CAI,District,Tetracyclines,0.03180212014134277
+11 to 15 years,CAI,Tertiary,Aminoglycosides,0.09611829944547134
+11 to 15 years,CAI,Tertiary,Amphenicols,0.001848428835489833
+11 to 15 years,CAI,Tertiary,Carbapenems,0.022181146025877993
+11 to 15 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+11 to 15 years,CAI,Tertiary,Glycopeptides,0.027726432532347505
+11 to 15 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+11 to 15 years,CAI,Tertiary,Macrolides,0.009242144177449169
+11 to 15 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+11 to 15 years,CAI,Tertiary,Penicillins,0.31792975970425125
+11 to 15 years,CAI,Tertiary,Quinolones,0.01478743068391867
+11 to 15 years,CAI,Tertiary,Sulphonamides,0.05914972273567468
+11 to 15 years,CAI,Tertiary,Tetracyclines,0.02587800369685767
+11 to 15 years,CAI,Specialist,Aminoglycosides,0.03703703703703702
+11 to 15 years,CAI,Specialist,Amphenicols,0.0
+11 to 15 years,CAI,Specialist,Carbapenems,0.09876543209876545
+11 to 15 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+11 to 15 years,CAI,Specialist,Glycopeptides,0.08641975308641979
+11 to 15 years,CAI,Specialist,Lincosamides,0.0
+11 to 15 years,CAI,Specialist,Macrolides,0.01234567901234568
+11 to 15 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+11 to 15 years,CAI,Specialist,Penicillins,0.13580246913580238
+11 to 15 years,CAI,Specialist,Quinolones,0.0
+11 to 15 years,CAI,Specialist,Sulphonamides,0.0
+11 to 15 years,CAI,Specialist,Tetracyclines,0.0
+11 to 15 years,HAI,Primary,Aminoglycosides,0.05194805194805194
+11 to 15 years,HAI,Primary,Amphenicols,0.0
+11 to 15 years,HAI,Primary,Carbapenems,0.0
+11 to 15 years,HAI,Primary,Cephalosporins,0.23376623376623368
+11 to 15 years,HAI,Primary,Glycopeptides,0.0
+11 to 15 years,HAI,Primary,Lincosamides,0.0
+11 to 15 years,HAI,Primary,Macrolides,0.051948051948051965
+11 to 15 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+11 to 15 years,HAI,Primary,Penicillins,0.35064935064935054
+11 to 15 years,HAI,Primary,Quinolones,0.051948051948051945
+11 to 15 years,HAI,Primary,Sulphonamides,0.03896103896103895
+11 to 15 years,HAI,Primary,Tetracyclines,0.01298701298701299
+11 to 15 years,HAI,District,Aminoglycosides,0.045936395759717315
+11 to 15 years,HAI,District,Amphenicols,0.0
+11 to 15 years,HAI,District,Carbapenems,0.00353356890459364
+11 to 15 years,HAI,District,Cephalosporins,0.28268551236749107
+11 to 15 years,HAI,District,Glycopeptides,0.03180212014134278
+11 to 15 years,HAI,District,Lincosamides,0.007067137809187285
+11 to 15 years,HAI,District,Macrolides,0.06360424028268553
+11 to 15 years,HAI,District,Nitroimidazoles,0.23321554770318037
+11 to 15 years,HAI,District,Penicillins,0.23674911660777376
+11 to 15 years,HAI,District,Quinolones,0.01413427561837456
+11 to 15 years,HAI,District,Sulphonamides,0.04946996466431097
+11 to 15 years,HAI,District,Tetracyclines,0.031802120141342774
+11 to 15 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+11 to 15 years,HAI,Tertiary,Amphenicols,0.0018484288354898336
+11 to 15 years,HAI,Tertiary,Carbapenems,0.022181146025877993
+11 to 15 years,HAI,Tertiary,Cephalosporins,0.21996303142329024
+11 to 15 years,HAI,Tertiary,Glycopeptides,0.027726432532347505
+11 to 15 years,HAI,Tertiary,Lincosamides,0.0036968576709796703
+11 to 15 years,HAI,Tertiary,Macrolides,0.009242144177449167
+11 to 15 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839197
+11 to 15 years,HAI,Tertiary,Penicillins,0.3179297597042513
+11 to 15 years,HAI,Tertiary,Quinolones,0.014787430683918672
+11 to 15 years,HAI,Tertiary,Sulphonamides,0.05914972273567469
+11 to 15 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+11 to 15 years,HAI,Specialist,Aminoglycosides,0.037037037037037035
+11 to 15 years,HAI,Specialist,Amphenicols,0.0
+11 to 15 years,HAI,Specialist,Carbapenems,0.09876543209876543
+11 to 15 years,HAI,Specialist,Cephalosporins,0.4814814814814815
+11 to 15 years,HAI,Specialist,Glycopeptides,0.08641975308641978
+11 to 15 years,HAI,Specialist,Lincosamides,0.0
+11 to 15 years,HAI,Specialist,Macrolides,0.012345679012345678
+11 to 15 years,HAI,Specialist,Nitroimidazoles,0.14814814814814814
+11 to 15 years,HAI,Specialist,Penicillins,0.1358024691358024
+11 to 15 years,HAI,Specialist,Quinolones,0.0
+11 to 15 years,HAI,Specialist,Sulphonamides,0.0
+11 to 15 years,HAI,Specialist,Tetracyclines,0.0
+11 to 15 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+11 to 15 years,HBCI,Primary,Amphenicols,0.0625
+11 to 15 years,HBCI,Primary,Carbapenems,0.0625
+11 to 15 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+11 to 15 years,HBCI,Primary,Glycopeptides,0.0625
+11 to 15 years,HBCI,Primary,Lincosamides,0.0625
+11 to 15 years,HBCI,Primary,Macrolides,0.03896103896103897
+11 to 15 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+11 to 15 years,HBCI,Primary,Penicillins,0.262987012987013
+11 to 15 years,HBCI,Primary,Quinolones,0.03896103896103897
+11 to 15 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+11 to 15 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+11 to 15 years,HBCI,District,Aminoglycosides,0.04240282685512368
+11 to 15 years,HBCI,District,Amphenicols,0.07692307692307693
+11 to 15 years,HBCI,District,Carbapenems,0.0032617559119325905
+11 to 15 years,HBCI,District,Cephalosporins,0.26094047295460726
+11 to 15 years,HBCI,District,Glycopeptides,0.029355803207393314
+11 to 15 years,HBCI,District,Lincosamides,0.006523511823865181
+11 to 15 years,HBCI,District,Macrolides,0.05871160641478663
+11 to 15 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+11 to 15 years,HBCI,District,Penicillins,0.21853764609948356
+11 to 15 years,HBCI,District,Quinolones,0.013047023647730362
+11 to 15 years,HBCI,District,Sulphonamides,0.04566458276705627
+11 to 15 years,HBCI,District,Tetracyclines,0.029355803207393314
+11 to 15 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+11 to 15 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+11 to 15 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+11 to 15 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+11 to 15 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+11 to 15 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+11 to 15 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+11 to 15 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+11 to 15 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+11 to 15 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+11 to 15 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+11 to 15 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+11 to 15 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+11 to 15 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+11 to 15 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+11 to 15 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+11 to 15 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+11 to 15 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+11 to 15 years,HBCI,Specialist,Macrolides,0.008714596949891068
+11 to 15 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+11 to 15 years,HBCI,Specialist,Penicillins,0.09586056644880175
+11 to 15 years,HBCI,Specialist,Quinolones,0.05882352941176471
+11 to 15 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+11 to 15 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+11 to 15 years,NIC,Primary,Aminoglycosides,0.05194805194805195
+11 to 15 years,NIC,Primary,Amphenicols,0.0
+11 to 15 years,NIC,Primary,Carbapenems,0.0
+11 to 15 years,NIC,Primary,Cephalosporins,0.2337662337662337
+11 to 15 years,NIC,Primary,Glycopeptides,0.0
+11 to 15 years,NIC,Primary,Lincosamides,0.0
+11 to 15 years,NIC,Primary,Macrolides,0.051948051948051965
+11 to 15 years,NIC,Primary,Nitroimidazoles,0.20779220779220792
+11 to 15 years,NIC,Primary,Penicillins,0.35064935064935066
+11 to 15 years,NIC,Primary,Quinolones,0.05194805194805194
+11 to 15 years,NIC,Primary,Sulphonamides,0.03896103896103896
+11 to 15 years,NIC,Primary,Tetracyclines,0.012987012987012988
+11 to 15 years,NIC,District,Aminoglycosides,0.045936395759717315
+11 to 15 years,NIC,District,Amphenicols,0.0
+11 to 15 years,NIC,District,Carbapenems,0.00353356890459364
+11 to 15 years,NIC,District,Cephalosporins,0.28268551236749107
+11 to 15 years,NIC,District,Glycopeptides,0.031802120141342774
+11 to 15 years,NIC,District,Lincosamides,0.007067137809187286
+11 to 15 years,NIC,District,Macrolides,0.06360424028268553
+11 to 15 years,NIC,District,Nitroimidazoles,0.23321554770318031
+11 to 15 years,NIC,District,Penicillins,0.23674911660777376
+11 to 15 years,NIC,District,Quinolones,0.01413427561837456
+11 to 15 years,NIC,District,Sulphonamides,0.04946996466431097
+11 to 15 years,NIC,District,Tetracyclines,0.03180212014134277
+11 to 15 years,NIC,Tertiary,Aminoglycosides,0.09611829944547134
+11 to 15 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+11 to 15 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+11 to 15 years,NIC,Tertiary,Cephalosporins,0.2199630314232902
+11 to 15 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+11 to 15 years,NIC,Tertiary,Lincosamides,0.0036968576709796694
+11 to 15 years,NIC,Tertiary,Macrolides,0.009242144177449167
+11 to 15 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839192
+11 to 15 years,NIC,Tertiary,Penicillins,0.3179297597042513
+11 to 15 years,NIC,Tertiary,Quinolones,0.01478743068391867
+11 to 15 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+11 to 15 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+11 to 15 years,NIC,Specialist,Aminoglycosides,0.03703703703703702
+11 to 15 years,NIC,Specialist,Amphenicols,0.0
+11 to 15 years,NIC,Specialist,Carbapenems,0.09876543209876543
+11 to 15 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+11 to 15 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+11 to 15 years,NIC,Specialist,Lincosamides,0.0
+11 to 15 years,NIC,Specialist,Macrolides,0.01234567901234568
+11 to 15 years,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+11 to 15 years,NIC,Specialist,Penicillins,0.13580246913580243
+11 to 15 years,NIC,Specialist,Quinolones,0.0
+11 to 15 years,NIC,Specialist,Sulphonamides,0.0
+11 to 15 years,NIC,Specialist,Tetracyclines,0.0
+16 to 20 years,CAI,Primary,Aminoglycosides,0.051948051948051945
+16 to 20 years,CAI,Primary,Amphenicols,0.0
+16 to 20 years,CAI,Primary,Carbapenems,0.0
+16 to 20 years,CAI,Primary,Cephalosporins,0.23376623376623368
+16 to 20 years,CAI,Primary,Glycopeptides,0.0
+16 to 20 years,CAI,Primary,Lincosamides,0.0
+16 to 20 years,CAI,Primary,Macrolides,0.05194805194805196
+16 to 20 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+16 to 20 years,CAI,Primary,Penicillins,0.3506493506493506
+16 to 20 years,CAI,Primary,Quinolones,0.051948051948051945
+16 to 20 years,CAI,Primary,Sulphonamides,0.03896103896103896
+16 to 20 years,CAI,Primary,Tetracyclines,0.01298701298701299
+16 to 20 years,CAI,District,Aminoglycosides,0.04593639575971732
+16 to 20 years,CAI,District,Amphenicols,0.0
+16 to 20 years,CAI,District,Carbapenems,0.00353356890459364
+16 to 20 years,CAI,District,Cephalosporins,0.28268551236749107
+16 to 20 years,CAI,District,Glycopeptides,0.03180212014134278
+16 to 20 years,CAI,District,Lincosamides,0.007067137809187286
+16 to 20 years,CAI,District,Macrolides,0.06360424028268555
+16 to 20 years,CAI,District,Nitroimidazoles,0.23321554770318034
+16 to 20 years,CAI,District,Penicillins,0.23674911660777376
+16 to 20 years,CAI,District,Quinolones,0.014134275618374562
+16 to 20 years,CAI,District,Sulphonamides,0.049469964664310966
+16 to 20 years,CAI,District,Tetracyclines,0.031802120141342774
+16 to 20 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+16 to 20 years,CAI,Tertiary,Amphenicols,0.001848428835489833
+16 to 20 years,CAI,Tertiary,Carbapenems,0.022181146025878
+16 to 20 years,CAI,Tertiary,Cephalosporins,0.21996303142329018
+16 to 20 years,CAI,Tertiary,Glycopeptides,0.027726432532347512
+16 to 20 years,CAI,Tertiary,Lincosamides,0.00369685767097967
+16 to 20 years,CAI,Tertiary,Macrolides,0.009242144177449165
+16 to 20 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+16 to 20 years,CAI,Tertiary,Penicillins,0.31792975970425125
+16 to 20 years,CAI,Tertiary,Quinolones,0.01478743068391867
+16 to 20 years,CAI,Tertiary,Sulphonamides,0.05914972273567469
+16 to 20 years,CAI,Tertiary,Tetracyclines,0.025878003696857672
+16 to 20 years,CAI,Specialist,Aminoglycosides,0.037037037037037035
+16 to 20 years,CAI,Specialist,Amphenicols,0.0
+16 to 20 years,CAI,Specialist,Carbapenems,0.09876543209876544
+16 to 20 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+16 to 20 years,CAI,Specialist,Glycopeptides,0.0864197530864198
+16 to 20 years,CAI,Specialist,Lincosamides,0.0
+16 to 20 years,CAI,Specialist,Macrolides,0.012345679012345682
+16 to 20 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+16 to 20 years,CAI,Specialist,Penicillins,0.1358024691358024
+16 to 20 years,CAI,Specialist,Quinolones,0.0
+16 to 20 years,CAI,Specialist,Sulphonamides,0.0
+16 to 20 years,CAI,Specialist,Tetracyclines,0.0
+16 to 20 years,HAI,Primary,Aminoglycosides,0.05194805194805195
+16 to 20 years,HAI,Primary,Amphenicols,0.0
+16 to 20 years,HAI,Primary,Carbapenems,0.0
+16 to 20 years,HAI,Primary,Cephalosporins,0.23376623376623373
+16 to 20 years,HAI,Primary,Glycopeptides,0.0
+16 to 20 years,HAI,Primary,Lincosamides,0.0
+16 to 20 years,HAI,Primary,Macrolides,0.051948051948051965
+16 to 20 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+16 to 20 years,HAI,Primary,Penicillins,0.35064935064935054
+16 to 20 years,HAI,Primary,Quinolones,0.051948051948051945
+16 to 20 years,HAI,Primary,Sulphonamides,0.038961038961038946
+16 to 20 years,HAI,Primary,Tetracyclines,0.01298701298701299
+16 to 20 years,HAI,District,Aminoglycosides,0.04593639575971732
+16 to 20 years,HAI,District,Amphenicols,0.0
+16 to 20 years,HAI,District,Carbapenems,0.00353356890459364
+16 to 20 years,HAI,District,Cephalosporins,0.282685512367491
+16 to 20 years,HAI,District,Glycopeptides,0.03180212014134278
+16 to 20 years,HAI,District,Lincosamides,0.007067137809187287
+16 to 20 years,HAI,District,Macrolides,0.06360424028268553
+16 to 20 years,HAI,District,Nitroimidazoles,0.23321554770318034
+16 to 20 years,HAI,District,Penicillins,0.23674911660777379
+16 to 20 years,HAI,District,Quinolones,0.014134275618374562
+16 to 20 years,HAI,District,Sulphonamides,0.04946996466431097
+16 to 20 years,HAI,District,Tetracyclines,0.03180212014134277
+16 to 20 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+16 to 20 years,HAI,Tertiary,Amphenicols,0.0018484288354898334
+16 to 20 years,HAI,Tertiary,Carbapenems,0.022181146025877996
+16 to 20 years,HAI,Tertiary,Cephalosporins,0.2199630314232902
+16 to 20 years,HAI,Tertiary,Glycopeptides,0.027726432532347505
+16 to 20 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+16 to 20 years,HAI,Tertiary,Macrolides,0.009242144177449169
+16 to 20 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839192
+16 to 20 years,HAI,Tertiary,Penicillins,0.31792975970425125
+16 to 20 years,HAI,Tertiary,Quinolones,0.014787430683918669
+16 to 20 years,HAI,Tertiary,Sulphonamides,0.05914972273567468
+16 to 20 years,HAI,Tertiary,Tetracyclines,0.025878003696857676
+16 to 20 years,HAI,Specialist,Aminoglycosides,0.037037037037037035
+16 to 20 years,HAI,Specialist,Amphenicols,0.0
+16 to 20 years,HAI,Specialist,Carbapenems,0.09876543209876541
+16 to 20 years,HAI,Specialist,Cephalosporins,0.48148148148148145
+16 to 20 years,HAI,Specialist,Glycopeptides,0.0864197530864198
+16 to 20 years,HAI,Specialist,Lincosamides,0.0
+16 to 20 years,HAI,Specialist,Macrolides,0.01234567901234568
+16 to 20 years,HAI,Specialist,Nitroimidazoles,0.14814814814814814
+16 to 20 years,HAI,Specialist,Penicillins,0.1358024691358024
+16 to 20 years,HAI,Specialist,Quinolones,0.0
+16 to 20 years,HAI,Specialist,Sulphonamides,0.0
+16 to 20 years,HAI,Specialist,Tetracyclines,0.0
+16 to 20 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+16 to 20 years,HBCI,Primary,Amphenicols,0.0625
+16 to 20 years,HBCI,Primary,Carbapenems,0.0625
+16 to 20 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+16 to 20 years,HBCI,Primary,Glycopeptides,0.0625
+16 to 20 years,HBCI,Primary,Lincosamides,0.0625
+16 to 20 years,HBCI,Primary,Macrolides,0.03896103896103897
+16 to 20 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+16 to 20 years,HBCI,Primary,Penicillins,0.262987012987013
+16 to 20 years,HBCI,Primary,Quinolones,0.03896103896103897
+16 to 20 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+16 to 20 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+16 to 20 years,HBCI,District,Aminoglycosides,0.04240282685512368
+16 to 20 years,HBCI,District,Amphenicols,0.07692307692307693
+16 to 20 years,HBCI,District,Carbapenems,0.0032617559119325905
+16 to 20 years,HBCI,District,Cephalosporins,0.26094047295460726
+16 to 20 years,HBCI,District,Glycopeptides,0.029355803207393314
+16 to 20 years,HBCI,District,Lincosamides,0.006523511823865181
+16 to 20 years,HBCI,District,Macrolides,0.05871160641478663
+16 to 20 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+16 to 20 years,HBCI,District,Penicillins,0.21853764609948356
+16 to 20 years,HBCI,District,Quinolones,0.013047023647730362
+16 to 20 years,HBCI,District,Sulphonamides,0.04566458276705627
+16 to 20 years,HBCI,District,Tetracyclines,0.029355803207393314
+16 to 20 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+16 to 20 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+16 to 20 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+16 to 20 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+16 to 20 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+16 to 20 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+16 to 20 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+16 to 20 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+16 to 20 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+16 to 20 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+16 to 20 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+16 to 20 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+16 to 20 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+16 to 20 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+16 to 20 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+16 to 20 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+16 to 20 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+16 to 20 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+16 to 20 years,HBCI,Specialist,Macrolides,0.008714596949891068
+16 to 20 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+16 to 20 years,HBCI,Specialist,Penicillins,0.09586056644880175
+16 to 20 years,HBCI,Specialist,Quinolones,0.05882352941176471
+16 to 20 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+16 to 20 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+16 to 20 years,NIC,Primary,Aminoglycosides,0.05194805194805195
+16 to 20 years,NIC,Primary,Amphenicols,0.0
+16 to 20 years,NIC,Primary,Carbapenems,0.0
+16 to 20 years,NIC,Primary,Cephalosporins,0.2337662337662337
+16 to 20 years,NIC,Primary,Glycopeptides,0.0
+16 to 20 years,NIC,Primary,Lincosamides,0.0
+16 to 20 years,NIC,Primary,Macrolides,0.05194805194805197
+16 to 20 years,NIC,Primary,Nitroimidazoles,0.2077922077922079
+16 to 20 years,NIC,Primary,Penicillins,0.3506493506493506
+16 to 20 years,NIC,Primary,Quinolones,0.05194805194805195
+16 to 20 years,NIC,Primary,Sulphonamides,0.03896103896103897
+16 to 20 years,NIC,Primary,Tetracyclines,0.012987012987012991
+16 to 20 years,NIC,District,Aminoglycosides,0.04593639575971731
+16 to 20 years,NIC,District,Amphenicols,0.0
+16 to 20 years,NIC,District,Carbapenems,0.0035335689045936395
+16 to 20 years,NIC,District,Cephalosporins,0.282685512367491
+16 to 20 years,NIC,District,Glycopeptides,0.031802120141342774
+16 to 20 years,NIC,District,Lincosamides,0.007067137809187285
+16 to 20 years,NIC,District,Macrolides,0.06360424028268553
+16 to 20 years,NIC,District,Nitroimidazoles,0.23321554770318037
+16 to 20 years,NIC,District,Penicillins,0.23674911660777373
+16 to 20 years,NIC,District,Quinolones,0.014134275618374562
+16 to 20 years,NIC,District,Sulphonamides,0.04946996466431097
+16 to 20 years,NIC,District,Tetracyclines,0.03180212014134277
+16 to 20 years,NIC,Tertiary,Aminoglycosides,0.09611829944547134
+16 to 20 years,NIC,Tertiary,Amphenicols,0.0018484288354898334
+16 to 20 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+16 to 20 years,NIC,Tertiary,Cephalosporins,0.21996303142329027
+16 to 20 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+16 to 20 years,NIC,Tertiary,Lincosamides,0.00369685767097967
+16 to 20 years,NIC,Tertiary,Macrolides,0.009242144177449167
+16 to 20 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+16 to 20 years,NIC,Tertiary,Penicillins,0.3179297597042512
+16 to 20 years,NIC,Tertiary,Quinolones,0.014787430683918674
+16 to 20 years,NIC,Tertiary,Sulphonamides,0.0591497227356747
+16 to 20 years,NIC,Tertiary,Tetracyclines,0.02587800369685768
+16 to 20 years,NIC,Specialist,Aminoglycosides,0.037037037037037035
+16 to 20 years,NIC,Specialist,Amphenicols,0.0
+16 to 20 years,NIC,Specialist,Carbapenems,0.09876543209876544
+16 to 20 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+16 to 20 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+16 to 20 years,NIC,Specialist,Lincosamides,0.0
+16 to 20 years,NIC,Specialist,Macrolides,0.012345679012345678
+16 to 20 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+16 to 20 years,NIC,Specialist,Penicillins,0.1358024691358024
+16 to 20 years,NIC,Specialist,Quinolones,0.0
+16 to 20 years,NIC,Specialist,Sulphonamides,0.0
+16 to 20 years,NIC,Specialist,Tetracyclines,0.0
+21 to 25 years,CAI,Primary,Aminoglycosides,0.051948051948051945
+21 to 25 years,CAI,Primary,Amphenicols,0.0
+21 to 25 years,CAI,Primary,Carbapenems,0.0
+21 to 25 years,CAI,Primary,Cephalosporins,0.2337662337662337
+21 to 25 years,CAI,Primary,Glycopeptides,0.0
+21 to 25 years,CAI,Primary,Lincosamides,0.0
+21 to 25 years,CAI,Primary,Macrolides,0.05194805194805196
+21 to 25 years,CAI,Primary,Nitroimidazoles,0.2077922077922079
+21 to 25 years,CAI,Primary,Penicillins,0.3506493506493506
+21 to 25 years,CAI,Primary,Quinolones,0.051948051948051945
+21 to 25 years,CAI,Primary,Sulphonamides,0.03896103896103896
+21 to 25 years,CAI,Primary,Tetracyclines,0.01298701298701299
+21 to 25 years,CAI,District,Aminoglycosides,0.04593639575971733
+21 to 25 years,CAI,District,Amphenicols,0.0
+21 to 25 years,CAI,District,Carbapenems,0.0035335689045936404
+21 to 25 years,CAI,District,Cephalosporins,0.282685512367491
+21 to 25 years,CAI,District,Glycopeptides,0.03180212014134278
+21 to 25 years,CAI,District,Lincosamides,0.007067137809187287
+21 to 25 years,CAI,District,Macrolides,0.06360424028268555
+21 to 25 years,CAI,District,Nitroimidazoles,0.23321554770318043
+21 to 25 years,CAI,District,Penicillins,0.23674911660777373
+21 to 25 years,CAI,District,Quinolones,0.014134275618374563
+21 to 25 years,CAI,District,Sulphonamides,0.049469964664310986
+21 to 25 years,CAI,District,Tetracyclines,0.03180212014134278
+21 to 25 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+21 to 25 years,CAI,Tertiary,Amphenicols,0.0018484288354898334
+21 to 25 years,CAI,Tertiary,Carbapenems,0.022181146025878
+21 to 25 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+21 to 25 years,CAI,Tertiary,Glycopeptides,0.02772643253234751
+21 to 25 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+21 to 25 years,CAI,Tertiary,Macrolides,0.009242144177449169
+21 to 25 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839192
+21 to 25 years,CAI,Tertiary,Penicillins,0.3179297597042513
+21 to 25 years,CAI,Tertiary,Quinolones,0.014787430683918674
+21 to 25 years,CAI,Tertiary,Sulphonamides,0.05914972273567468
+21 to 25 years,CAI,Tertiary,Tetracyclines,0.025878003696857672
+21 to 25 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+21 to 25 years,CAI,Specialist,Amphenicols,0.0
+21 to 25 years,CAI,Specialist,Carbapenems,0.09876543209876543
+21 to 25 years,CAI,Specialist,Cephalosporins,0.48148148148148157
+21 to 25 years,CAI,Specialist,Glycopeptides,0.0864197530864198
+21 to 25 years,CAI,Specialist,Lincosamides,0.0
+21 to 25 years,CAI,Specialist,Macrolides,0.01234567901234568
+21 to 25 years,CAI,Specialist,Nitroimidazoles,0.1481481481481481
+21 to 25 years,CAI,Specialist,Penicillins,0.1358024691358024
+21 to 25 years,CAI,Specialist,Quinolones,0.0
+21 to 25 years,CAI,Specialist,Sulphonamides,0.0
+21 to 25 years,CAI,Specialist,Tetracyclines,0.0
+21 to 25 years,HAI,Primary,Aminoglycosides,0.051948051948051945
+21 to 25 years,HAI,Primary,Amphenicols,0.0
+21 to 25 years,HAI,Primary,Carbapenems,0.0
+21 to 25 years,HAI,Primary,Cephalosporins,0.23376623376623373
+21 to 25 years,HAI,Primary,Glycopeptides,0.0
+21 to 25 years,HAI,Primary,Lincosamides,0.0
+21 to 25 years,HAI,Primary,Macrolides,0.051948051948051965
+21 to 25 years,HAI,Primary,Nitroimidazoles,0.20779220779220786
+21 to 25 years,HAI,Primary,Penicillins,0.35064935064935066
+21 to 25 years,HAI,Primary,Quinolones,0.05194805194805196
+21 to 25 years,HAI,Primary,Sulphonamides,0.03896103896103896
+21 to 25 years,HAI,Primary,Tetracyclines,0.01298701298701299
+21 to 25 years,HAI,District,Aminoglycosides,0.04593639575971731
+21 to 25 years,HAI,District,Amphenicols,0.0
+21 to 25 years,HAI,District,Carbapenems,0.0035335689045936395
+21 to 25 years,HAI,District,Cephalosporins,0.282685512367491
+21 to 25 years,HAI,District,Glycopeptides,0.031802120141342774
+21 to 25 years,HAI,District,Lincosamides,0.007067137809187283
+21 to 25 years,HAI,District,Macrolides,0.06360424028268553
+21 to 25 years,HAI,District,Nitroimidazoles,0.23321554770318034
+21 to 25 years,HAI,District,Penicillins,0.23674911660777373
+21 to 25 years,HAI,District,Quinolones,0.014134275618374558
+21 to 25 years,HAI,District,Sulphonamides,0.04946996466431097
+21 to 25 years,HAI,District,Tetracyclines,0.031802120141342774
+21 to 25 years,HAI,Tertiary,Aminoglycosides,0.09611829944547133
+21 to 25 years,HAI,Tertiary,Amphenicols,0.001848428835489833
+21 to 25 years,HAI,Tertiary,Carbapenems,0.022181146025877993
+21 to 25 years,HAI,Tertiary,Cephalosporins,0.21996303142329027
+21 to 25 years,HAI,Tertiary,Glycopeptides,0.027726432532347505
+21 to 25 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+21 to 25 years,HAI,Tertiary,Macrolides,0.009242144177449167
+21 to 25 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839192
+21 to 25 years,HAI,Tertiary,Penicillins,0.3179297597042513
+21 to 25 years,HAI,Tertiary,Quinolones,0.01478743068391867
+21 to 25 years,HAI,Tertiary,Sulphonamides,0.05914972273567469
+21 to 25 years,HAI,Tertiary,Tetracyclines,0.025878003696857676
+21 to 25 years,HAI,Specialist,Aminoglycosides,0.03703703703703704
+21 to 25 years,HAI,Specialist,Amphenicols,0.0
+21 to 25 years,HAI,Specialist,Carbapenems,0.09876543209876544
+21 to 25 years,HAI,Specialist,Cephalosporins,0.48148148148148145
+21 to 25 years,HAI,Specialist,Glycopeptides,0.08641975308641979
+21 to 25 years,HAI,Specialist,Lincosamides,0.0
+21 to 25 years,HAI,Specialist,Macrolides,0.01234567901234568
+21 to 25 years,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+21 to 25 years,HAI,Specialist,Penicillins,0.1358024691358024
+21 to 25 years,HAI,Specialist,Quinolones,0.0
+21 to 25 years,HAI,Specialist,Sulphonamides,0.0
+21 to 25 years,HAI,Specialist,Tetracyclines,0.0
+21 to 25 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+21 to 25 years,HBCI,Primary,Amphenicols,0.0625
+21 to 25 years,HBCI,Primary,Carbapenems,0.0625
+21 to 25 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+21 to 25 years,HBCI,Primary,Glycopeptides,0.0625
+21 to 25 years,HBCI,Primary,Lincosamides,0.0625
+21 to 25 years,HBCI,Primary,Macrolides,0.03896103896103897
+21 to 25 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+21 to 25 years,HBCI,Primary,Penicillins,0.262987012987013
+21 to 25 years,HBCI,Primary,Quinolones,0.03896103896103897
+21 to 25 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+21 to 25 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+21 to 25 years,HBCI,District,Aminoglycosides,0.04240282685512368
+21 to 25 years,HBCI,District,Amphenicols,0.07692307692307693
+21 to 25 years,HBCI,District,Carbapenems,0.0032617559119325905
+21 to 25 years,HBCI,District,Cephalosporins,0.26094047295460726
+21 to 25 years,HBCI,District,Glycopeptides,0.029355803207393314
+21 to 25 years,HBCI,District,Lincosamides,0.006523511823865181
+21 to 25 years,HBCI,District,Macrolides,0.05871160641478663
+21 to 25 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+21 to 25 years,HBCI,District,Penicillins,0.21853764609948356
+21 to 25 years,HBCI,District,Quinolones,0.013047023647730362
+21 to 25 years,HBCI,District,Sulphonamides,0.04566458276705627
+21 to 25 years,HBCI,District,Tetracyclines,0.029355803207393314
+21 to 25 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+21 to 25 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+21 to 25 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+21 to 25 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+21 to 25 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+21 to 25 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+21 to 25 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+21 to 25 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+21 to 25 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+21 to 25 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+21 to 25 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+21 to 25 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+21 to 25 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+21 to 25 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+21 to 25 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+21 to 25 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+21 to 25 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+21 to 25 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+21 to 25 years,HBCI,Specialist,Macrolides,0.008714596949891068
+21 to 25 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+21 to 25 years,HBCI,Specialist,Penicillins,0.09586056644880175
+21 to 25 years,HBCI,Specialist,Quinolones,0.05882352941176471
+21 to 25 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+21 to 25 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+21 to 25 years,NIC,Primary,Aminoglycosides,0.05194805194805194
+21 to 25 years,NIC,Primary,Amphenicols,0.0
+21 to 25 years,NIC,Primary,Carbapenems,0.0
+21 to 25 years,NIC,Primary,Cephalosporins,0.23376623376623373
+21 to 25 years,NIC,Primary,Glycopeptides,0.0
+21 to 25 years,NIC,Primary,Lincosamides,0.0
+21 to 25 years,NIC,Primary,Macrolides,0.051948051948051965
+21 to 25 years,NIC,Primary,Nitroimidazoles,0.20779220779220786
+21 to 25 years,NIC,Primary,Penicillins,0.3506493506493506
+21 to 25 years,NIC,Primary,Quinolones,0.051948051948051945
+21 to 25 years,NIC,Primary,Sulphonamides,0.038961038961038946
+21 to 25 years,NIC,Primary,Tetracyclines,0.012987012987012988
+21 to 25 years,NIC,District,Aminoglycosides,0.04593639575971731
+21 to 25 years,NIC,District,Amphenicols,0.0
+21 to 25 years,NIC,District,Carbapenems,0.003533568904593639
+21 to 25 years,NIC,District,Cephalosporins,0.28268551236749095
+21 to 25 years,NIC,District,Glycopeptides,0.03180212014134277
+21 to 25 years,NIC,District,Lincosamides,0.007067137809187286
+21 to 25 years,NIC,District,Macrolides,0.06360424028268553
+21 to 25 years,NIC,District,Nitroimidazoles,0.23321554770318034
+21 to 25 years,NIC,District,Penicillins,0.23674911660777379
+21 to 25 years,NIC,District,Quinolones,0.01413427561837456
+21 to 25 years,NIC,District,Sulphonamides,0.04946996466431098
+21 to 25 years,NIC,District,Tetracyclines,0.03180212014134277
+21 to 25 years,NIC,Tertiary,Aminoglycosides,0.09611829944547137
+21 to 25 years,NIC,Tertiary,Amphenicols,0.001848428835489833
+21 to 25 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+21 to 25 years,NIC,Tertiary,Cephalosporins,0.2199630314232902
+21 to 25 years,NIC,Tertiary,Glycopeptides,0.027726432532347505
+21 to 25 years,NIC,Tertiary,Lincosamides,0.0036968576709796694
+21 to 25 years,NIC,Tertiary,Macrolides,0.00924214417744917
+21 to 25 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839197
+21 to 25 years,NIC,Tertiary,Penicillins,0.31792975970425125
+21 to 25 years,NIC,Tertiary,Quinolones,0.014787430683918669
+21 to 25 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+21 to 25 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+21 to 25 years,NIC,Specialist,Aminoglycosides,0.03703703703703704
+21 to 25 years,NIC,Specialist,Amphenicols,0.0
+21 to 25 years,NIC,Specialist,Carbapenems,0.09876543209876544
+21 to 25 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+21 to 25 years,NIC,Specialist,Glycopeptides,0.0864197530864198
+21 to 25 years,NIC,Specialist,Lincosamides,0.0
+21 to 25 years,NIC,Specialist,Macrolides,0.01234567901234568
+21 to 25 years,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+21 to 25 years,NIC,Specialist,Penicillins,0.1358024691358024
+21 to 25 years,NIC,Specialist,Quinolones,0.0
+21 to 25 years,NIC,Specialist,Sulphonamides,0.0
+21 to 25 years,NIC,Specialist,Tetracyclines,0.0
+26 to 30 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+26 to 30 years,CAI,Primary,Amphenicols,0.0
+26 to 30 years,CAI,Primary,Carbapenems,0.0
+26 to 30 years,CAI,Primary,Cephalosporins,0.2337662337662337
+26 to 30 years,CAI,Primary,Glycopeptides,0.0
+26 to 30 years,CAI,Primary,Lincosamides,0.0
+26 to 30 years,CAI,Primary,Macrolides,0.05194805194805197
+26 to 30 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+26 to 30 years,CAI,Primary,Penicillins,0.3506493506493506
+26 to 30 years,CAI,Primary,Quinolones,0.05194805194805195
+26 to 30 years,CAI,Primary,Sulphonamides,0.03896103896103896
+26 to 30 years,CAI,Primary,Tetracyclines,0.012987012987012988
+26 to 30 years,CAI,District,Aminoglycosides,0.04593639575971732
+26 to 30 years,CAI,District,Amphenicols,0.0
+26 to 30 years,CAI,District,Carbapenems,0.003533568904593641
+26 to 30 years,CAI,District,Cephalosporins,0.28268551236749107
+26 to 30 years,CAI,District,Glycopeptides,0.031802120141342774
+26 to 30 years,CAI,District,Lincosamides,0.007067137809187285
+26 to 30 years,CAI,District,Macrolides,0.06360424028268553
+26 to 30 years,CAI,District,Nitroimidazoles,0.23321554770318037
+26 to 30 years,CAI,District,Penicillins,0.23674911660777376
+26 to 30 years,CAI,District,Quinolones,0.014134275618374563
+26 to 30 years,CAI,District,Sulphonamides,0.04946996466431097
+26 to 30 years,CAI,District,Tetracyclines,0.03180212014134277
+26 to 30 years,CAI,Tertiary,Aminoglycosides,0.09611829944547134
+26 to 30 years,CAI,Tertiary,Amphenicols,0.0018484288354898336
+26 to 30 years,CAI,Tertiary,Carbapenems,0.022181146025877996
+26 to 30 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+26 to 30 years,CAI,Tertiary,Glycopeptides,0.02772643253234751
+26 to 30 years,CAI,Tertiary,Lincosamides,0.0036968576709796707
+26 to 30 years,CAI,Tertiary,Macrolides,0.009242144177449169
+26 to 30 years,CAI,Tertiary,Nitroimidazoles,0.2014787430683919
+26 to 30 years,CAI,Tertiary,Penicillins,0.31792975970425125
+26 to 30 years,CAI,Tertiary,Quinolones,0.014787430683918672
+26 to 30 years,CAI,Tertiary,Sulphonamides,0.05914972273567466
+26 to 30 years,CAI,Tertiary,Tetracyclines,0.025878003696857676
+26 to 30 years,CAI,Specialist,Aminoglycosides,0.03703703703703704
+26 to 30 years,CAI,Specialist,Amphenicols,0.0
+26 to 30 years,CAI,Specialist,Carbapenems,0.09876543209876545
+26 to 30 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+26 to 30 years,CAI,Specialist,Glycopeptides,0.08641975308641978
+26 to 30 years,CAI,Specialist,Lincosamides,0.0
+26 to 30 years,CAI,Specialist,Macrolides,0.012345679012345682
+26 to 30 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+26 to 30 years,CAI,Specialist,Penicillins,0.13580246913580243
+26 to 30 years,CAI,Specialist,Quinolones,0.0
+26 to 30 years,CAI,Specialist,Sulphonamides,0.0
+26 to 30 years,CAI,Specialist,Tetracyclines,0.0
+26 to 30 years,HAI,Primary,Aminoglycosides,0.05194805194805194
+26 to 30 years,HAI,Primary,Amphenicols,0.0
+26 to 30 years,HAI,Primary,Carbapenems,0.0
+26 to 30 years,HAI,Primary,Cephalosporins,0.23376623376623373
+26 to 30 years,HAI,Primary,Glycopeptides,0.0
+26 to 30 years,HAI,Primary,Lincosamides,0.0
+26 to 30 years,HAI,Primary,Macrolides,0.05194805194805196
+26 to 30 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+26 to 30 years,HAI,Primary,Penicillins,0.35064935064935054
+26 to 30 years,HAI,Primary,Quinolones,0.051948051948051945
+26 to 30 years,HAI,Primary,Sulphonamides,0.03896103896103895
+26 to 30 years,HAI,Primary,Tetracyclines,0.01298701298701299
+26 to 30 years,HAI,District,Aminoglycosides,0.045936395759717315
+26 to 30 years,HAI,District,Amphenicols,0.0
+26 to 30 years,HAI,District,Carbapenems,0.0035335689045936404
+26 to 30 years,HAI,District,Cephalosporins,0.28268551236749095
+26 to 30 years,HAI,District,Glycopeptides,0.031802120141342774
+26 to 30 years,HAI,District,Lincosamides,0.007067137809187285
+26 to 30 years,HAI,District,Macrolides,0.06360424028268555
+26 to 30 years,HAI,District,Nitroimidazoles,0.23321554770318037
+26 to 30 years,HAI,District,Penicillins,0.23674911660777379
+26 to 30 years,HAI,District,Quinolones,0.014134275618374562
+26 to 30 years,HAI,District,Sulphonamides,0.049469964664310966
+26 to 30 years,HAI,District,Tetracyclines,0.031802120141342774
+26 to 30 years,HAI,Tertiary,Aminoglycosides,0.09611829944547133
+26 to 30 years,HAI,Tertiary,Amphenicols,0.001848428835489833
+26 to 30 years,HAI,Tertiary,Carbapenems,0.022181146025878
+26 to 30 years,HAI,Tertiary,Cephalosporins,0.2199630314232902
+26 to 30 years,HAI,Tertiary,Glycopeptides,0.02772643253234751
+26 to 30 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+26 to 30 years,HAI,Tertiary,Macrolides,0.009242144177449165
+26 to 30 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839192
+26 to 30 years,HAI,Tertiary,Penicillins,0.31792975970425125
+26 to 30 years,HAI,Tertiary,Quinolones,0.014787430683918669
+26 to 30 years,HAI,Tertiary,Sulphonamides,0.05914972273567467
+26 to 30 years,HAI,Tertiary,Tetracyclines,0.02587800369685767
+26 to 30 years,HAI,Specialist,Aminoglycosides,0.037037037037037035
+26 to 30 years,HAI,Specialist,Amphenicols,0.0
+26 to 30 years,HAI,Specialist,Carbapenems,0.09876543209876543
+26 to 30 years,HAI,Specialist,Cephalosporins,0.48148148148148145
+26 to 30 years,HAI,Specialist,Glycopeptides,0.0864197530864198
+26 to 30 years,HAI,Specialist,Lincosamides,0.0
+26 to 30 years,HAI,Specialist,Macrolides,0.012345679012345678
+26 to 30 years,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+26 to 30 years,HAI,Specialist,Penicillins,0.13580246913580243
+26 to 30 years,HAI,Specialist,Quinolones,0.0
+26 to 30 years,HAI,Specialist,Sulphonamides,0.0
+26 to 30 years,HAI,Specialist,Tetracyclines,0.0
+26 to 30 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+26 to 30 years,HBCI,Primary,Amphenicols,0.0625
+26 to 30 years,HBCI,Primary,Carbapenems,0.0625
+26 to 30 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+26 to 30 years,HBCI,Primary,Glycopeptides,0.0625
+26 to 30 years,HBCI,Primary,Lincosamides,0.0625
+26 to 30 years,HBCI,Primary,Macrolides,0.03896103896103897
+26 to 30 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+26 to 30 years,HBCI,Primary,Penicillins,0.262987012987013
+26 to 30 years,HBCI,Primary,Quinolones,0.03896103896103897
+26 to 30 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+26 to 30 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+26 to 30 years,HBCI,District,Aminoglycosides,0.04240282685512368
+26 to 30 years,HBCI,District,Amphenicols,0.07692307692307693
+26 to 30 years,HBCI,District,Carbapenems,0.0032617559119325905
+26 to 30 years,HBCI,District,Cephalosporins,0.26094047295460726
+26 to 30 years,HBCI,District,Glycopeptides,0.029355803207393314
+26 to 30 years,HBCI,District,Lincosamides,0.006523511823865181
+26 to 30 years,HBCI,District,Macrolides,0.05871160641478663
+26 to 30 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+26 to 30 years,HBCI,District,Penicillins,0.21853764609948356
+26 to 30 years,HBCI,District,Quinolones,0.013047023647730362
+26 to 30 years,HBCI,District,Sulphonamides,0.04566458276705627
+26 to 30 years,HBCI,District,Tetracyclines,0.029355803207393314
+26 to 30 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+26 to 30 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+26 to 30 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+26 to 30 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+26 to 30 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+26 to 30 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+26 to 30 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+26 to 30 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+26 to 30 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+26 to 30 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+26 to 30 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+26 to 30 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+26 to 30 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+26 to 30 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+26 to 30 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+26 to 30 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+26 to 30 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+26 to 30 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+26 to 30 years,HBCI,Specialist,Macrolides,0.008714596949891068
+26 to 30 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+26 to 30 years,HBCI,Specialist,Penicillins,0.09586056644880175
+26 to 30 years,HBCI,Specialist,Quinolones,0.05882352941176471
+26 to 30 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+26 to 30 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+26 to 30 years,NIC,Primary,Aminoglycosides,0.051948051948051945
+26 to 30 years,NIC,Primary,Amphenicols,0.0
+26 to 30 years,NIC,Primary,Carbapenems,0.0
+26 to 30 years,NIC,Primary,Cephalosporins,0.23376623376623373
+26 to 30 years,NIC,Primary,Glycopeptides,0.0
+26 to 30 years,NIC,Primary,Lincosamides,0.0
+26 to 30 years,NIC,Primary,Macrolides,0.051948051948051965
+26 to 30 years,NIC,Primary,Nitroimidazoles,0.20779220779220786
+26 to 30 years,NIC,Primary,Penicillins,0.3506493506493506
+26 to 30 years,NIC,Primary,Quinolones,0.051948051948051945
+26 to 30 years,NIC,Primary,Sulphonamides,0.03896103896103897
+26 to 30 years,NIC,Primary,Tetracyclines,0.012987012987012986
+26 to 30 years,NIC,District,Aminoglycosides,0.045936395759717315
+26 to 30 years,NIC,District,Amphenicols,0.0
+26 to 30 years,NIC,District,Carbapenems,0.00353356890459364
+26 to 30 years,NIC,District,Cephalosporins,0.282685512367491
+26 to 30 years,NIC,District,Glycopeptides,0.03180212014134278
+26 to 30 years,NIC,District,Lincosamides,0.007067137809187285
+26 to 30 years,NIC,District,Macrolides,0.06360424028268555
+26 to 30 years,NIC,District,Nitroimidazoles,0.23321554770318037
+26 to 30 years,NIC,District,Penicillins,0.23674911660777379
+26 to 30 years,NIC,District,Quinolones,0.014134275618374562
+26 to 30 years,NIC,District,Sulphonamides,0.04946996466431098
+26 to 30 years,NIC,District,Tetracyclines,0.03180212014134277
+26 to 30 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+26 to 30 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+26 to 30 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+26 to 30 years,NIC,Tertiary,Cephalosporins,0.21996303142329027
+26 to 30 years,NIC,Tertiary,Glycopeptides,0.027726432532347512
+26 to 30 years,NIC,Tertiary,Lincosamides,0.00369685767097967
+26 to 30 years,NIC,Tertiary,Macrolides,0.009242144177449167
+26 to 30 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839192
+26 to 30 years,NIC,Tertiary,Penicillins,0.3179297597042513
+26 to 30 years,NIC,Tertiary,Quinolones,0.014787430683918669
+26 to 30 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+26 to 30 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+26 to 30 years,NIC,Specialist,Aminoglycosides,0.03703703703703703
+26 to 30 years,NIC,Specialist,Amphenicols,0.0
+26 to 30 years,NIC,Specialist,Carbapenems,0.09876543209876545
+26 to 30 years,NIC,Specialist,Cephalosporins,0.4814814814814815
+26 to 30 years,NIC,Specialist,Glycopeptides,0.0864197530864198
+26 to 30 years,NIC,Specialist,Lincosamides,0.0
+26 to 30 years,NIC,Specialist,Macrolides,0.012345679012345682
+26 to 30 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+26 to 30 years,NIC,Specialist,Penicillins,0.13580246913580243
+26 to 30 years,NIC,Specialist,Quinolones,0.0
+26 to 30 years,NIC,Specialist,Sulphonamides,0.0
+26 to 30 years,NIC,Specialist,Tetracyclines,0.0
+31 to 35 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+31 to 35 years,CAI,Primary,Amphenicols,0.0
+31 to 35 years,CAI,Primary,Carbapenems,0.0
+31 to 35 years,CAI,Primary,Cephalosporins,0.23376623376623373
+31 to 35 years,CAI,Primary,Glycopeptides,0.0
+31 to 35 years,CAI,Primary,Lincosamides,0.0
+31 to 35 years,CAI,Primary,Macrolides,0.05194805194805197
+31 to 35 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+31 to 35 years,CAI,Primary,Penicillins,0.35064935064935054
+31 to 35 years,CAI,Primary,Quinolones,0.05194805194805195
+31 to 35 years,CAI,Primary,Sulphonamides,0.03896103896103896
+31 to 35 years,CAI,Primary,Tetracyclines,0.01298701298701299
+31 to 35 years,CAI,District,Aminoglycosides,0.04593639575971732
+31 to 35 years,CAI,District,Amphenicols,0.0
+31 to 35 years,CAI,District,Carbapenems,0.0035335689045936404
+31 to 35 years,CAI,District,Cephalosporins,0.2826855123674911
+31 to 35 years,CAI,District,Glycopeptides,0.03180212014134278
+31 to 35 years,CAI,District,Lincosamides,0.007067137809187285
+31 to 35 years,CAI,District,Macrolides,0.06360424028268555
+31 to 35 years,CAI,District,Nitroimidazoles,0.23321554770318031
+31 to 35 years,CAI,District,Penicillins,0.23674911660777376
+31 to 35 years,CAI,District,Quinolones,0.014134275618374562
+31 to 35 years,CAI,District,Sulphonamides,0.04946996466431098
+31 to 35 years,CAI,District,Tetracyclines,0.03180212014134276
+31 to 35 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+31 to 35 years,CAI,Tertiary,Amphenicols,0.0018484288354898332
+31 to 35 years,CAI,Tertiary,Carbapenems,0.022181146025878
+31 to 35 years,CAI,Tertiary,Cephalosporins,0.2199630314232902
+31 to 35 years,CAI,Tertiary,Glycopeptides,0.02772643253234751
+31 to 35 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+31 to 35 years,CAI,Tertiary,Macrolides,0.009242144177449172
+31 to 35 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839195
+31 to 35 years,CAI,Tertiary,Penicillins,0.3179297597042513
+31 to 35 years,CAI,Tertiary,Quinolones,0.014787430683918672
+31 to 35 years,CAI,Tertiary,Sulphonamides,0.05914972273567469
+31 to 35 years,CAI,Tertiary,Tetracyclines,0.02587800369685768
+31 to 35 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+31 to 35 years,CAI,Specialist,Amphenicols,0.0
+31 to 35 years,CAI,Specialist,Carbapenems,0.09876543209876545
+31 to 35 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+31 to 35 years,CAI,Specialist,Glycopeptides,0.0864197530864198
+31 to 35 years,CAI,Specialist,Lincosamides,0.0
+31 to 35 years,CAI,Specialist,Macrolides,0.01234567901234568
+31 to 35 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+31 to 35 years,CAI,Specialist,Penicillins,0.13580246913580243
+31 to 35 years,CAI,Specialist,Quinolones,0.0
+31 to 35 years,CAI,Specialist,Sulphonamides,0.0
+31 to 35 years,CAI,Specialist,Tetracyclines,0.0
+31 to 35 years,HAI,Primary,Aminoglycosides,0.05194805194805195
+31 to 35 years,HAI,Primary,Amphenicols,0.0
+31 to 35 years,HAI,Primary,Carbapenems,0.0
+31 to 35 years,HAI,Primary,Cephalosporins,0.23376623376623376
+31 to 35 years,HAI,Primary,Glycopeptides,0.0
+31 to 35 years,HAI,Primary,Lincosamides,0.0
+31 to 35 years,HAI,Primary,Macrolides,0.05194805194805197
+31 to 35 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+31 to 35 years,HAI,Primary,Penicillins,0.35064935064935054
+31 to 35 years,HAI,Primary,Quinolones,0.051948051948051945
+31 to 35 years,HAI,Primary,Sulphonamides,0.03896103896103895
+31 to 35 years,HAI,Primary,Tetracyclines,0.012987012987012986
+31 to 35 years,HAI,District,Aminoglycosides,0.04593639575971731
+31 to 35 years,HAI,District,Amphenicols,0.0
+31 to 35 years,HAI,District,Carbapenems,0.0035335689045936404
+31 to 35 years,HAI,District,Cephalosporins,0.282685512367491
+31 to 35 years,HAI,District,Glycopeptides,0.03180212014134278
+31 to 35 years,HAI,District,Lincosamides,0.007067137809187287
+31 to 35 years,HAI,District,Macrolides,0.06360424028268555
+31 to 35 years,HAI,District,Nitroimidazoles,0.2332155477031804
+31 to 35 years,HAI,District,Penicillins,0.23674911660777376
+31 to 35 years,HAI,District,Quinolones,0.01413427561837456
+31 to 35 years,HAI,District,Sulphonamides,0.04946996466431098
+31 to 35 years,HAI,District,Tetracyclines,0.031802120141342774
+31 to 35 years,HAI,Tertiary,Aminoglycosides,0.09611829944547136
+31 to 35 years,HAI,Tertiary,Amphenicols,0.0018484288354898334
+31 to 35 years,HAI,Tertiary,Carbapenems,0.022181146025877993
+31 to 35 years,HAI,Tertiary,Cephalosporins,0.21996303142329024
+31 to 35 years,HAI,Tertiary,Glycopeptides,0.027726432532347512
+31 to 35 years,HAI,Tertiary,Lincosamides,0.0036968576709796703
+31 to 35 years,HAI,Tertiary,Macrolides,0.009242144177449169
+31 to 35 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839195
+31 to 35 years,HAI,Tertiary,Penicillins,0.31792975970425125
+31 to 35 years,HAI,Tertiary,Quinolones,0.014787430683918674
+31 to 35 years,HAI,Tertiary,Sulphonamides,0.05914972273567468
+31 to 35 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+31 to 35 years,HAI,Specialist,Aminoglycosides,0.03703703703703702
+31 to 35 years,HAI,Specialist,Amphenicols,0.0
+31 to 35 years,HAI,Specialist,Carbapenems,0.09876543209876544
+31 to 35 years,HAI,Specialist,Cephalosporins,0.48148148148148145
+31 to 35 years,HAI,Specialist,Glycopeptides,0.08641975308641979
+31 to 35 years,HAI,Specialist,Lincosamides,0.0
+31 to 35 years,HAI,Specialist,Macrolides,0.012345679012345682
+31 to 35 years,HAI,Specialist,Nitroimidazoles,0.14814814814814814
+31 to 35 years,HAI,Specialist,Penicillins,0.13580246913580243
+31 to 35 years,HAI,Specialist,Quinolones,0.0
+31 to 35 years,HAI,Specialist,Sulphonamides,0.0
+31 to 35 years,HAI,Specialist,Tetracyclines,0.0
+31 to 35 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+31 to 35 years,HBCI,Primary,Amphenicols,0.0625
+31 to 35 years,HBCI,Primary,Carbapenems,0.0625
+31 to 35 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+31 to 35 years,HBCI,Primary,Glycopeptides,0.0625
+31 to 35 years,HBCI,Primary,Lincosamides,0.0625
+31 to 35 years,HBCI,Primary,Macrolides,0.03896103896103897
+31 to 35 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+31 to 35 years,HBCI,Primary,Penicillins,0.262987012987013
+31 to 35 years,HBCI,Primary,Quinolones,0.03896103896103897
+31 to 35 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+31 to 35 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+31 to 35 years,HBCI,District,Aminoglycosides,0.04240282685512368
+31 to 35 years,HBCI,District,Amphenicols,0.07692307692307693
+31 to 35 years,HBCI,District,Carbapenems,0.0032617559119325905
+31 to 35 years,HBCI,District,Cephalosporins,0.26094047295460726
+31 to 35 years,HBCI,District,Glycopeptides,0.029355803207393314
+31 to 35 years,HBCI,District,Lincosamides,0.006523511823865181
+31 to 35 years,HBCI,District,Macrolides,0.05871160641478663
+31 to 35 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+31 to 35 years,HBCI,District,Penicillins,0.21853764609948356
+31 to 35 years,HBCI,District,Quinolones,0.013047023647730362
+31 to 35 years,HBCI,District,Sulphonamides,0.04566458276705627
+31 to 35 years,HBCI,District,Tetracyclines,0.029355803207393314
+31 to 35 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+31 to 35 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+31 to 35 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+31 to 35 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+31 to 35 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+31 to 35 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+31 to 35 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+31 to 35 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+31 to 35 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+31 to 35 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+31 to 35 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+31 to 35 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+31 to 35 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+31 to 35 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+31 to 35 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+31 to 35 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+31 to 35 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+31 to 35 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+31 to 35 years,HBCI,Specialist,Macrolides,0.008714596949891068
+31 to 35 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+31 to 35 years,HBCI,Specialist,Penicillins,0.09586056644880175
+31 to 35 years,HBCI,Specialist,Quinolones,0.05882352941176471
+31 to 35 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+31 to 35 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+31 to 35 years,NIC,Primary,Aminoglycosides,0.05194805194805195
+31 to 35 years,NIC,Primary,Amphenicols,0.0
+31 to 35 years,NIC,Primary,Carbapenems,0.0
+31 to 35 years,NIC,Primary,Cephalosporins,0.23376623376623368
+31 to 35 years,NIC,Primary,Glycopeptides,0.0
+31 to 35 years,NIC,Primary,Lincosamides,0.0
+31 to 35 years,NIC,Primary,Macrolides,0.05194805194805197
+31 to 35 years,NIC,Primary,Nitroimidazoles,0.2077922077922079
+31 to 35 years,NIC,Primary,Penicillins,0.35064935064935054
+31 to 35 years,NIC,Primary,Quinolones,0.05194805194805195
+31 to 35 years,NIC,Primary,Sulphonamides,0.03896103896103897
+31 to 35 years,NIC,Primary,Tetracyclines,0.012987012987012988
+31 to 35 years,NIC,District,Aminoglycosides,0.045936395759717315
+31 to 35 years,NIC,District,Amphenicols,0.0
+31 to 35 years,NIC,District,Carbapenems,0.0035335689045936387
+31 to 35 years,NIC,District,Cephalosporins,0.282685512367491
+31 to 35 years,NIC,District,Glycopeptides,0.031802120141342774
+31 to 35 years,NIC,District,Lincosamides,0.007067137809187285
+31 to 35 years,NIC,District,Macrolides,0.06360424028268553
+31 to 35 years,NIC,District,Nitroimidazoles,0.23321554770318031
+31 to 35 years,NIC,District,Penicillins,0.23674911660777376
+31 to 35 years,NIC,District,Quinolones,0.01413427561837456
+31 to 35 years,NIC,District,Sulphonamides,0.049469964664310966
+31 to 35 years,NIC,District,Tetracyclines,0.03180212014134277
+31 to 35 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+31 to 35 years,NIC,Tertiary,Amphenicols,0.001848428835489833
+31 to 35 years,NIC,Tertiary,Carbapenems,0.022181146025877993
+31 to 35 years,NIC,Tertiary,Cephalosporins,0.21996303142329024
+31 to 35 years,NIC,Tertiary,Glycopeptides,0.0277264325323475
+31 to 35 years,NIC,Tertiary,Lincosamides,0.00369685767097967
+31 to 35 years,NIC,Tertiary,Macrolides,0.009242144177449167
+31 to 35 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839197
+31 to 35 years,NIC,Tertiary,Penicillins,0.3179297597042513
+31 to 35 years,NIC,Tertiary,Quinolones,0.01478743068391867
+31 to 35 years,NIC,Tertiary,Sulphonamides,0.059149722735674676
+31 to 35 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+31 to 35 years,NIC,Specialist,Aminoglycosides,0.037037037037037014
+31 to 35 years,NIC,Specialist,Amphenicols,0.0
+31 to 35 years,NIC,Specialist,Carbapenems,0.09876543209876543
+31 to 35 years,NIC,Specialist,Cephalosporins,0.4814814814814815
+31 to 35 years,NIC,Specialist,Glycopeptides,0.0864197530864198
+31 to 35 years,NIC,Specialist,Lincosamides,0.0
+31 to 35 years,NIC,Specialist,Macrolides,0.01234567901234568
+31 to 35 years,NIC,Specialist,Nitroimidazoles,0.1481481481481482
+31 to 35 years,NIC,Specialist,Penicillins,0.1358024691358024
+31 to 35 years,NIC,Specialist,Quinolones,0.0
+31 to 35 years,NIC,Specialist,Sulphonamides,0.0
+31 to 35 years,NIC,Specialist,Tetracyclines,0.0
+36 to 40 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+36 to 40 years,CAI,Primary,Amphenicols,0.0
+36 to 40 years,CAI,Primary,Carbapenems,0.0
+36 to 40 years,CAI,Primary,Cephalosporins,0.2337662337662337
+36 to 40 years,CAI,Primary,Glycopeptides,0.0
+36 to 40 years,CAI,Primary,Lincosamides,0.0
+36 to 40 years,CAI,Primary,Macrolides,0.05194805194805196
+36 to 40 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+36 to 40 years,CAI,Primary,Penicillins,0.3506493506493506
+36 to 40 years,CAI,Primary,Quinolones,0.051948051948051945
+36 to 40 years,CAI,Primary,Sulphonamides,0.03896103896103896
+36 to 40 years,CAI,Primary,Tetracyclines,0.01298701298701299
+36 to 40 years,CAI,District,Aminoglycosides,0.0459363957597173
+36 to 40 years,CAI,District,Amphenicols,0.0
+36 to 40 years,CAI,District,Carbapenems,0.003533568904593639
+36 to 40 years,CAI,District,Cephalosporins,0.282685512367491
+36 to 40 years,CAI,District,Glycopeptides,0.031802120141342774
+36 to 40 years,CAI,District,Lincosamides,0.007067137809187285
+36 to 40 years,CAI,District,Macrolides,0.06360424028268552
+36 to 40 years,CAI,District,Nitroimidazoles,0.23321554770318037
+36 to 40 years,CAI,District,Penicillins,0.2367491166077737
+36 to 40 years,CAI,District,Quinolones,0.014134275618374556
+36 to 40 years,CAI,District,Sulphonamides,0.049469964664310966
+36 to 40 years,CAI,District,Tetracyclines,0.03180212014134276
+36 to 40 years,CAI,Tertiary,Aminoglycosides,0.09611829944547133
+36 to 40 years,CAI,Tertiary,Amphenicols,0.0018484288354898325
+36 to 40 years,CAI,Tertiary,Carbapenems,0.022181146025877996
+36 to 40 years,CAI,Tertiary,Cephalosporins,0.21996303142329018
+36 to 40 years,CAI,Tertiary,Glycopeptides,0.02772643253234751
+36 to 40 years,CAI,Tertiary,Lincosamides,0.003696857670979669
+36 to 40 years,CAI,Tertiary,Macrolides,0.009242144177449167
+36 to 40 years,CAI,Tertiary,Nitroimidazoles,0.2014787430683919
+36 to 40 years,CAI,Tertiary,Penicillins,0.3179297597042513
+36 to 40 years,CAI,Tertiary,Quinolones,0.014787430683918669
+36 to 40 years,CAI,Tertiary,Sulphonamides,0.059149722735674676
+36 to 40 years,CAI,Tertiary,Tetracyclines,0.02587800369685767
+36 to 40 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+36 to 40 years,CAI,Specialist,Amphenicols,0.0
+36 to 40 years,CAI,Specialist,Carbapenems,0.09876543209876544
+36 to 40 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+36 to 40 years,CAI,Specialist,Glycopeptides,0.08641975308641979
+36 to 40 years,CAI,Specialist,Lincosamides,0.0
+36 to 40 years,CAI,Specialist,Macrolides,0.012345679012345682
+36 to 40 years,CAI,Specialist,Nitroimidazoles,0.14814814814814814
+36 to 40 years,CAI,Specialist,Penicillins,0.1358024691358024
+36 to 40 years,CAI,Specialist,Quinolones,0.0
+36 to 40 years,CAI,Specialist,Sulphonamides,0.0
+36 to 40 years,CAI,Specialist,Tetracyclines,0.0
+36 to 40 years,HAI,Primary,Aminoglycosides,0.051948051948051945
+36 to 40 years,HAI,Primary,Amphenicols,0.0
+36 to 40 years,HAI,Primary,Carbapenems,0.0
+36 to 40 years,HAI,Primary,Cephalosporins,0.23376623376623373
+36 to 40 years,HAI,Primary,Glycopeptides,0.0
+36 to 40 years,HAI,Primary,Lincosamides,0.0
+36 to 40 years,HAI,Primary,Macrolides,0.051948051948051965
+36 to 40 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+36 to 40 years,HAI,Primary,Penicillins,0.35064935064935066
+36 to 40 years,HAI,Primary,Quinolones,0.051948051948051945
+36 to 40 years,HAI,Primary,Sulphonamides,0.038961038961038946
+36 to 40 years,HAI,Primary,Tetracyclines,0.01298701298701299
+36 to 40 years,HAI,District,Aminoglycosides,0.04593639575971732
+36 to 40 years,HAI,District,Amphenicols,0.0
+36 to 40 years,HAI,District,Carbapenems,0.0035335689045936395
+36 to 40 years,HAI,District,Cephalosporins,0.282685512367491
+36 to 40 years,HAI,District,Glycopeptides,0.031802120141342774
+36 to 40 years,HAI,District,Lincosamides,0.007067137809187283
+36 to 40 years,HAI,District,Macrolides,0.06360424028268553
+36 to 40 years,HAI,District,Nitroimidazoles,0.23321554770318037
+36 to 40 years,HAI,District,Penicillins,0.23674911660777373
+36 to 40 years,HAI,District,Quinolones,0.014134275618374558
+36 to 40 years,HAI,District,Sulphonamides,0.049469964664310966
+36 to 40 years,HAI,District,Tetracyclines,0.03180212014134276
+36 to 40 years,HAI,Tertiary,Aminoglycosides,0.09611829944547133
+36 to 40 years,HAI,Tertiary,Amphenicols,0.001848428835489833
+36 to 40 years,HAI,Tertiary,Carbapenems,0.022181146025877996
+36 to 40 years,HAI,Tertiary,Cephalosporins,0.21996303142329027
+36 to 40 years,HAI,Tertiary,Glycopeptides,0.02772643253234751
+36 to 40 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+36 to 40 years,HAI,Tertiary,Macrolides,0.009242144177449167
+36 to 40 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839192
+36 to 40 years,HAI,Tertiary,Penicillins,0.31792975970425125
+36 to 40 years,HAI,Tertiary,Quinolones,0.01478743068391867
+36 to 40 years,HAI,Tertiary,Sulphonamides,0.05914972273567469
+36 to 40 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+36 to 40 years,HAI,Specialist,Aminoglycosides,0.03703703703703704
+36 to 40 years,HAI,Specialist,Amphenicols,0.0
+36 to 40 years,HAI,Specialist,Carbapenems,0.09876543209876545
+36 to 40 years,HAI,Specialist,Cephalosporins,0.4814814814814815
+36 to 40 years,HAI,Specialist,Glycopeptides,0.08641975308641978
+36 to 40 years,HAI,Specialist,Lincosamides,0.0
+36 to 40 years,HAI,Specialist,Macrolides,0.01234567901234568
+36 to 40 years,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+36 to 40 years,HAI,Specialist,Penicillins,0.1358024691358024
+36 to 40 years,HAI,Specialist,Quinolones,0.0
+36 to 40 years,HAI,Specialist,Sulphonamides,0.0
+36 to 40 years,HAI,Specialist,Tetracyclines,0.0
+36 to 40 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+36 to 40 years,HBCI,Primary,Amphenicols,0.0625
+36 to 40 years,HBCI,Primary,Carbapenems,0.0625
+36 to 40 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+36 to 40 years,HBCI,Primary,Glycopeptides,0.0625
+36 to 40 years,HBCI,Primary,Lincosamides,0.0625
+36 to 40 years,HBCI,Primary,Macrolides,0.03896103896103897
+36 to 40 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+36 to 40 years,HBCI,Primary,Penicillins,0.262987012987013
+36 to 40 years,HBCI,Primary,Quinolones,0.03896103896103897
+36 to 40 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+36 to 40 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+36 to 40 years,HBCI,District,Aminoglycosides,0.04240282685512368
+36 to 40 years,HBCI,District,Amphenicols,0.07692307692307693
+36 to 40 years,HBCI,District,Carbapenems,0.0032617559119325905
+36 to 40 years,HBCI,District,Cephalosporins,0.26094047295460726
+36 to 40 years,HBCI,District,Glycopeptides,0.029355803207393314
+36 to 40 years,HBCI,District,Lincosamides,0.006523511823865181
+36 to 40 years,HBCI,District,Macrolides,0.05871160641478663
+36 to 40 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+36 to 40 years,HBCI,District,Penicillins,0.21853764609948356
+36 to 40 years,HBCI,District,Quinolones,0.013047023647730362
+36 to 40 years,HBCI,District,Sulphonamides,0.04566458276705627
+36 to 40 years,HBCI,District,Tetracyclines,0.029355803207393314
+36 to 40 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+36 to 40 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+36 to 40 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+36 to 40 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+36 to 40 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+36 to 40 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+36 to 40 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+36 to 40 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+36 to 40 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+36 to 40 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+36 to 40 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+36 to 40 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+36 to 40 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+36 to 40 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+36 to 40 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+36 to 40 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+36 to 40 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+36 to 40 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+36 to 40 years,HBCI,Specialist,Macrolides,0.008714596949891068
+36 to 40 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+36 to 40 years,HBCI,Specialist,Penicillins,0.09586056644880175
+36 to 40 years,HBCI,Specialist,Quinolones,0.05882352941176471
+36 to 40 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+36 to 40 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+36 to 40 years,NIC,Primary,Aminoglycosides,0.05194805194805195
+36 to 40 years,NIC,Primary,Amphenicols,0.0
+36 to 40 years,NIC,Primary,Carbapenems,0.0
+36 to 40 years,NIC,Primary,Cephalosporins,0.23376623376623373
+36 to 40 years,NIC,Primary,Glycopeptides,0.0
+36 to 40 years,NIC,Primary,Lincosamides,0.0
+36 to 40 years,NIC,Primary,Macrolides,0.05194805194805197
+36 to 40 years,NIC,Primary,Nitroimidazoles,0.20779220779220783
+36 to 40 years,NIC,Primary,Penicillins,0.3506493506493506
+36 to 40 years,NIC,Primary,Quinolones,0.05194805194805195
+36 to 40 years,NIC,Primary,Sulphonamides,0.038961038961038946
+36 to 40 years,NIC,Primary,Tetracyclines,0.012987012987012988
+36 to 40 years,NIC,District,Aminoglycosides,0.04593639575971733
+36 to 40 years,NIC,District,Amphenicols,0.0
+36 to 40 years,NIC,District,Carbapenems,0.0035335689045936395
+36 to 40 years,NIC,District,Cephalosporins,0.28268551236749107
+36 to 40 years,NIC,District,Glycopeptides,0.03180212014134278
+36 to 40 years,NIC,District,Lincosamides,0.007067137809187285
+36 to 40 years,NIC,District,Macrolides,0.06360424028268555
+36 to 40 years,NIC,District,Nitroimidazoles,0.23321554770318034
+36 to 40 years,NIC,District,Penicillins,0.23674911660777376
+36 to 40 years,NIC,District,Quinolones,0.014134275618374562
+36 to 40 years,NIC,District,Sulphonamides,0.049469964664310966
+36 to 40 years,NIC,District,Tetracyclines,0.031802120141342774
+36 to 40 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+36 to 40 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+36 to 40 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+36 to 40 years,NIC,Tertiary,Cephalosporins,0.21996303142329024
+36 to 40 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+36 to 40 years,NIC,Tertiary,Lincosamides,0.0036968576709796703
+36 to 40 years,NIC,Tertiary,Macrolides,0.009242144177449167
+36 to 40 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839192
+36 to 40 years,NIC,Tertiary,Penicillins,0.3179297597042513
+36 to 40 years,NIC,Tertiary,Quinolones,0.01478743068391867
+36 to 40 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+36 to 40 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+36 to 40 years,NIC,Specialist,Aminoglycosides,0.037037037037037035
+36 to 40 years,NIC,Specialist,Amphenicols,0.0
+36 to 40 years,NIC,Specialist,Carbapenems,0.09876543209876541
+36 to 40 years,NIC,Specialist,Cephalosporins,0.48148148148148157
+36 to 40 years,NIC,Specialist,Glycopeptides,0.0864197530864198
+36 to 40 years,NIC,Specialist,Lincosamides,0.0
+36 to 40 years,NIC,Specialist,Macrolides,0.012345679012345684
+36 to 40 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+36 to 40 years,NIC,Specialist,Penicillins,0.1358024691358024
+36 to 40 years,NIC,Specialist,Quinolones,0.0
+36 to 40 years,NIC,Specialist,Sulphonamides,0.0
+36 to 40 years,NIC,Specialist,Tetracyclines,0.0
+41 to 45 years,CAI,Primary,Aminoglycosides,0.05194805194805195
+41 to 45 years,CAI,Primary,Amphenicols,0.0
+41 to 45 years,CAI,Primary,Carbapenems,0.0
+41 to 45 years,CAI,Primary,Cephalosporins,0.23376623376623373
+41 to 45 years,CAI,Primary,Glycopeptides,0.0
+41 to 45 years,CAI,Primary,Lincosamides,0.0
+41 to 45 years,CAI,Primary,Macrolides,0.05194805194805196
+41 to 45 years,CAI,Primary,Nitroimidazoles,0.20779220779220792
+41 to 45 years,CAI,Primary,Penicillins,0.3506493506493506
+41 to 45 years,CAI,Primary,Quinolones,0.05194805194805196
+41 to 45 years,CAI,Primary,Sulphonamides,0.03896103896103896
+41 to 45 years,CAI,Primary,Tetracyclines,0.012987012987012988
+41 to 45 years,CAI,District,Aminoglycosides,0.045936395759717315
+41 to 45 years,CAI,District,Amphenicols,0.0
+41 to 45 years,CAI,District,Carbapenems,0.0035335689045936404
+41 to 45 years,CAI,District,Cephalosporins,0.28268551236749107
+41 to 45 years,CAI,District,Glycopeptides,0.031802120141342774
+41 to 45 years,CAI,District,Lincosamides,0.007067137809187287
+41 to 45 years,CAI,District,Macrolides,0.06360424028268553
+41 to 45 years,CAI,District,Nitroimidazoles,0.23321554770318037
+41 to 45 years,CAI,District,Penicillins,0.23674911660777379
+41 to 45 years,CAI,District,Quinolones,0.014134275618374563
+41 to 45 years,CAI,District,Sulphonamides,0.04946996466431098
+41 to 45 years,CAI,District,Tetracyclines,0.03180212014134277
+41 to 45 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+41 to 45 years,CAI,Tertiary,Amphenicols,0.001848428835489833
+41 to 45 years,CAI,Tertiary,Carbapenems,0.022181146025877993
+41 to 45 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+41 to 45 years,CAI,Tertiary,Glycopeptides,0.027726432532347505
+41 to 45 years,CAI,Tertiary,Lincosamides,0.00369685767097967
+41 to 45 years,CAI,Tertiary,Macrolides,0.009242144177449167
+41 to 45 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839186
+41 to 45 years,CAI,Tertiary,Penicillins,0.3179297597042513
+41 to 45 years,CAI,Tertiary,Quinolones,0.01478743068391867
+41 to 45 years,CAI,Tertiary,Sulphonamides,0.05914972273567468
+41 to 45 years,CAI,Tertiary,Tetracyclines,0.02587800369685767
+41 to 45 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+41 to 45 years,CAI,Specialist,Amphenicols,0.0
+41 to 45 years,CAI,Specialist,Carbapenems,0.09876543209876545
+41 to 45 years,CAI,Specialist,Cephalosporins,0.48148148148148145
+41 to 45 years,CAI,Specialist,Glycopeptides,0.08641975308641979
+41 to 45 years,CAI,Specialist,Lincosamides,0.0
+41 to 45 years,CAI,Specialist,Macrolides,0.012345679012345682
+41 to 45 years,CAI,Specialist,Nitroimidazoles,0.14814814814814814
+41 to 45 years,CAI,Specialist,Penicillins,0.1358024691358024
+41 to 45 years,CAI,Specialist,Quinolones,0.0
+41 to 45 years,CAI,Specialist,Sulphonamides,0.0
+41 to 45 years,CAI,Specialist,Tetracyclines,0.0
+41 to 45 years,HAI,Primary,Aminoglycosides,0.051948051948051945
+41 to 45 years,HAI,Primary,Amphenicols,0.0
+41 to 45 years,HAI,Primary,Carbapenems,0.0
+41 to 45 years,HAI,Primary,Cephalosporins,0.2337662337662337
+41 to 45 years,HAI,Primary,Glycopeptides,0.0
+41 to 45 years,HAI,Primary,Lincosamides,0.0
+41 to 45 years,HAI,Primary,Macrolides,0.05194805194805195
+41 to 45 years,HAI,Primary,Nitroimidazoles,0.2077922077922079
+41 to 45 years,HAI,Primary,Penicillins,0.3506493506493506
+41 to 45 years,HAI,Primary,Quinolones,0.05194805194805195
+41 to 45 years,HAI,Primary,Sulphonamides,0.03896103896103895
+41 to 45 years,HAI,Primary,Tetracyclines,0.012987012987012988
+41 to 45 years,HAI,District,Aminoglycosides,0.045936395759717315
+41 to 45 years,HAI,District,Amphenicols,0.0
+41 to 45 years,HAI,District,Carbapenems,0.00353356890459364
+41 to 45 years,HAI,District,Cephalosporins,0.282685512367491
+41 to 45 years,HAI,District,Glycopeptides,0.03180212014134278
+41 to 45 years,HAI,District,Lincosamides,0.007067137809187285
+41 to 45 years,HAI,District,Macrolides,0.06360424028268555
+41 to 45 years,HAI,District,Nitroimidazoles,0.23321554770318037
+41 to 45 years,HAI,District,Penicillins,0.23674911660777376
+41 to 45 years,HAI,District,Quinolones,0.01413427561837456
+41 to 45 years,HAI,District,Sulphonamides,0.04946996466431098
+41 to 45 years,HAI,District,Tetracyclines,0.03180212014134277
+41 to 45 years,HAI,Tertiary,Aminoglycosides,0.09611829944547136
+41 to 45 years,HAI,Tertiary,Amphenicols,0.0018484288354898332
+41 to 45 years,HAI,Tertiary,Carbapenems,0.022181146025878
+41 to 45 years,HAI,Tertiary,Cephalosporins,0.21996303142329027
+41 to 45 years,HAI,Tertiary,Glycopeptides,0.027726432532347512
+41 to 45 years,HAI,Tertiary,Lincosamides,0.0036968576709796707
+41 to 45 years,HAI,Tertiary,Macrolides,0.009242144177449167
+41 to 45 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839197
+41 to 45 years,HAI,Tertiary,Penicillins,0.31792975970425125
+41 to 45 years,HAI,Tertiary,Quinolones,0.014787430683918672
+41 to 45 years,HAI,Tertiary,Sulphonamides,0.05914972273567468
+41 to 45 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+41 to 45 years,HAI,Specialist,Aminoglycosides,0.03703703703703704
+41 to 45 years,HAI,Specialist,Amphenicols,0.0
+41 to 45 years,HAI,Specialist,Carbapenems,0.09876543209876544
+41 to 45 years,HAI,Specialist,Cephalosporins,0.48148148148148145
+41 to 45 years,HAI,Specialist,Glycopeptides,0.0864197530864198
+41 to 45 years,HAI,Specialist,Lincosamides,0.0
+41 to 45 years,HAI,Specialist,Macrolides,0.012345679012345682
+41 to 45 years,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+41 to 45 years,HAI,Specialist,Penicillins,0.13580246913580243
+41 to 45 years,HAI,Specialist,Quinolones,0.0
+41 to 45 years,HAI,Specialist,Sulphonamides,0.0
+41 to 45 years,HAI,Specialist,Tetracyclines,0.0
+41 to 45 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+41 to 45 years,HBCI,Primary,Amphenicols,0.0625
+41 to 45 years,HBCI,Primary,Carbapenems,0.0625
+41 to 45 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+41 to 45 years,HBCI,Primary,Glycopeptides,0.0625
+41 to 45 years,HBCI,Primary,Lincosamides,0.0625
+41 to 45 years,HBCI,Primary,Macrolides,0.03896103896103897
+41 to 45 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+41 to 45 years,HBCI,Primary,Penicillins,0.262987012987013
+41 to 45 years,HBCI,Primary,Quinolones,0.03896103896103897
+41 to 45 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+41 to 45 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+41 to 45 years,HBCI,District,Aminoglycosides,0.04240282685512368
+41 to 45 years,HBCI,District,Amphenicols,0.07692307692307693
+41 to 45 years,HBCI,District,Carbapenems,0.0032617559119325905
+41 to 45 years,HBCI,District,Cephalosporins,0.26094047295460726
+41 to 45 years,HBCI,District,Glycopeptides,0.029355803207393314
+41 to 45 years,HBCI,District,Lincosamides,0.006523511823865181
+41 to 45 years,HBCI,District,Macrolides,0.05871160641478663
+41 to 45 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+41 to 45 years,HBCI,District,Penicillins,0.21853764609948356
+41 to 45 years,HBCI,District,Quinolones,0.013047023647730362
+41 to 45 years,HBCI,District,Sulphonamides,0.04566458276705627
+41 to 45 years,HBCI,District,Tetracyclines,0.029355803207393314
+41 to 45 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+41 to 45 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+41 to 45 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+41 to 45 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+41 to 45 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+41 to 45 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+41 to 45 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+41 to 45 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+41 to 45 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+41 to 45 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+41 to 45 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+41 to 45 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+41 to 45 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+41 to 45 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+41 to 45 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+41 to 45 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+41 to 45 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+41 to 45 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+41 to 45 years,HBCI,Specialist,Macrolides,0.008714596949891068
+41 to 45 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+41 to 45 years,HBCI,Specialist,Penicillins,0.09586056644880175
+41 to 45 years,HBCI,Specialist,Quinolones,0.05882352941176471
+41 to 45 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+41 to 45 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+41 to 45 years,NIC,Primary,Aminoglycosides,0.05194805194805194
+41 to 45 years,NIC,Primary,Amphenicols,0.0
+41 to 45 years,NIC,Primary,Carbapenems,0.0
+41 to 45 years,NIC,Primary,Cephalosporins,0.23376623376623373
+41 to 45 years,NIC,Primary,Glycopeptides,0.0
+41 to 45 years,NIC,Primary,Lincosamides,0.0
+41 to 45 years,NIC,Primary,Macrolides,0.05194805194805196
+41 to 45 years,NIC,Primary,Nitroimidazoles,0.20779220779220783
+41 to 45 years,NIC,Primary,Penicillins,0.3506493506493506
+41 to 45 years,NIC,Primary,Quinolones,0.05194805194805194
+41 to 45 years,NIC,Primary,Sulphonamides,0.03896103896103895
+41 to 45 years,NIC,Primary,Tetracyclines,0.012987012987012986
+41 to 45 years,NIC,District,Aminoglycosides,0.045936395759717315
+41 to 45 years,NIC,District,Amphenicols,0.0
+41 to 45 years,NIC,District,Carbapenems,0.0035335689045936404
+41 to 45 years,NIC,District,Cephalosporins,0.28268551236749107
+41 to 45 years,NIC,District,Glycopeptides,0.03180212014134278
+41 to 45 years,NIC,District,Lincosamides,0.007067137809187285
+41 to 45 years,NIC,District,Macrolides,0.06360424028268555
+41 to 45 years,NIC,District,Nitroimidazoles,0.23321554770318034
+41 to 45 years,NIC,District,Penicillins,0.23674911660777379
+41 to 45 years,NIC,District,Quinolones,0.014134275618374562
+41 to 45 years,NIC,District,Sulphonamides,0.049469964664310966
+41 to 45 years,NIC,District,Tetracyclines,0.031802120141342774
+41 to 45 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+41 to 45 years,NIC,Tertiary,Amphenicols,0.001848428835489833
+41 to 45 years,NIC,Tertiary,Carbapenems,0.022181146025878
+41 to 45 years,NIC,Tertiary,Cephalosporins,0.21996303142329027
+41 to 45 years,NIC,Tertiary,Glycopeptides,0.027726432532347516
+41 to 45 years,NIC,Tertiary,Lincosamides,0.00369685767097967
+41 to 45 years,NIC,Tertiary,Macrolides,0.009242144177449167
+41 to 45 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+41 to 45 years,NIC,Tertiary,Penicillins,0.3179297597042513
+41 to 45 years,NIC,Tertiary,Quinolones,0.01478743068391867
+41 to 45 years,NIC,Tertiary,Sulphonamides,0.05914972273567469
+41 to 45 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+41 to 45 years,NIC,Specialist,Aminoglycosides,0.03703703703703703
+41 to 45 years,NIC,Specialist,Amphenicols,0.0
+41 to 45 years,NIC,Specialist,Carbapenems,0.09876543209876545
+41 to 45 years,NIC,Specialist,Cephalosporins,0.4814814814814815
+41 to 45 years,NIC,Specialist,Glycopeptides,0.0864197530864198
+41 to 45 years,NIC,Specialist,Lincosamides,0.0
+41 to 45 years,NIC,Specialist,Macrolides,0.012345679012345682
+41 to 45 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+41 to 45 years,NIC,Specialist,Penicillins,0.13580246913580243
+41 to 45 years,NIC,Specialist,Quinolones,0.0
+41 to 45 years,NIC,Specialist,Sulphonamides,0.0
+41 to 45 years,NIC,Specialist,Tetracyclines,0.0
+46 to 50 years,CAI,Primary,Aminoglycosides,0.05194805194805196
+46 to 50 years,CAI,Primary,Amphenicols,0.0
+46 to 50 years,CAI,Primary,Carbapenems,0.0
+46 to 50 years,CAI,Primary,Cephalosporins,0.23376623376623373
+46 to 50 years,CAI,Primary,Glycopeptides,0.0
+46 to 50 years,CAI,Primary,Lincosamides,0.0
+46 to 50 years,CAI,Primary,Macrolides,0.05194805194805196
+46 to 50 years,CAI,Primary,Nitroimidazoles,0.2077922077922079
+46 to 50 years,CAI,Primary,Penicillins,0.35064935064935054
+46 to 50 years,CAI,Primary,Quinolones,0.05194805194805196
+46 to 50 years,CAI,Primary,Sulphonamides,0.03896103896103896
+46 to 50 years,CAI,Primary,Tetracyclines,0.01298701298701299
+46 to 50 years,CAI,District,Aminoglycosides,0.045936395759717315
+46 to 50 years,CAI,District,Amphenicols,0.0
+46 to 50 years,CAI,District,Carbapenems,0.0035335689045936387
+46 to 50 years,CAI,District,Cephalosporins,0.282685512367491
+46 to 50 years,CAI,District,Glycopeptides,0.03180212014134277
+46 to 50 years,CAI,District,Lincosamides,0.007067137809187284
+46 to 50 years,CAI,District,Macrolides,0.06360424028268553
+46 to 50 years,CAI,District,Nitroimidazoles,0.23321554770318034
+46 to 50 years,CAI,District,Penicillins,0.23674911660777373
+46 to 50 years,CAI,District,Quinolones,0.01413427561837456
+46 to 50 years,CAI,District,Sulphonamides,0.04946996466431098
+46 to 50 years,CAI,District,Tetracyclines,0.03180212014134277
+46 to 50 years,CAI,Tertiary,Aminoglycosides,0.09611829944547137
+46 to 50 years,CAI,Tertiary,Amphenicols,0.0018484288354898332
+46 to 50 years,CAI,Tertiary,Carbapenems,0.022181146025877996
+46 to 50 years,CAI,Tertiary,Cephalosporins,0.2199630314232902
+46 to 50 years,CAI,Tertiary,Glycopeptides,0.027726432532347505
+46 to 50 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+46 to 50 years,CAI,Tertiary,Macrolides,0.009242144177449169
+46 to 50 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+46 to 50 years,CAI,Tertiary,Penicillins,0.31792975970425125
+46 to 50 years,CAI,Tertiary,Quinolones,0.014787430683918672
+46 to 50 years,CAI,Tertiary,Sulphonamides,0.05914972273567469
+46 to 50 years,CAI,Tertiary,Tetracyclines,0.025878003696857672
+46 to 50 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+46 to 50 years,CAI,Specialist,Amphenicols,0.0
+46 to 50 years,CAI,Specialist,Carbapenems,0.09876543209876544
+46 to 50 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+46 to 50 years,CAI,Specialist,Glycopeptides,0.0864197530864198
+46 to 50 years,CAI,Specialist,Lincosamides,0.0
+46 to 50 years,CAI,Specialist,Macrolides,0.01234567901234568
+46 to 50 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+46 to 50 years,CAI,Specialist,Penicillins,0.1358024691358024
+46 to 50 years,CAI,Specialist,Quinolones,0.0
+46 to 50 years,CAI,Specialist,Sulphonamides,0.0
+46 to 50 years,CAI,Specialist,Tetracyclines,0.0
+46 to 50 years,HAI,Primary,Aminoglycosides,0.05194805194805195
+46 to 50 years,HAI,Primary,Amphenicols,0.0
+46 to 50 years,HAI,Primary,Carbapenems,0.0
+46 to 50 years,HAI,Primary,Cephalosporins,0.23376623376623376
+46 to 50 years,HAI,Primary,Glycopeptides,0.0
+46 to 50 years,HAI,Primary,Lincosamides,0.0
+46 to 50 years,HAI,Primary,Macrolides,0.05194805194805195
+46 to 50 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+46 to 50 years,HAI,Primary,Penicillins,0.35064935064935054
+46 to 50 years,HAI,Primary,Quinolones,0.05194805194805195
+46 to 50 years,HAI,Primary,Sulphonamides,0.03896103896103896
+46 to 50 years,HAI,Primary,Tetracyclines,0.012987012987012988
+46 to 50 years,HAI,District,Aminoglycosides,0.04593639575971731
+46 to 50 years,HAI,District,Amphenicols,0.0
+46 to 50 years,HAI,District,Carbapenems,0.0035335689045936395
+46 to 50 years,HAI,District,Cephalosporins,0.282685512367491
+46 to 50 years,HAI,District,Glycopeptides,0.031802120141342774
+46 to 50 years,HAI,District,Lincosamides,0.007067137809187284
+46 to 50 years,HAI,District,Macrolides,0.06360424028268553
+46 to 50 years,HAI,District,Nitroimidazoles,0.23321554770318037
+46 to 50 years,HAI,District,Penicillins,0.23674911660777373
+46 to 50 years,HAI,District,Quinolones,0.014134275618374558
+46 to 50 years,HAI,District,Sulphonamides,0.049469964664310966
+46 to 50 years,HAI,District,Tetracyclines,0.03180212014134277
+46 to 50 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+46 to 50 years,HAI,Tertiary,Amphenicols,0.001848428835489833
+46 to 50 years,HAI,Tertiary,Carbapenems,0.022181146025878
+46 to 50 years,HAI,Tertiary,Cephalosporins,0.21996303142329024
+46 to 50 years,HAI,Tertiary,Glycopeptides,0.02772643253234751
+46 to 50 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+46 to 50 years,HAI,Tertiary,Macrolides,0.009242144177449167
+46 to 50 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839195
+46 to 50 years,HAI,Tertiary,Penicillins,0.3179297597042513
+46 to 50 years,HAI,Tertiary,Quinolones,0.01478743068391867
+46 to 50 years,HAI,Tertiary,Sulphonamides,0.05914972273567469
+46 to 50 years,HAI,Tertiary,Tetracyclines,0.025878003696857676
+46 to 50 years,HAI,Specialist,Aminoglycosides,0.03703703703703703
+46 to 50 years,HAI,Specialist,Amphenicols,0.0
+46 to 50 years,HAI,Specialist,Carbapenems,0.09876543209876541
+46 to 50 years,HAI,Specialist,Cephalosporins,0.4814814814814815
+46 to 50 years,HAI,Specialist,Glycopeptides,0.08641975308641979
+46 to 50 years,HAI,Specialist,Lincosamides,0.0
+46 to 50 years,HAI,Specialist,Macrolides,0.01234567901234568
+46 to 50 years,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+46 to 50 years,HAI,Specialist,Penicillins,0.13580246913580238
+46 to 50 years,HAI,Specialist,Quinolones,0.0
+46 to 50 years,HAI,Specialist,Sulphonamides,0.0
+46 to 50 years,HAI,Specialist,Tetracyclines,0.0
+46 to 50 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+46 to 50 years,HBCI,Primary,Amphenicols,0.0625
+46 to 50 years,HBCI,Primary,Carbapenems,0.0625
+46 to 50 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+46 to 50 years,HBCI,Primary,Glycopeptides,0.0625
+46 to 50 years,HBCI,Primary,Lincosamides,0.0625
+46 to 50 years,HBCI,Primary,Macrolides,0.03896103896103897
+46 to 50 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+46 to 50 years,HBCI,Primary,Penicillins,0.262987012987013
+46 to 50 years,HBCI,Primary,Quinolones,0.03896103896103897
+46 to 50 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+46 to 50 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+46 to 50 years,HBCI,District,Aminoglycosides,0.04240282685512368
+46 to 50 years,HBCI,District,Amphenicols,0.07692307692307693
+46 to 50 years,HBCI,District,Carbapenems,0.0032617559119325905
+46 to 50 years,HBCI,District,Cephalosporins,0.26094047295460726
+46 to 50 years,HBCI,District,Glycopeptides,0.029355803207393314
+46 to 50 years,HBCI,District,Lincosamides,0.006523511823865181
+46 to 50 years,HBCI,District,Macrolides,0.05871160641478663
+46 to 50 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+46 to 50 years,HBCI,District,Penicillins,0.21853764609948356
+46 to 50 years,HBCI,District,Quinolones,0.013047023647730362
+46 to 50 years,HBCI,District,Sulphonamides,0.04566458276705627
+46 to 50 years,HBCI,District,Tetracyclines,0.029355803207393314
+46 to 50 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+46 to 50 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+46 to 50 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+46 to 50 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+46 to 50 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+46 to 50 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+46 to 50 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+46 to 50 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+46 to 50 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+46 to 50 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+46 to 50 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+46 to 50 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+46 to 50 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+46 to 50 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+46 to 50 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+46 to 50 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+46 to 50 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+46 to 50 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+46 to 50 years,HBCI,Specialist,Macrolides,0.008714596949891068
+46 to 50 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+46 to 50 years,HBCI,Specialist,Penicillins,0.09586056644880175
+46 to 50 years,HBCI,Specialist,Quinolones,0.05882352941176471
+46 to 50 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+46 to 50 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+46 to 50 years,NIC,Primary,Aminoglycosides,0.051948051948051965
+46 to 50 years,NIC,Primary,Amphenicols,0.0
+46 to 50 years,NIC,Primary,Carbapenems,0.0
+46 to 50 years,NIC,Primary,Cephalosporins,0.23376623376623376
+46 to 50 years,NIC,Primary,Glycopeptides,0.0
+46 to 50 years,NIC,Primary,Lincosamides,0.0
+46 to 50 years,NIC,Primary,Macrolides,0.05194805194805197
+46 to 50 years,NIC,Primary,Nitroimidazoles,0.20779220779220792
+46 to 50 years,NIC,Primary,Penicillins,0.3506493506493506
+46 to 50 years,NIC,Primary,Quinolones,0.05194805194805194
+46 to 50 years,NIC,Primary,Sulphonamides,0.03896103896103896
+46 to 50 years,NIC,Primary,Tetracyclines,0.01298701298701299
+46 to 50 years,NIC,District,Aminoglycosides,0.04593639575971733
+46 to 50 years,NIC,District,Amphenicols,0.0
+46 to 50 years,NIC,District,Carbapenems,0.003533568904593641
+46 to 50 years,NIC,District,Cephalosporins,0.282685512367491
+46 to 50 years,NIC,District,Glycopeptides,0.03180212014134278
+46 to 50 years,NIC,District,Lincosamides,0.007067137809187287
+46 to 50 years,NIC,District,Macrolides,0.06360424028268555
+46 to 50 years,NIC,District,Nitroimidazoles,0.2332155477031804
+46 to 50 years,NIC,District,Penicillins,0.23674911660777379
+46 to 50 years,NIC,District,Quinolones,0.014134275618374563
+46 to 50 years,NIC,District,Sulphonamides,0.04946996466431097
+46 to 50 years,NIC,District,Tetracyclines,0.03180212014134277
+46 to 50 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+46 to 50 years,NIC,Tertiary,Amphenicols,0.0018484288354898336
+46 to 50 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+46 to 50 years,NIC,Tertiary,Cephalosporins,0.21996303142329024
+46 to 50 years,NIC,Tertiary,Glycopeptides,0.027726432532347505
+46 to 50 years,NIC,Tertiary,Lincosamides,0.0036968576709796707
+46 to 50 years,NIC,Tertiary,Macrolides,0.009242144177449169
+46 to 50 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839197
+46 to 50 years,NIC,Tertiary,Penicillins,0.31792975970425125
+46 to 50 years,NIC,Tertiary,Quinolones,0.01478743068391867
+46 to 50 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+46 to 50 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+46 to 50 years,NIC,Specialist,Aminoglycosides,0.037037037037037035
+46 to 50 years,NIC,Specialist,Amphenicols,0.0
+46 to 50 years,NIC,Specialist,Carbapenems,0.09876543209876544
+46 to 50 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+46 to 50 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+46 to 50 years,NIC,Specialist,Lincosamides,0.0
+46 to 50 years,NIC,Specialist,Macrolides,0.01234567901234568
+46 to 50 years,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+46 to 50 years,NIC,Specialist,Penicillins,0.1358024691358024
+46 to 50 years,NIC,Specialist,Quinolones,0.0
+46 to 50 years,NIC,Specialist,Sulphonamides,0.0
+46 to 50 years,NIC,Specialist,Tetracyclines,0.0
+51 to 55 years,CAI,Primary,Aminoglycosides,0.051948051948051945
+51 to 55 years,CAI,Primary,Amphenicols,0.0
+51 to 55 years,CAI,Primary,Carbapenems,0.0
+51 to 55 years,CAI,Primary,Cephalosporins,0.23376623376623373
+51 to 55 years,CAI,Primary,Glycopeptides,0.0
+51 to 55 years,CAI,Primary,Lincosamides,0.0
+51 to 55 years,CAI,Primary,Macrolides,0.05194805194805196
+51 to 55 years,CAI,Primary,Nitroimidazoles,0.2077922077922079
+51 to 55 years,CAI,Primary,Penicillins,0.35064935064935054
+51 to 55 years,CAI,Primary,Quinolones,0.05194805194805194
+51 to 55 years,CAI,Primary,Sulphonamides,0.03896103896103895
+51 to 55 years,CAI,Primary,Tetracyclines,0.012987012987012986
+51 to 55 years,CAI,District,Aminoglycosides,0.045936395759717315
+51 to 55 years,CAI,District,Amphenicols,0.0
+51 to 55 years,CAI,District,Carbapenems,0.0035335689045936395
+51 to 55 years,CAI,District,Cephalosporins,0.282685512367491
+51 to 55 years,CAI,District,Glycopeptides,0.031802120141342774
+51 to 55 years,CAI,District,Lincosamides,0.007067137809187285
+51 to 55 years,CAI,District,Macrolides,0.06360424028268553
+51 to 55 years,CAI,District,Nitroimidazoles,0.23321554770318034
+51 to 55 years,CAI,District,Penicillins,0.23674911660777373
+51 to 55 years,CAI,District,Quinolones,0.014134275618374565
+51 to 55 years,CAI,District,Sulphonamides,0.04946996466431097
+51 to 55 years,CAI,District,Tetracyclines,0.031802120141342774
+51 to 55 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+51 to 55 years,CAI,Tertiary,Amphenicols,0.0018484288354898332
+51 to 55 years,CAI,Tertiary,Carbapenems,0.022181146025878
+51 to 55 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+51 to 55 years,CAI,Tertiary,Glycopeptides,0.027726432532347505
+51 to 55 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+51 to 55 years,CAI,Tertiary,Macrolides,0.009242144177449167
+51 to 55 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+51 to 55 years,CAI,Tertiary,Penicillins,0.31792975970425125
+51 to 55 years,CAI,Tertiary,Quinolones,0.014787430683918672
+51 to 55 years,CAI,Tertiary,Sulphonamides,0.05914972273567469
+51 to 55 years,CAI,Tertiary,Tetracyclines,0.025878003696857676
+51 to 55 years,CAI,Specialist,Aminoglycosides,0.037037037037037035
+51 to 55 years,CAI,Specialist,Amphenicols,0.0
+51 to 55 years,CAI,Specialist,Carbapenems,0.09876543209876541
+51 to 55 years,CAI,Specialist,Cephalosporins,0.4814814814814814
+51 to 55 years,CAI,Specialist,Glycopeptides,0.08641975308641978
+51 to 55 years,CAI,Specialist,Lincosamides,0.0
+51 to 55 years,CAI,Specialist,Macrolides,0.012345679012345677
+51 to 55 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+51 to 55 years,CAI,Specialist,Penicillins,0.1358024691358024
+51 to 55 years,CAI,Specialist,Quinolones,0.0
+51 to 55 years,CAI,Specialist,Sulphonamides,0.0
+51 to 55 years,CAI,Specialist,Tetracyclines,0.0
+51 to 55 years,HAI,Primary,Aminoglycosides,0.05194805194805194
+51 to 55 years,HAI,Primary,Amphenicols,0.0
+51 to 55 years,HAI,Primary,Carbapenems,0.0
+51 to 55 years,HAI,Primary,Cephalosporins,0.23376623376623373
+51 to 55 years,HAI,Primary,Glycopeptides,0.0
+51 to 55 years,HAI,Primary,Lincosamides,0.0
+51 to 55 years,HAI,Primary,Macrolides,0.05194805194805196
+51 to 55 years,HAI,Primary,Nitroimidazoles,0.2077922077922079
+51 to 55 years,HAI,Primary,Penicillins,0.35064935064935054
+51 to 55 years,HAI,Primary,Quinolones,0.05194805194805194
+51 to 55 years,HAI,Primary,Sulphonamides,0.03896103896103895
+51 to 55 years,HAI,Primary,Tetracyclines,0.012987012987012984
+51 to 55 years,HAI,District,Aminoglycosides,0.045936395759717315
+51 to 55 years,HAI,District,Amphenicols,0.0
+51 to 55 years,HAI,District,Carbapenems,0.0035335689045936395
+51 to 55 years,HAI,District,Cephalosporins,0.282685512367491
+51 to 55 years,HAI,District,Glycopeptides,0.031802120141342774
+51 to 55 years,HAI,District,Lincosamides,0.007067137809187284
+51 to 55 years,HAI,District,Macrolides,0.06360424028268553
+51 to 55 years,HAI,District,Nitroimidazoles,0.23321554770318037
+51 to 55 years,HAI,District,Penicillins,0.23674911660777373
+51 to 55 years,HAI,District,Quinolones,0.014134275618374558
+51 to 55 years,HAI,District,Sulphonamides,0.04946996466431097
+51 to 55 years,HAI,District,Tetracyclines,0.03180212014134277
+51 to 55 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+51 to 55 years,HAI,Tertiary,Amphenicols,0.001848428835489833
+51 to 55 years,HAI,Tertiary,Carbapenems,0.022181146025878
+51 to 55 years,HAI,Tertiary,Cephalosporins,0.21996303142329027
+51 to 55 years,HAI,Tertiary,Glycopeptides,0.02772643253234751
+51 to 55 years,HAI,Tertiary,Lincosamides,0.00369685767097967
+51 to 55 years,HAI,Tertiary,Macrolides,0.009242144177449169
+51 to 55 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839197
+51 to 55 years,HAI,Tertiary,Penicillins,0.3179297597042513
+51 to 55 years,HAI,Tertiary,Quinolones,0.01478743068391867
+51 to 55 years,HAI,Tertiary,Sulphonamides,0.05914972273567468
+51 to 55 years,HAI,Tertiary,Tetracyclines,0.025878003696857676
+51 to 55 years,HAI,Specialist,Aminoglycosides,0.03703703703703703
+51 to 55 years,HAI,Specialist,Amphenicols,0.0
+51 to 55 years,HAI,Specialist,Carbapenems,0.09876543209876544
+51 to 55 years,HAI,Specialist,Cephalosporins,0.4814814814814815
+51 to 55 years,HAI,Specialist,Glycopeptides,0.08641975308641979
+51 to 55 years,HAI,Specialist,Lincosamides,0.0
+51 to 55 years,HAI,Specialist,Macrolides,0.012345679012345682
+51 to 55 years,HAI,Specialist,Nitroimidazoles,0.14814814814814822
+51 to 55 years,HAI,Specialist,Penicillins,0.13580246913580243
+51 to 55 years,HAI,Specialist,Quinolones,0.0
+51 to 55 years,HAI,Specialist,Sulphonamides,0.0
+51 to 55 years,HAI,Specialist,Tetracyclines,0.0
+51 to 55 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+51 to 55 years,HBCI,Primary,Amphenicols,0.0625
+51 to 55 years,HBCI,Primary,Carbapenems,0.0625
+51 to 55 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+51 to 55 years,HBCI,Primary,Glycopeptides,0.0625
+51 to 55 years,HBCI,Primary,Lincosamides,0.0625
+51 to 55 years,HBCI,Primary,Macrolides,0.03896103896103897
+51 to 55 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+51 to 55 years,HBCI,Primary,Penicillins,0.262987012987013
+51 to 55 years,HBCI,Primary,Quinolones,0.03896103896103897
+51 to 55 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+51 to 55 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+51 to 55 years,HBCI,District,Aminoglycosides,0.04240282685512368
+51 to 55 years,HBCI,District,Amphenicols,0.07692307692307693
+51 to 55 years,HBCI,District,Carbapenems,0.0032617559119325905
+51 to 55 years,HBCI,District,Cephalosporins,0.26094047295460726
+51 to 55 years,HBCI,District,Glycopeptides,0.029355803207393314
+51 to 55 years,HBCI,District,Lincosamides,0.006523511823865181
+51 to 55 years,HBCI,District,Macrolides,0.05871160641478663
+51 to 55 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+51 to 55 years,HBCI,District,Penicillins,0.21853764609948356
+51 to 55 years,HBCI,District,Quinolones,0.013047023647730362
+51 to 55 years,HBCI,District,Sulphonamides,0.04566458276705627
+51 to 55 years,HBCI,District,Tetracyclines,0.029355803207393314
+51 to 55 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+51 to 55 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+51 to 55 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+51 to 55 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+51 to 55 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+51 to 55 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+51 to 55 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+51 to 55 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+51 to 55 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+51 to 55 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+51 to 55 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+51 to 55 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+51 to 55 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+51 to 55 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+51 to 55 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+51 to 55 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+51 to 55 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+51 to 55 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+51 to 55 years,HBCI,Specialist,Macrolides,0.008714596949891068
+51 to 55 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+51 to 55 years,HBCI,Specialist,Penicillins,0.09586056644880175
+51 to 55 years,HBCI,Specialist,Quinolones,0.05882352941176471
+51 to 55 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+51 to 55 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+51 to 55 years,NIC,Primary,Aminoglycosides,0.05194805194805196
+51 to 55 years,NIC,Primary,Amphenicols,0.0
+51 to 55 years,NIC,Primary,Carbapenems,0.0
+51 to 55 years,NIC,Primary,Cephalosporins,0.23376623376623368
+51 to 55 years,NIC,Primary,Glycopeptides,0.0
+51 to 55 years,NIC,Primary,Lincosamides,0.0
+51 to 55 years,NIC,Primary,Macrolides,0.05194805194805196
+51 to 55 years,NIC,Primary,Nitroimidazoles,0.2077922077922079
+51 to 55 years,NIC,Primary,Penicillins,0.3506493506493506
+51 to 55 years,NIC,Primary,Quinolones,0.05194805194805194
+51 to 55 years,NIC,Primary,Sulphonamides,0.03896103896103895
+51 to 55 years,NIC,Primary,Tetracyclines,0.012987012987012988
+51 to 55 years,NIC,District,Aminoglycosides,0.045936395759717315
+51 to 55 years,NIC,District,Amphenicols,0.0
+51 to 55 years,NIC,District,Carbapenems,0.00353356890459364
+51 to 55 years,NIC,District,Cephalosporins,0.28268551236749107
+51 to 55 years,NIC,District,Glycopeptides,0.031802120141342774
+51 to 55 years,NIC,District,Lincosamides,0.007067137809187285
+51 to 55 years,NIC,District,Macrolides,0.06360424028268553
+51 to 55 years,NIC,District,Nitroimidazoles,0.2332155477031804
+51 to 55 years,NIC,District,Penicillins,0.23674911660777373
+51 to 55 years,NIC,District,Quinolones,0.01413427561837456
+51 to 55 years,NIC,District,Sulphonamides,0.04946996466431097
+51 to 55 years,NIC,District,Tetracyclines,0.03180212014134276
+51 to 55 years,NIC,Tertiary,Aminoglycosides,0.09611829944547137
+51 to 55 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+51 to 55 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+51 to 55 years,NIC,Tertiary,Cephalosporins,0.2199630314232902
+51 to 55 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+51 to 55 years,NIC,Tertiary,Lincosamides,0.00369685767097967
+51 to 55 years,NIC,Tertiary,Macrolides,0.009242144177449167
+51 to 55 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+51 to 55 years,NIC,Tertiary,Penicillins,0.3179297597042512
+51 to 55 years,NIC,Tertiary,Quinolones,0.014787430683918672
+51 to 55 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+51 to 55 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+51 to 55 years,NIC,Specialist,Aminoglycosides,0.03703703703703703
+51 to 55 years,NIC,Specialist,Amphenicols,0.0
+51 to 55 years,NIC,Specialist,Carbapenems,0.09876543209876544
+51 to 55 years,NIC,Specialist,Cephalosporins,0.4814814814814815
+51 to 55 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+51 to 55 years,NIC,Specialist,Lincosamides,0.0
+51 to 55 years,NIC,Specialist,Macrolides,0.01234567901234568
+51 to 55 years,NIC,Specialist,Nitroimidazoles,0.14814814814814814
+51 to 55 years,NIC,Specialist,Penicillins,0.13580246913580243
+51 to 55 years,NIC,Specialist,Quinolones,0.0
+51 to 55 years,NIC,Specialist,Sulphonamides,0.0
+51 to 55 years,NIC,Specialist,Tetracyclines,0.0
+56 to 60 years,CAI,Primary,Aminoglycosides,0.051948051948051945
+56 to 60 years,CAI,Primary,Amphenicols,0.0
+56 to 60 years,CAI,Primary,Carbapenems,0.0
+56 to 60 years,CAI,Primary,Cephalosporins,0.23376623376623368
+56 to 60 years,CAI,Primary,Glycopeptides,0.0
+56 to 60 years,CAI,Primary,Lincosamides,0.0
+56 to 60 years,CAI,Primary,Macrolides,0.05194805194805196
+56 to 60 years,CAI,Primary,Nitroimidazoles,0.2077922077922079
+56 to 60 years,CAI,Primary,Penicillins,0.3506493506493506
+56 to 60 years,CAI,Primary,Quinolones,0.05194805194805194
+56 to 60 years,CAI,Primary,Sulphonamides,0.03896103896103895
+56 to 60 years,CAI,Primary,Tetracyclines,0.012987012987012986
+56 to 60 years,CAI,District,Aminoglycosides,0.04593639575971732
+56 to 60 years,CAI,District,Amphenicols,0.0
+56 to 60 years,CAI,District,Carbapenems,0.00353356890459364
+56 to 60 years,CAI,District,Cephalosporins,0.28268551236749107
+56 to 60 years,CAI,District,Glycopeptides,0.03180212014134277
+56 to 60 years,CAI,District,Lincosamides,0.007067137809187285
+56 to 60 years,CAI,District,Macrolides,0.06360424028268553
+56 to 60 years,CAI,District,Nitroimidazoles,0.23321554770318037
+56 to 60 years,CAI,District,Penicillins,0.23674911660777376
+56 to 60 years,CAI,District,Quinolones,0.01413427561837456
+56 to 60 years,CAI,District,Sulphonamides,0.049469964664310966
+56 to 60 years,CAI,District,Tetracyclines,0.03180212014134277
+56 to 60 years,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+56 to 60 years,CAI,Tertiary,Amphenicols,0.0018484288354898332
+56 to 60 years,CAI,Tertiary,Carbapenems,0.022181146025878
+56 to 60 years,CAI,Tertiary,Cephalosporins,0.21996303142329024
+56 to 60 years,CAI,Tertiary,Glycopeptides,0.027726432532347512
+56 to 60 years,CAI,Tertiary,Lincosamides,0.0036968576709796703
+56 to 60 years,CAI,Tertiary,Macrolides,0.009242144177449167
+56 to 60 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839195
+56 to 60 years,CAI,Tertiary,Penicillins,0.31792975970425125
+56 to 60 years,CAI,Tertiary,Quinolones,0.014787430683918672
+56 to 60 years,CAI,Tertiary,Sulphonamides,0.05914972273567468
+56 to 60 years,CAI,Tertiary,Tetracyclines,0.025878003696857672
+56 to 60 years,CAI,Specialist,Aminoglycosides,0.03703703703703703
+56 to 60 years,CAI,Specialist,Amphenicols,0.0
+56 to 60 years,CAI,Specialist,Carbapenems,0.09876543209876543
+56 to 60 years,CAI,Specialist,Cephalosporins,0.48148148148148145
+56 to 60 years,CAI,Specialist,Glycopeptides,0.0864197530864198
+56 to 60 years,CAI,Specialist,Lincosamides,0.0
+56 to 60 years,CAI,Specialist,Macrolides,0.012345679012345678
+56 to 60 years,CAI,Specialist,Nitroimidazoles,0.14814814814814817
+56 to 60 years,CAI,Specialist,Penicillins,0.1358024691358024
+56 to 60 years,CAI,Specialist,Quinolones,0.0
+56 to 60 years,CAI,Specialist,Sulphonamides,0.0
+56 to 60 years,CAI,Specialist,Tetracyclines,0.0
+56 to 60 years,HAI,Primary,Aminoglycosides,0.03896103896103897
+56 to 60 years,HAI,Primary,Amphenicols,0.0625
+56 to 60 years,HAI,Primary,Carbapenems,0.0625
+56 to 60 years,HAI,Primary,Cephalosporins,0.17532467532467533
+56 to 60 years,HAI,Primary,Glycopeptides,0.0625
+56 to 60 years,HAI,Primary,Lincosamides,0.0625
+56 to 60 years,HAI,Primary,Macrolides,0.03896103896103897
+56 to 60 years,HAI,Primary,Nitroimidazoles,0.15584415584415587
+56 to 60 years,HAI,Primary,Penicillins,0.262987012987013
+56 to 60 years,HAI,Primary,Quinolones,0.03896103896103897
+56 to 60 years,HAI,Primary,Sulphonamides,0.02922077922077922
+56 to 60 years,HAI,Primary,Tetracyclines,0.009740259740259742
+56 to 60 years,HAI,District,Aminoglycosides,0.04240282685512368
+56 to 60 years,HAI,District,Amphenicols,0.07692307692307693
+56 to 60 years,HAI,District,Carbapenems,0.0032617559119325905
+56 to 60 years,HAI,District,Cephalosporins,0.26094047295460726
+56 to 60 years,HAI,District,Glycopeptides,0.029355803207393314
+56 to 60 years,HAI,District,Lincosamides,0.006523511823865181
+56 to 60 years,HAI,District,Macrolides,0.05871160641478663
+56 to 60 years,HAI,District,Nitroimidazoles,0.21527589018755097
+56 to 60 years,HAI,District,Penicillins,0.21853764609948356
+56 to 60 years,HAI,District,Quinolones,0.013047023647730362
+56 to 60 years,HAI,District,Sulphonamides,0.04566458276705627
+56 to 60 years,HAI,District,Tetracyclines,0.029355803207393314
+56 to 60 years,HAI,Tertiary,Aminoglycosides,0.09611829944547134
+56 to 60 years,HAI,Tertiary,Amphenicols,0.0018484288354898336
+56 to 60 years,HAI,Tertiary,Carbapenems,0.022181146025878003
+56 to 60 years,HAI,Tertiary,Cephalosporins,0.2199630314232902
+56 to 60 years,HAI,Tertiary,Glycopeptides,0.027726432532347505
+56 to 60 years,HAI,Tertiary,Lincosamides,0.0036968576709796672
+56 to 60 years,HAI,Tertiary,Macrolides,0.009242144177449169
+56 to 60 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839186
+56 to 60 years,HAI,Tertiary,Penicillins,0.3179297597042514
+56 to 60 years,HAI,Tertiary,Quinolones,0.014787430683918669
+56 to 60 years,HAI,Tertiary,Sulphonamides,0.059149722735674676
+56 to 60 years,HAI,Tertiary,Tetracyclines,0.025878003696857672
+56 to 60 years,HAI,Specialist,Aminoglycosides,0.026143790849673203
+56 to 60 years,HAI,Specialist,Amphenicols,0.05882352941176471
+56 to 60 years,HAI,Specialist,Carbapenems,0.06971677559912855
+56 to 60 years,HAI,Specialist,Cephalosporins,0.33986928104575165
+56 to 60 years,HAI,Specialist,Glycopeptides,0.06100217864923747
+56 to 60 years,HAI,Specialist,Lincosamides,0.05882352941176471
+56 to 60 years,HAI,Specialist,Macrolides,0.008714596949891068
+56 to 60 years,HAI,Specialist,Nitroimidazoles,0.10457516339869281
+56 to 60 years,HAI,Specialist,Penicillins,0.09586056644880175
+56 to 60 years,HAI,Specialist,Quinolones,0.05882352941176471
+56 to 60 years,HAI,Specialist,Sulphonamides,0.05882352941176471
+56 to 60 years,HAI,Specialist,Tetracyclines,0.05882352941176471
+56 to 60 years,HBCI,Primary,Aminoglycosides,0.03896103896103897
+56 to 60 years,HBCI,Primary,Amphenicols,0.0625
+56 to 60 years,HBCI,Primary,Carbapenems,0.0625
+56 to 60 years,HBCI,Primary,Cephalosporins,0.17532467532467533
+56 to 60 years,HBCI,Primary,Glycopeptides,0.0625
+56 to 60 years,HBCI,Primary,Lincosamides,0.0625
+56 to 60 years,HBCI,Primary,Macrolides,0.03896103896103897
+56 to 60 years,HBCI,Primary,Nitroimidazoles,0.15584415584415587
+56 to 60 years,HBCI,Primary,Penicillins,0.262987012987013
+56 to 60 years,HBCI,Primary,Quinolones,0.03896103896103897
+56 to 60 years,HBCI,Primary,Sulphonamides,0.02922077922077922
+56 to 60 years,HBCI,Primary,Tetracyclines,0.009740259740259742
+56 to 60 years,HBCI,District,Aminoglycosides,0.04240282685512368
+56 to 60 years,HBCI,District,Amphenicols,0.07692307692307693
+56 to 60 years,HBCI,District,Carbapenems,0.0032617559119325905
+56 to 60 years,HBCI,District,Cephalosporins,0.26094047295460726
+56 to 60 years,HBCI,District,Glycopeptides,0.029355803207393314
+56 to 60 years,HBCI,District,Lincosamides,0.006523511823865181
+56 to 60 years,HBCI,District,Macrolides,0.05871160641478663
+56 to 60 years,HBCI,District,Nitroimidazoles,0.21527589018755097
+56 to 60 years,HBCI,District,Penicillins,0.21853764609948356
+56 to 60 years,HBCI,District,Quinolones,0.013047023647730362
+56 to 60 years,HBCI,District,Sulphonamides,0.04566458276705627
+56 to 60 years,HBCI,District,Tetracyclines,0.029355803207393314
+56 to 60 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+56 to 60 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+56 to 60 years,HBCI,Tertiary,Carbapenems,0.022181146025878003
+56 to 60 years,HBCI,Tertiary,Cephalosporins,0.2199630314232902
+56 to 60 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+56 to 60 years,HBCI,Tertiary,Lincosamides,0.0036968576709796672
+56 to 60 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+56 to 60 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839186
+56 to 60 years,HBCI,Tertiary,Penicillins,0.3179297597042514
+56 to 60 years,HBCI,Tertiary,Quinolones,0.014787430683918669
+56 to 60 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+56 to 60 years,HBCI,Tertiary,Tetracyclines,0.025878003696857672
+56 to 60 years,HBCI,Specialist,Aminoglycosides,0.026143790849673203
+56 to 60 years,HBCI,Specialist,Amphenicols,0.05882352941176471
+56 to 60 years,HBCI,Specialist,Carbapenems,0.06971677559912855
+56 to 60 years,HBCI,Specialist,Cephalosporins,0.33986928104575165
+56 to 60 years,HBCI,Specialist,Glycopeptides,0.06100217864923747
+56 to 60 years,HBCI,Specialist,Lincosamides,0.05882352941176471
+56 to 60 years,HBCI,Specialist,Macrolides,0.008714596949891068
+56 to 60 years,HBCI,Specialist,Nitroimidazoles,0.10457516339869281
+56 to 60 years,HBCI,Specialist,Penicillins,0.09586056644880175
+56 to 60 years,HBCI,Specialist,Quinolones,0.05882352941176471
+56 to 60 years,HBCI,Specialist,Sulphonamides,0.05882352941176471
+56 to 60 years,HBCI,Specialist,Tetracyclines,0.05882352941176471
+56 to 60 years,NIC,Primary,Aminoglycosides,0.05194805194805196
+56 to 60 years,NIC,Primary,Amphenicols,0.0
+56 to 60 years,NIC,Primary,Carbapenems,0.0
+56 to 60 years,NIC,Primary,Cephalosporins,0.23376623376623376
+56 to 60 years,NIC,Primary,Glycopeptides,0.0
+56 to 60 years,NIC,Primary,Lincosamides,0.0
+56 to 60 years,NIC,Primary,Macrolides,0.05194805194805197
+56 to 60 years,NIC,Primary,Nitroimidazoles,0.2077922077922079
+56 to 60 years,NIC,Primary,Penicillins,0.3506493506493506
+56 to 60 years,NIC,Primary,Quinolones,0.051948051948051945
+56 to 60 years,NIC,Primary,Sulphonamides,0.03896103896103897
+56 to 60 years,NIC,Primary,Tetracyclines,0.01298701298701299
+56 to 60 years,NIC,District,Aminoglycosides,0.045936395759717315
+56 to 60 years,NIC,District,Amphenicols,0.0
+56 to 60 years,NIC,District,Carbapenems,0.00353356890459364
+56 to 60 years,NIC,District,Cephalosporins,0.28268551236749107
+56 to 60 years,NIC,District,Glycopeptides,0.031802120141342774
+56 to 60 years,NIC,District,Lincosamides,0.007067137809187285
+56 to 60 years,NIC,District,Macrolides,0.06360424028268553
+56 to 60 years,NIC,District,Nitroimidazoles,0.23321554770318037
+56 to 60 years,NIC,District,Penicillins,0.23674911660777376
+56 to 60 years,NIC,District,Quinolones,0.01413427561837456
+56 to 60 years,NIC,District,Sulphonamides,0.049469964664310986
+56 to 60 years,NIC,District,Tetracyclines,0.03180212014134277
+56 to 60 years,NIC,Tertiary,Aminoglycosides,0.09611829944547134
+56 to 60 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+56 to 60 years,NIC,Tertiary,Carbapenems,0.022181146025877993
+56 to 60 years,NIC,Tertiary,Cephalosporins,0.2199630314232902
+56 to 60 years,NIC,Tertiary,Glycopeptides,0.02772643253234751
+56 to 60 years,NIC,Tertiary,Lincosamides,0.0036968576709796694
+56 to 60 years,NIC,Tertiary,Macrolides,0.009242144177449167
+56 to 60 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+56 to 60 years,NIC,Tertiary,Penicillins,0.3179297597042513
+56 to 60 years,NIC,Tertiary,Quinolones,0.01478743068391867
+56 to 60 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+56 to 60 years,NIC,Tertiary,Tetracyclines,0.025878003696857676
+56 to 60 years,NIC,Specialist,Aminoglycosides,0.03703703703703702
+56 to 60 years,NIC,Specialist,Amphenicols,0.0
+56 to 60 years,NIC,Specialist,Carbapenems,0.09876543209876543
+56 to 60 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+56 to 60 years,NIC,Specialist,Glycopeptides,0.08641975308641976
+56 to 60 years,NIC,Specialist,Lincosamides,0.0
+56 to 60 years,NIC,Specialist,Macrolides,0.01234567901234568
+56 to 60 years,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+56 to 60 years,NIC,Specialist,Penicillins,0.13580246913580243
+56 to 60 years,NIC,Specialist,Quinolones,0.0
+56 to 60 years,NIC,Specialist,Sulphonamides,0.0
+56 to 60 years,NIC,Specialist,Tetracyclines,0.0
+61 to 65 years,CAI,Primary,Aminoglycosides,0.05194805194805196
+61 to 65 years,CAI,Primary,Amphenicols,0.0
+61 to 65 years,CAI,Primary,Carbapenems,0.0
+61 to 65 years,CAI,Primary,Cephalosporins,0.23376623376623368
+61 to 65 years,CAI,Primary,Glycopeptides,0.0
+61 to 65 years,CAI,Primary,Lincosamides,0.0
+61 to 65 years,CAI,Primary,Macrolides,0.051948051948051965
+61 to 65 years,CAI,Primary,Nitroimidazoles,0.20779220779220794
+61 to 65 years,CAI,Primary,Penicillins,0.3506493506493506
+61 to 65 years,CAI,Primary,Quinolones,0.05194805194805196
+61 to 65 years,CAI,Primary,Sulphonamides,0.03896103896103896
+61 to 65 years,CAI,Primary,Tetracyclines,0.01298701298701299
+61 to 65 years,CAI,District,Aminoglycosides,0.04593639575971731
+61 to 65 years,CAI,District,Amphenicols,0.0
+61 to 65 years,CAI,District,Carbapenems,0.003533568904593639
+61 to 65 years,CAI,District,Cephalosporins,0.282685512367491
+61 to 65 years,CAI,District,Glycopeptides,0.031802120141342774
+61 to 65 years,CAI,District,Lincosamides,0.007067137809187286
+61 to 65 years,CAI,District,Macrolides,0.06360424028268555
+61 to 65 years,CAI,District,Nitroimidazoles,0.23321554770318034
+61 to 65 years,CAI,District,Penicillins,0.23674911660777376
+61 to 65 years,CAI,District,Quinolones,0.014134275618374562
+61 to 65 years,CAI,District,Sulphonamides,0.04946996466431097
+61 to 65 years,CAI,District,Tetracyclines,0.03180212014134277
+61 to 65 years,CAI,Tertiary,Aminoglycosides,0.09611829944547137
+61 to 65 years,CAI,Tertiary,Amphenicols,0.0018484288354898332
+61 to 65 years,CAI,Tertiary,Carbapenems,0.022181146025877993
+61 to 65 years,CAI,Tertiary,Cephalosporins,0.21996303142329018
+61 to 65 years,CAI,Tertiary,Glycopeptides,0.027726432532347505
+61 to 65 years,CAI,Tertiary,Lincosamides,0.0036968576709796707
+61 to 65 years,CAI,Tertiary,Macrolides,0.009242144177449169
+61 to 65 years,CAI,Tertiary,Nitroimidazoles,0.20147874306839192
+61 to 65 years,CAI,Tertiary,Penicillins,0.3179297597042513
+61 to 65 years,CAI,Tertiary,Quinolones,0.014787430683918672
+61 to 65 years,CAI,Tertiary,Sulphonamides,0.05914972273567468
+61 to 65 years,CAI,Tertiary,Tetracyclines,0.025878003696857676
+61 to 65 years,CAI,Specialist,Aminoglycosides,0.037037037037037035
+61 to 65 years,CAI,Specialist,Amphenicols,0.0
+61 to 65 years,CAI,Specialist,Carbapenems,0.09876543209876544
+61 to 65 years,CAI,Specialist,Cephalosporins,0.4814814814814815
+61 to 65 years,CAI,Specialist,Glycopeptides,0.08641975308641979
+61 to 65 years,CAI,Specialist,Lincosamides,0.0
+61 to 65 years,CAI,Specialist,Macrolides,0.012345679012345678
+61 to 65 years,CAI,Specialist,Nitroimidazoles,0.1481481481481481
+61 to 65 years,CAI,Specialist,Penicillins,0.1358024691358024
+61 to 65 years,CAI,Specialist,Quinolones,0.0
+61 to 65 years,CAI,Specialist,Sulphonamides,0.0
+61 to 65 years,CAI,Specialist,Tetracyclines,0.0
+61 to 65 years,HAI,Primary,Aminoglycosides,0.051948051948051945
+61 to 65 years,HAI,Primary,Amphenicols,0.0
+61 to 65 years,HAI,Primary,Carbapenems,0.0
+61 to 65 years,HAI,Primary,Cephalosporins,0.23376623376623373
+61 to 65 years,HAI,Primary,Glycopeptides,0.0
+61 to 65 years,HAI,Primary,Lincosamides,0.0
+61 to 65 years,HAI,Primary,Macrolides,0.05194805194805196
+61 to 65 years,HAI,Primary,Nitroimidazoles,0.20779220779220792
+61 to 65 years,HAI,Primary,Penicillins,0.35064935064935054
+61 to 65 years,HAI,Primary,Quinolones,0.05194805194805196
+61 to 65 years,HAI,Primary,Sulphonamides,0.03896103896103895
+61 to 65 years,HAI,Primary,Tetracyclines,0.012987012987012986
+61 to 65 years,HAI,District,Aminoglycosides,0.045936395759717315
+61 to 65 years,HAI,District,Amphenicols,0.0
+61 to 65 years,HAI,District,Carbapenems,0.0035335689045936404
+61 to 65 years,HAI,District,Cephalosporins,0.28268551236749107
+61 to 65 years,HAI,District,Glycopeptides,0.031802120141342774
+61 to 65 years,HAI,District,Lincosamides,0.007067137809187285
+61 to 65 years,HAI,District,Macrolides,0.06360424028268555
+61 to 65 years,HAI,District,Nitroimidazoles,0.23321554770318034
+61 to 65 years,HAI,District,Penicillins,0.23674911660777367
+61 to 65 years,HAI,District,Quinolones,0.014134275618374562
+61 to 65 years,HAI,District,Sulphonamides,0.049469964664310966
+61 to 65 years,HAI,District,Tetracyclines,0.03180212014134277
+61 to 65 years,HAI,Tertiary,Aminoglycosides,0.09611829944547136
+61 to 65 years,HAI,Tertiary,Amphenicols,0.0018484288354898334
+61 to 65 years,HAI,Tertiary,Carbapenems,0.022181146025878
+61 to 65 years,HAI,Tertiary,Cephalosporins,0.21996303142329024
+61 to 65 years,HAI,Tertiary,Glycopeptides,0.027726432532347516
+61 to 65 years,HAI,Tertiary,Lincosamides,0.0036968576709796707
+61 to 65 years,HAI,Tertiary,Macrolides,0.00924214417744917
+61 to 65 years,HAI,Tertiary,Nitroimidazoles,0.20147874306839195
+61 to 65 years,HAI,Tertiary,Penicillins,0.31792975970425125
+61 to 65 years,HAI,Tertiary,Quinolones,0.014787430683918672
+61 to 65 years,HAI,Tertiary,Sulphonamides,0.05914972273567469
+61 to 65 years,HAI,Tertiary,Tetracyclines,0.025878003696857676
+61 to 65 years,HAI,Specialist,Aminoglycosides,0.03703703703703704
+61 to 65 years,HAI,Specialist,Amphenicols,0.0
+61 to 65 years,HAI,Specialist,Carbapenems,0.09876543209876545
+61 to 65 years,HAI,Specialist,Cephalosporins,0.4814814814814815
+61 to 65 years,HAI,Specialist,Glycopeptides,0.08641975308641979
+61 to 65 years,HAI,Specialist,Lincosamides,0.0
+61 to 65 years,HAI,Specialist,Macrolides,0.012345679012345682
+61 to 65 years,HAI,Specialist,Nitroimidazoles,0.1481481481481482
+61 to 65 years,HAI,Specialist,Penicillins,0.1358024691358024
+61 to 65 years,HAI,Specialist,Quinolones,0.0
+61 to 65 years,HAI,Specialist,Sulphonamides,0.0
+61 to 65 years,HAI,Specialist,Tetracyclines,0.0
+61 to 65 years,HBCI,Primary,Aminoglycosides,0.051948051948051945
+61 to 65 years,HBCI,Primary,Amphenicols,0.0
+61 to 65 years,HBCI,Primary,Carbapenems,0.0
+61 to 65 years,HBCI,Primary,Cephalosporins,0.23376623376623373
+61 to 65 years,HBCI,Primary,Glycopeptides,0.0
+61 to 65 years,HBCI,Primary,Lincosamides,0.0
+61 to 65 years,HBCI,Primary,Macrolides,0.05194805194805196
+61 to 65 years,HBCI,Primary,Nitroimidazoles,0.2077922077922079
+61 to 65 years,HBCI,Primary,Penicillins,0.35064935064935054
+61 to 65 years,HBCI,Primary,Quinolones,0.051948051948051945
+61 to 65 years,HBCI,Primary,Sulphonamides,0.03896103896103895
+61 to 65 years,HBCI,Primary,Tetracyclines,0.012987012987012986
+61 to 65 years,HBCI,District,Aminoglycosides,0.045936395759717315
+61 to 65 years,HBCI,District,Amphenicols,0.0
+61 to 65 years,HBCI,District,Carbapenems,0.0035335689045936404
+61 to 65 years,HBCI,District,Cephalosporins,0.28268551236749107
+61 to 65 years,HBCI,District,Glycopeptides,0.031802120141342774
+61 to 65 years,HBCI,District,Lincosamides,0.007067137809187287
+61 to 65 years,HBCI,District,Macrolides,0.06360424028268555
+61 to 65 years,HBCI,District,Nitroimidazoles,0.23321554770318037
+61 to 65 years,HBCI,District,Penicillins,0.23674911660777373
+61 to 65 years,HBCI,District,Quinolones,0.014134275618374565
+61 to 65 years,HBCI,District,Sulphonamides,0.049469964664310966
+61 to 65 years,HBCI,District,Tetracyclines,0.031802120141342774
+61 to 65 years,HBCI,Tertiary,Aminoglycosides,0.09611829944547136
+61 to 65 years,HBCI,Tertiary,Amphenicols,0.0018484288354898336
+61 to 65 years,HBCI,Tertiary,Carbapenems,0.022181146025877993
+61 to 65 years,HBCI,Tertiary,Cephalosporins,0.21996303142329024
+61 to 65 years,HBCI,Tertiary,Glycopeptides,0.027726432532347505
+61 to 65 years,HBCI,Tertiary,Lincosamides,0.0036968576709796703
+61 to 65 years,HBCI,Tertiary,Macrolides,0.009242144177449169
+61 to 65 years,HBCI,Tertiary,Nitroimidazoles,0.20147874306839197
+61 to 65 years,HBCI,Tertiary,Penicillins,0.31792975970425125
+61 to 65 years,HBCI,Tertiary,Quinolones,0.014787430683918672
+61 to 65 years,HBCI,Tertiary,Sulphonamides,0.059149722735674676
+61 to 65 years,HBCI,Tertiary,Tetracyclines,0.025878003696857683
+61 to 65 years,HBCI,Specialist,Aminoglycosides,0.03703703703703703
+61 to 65 years,HBCI,Specialist,Amphenicols,0.0
+61 to 65 years,HBCI,Specialist,Carbapenems,0.09876543209876544
+61 to 65 years,HBCI,Specialist,Cephalosporins,0.4814814814814815
+61 to 65 years,HBCI,Specialist,Glycopeptides,0.0864197530864198
+61 to 65 years,HBCI,Specialist,Lincosamides,0.0
+61 to 65 years,HBCI,Specialist,Macrolides,0.01234567901234568
+61 to 65 years,HBCI,Specialist,Nitroimidazoles,0.14814814814814817
+61 to 65 years,HBCI,Specialist,Penicillins,0.13580246913580238
+61 to 65 years,HBCI,Specialist,Quinolones,0.0
+61 to 65 years,HBCI,Specialist,Sulphonamides,0.0
+61 to 65 years,HBCI,Specialist,Tetracyclines,0.0
+61 to 65 years,NIC,Primary,Aminoglycosides,0.05194805194805195
+61 to 65 years,NIC,Primary,Amphenicols,0.0
+61 to 65 years,NIC,Primary,Carbapenems,0.0
+61 to 65 years,NIC,Primary,Cephalosporins,0.23376623376623368
+61 to 65 years,NIC,Primary,Glycopeptides,0.0
+61 to 65 years,NIC,Primary,Lincosamides,0.0
+61 to 65 years,NIC,Primary,Macrolides,0.051948051948051965
+61 to 65 years,NIC,Primary,Nitroimidazoles,0.20779220779220792
+61 to 65 years,NIC,Primary,Penicillins,0.35064935064935054
+61 to 65 years,NIC,Primary,Quinolones,0.05194805194805196
+61 to 65 years,NIC,Primary,Sulphonamides,0.03896103896103896
+61 to 65 years,NIC,Primary,Tetracyclines,0.01298701298701299
+61 to 65 years,NIC,District,Aminoglycosides,0.045936395759717315
+61 to 65 years,NIC,District,Amphenicols,0.0
+61 to 65 years,NIC,District,Carbapenems,0.0035335689045936395
+61 to 65 years,NIC,District,Cephalosporins,0.282685512367491
+61 to 65 years,NIC,District,Glycopeptides,0.031802120141342774
+61 to 65 years,NIC,District,Lincosamides,0.007067137809187285
+61 to 65 years,NIC,District,Macrolides,0.06360424028268553
+61 to 65 years,NIC,District,Nitroimidazoles,0.23321554770318037
+61 to 65 years,NIC,District,Penicillins,0.23674911660777376
+61 to 65 years,NIC,District,Quinolones,0.014134275618374562
+61 to 65 years,NIC,District,Sulphonamides,0.049469964664310966
+61 to 65 years,NIC,District,Tetracyclines,0.03180212014134276
+61 to 65 years,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+61 to 65 years,NIC,Tertiary,Amphenicols,0.0018484288354898332
+61 to 65 years,NIC,Tertiary,Carbapenems,0.022181146025877996
+61 to 65 years,NIC,Tertiary,Cephalosporins,0.21996303142329027
+61 to 65 years,NIC,Tertiary,Glycopeptides,0.027726432532347512
+61 to 65 years,NIC,Tertiary,Lincosamides,0.0036968576709796707
+61 to 65 years,NIC,Tertiary,Macrolides,0.009242144177449169
+61 to 65 years,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+61 to 65 years,NIC,Tertiary,Penicillins,0.31792975970425125
+61 to 65 years,NIC,Tertiary,Quinolones,0.014787430683918672
+61 to 65 years,NIC,Tertiary,Sulphonamides,0.05914972273567468
+61 to 65 years,NIC,Tertiary,Tetracyclines,0.025878003696857672
+61 to 65 years,NIC,Specialist,Aminoglycosides,0.037037037037037035
+61 to 65 years,NIC,Specialist,Amphenicols,0.0
+61 to 65 years,NIC,Specialist,Carbapenems,0.09876543209876544
+61 to 65 years,NIC,Specialist,Cephalosporins,0.48148148148148145
+61 to 65 years,NIC,Specialist,Glycopeptides,0.08641975308641979
+61 to 65 years,NIC,Specialist,Lincosamides,0.0
+61 to 65 years,NIC,Specialist,Macrolides,0.012345679012345678
+61 to 65 years,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+61 to 65 years,NIC,Specialist,Penicillins,0.1358024691358024
+61 to 65 years,NIC,Specialist,Quinolones,0.0
+61 to 65 years,NIC,Specialist,Sulphonamides,0.0
+61 to 65 years,NIC,Specialist,Tetracyclines,0.0
+66+,CAI,Primary,Aminoglycosides,0.051948051948051945
+66+,CAI,Primary,Amphenicols,0.0
+66+,CAI,Primary,Carbapenems,0.0
+66+,CAI,Primary,Cephalosporins,0.23376623376623365
+66+,CAI,Primary,Glycopeptides,0.0
+66+,CAI,Primary,Lincosamides,0.0
+66+,CAI,Primary,Macrolides,0.05194805194805196
+66+,CAI,Primary,Nitroimidazoles,0.2077922077922079
+66+,CAI,Primary,Penicillins,0.3506493506493506
+66+,CAI,Primary,Quinolones,0.051948051948051945
+66+,CAI,Primary,Sulphonamides,0.03896103896103896
+66+,CAI,Primary,Tetracyclines,0.012987012987012988
+66+,CAI,District,Aminoglycosides,0.04593639575971731
+66+,CAI,District,Amphenicols,0.0
+66+,CAI,District,Carbapenems,0.00353356890459364
+66+,CAI,District,Cephalosporins,0.282685512367491
+66+,CAI,District,Glycopeptides,0.031802120141342774
+66+,CAI,District,Lincosamides,0.007067137809187285
+66+,CAI,District,Macrolides,0.06360424028268553
+66+,CAI,District,Nitroimidazoles,0.23321554770318034
+66+,CAI,District,Penicillins,0.23674911660777376
+66+,CAI,District,Quinolones,0.01413427561837456
+66+,CAI,District,Sulphonamides,0.049469964664310986
+66+,CAI,District,Tetracyclines,0.03180212014134276
+66+,CAI,Tertiary,Aminoglycosides,0.09611829944547136
+66+,CAI,Tertiary,Amphenicols,0.0018484288354898332
+66+,CAI,Tertiary,Carbapenems,0.022181146025877993
+66+,CAI,Tertiary,Cephalosporins,0.2199630314232902
+66+,CAI,Tertiary,Glycopeptides,0.027726432532347516
+66+,CAI,Tertiary,Lincosamides,0.0036968576709796707
+66+,CAI,Tertiary,Macrolides,0.009242144177449167
+66+,CAI,Tertiary,Nitroimidazoles,0.20147874306839197
+66+,CAI,Tertiary,Penicillins,0.3179297597042513
+66+,CAI,Tertiary,Quinolones,0.014787430683918672
+66+,CAI,Tertiary,Sulphonamides,0.05914972273567467
+66+,CAI,Tertiary,Tetracyclines,0.025878003696857676
+66+,CAI,Specialist,Aminoglycosides,0.03703703703703702
+66+,CAI,Specialist,Amphenicols,0.0
+66+,CAI,Specialist,Carbapenems,0.09876543209876543
+66+,CAI,Specialist,Cephalosporins,0.4814814814814815
+66+,CAI,Specialist,Glycopeptides,0.0864197530864198
+66+,CAI,Specialist,Lincosamides,0.0
+66+,CAI,Specialist,Macrolides,0.012345679012345678
+66+,CAI,Specialist,Nitroimidazoles,0.14814814814814814
+66+,CAI,Specialist,Penicillins,0.1358024691358024
+66+,CAI,Specialist,Quinolones,0.0
+66+,CAI,Specialist,Sulphonamides,0.0
+66+,CAI,Specialist,Tetracyclines,0.0
+66+,HAI,Primary,Aminoglycosides,0.051948051948051945
+66+,HAI,Primary,Amphenicols,0.0
+66+,HAI,Primary,Carbapenems,0.0
+66+,HAI,Primary,Cephalosporins,0.23376623376623373
+66+,HAI,Primary,Glycopeptides,0.0
+66+,HAI,Primary,Lincosamides,0.0
+66+,HAI,Primary,Macrolides,0.05194805194805196
+66+,HAI,Primary,Nitroimidazoles,0.20779220779220794
+66+,HAI,Primary,Penicillins,0.3506493506493506
+66+,HAI,Primary,Quinolones,0.051948051948051945
+66+,HAI,Primary,Sulphonamides,0.038961038961038946
+66+,HAI,Primary,Tetracyclines,0.012987012987012986
+66+,HAI,District,Aminoglycosides,0.04593639575971732
+66+,HAI,District,Amphenicols,0.0
+66+,HAI,District,Carbapenems,0.0035335689045936404
+66+,HAI,District,Cephalosporins,0.28268551236749107
+66+,HAI,District,Glycopeptides,0.031802120141342774
+66+,HAI,District,Lincosamides,0.007067137809187286
+66+,HAI,District,Macrolides,0.06360424028268555
+66+,HAI,District,Nitroimidazoles,0.2332155477031804
+66+,HAI,District,Penicillins,0.23674911660777373
+66+,HAI,District,Quinolones,0.014134275618374562
+66+,HAI,District,Sulphonamides,0.04946996466431097
+66+,HAI,District,Tetracyclines,0.03180212014134277
+66+,HAI,Tertiary,Aminoglycosides,0.09611829944547136
+66+,HAI,Tertiary,Amphenicols,0.0018484288354898336
+66+,HAI,Tertiary,Carbapenems,0.022181146025877996
+66+,HAI,Tertiary,Cephalosporins,0.2199630314232902
+66+,HAI,Tertiary,Glycopeptides,0.027726432532347512
+66+,HAI,Tertiary,Lincosamides,0.0036968576709796703
+66+,HAI,Tertiary,Macrolides,0.009242144177449167
+66+,HAI,Tertiary,Nitroimidazoles,0.20147874306839195
+66+,HAI,Tertiary,Penicillins,0.31792975970425125
+66+,HAI,Tertiary,Quinolones,0.01478743068391867
+66+,HAI,Tertiary,Sulphonamides,0.05914972273567466
+66+,HAI,Tertiary,Tetracyclines,0.025878003696857672
+66+,HAI,Specialist,Aminoglycosides,0.037037037037037035
+66+,HAI,Specialist,Amphenicols,0.0
+66+,HAI,Specialist,Carbapenems,0.09876543209876545
+66+,HAI,Specialist,Cephalosporins,0.4814814814814815
+66+,HAI,Specialist,Glycopeptides,0.0864197530864198
+66+,HAI,Specialist,Lincosamides,0.0
+66+,HAI,Specialist,Macrolides,0.01234567901234568
+66+,HAI,Specialist,Nitroimidazoles,0.14814814814814817
+66+,HAI,Specialist,Penicillins,0.1358024691358024
+66+,HAI,Specialist,Quinolones,0.0
+66+,HAI,Specialist,Sulphonamides,0.0
+66+,HAI,Specialist,Tetracyclines,0.0
+66+,HBCI,Primary,Aminoglycosides,0.051948051948051945
+66+,HBCI,Primary,Amphenicols,0.0
+66+,HBCI,Primary,Carbapenems,0.0
+66+,HBCI,Primary,Cephalosporins,0.23376623376623373
+66+,HBCI,Primary,Glycopeptides,0.0
+66+,HBCI,Primary,Lincosamides,0.0
+66+,HBCI,Primary,Macrolides,0.051948051948051965
+66+,HBCI,Primary,Nitroimidazoles,0.20779220779220792
+66+,HBCI,Primary,Penicillins,0.3506493506493506
+66+,HBCI,Primary,Quinolones,0.051948051948051945
+66+,HBCI,Primary,Sulphonamides,0.03896103896103895
+66+,HBCI,Primary,Tetracyclines,0.01298701298701299
+66+,HBCI,District,Aminoglycosides,0.045936395759717315
+66+,HBCI,District,Amphenicols,0.0
+66+,HBCI,District,Carbapenems,0.0035335689045936387
+66+,HBCI,District,Cephalosporins,0.28268551236749107
+66+,HBCI,District,Glycopeptides,0.03180212014134278
+66+,HBCI,District,Lincosamides,0.007067137809187286
+66+,HBCI,District,Macrolides,0.06360424028268555
+66+,HBCI,District,Nitroimidazoles,0.23321554770318037
+66+,HBCI,District,Penicillins,0.23674911660777376
+66+,HBCI,District,Quinolones,0.014134275618374563
+66+,HBCI,District,Sulphonamides,0.04946996466431098
+66+,HBCI,District,Tetracyclines,0.031802120141342774
+66+,HBCI,Tertiary,Aminoglycosides,0.09611829944547134
+66+,HBCI,Tertiary,Amphenicols,0.0018484288354898334
+66+,HBCI,Tertiary,Carbapenems,0.022181146025877996
+66+,HBCI,Tertiary,Cephalosporins,0.21996303142329024
+66+,HBCI,Tertiary,Glycopeptides,0.02772643253234751
+66+,HBCI,Tertiary,Lincosamides,0.0036968576709796707
+66+,HBCI,Tertiary,Macrolides,0.009242144177449167
+66+,HBCI,Tertiary,Nitroimidazoles,0.20147874306839195
+66+,HBCI,Tertiary,Penicillins,0.3179297597042513
+66+,HBCI,Tertiary,Quinolones,0.014787430683918674
+66+,HBCI,Tertiary,Sulphonamides,0.0591497227356747
+66+,HBCI,Tertiary,Tetracyclines,0.025878003696857676
+66+,HBCI,Specialist,Aminoglycosides,0.03703703703703702
+66+,HBCI,Specialist,Amphenicols,0.0
+66+,HBCI,Specialist,Carbapenems,0.09876543209876544
+66+,HBCI,Specialist,Cephalosporins,0.48148148148148145
+66+,HBCI,Specialist,Glycopeptides,0.08641975308641978
+66+,HBCI,Specialist,Lincosamides,0.0
+66+,HBCI,Specialist,Macrolides,0.01234567901234568
+66+,HBCI,Specialist,Nitroimidazoles,0.14814814814814817
+66+,HBCI,Specialist,Penicillins,0.1358024691358024
+66+,HBCI,Specialist,Quinolones,0.0
+66+,HBCI,Specialist,Sulphonamides,0.0
+66+,HBCI,Specialist,Tetracyclines,0.0
+66+,NIC,Primary,Aminoglycosides,0.05194805194805196
+66+,NIC,Primary,Amphenicols,0.0
+66+,NIC,Primary,Carbapenems,0.0
+66+,NIC,Primary,Cephalosporins,0.23376623376623376
+66+,NIC,Primary,Glycopeptides,0.0
+66+,NIC,Primary,Lincosamides,0.0
+66+,NIC,Primary,Macrolides,0.05194805194805197
+66+,NIC,Primary,Nitroimidazoles,0.20779220779220797
+66+,NIC,Primary,Penicillins,0.35064935064935054
+66+,NIC,Primary,Quinolones,0.05194805194805196
+66+,NIC,Primary,Sulphonamides,0.03896103896103895
+66+,NIC,Primary,Tetracyclines,0.012987012987012988
+66+,NIC,District,Aminoglycosides,0.045936395759717315
+66+,NIC,District,Amphenicols,0.0
+66+,NIC,District,Carbapenems,0.00353356890459364
+66+,NIC,District,Cephalosporins,0.282685512367491
+66+,NIC,District,Glycopeptides,0.03180212014134278
+66+,NIC,District,Lincosamides,0.007067137809187286
+66+,NIC,District,Macrolides,0.06360424028268553
+66+,NIC,District,Nitroimidazoles,0.23321554770318037
+66+,NIC,District,Penicillins,0.23674911660777379
+66+,NIC,District,Quinolones,0.014134275618374563
+66+,NIC,District,Sulphonamides,0.049469964664310986
+66+,NIC,District,Tetracyclines,0.03180212014134277
+66+,NIC,Tertiary,Aminoglycosides,0.09611829944547136
+66+,NIC,Tertiary,Amphenicols,0.0018484288354898332
+66+,NIC,Tertiary,Carbapenems,0.022181146025877993
+66+,NIC,Tertiary,Cephalosporins,0.2199630314232902
+66+,NIC,Tertiary,Glycopeptides,0.027726432532347505
+66+,NIC,Tertiary,Lincosamides,0.0036968576709796703
+66+,NIC,Tertiary,Macrolides,0.009242144177449167
+66+,NIC,Tertiary,Nitroimidazoles,0.20147874306839195
+66+,NIC,Tertiary,Penicillins,0.31792975970425125
+66+,NIC,Tertiary,Quinolones,0.014787430683918672
+66+,NIC,Tertiary,Sulphonamides,0.05914972273567469
+66+,NIC,Tertiary,Tetracyclines,0.02587800369685768
+66+,NIC,Specialist,Aminoglycosides,0.03703703703703703
+66+,NIC,Specialist,Amphenicols,0.0
+66+,NIC,Specialist,Carbapenems,0.09876543209876543
+66+,NIC,Specialist,Cephalosporins,0.4814814814814814
+66+,NIC,Specialist,Glycopeptides,0.0864197530864198
+66+,NIC,Specialist,Lincosamides,0.0
+66+,NIC,Specialist,Macrolides,0.012345679012345682
+66+,NIC,Specialist,Nitroimidazoles,0.14814814814814817
+66+,NIC,Specialist,Penicillins,0.1358024691358024
+66+,NIC,Specialist,Quinolones,0.0
+66+,NIC,Specialist,Sulphonamides,0.0
+66+,NIC,Specialist,Tetracyclines,0.0
