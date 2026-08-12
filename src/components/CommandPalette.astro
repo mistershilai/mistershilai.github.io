@@ -3,13 +3,98 @@
 
 <div id="cmdk" class="cmdk-backdrop" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="cmdk-panel">
-    <input id="cmdk-input" class="cmdk-input" placeholder="Jump to a page, toggle theme, email me…" autocomplete="off" />
+    <input id="cmdk-input" class="cmdk-input" placeholder="Search posts, jump to a page, toggle theme…" autocomplete="off" />
     <ul id="cmdk-list" class="cmdk-list list-none m-0"></ul>
   </div>
 </div>
 
 <script>
-  type Cmd = { id: string; label: string; hint?: string; kbd?: string; action: () => void };
+  type Cmd = {
+    id: string;
+    label: string;
+    hint?: string;
+    kbd?: string;
+    badge?: string;
+    snippet?: string;
+    action: () => void;
+  };
+  type Post = {
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+    date: string;
+    text: string;
+  };
+
+  function escapeHtml(s: string) {
+    return s.replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!
+    ));
+  }
+
+  // Index is fetched once, on the first keystroke, and reused thereafter.
+  let posts: Post[] | null = null;
+  let postsPromise: Promise<Post[]> | null = null;
+  function loadPosts(): Promise<Post[]> {
+    if (posts) return Promise.resolve(posts);
+    if (!postsPromise) {
+      postsPromise = fetch('/search-index.json')
+        .then((r) => (r.ok ? r.json() : []))
+        .then((data: Post[]) => { posts = data; return data; })
+        .catch(() => { posts = []; return []; });
+    }
+    return postsPromise;
+  }
+
+  // Builds an escaped excerpt centered on the match, with the term marked.
+  function snippetFor(text: string, q: string): string | undefined {
+    const at = text.toLowerCase().indexOf(q);
+    if (at === -1) return undefined;
+    const start = Math.max(0, at - 45);
+    const end = Math.min(text.length, at + q.length + 90);
+    const lead = start > 0 ? '…' : '';
+    const tail = end < text.length ? '…' : '';
+    const before = escapeHtml(text.slice(start, at));
+    const hit = escapeHtml(text.slice(at, at + q.length));
+    const after = escapeHtml(text.slice(at + q.length, end));
+    return `${lead}${before}<mark class="cmdk-mark">${hit}</mark>${after}${tail}`;
+  }
+
+  function searchPosts(q: string, go: (href: string) => void): Cmd[] {
+    if (!posts || !q) return [];
+    const scored: { score: number; cmd: Cmd }[] = [];
+
+    for (const p of posts) {
+      const title = p.title.toLowerCase();
+      const desc = (p.description || '').toLowerCase();
+      const tags = p.tags.join(' ').toLowerCase();
+      const body = p.text.toLowerCase();
+
+      let score = 0;
+      if (title.includes(q)) score += 100;
+      if (tags.includes(q)) score += 40;
+      if (desc.includes(q)) score += 30;
+      if (body.includes(q)) score += 10;
+      if (!score) continue;
+
+      // Prefer a body excerpt; fall back to the description for title-only hits.
+      const snippet = snippetFor(p.text, q) || snippetFor(p.description || '', q);
+      scored.push({
+        score,
+        cmd: {
+          id: `post-${p.id}`,
+          label: p.title,
+          hint: p.date,
+          badge: 'post',
+          snippet,
+          action: () => go(`/blog/${p.id}`),
+        },
+      });
+    }
+
+    return scored.sort((a, b) => b.score - a.score).slice(0, 6).map((s) => s.cmd);
+  }
 
   function init() {
     const backdrop = document.getElementById('cmdk');
@@ -47,11 +132,19 @@
 
     function render() {
       if (!list) return;
+      if (!filtered.length) {
+        list.innerHTML = `<li class="cmdk-empty">No matches</li>`;
+        return;
+      }
       list.innerHTML = filtered.map((c, i) => `
-        <li class="cmdk-item" role="option" data-idx="${i}" aria-selected="${i === activeIdx}">
-          <span>${c.label}</span>
-          ${c.hint ? `<span class="ml-auto text-xs opacity-60 font-mono">${c.hint}</span>` : ''}
-          ${c.kbd ? `<span class="cmdk-kbd">${c.kbd}</span>` : ''}
+        <li class="cmdk-item ${c.snippet ? 'has-snippet' : ''}" role="option" data-idx="${i}" aria-selected="${i === activeIdx}">
+          <div class="cmdk-row">
+            <span>${escapeHtml(c.label)}</span>
+            ${c.badge ? `<span class="cmdk-badge">${escapeHtml(c.badge)}</span>` : ''}
+            ${c.hint ? `<span class="ml-auto text-xs opacity-60 font-mono">${escapeHtml(c.hint)}</span>` : ''}
+            ${c.kbd ? `<span class="cmdk-kbd">${c.kbd}</span>` : ''}
+          </div>
+          ${c.snippet ? `<div class="cmdk-snippet">${c.snippet}</div>` : ''}
         </li>
       `).join('');
       list.querySelectorAll('.cmdk-item').forEach((el) => {
@@ -62,13 +155,30 @@
       });
     }
 
+    let lastQuery = '';
+
     function filter(q: string) {
       const ql = q.trim().toLowerCase();
-      filtered = ql ? commands.filter(c =>
+      lastQuery = ql;
+      if (!ql) {
+        filtered = commands.slice();
+        activeIdx = 0;
+        render();
+        return;
+      }
+      const cmdHits = commands.filter(c =>
         c.label.toLowerCase().includes(ql) || (c.hint || '').toLowerCase().includes(ql)
-      ) : commands.slice();
+      );
+      filtered = [...cmdHits, ...searchPosts(ql, go)];
       activeIdx = 0;
       render();
+
+      // First keystroke arrives before the index does; re-run once it lands.
+      if (!posts) {
+        loadPosts().then(() => {
+          if (lastQuery === ql) filter(q);
+        });
+      }
     }
 
     function open() {
