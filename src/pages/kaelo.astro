@@ -61,6 +61,10 @@ const team = [
       <p class="font-serif text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mt-4 text-[color:var(--color-accent)]">
         Kaelo exists to help close that gap.
       </p>
+      <p class="font-sans text-sm max-w-2xl mx-auto mt-5 opacity-65">
+        How a tool like this gets built matters as much as whether it works, so we have written down
+        where we stand: <a href="#parachute-research">a note on parachute research</a>.
+      </p>
     </ScrollReveal>
   </section>
 
@@ -102,7 +106,7 @@ const team = [
           valuable thing to come out of a hard year, and nobody intends to waste it.
         </p>
       </div>
-      <p class="flare font-serif font-bold text-xl md:text-2xl leading-snug mt-8">
+      <p class="flare font-serif text-base md:text-lg leading-relaxed mt-8">
         Built with local expertise, so the next shock meets a system
         that already saw it coming.
       </p>
@@ -198,7 +202,7 @@ const team = [
         ))}
       </div>
 
-      <p class="acknowledgement">
+      <p class="acknowledgement" id="parachute-research">
         Global health carries a long record of parachute research: arriving from outside, collecting
         what is needed, and leaving little behind. Kaelo is structured against that. The questions are
         set by the institutions that run the supply chain, the data remains theirs, and the software is
@@ -245,6 +249,8 @@ const team = [
   /* Standing note on research conduct, in the register of an acknowledgement:
      quiet, set apart, not competing with the page. */
   .acknowledgement {
+    /* Clears the sticky nav when linked to from the top of the page. */
+    scroll-margin-top: 5.5rem;
     margin-top: 2.5rem;
     padding-top: 1.25rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -260,16 +266,21 @@ const team = [
   /* Closing line of the emergency section. A wider, slower sweep than the
      site-wide heading shimmer, so it reads as deliberate rather than as another
      bold heading. Reuses the global `shimmer` keyframes. */
+  /* Amber rather than the site's blue, so it reads as its own note instead of
+     another heading. */
   .flare {
+    /* Weight set here rather than via .font-semibold, which the site-wide
+       shimmer rule also targets and would repaint blue. */
+    font-weight: 600;
     background: linear-gradient(
       90deg,
-      var(--color-accent) 0%,
-      var(--color-accent) 30%,
-      #9fd2ff 45%,
-      #ffffff 50%,
-      #9fd2ff 55%,
-      var(--color-accent) 70%,
-      var(--color-accent) 100%
+      #b45309 0%,
+      #b45309 30%,
+      #f59e0b 45%,
+      #fcd34d 50%,
+      #f59e0b 55%,
+      #b45309 70%,
+      #b45309 100%
     );
     background-size: 250% 100%;
     background-clip: text;
@@ -280,13 +291,13 @@ const team = [
   :global(.dark) .flare {
     background: linear-gradient(
       90deg,
-      var(--color-accent-dark) 0%,
-      var(--color-accent-dark) 30%,
-      #d6ecff 45%,
-      #ffffff 50%,
-      #d6ecff 55%,
-      var(--color-accent-dark) 70%,
-      var(--color-accent-dark) 100%
+      #f0b429 0%,
+      #f0b429 30%,
+      #fcd34d 45%,
+      #fef3c7 50%,
+      #fcd34d 55%,
+      #f0b429 70%,
+      #f0b429 100%
     );
     background-size: 250% 100%;
     background-clip: text;

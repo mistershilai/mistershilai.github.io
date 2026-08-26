@@ -17,6 +17,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
+  scroll-behavior: smooth;
   font-family: var(--font-serif);
   background: var(--color-paper);
   color: var(--color-ink);
@@ -86,6 +87,7 @@ h1, h2, h3, strong, b, .font-bold, .font-semibold {
 
 /* Respect reduced motion preference. */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   h1, h2, h3, strong, b, .font-bold, .font-semibold { animation: none; }
 }
 
