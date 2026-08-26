@@ -78,6 +78,37 @@ const team = [
     </div>
   </section>
 
+  <!-- August 2025 -->
+  <section class="relative max-w-3xl mx-auto px-6 py-12">
+    <ScrollReveal>
+      <p class="font-sans text-xs uppercase tracking-[0.2em] opacity-55 mb-3">25 August 2025</p>
+      <h2 class="font-serif font-bold text-3xl mb-6">The emergency, and what came after</h2>
+      <div class="space-y-5 font-serif text-[1.05rem] leading-relaxed opacity-90">
+        <p>
+          Botswana declared a public health emergency. Facilities had run short of medicines for
+          hypertension, diabetes, tuberculosis and cancer, and of things as ordinary as sutures and
+          dressings. The causes were structural rather than clinical: a downturn in diamond revenue,
+          steep cuts to foreign aid, and a distribution system with no slack left anywhere in it.
+        </p>
+        <p>
+          What happened next is the part worth remembering. Emergency funding moved within weeks.
+          Distribution was reorganised so the most remote facilities were reached first. Pharmacists,
+          logisticians and ministry staff worked the problem in real time, in the middle of it,
+          without the luxury of a clean dataset or a quiet quarter to think in.
+        </p>
+        <p>
+          A crisis maps a system's weak points with a precision no audit ever achieves. Botswana now
+          knows exactly where its supply chain bends, and where it breaks. That knowledge is the most
+          valuable thing to come out of a hard year, and nobody intends to waste it.
+        </p>
+      </div>
+      <p class="flare font-serif font-bold text-xl md:text-2xl leading-snug mt-8">
+        Led by the people who were there, and built so the next shock meets a system
+        that already saw it coming.
+      </p>
+    </ScrollReveal>
+  </section>
+
   <!-- What We Do -->
   <section class="relative max-w-3xl mx-auto px-6 py-12">
     <ScrollReveal>
@@ -166,6 +197,13 @@ const team = [
           </div>
         ))}
       </div>
+
+      <p class="acknowledgement">
+        Global health carries a long record of parachute research: arriving from outside, collecting
+        what is needed, and leaving little behind. Kaelo is structured against that. The questions are
+        set by the institutions that run the supply chain, the data remains theirs, and the software is
+        built to be operated locally.
+      </p>
     </ScrollReveal>
   </section>
 </BaseLayout>
@@ -203,4 +241,59 @@ const team = [
     .caduceus { right: 2%; top: 6%; opacity: 0.25; }
   }
   .font-mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+  /* Standing note on research conduct, in the register of an acknowledgement:
+     quiet, set apart, not competing with the page. */
+  .acknowledgement {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.65;
+    opacity: 0.62;
+    max-width: 42rem;
+  }
+  :global(.dark) .acknowledgement { border-top-color: rgba(255, 255, 255, 0.12); }
+
+  /* Closing line of the emergency section. A wider, slower sweep than the
+     site-wide heading shimmer, so it reads as deliberate rather than as another
+     bold heading. Reuses the global `shimmer` keyframes. */
+  .flare {
+    background: linear-gradient(
+      90deg,
+      var(--color-accent) 0%,
+      var(--color-accent) 30%,
+      #9fd2ff 45%,
+      #ffffff 50%,
+      #9fd2ff 55%,
+      var(--color-accent) 70%,
+      var(--color-accent) 100%
+    );
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 7s linear infinite;
+  }
+  :global(.dark) .flare {
+    background: linear-gradient(
+      90deg,
+      var(--color-accent-dark) 0%,
+      var(--color-accent-dark) 30%,
+      #d6ecff 45%,
+      #ffffff 50%,
+      #d6ecff 55%,
+      var(--color-accent-dark) 70%,
+      var(--color-accent-dark) 100%
+    );
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flare { animation: none; }
+  }
 </style>
