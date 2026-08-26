@@ -577,7 +577,7 @@ import { places } from '@/data/photos';
     // Dates come from photo EXIF via scripts/extract-photo-dates.mjs. Places
     // whose photos carry no EXIF date simply sit out the replay.
     type Leg = { place: Place; date: string };
-    // Domestic stops sit out the replay, which is about the travelling.
+    // Domestic stops sit out the replay, which is about the traveling.
     // Matches only a trailing "USA" country segment, so a shared site like
     // "Niagara Falls, Canada / USA" is kept.
     const isDomestic = (name: string) => /,\s*USA\s*$/.test(name);

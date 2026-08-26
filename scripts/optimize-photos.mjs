@@ -101,7 +101,7 @@ for (const { src, out, width, png, square, cropTop } of SINGLES) {
   srcBytes += (await stat(src)).size;
   if (await isStale(src, out)) {
     // Avatars render inside a circle with object-cover, so crop to a square
-    // here rather than letting the browser centre-crop a portrait frame and
+    // here rather than letting the browser center-crop a portrait frame and
     // slice through the face. `attention` picks the most salient region.
     let pipeline = sharp(src).rotate();
     if (square && cropTop !== undefined) {

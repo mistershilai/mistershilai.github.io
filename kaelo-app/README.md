@@ -73,7 +73,7 @@ opaquely, so a deployment is never broken, only limited.
 All reference data is vendored under `data/app/`, so the planner runs end to
 end with no further setup.
 
-One modelling note: the prescribing data covers hospital tiers only
+One modeling note: the prescribing data covers hospital tiers only
 (`District`, `Primary`, `Specialist`, `Tertiary`). Clinics and health posts,
 which are 569 of the 619 facilities, take **district-hospital** rates, since
 district hospitals are what serves primary care in this network. That mapping
