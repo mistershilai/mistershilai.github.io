@@ -254,20 +254,20 @@ const team = [
     margin-top: 2.5rem;
     padding-top: 1.25rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    font-family: var(--font-serif);
+    /* Matches the sans-serif team list it sits under. */
+    font-family: var(--font-sans);
     font-size: 0.85rem;
-    font-style: italic;
+    letter-spacing: -0.005em;
     line-height: 1.65;
     opacity: 0.62;
     max-width: 42rem;
   }
   :global(.dark) .acknowledgement { border-top-color: rgba(255, 255, 255, 0.12); }
 
-  /* Closing line of the emergency section. A wider, slower sweep than the
-     site-wide heading shimmer, so it reads as deliberate rather than as another
-     bold heading. Reuses the global `shimmer` keyframes. */
-  /* Amber rather than the site's blue, so it reads as its own note instead of
-     another heading. */
+  /* Closing line of the emergency section. Amber rather than the site accent,
+     with a wider and slower sweep than the heading shimmer, so it reads as its
+     own aside rather than another section heading. Reuses the global
+     `shimmer` keyframes. */
   .flare {
     /* Weight set here rather than via .font-semibold, which the site-wide
        shimmer rule also targets and would repaint blue. */
