@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/client";
 import type { Summary } from "../api/client";
-import Signature from "../components/Signature";
 
 export default function About() {
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -168,9 +167,6 @@ export default function About() {
             <p>Idah Seepo</p>
             <p>Teedzani Tizza Singabapha</p>
           </div>
-        </div>
-        <div className="about-signature-area">
-          <Signature />
         </div>
       </div>
 
